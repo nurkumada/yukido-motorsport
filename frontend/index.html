@@ -32,9 +32,9 @@
         <div class="nav-right">
             <a href="index.html" class="nav-link active">BERANDA</a>
             <a href="produk.html" class="nav-link">SEMUA PRODUK</a>
+            <a href="kategori-produk.html" class="nav-link">KATEGORI</a>
             <a href="garansi.html" class="nav-link">GARANSI</a>
-            <a href="tim-balap.html" class="nav-link">TIM BALAP & AHM</a>
-            <a href="kategori-produk.html" class="nav-link">KATEGORI PRODUK</a>
+            <a href="tim-balap.html" class="nav-link">TIM BALAP</a>
             
             <div class="nav-icons">
                 <a href="keranjang.html" class="icon-btn cart-btn">
@@ -44,14 +44,14 @@
                 <button class="btn-cs">
                     <i class="fas fa-headset"></i> BANTUAN CS
                 </button>
-                <button class="icon-btn">
+                <a href="login.html" class="icon-btn" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-user"></i>
-                </button>
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Sidebar -->
+    <!-- Sidebar (SUDAH DIPERBAIKI LINK-NYA) -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="logo">
@@ -92,11 +92,11 @@
                 <i class="fas fa-flag-checkered"></i>
                 <span>Tim Balap YUKIDO</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="dukungan-ahm.html" class="menu-item">
                 <i class="fas fa-handshake"></i>
                 <span>Dukungan AHM</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="lokasi.html" class="menu-item">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Lokasi Kami</span>
             </a>
@@ -105,7 +105,7 @@
                 <span>Keranjang Belanja</span>
                 <span class="badge">3 Part</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="login.html" class="menu-item">
                 <i class="fas fa-user-circle"></i>
                 <span>Akun / Login</span>
             </a>
@@ -555,7 +555,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3>PT YUKIDO POWER TEKNIK</h3>
-                            <a href="#" class="link-small">BUKA HARI INI</a>
+                            <a href="lokasi.html" class="link-small">LIHAT DETAIL LOKASI</a>
                         </div>
                     </div>
                     
@@ -588,9 +588,9 @@
                     </div>
                     
                     <div class="lokasi-buttons">
-                        <button class="btn-primary">
+                        <a href="lokasi.html" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
                             <i class="fas fa-map"></i> BUKA PETA LENGKAP
-                        </button>
+                        </a>
                         <button class="btn-secondary">
                             <i class="fab fa-google"></i> GOOGLE MAPS
                         </button>
@@ -686,6 +686,37 @@
         </button>
     </main>
 
+    <!-- === AI CHATBOT WIDGET === -->
+<div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+        <div class="chatbot-title">
+            <i class="fas fa-robot"></i>
+            <div>
+                <strong>YUKIDO AI Assistant</strong>
+                <span class="chatbot-status">Online</span>
+            </div>
+        </div>
+        <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">
+            Halo! 👋 Saya asisten virtual YUKIDO Motorsport. Ada yang bisa saya bantu? <br><br>
+            <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
+        </div>
+    </div>
+    
+    <div class="chatbot-input-area">
+        <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
+        <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+    <!-- Tombol Floating (Pastikan ini ada di bagian bawah sebelum </main> atau </body>) -->
+    <button class="floating-btn" id="chatbotToggle">
+        <i class="fas fa-robot"></i> TANYA AI
+    </button>
+    <!-- === AKHIR AI CHATBOT WIDGET === -->
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Daftar Akun - YUKIDO Motorsport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="auth-brand">
+                <span class="logo-icon">🏁</span>
+                <h1>YUKIDO <span class="text-red">PADDOCK</span></h1>
+                <p>Precision Meets Racing Performance. Bergabunglah dengan komunitas balap terbesar di Indonesia.</p>
+            </div>
+            <div class="auth-features">
+                <div class="auth-feat"><i class="fas fa-check-circle"></i> Akses eksklusif part limited edition</div>
+                <div class="auth-feat"><i class="fas fa-check-circle"></i> Tracking pesanan & garansi real-time</div>
+                <div class="auth-feat"><i class="fas fa-check-circle"></i> Poin reward untuk setiap pembelian</div>
+            </div>
+        </div>
+
+        <div class="auth-right">
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchAuth('login')">MASUK</button>
+                <button class="auth-tab" onclick="switchAuth('register')">DAFTAR AKUN</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Selamat Datang Kembali!</h2>
+                <p class="auth-subtitle">Masuk untuk melanjutkan belanja part balap Anda.</p>
+                
+                <div class="form-group">
+                    <label>EMAIL ATAU NOMOR HP</label>
+                    <input type="text" placeholder="contoh@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>KATA SANDI</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox-label"><input type="checkbox"> Ingat Saya</label>
+                    <a href="#" class="forgot-link">Lupa Kata Sandi?</a>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">MASUK KE AKUN</button>
+                
+                <div class="auth-divider"><span>ATAU MASUK DENGAN</span></div>
+                <button type="button" class="btn-social"><i class="fab fa-google"></i> Google</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <h2>Buat Akun Paddock</h2>
+                <p class="auth-subtitle">Daftar untuk mendapatkan akses garansi dan promo eksklusif.</p>
+                
+                <div class="form-group">
+                    <label>NAMA LENGKAP</label>
+                    <input type="text" placeholder="Nama sesuai KTP" required>
+                </div>
+                <div class="form-group">
+                    <label>EMAIL</label>
+                    <input type="email" placeholder="contoh@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>NOMOR WHATSAPP</label>
+                    <input type="tel" placeholder="081234567890" required>
+                </div>
+                <div class="form-group">
+                    <label>KATA SANDI</label>
+                    <input type="password" placeholder="Min. 8 karakter" required>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">DAFTAR SEKARANG</button>
+            </form>
+
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

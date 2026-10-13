@@ -1,17 +1,20 @@
-// Sidebar Toggle
+// =========================================
+// YUKIDO MOTORSPORT - MAIN SCRIPT
+// =========================================
+
+// 1. Sidebar Toggle
 const menuToggle = document.getElementById('menuToggle');
 const closeSidebar = document.getElementById('closeSidebar');
 const sidebar = document.getElementById('sidebar');
 
-menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
+if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
+}
+if (closeSidebar && sidebar) {
+    closeSidebar.addEventListener('click', () => sidebar.classList.remove('active'));
+}
 
-closeSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-});
-
-// Tab Filter
+// 2. Tab Filter (General)
 const tabs = document.querySelectorAll('.tab');
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -20,68 +23,56 @@ tabs.forEach(tab => {
     });
 });
 
-// Smooth Scroll
+// 3. Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// Add to Cart Animation
+// 4. Add to Cart Animation (General)
 const btnBeli = document.querySelectorAll('.btn-beli');
 btnBeli.forEach(btn => {
     btn.addEventListener('click', () => {
         const cartBadge = document.querySelector('.cart-btn .badge');
-        let count = parseInt(cartBadge.textContent);
-        cartBadge.textContent = count + 1;
-        
-        // Animation
+        if (cartBadge) {
+            let count = parseInt(cartBadge.textContent) || 0;
+            cartBadge.textContent = count + 1;
+        }
         btn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            btn.style.transform = 'scale(1)';
-        }, 100);
+        setTimeout(() => btn.style.transform = 'scale(1)', 100);
     });
 });
 
-// Search Bar Focus
+// 5. Search Bar Focus (Top Navigation)
 const searchInput = document.querySelector('.search-bar input');
-searchInput.addEventListener('focus', () => {
-    searchInput.parentElement.style.borderColor = 'var(--red-primary)';
-});
-
-searchInput.addEventListener('blur', () => {
-    searchInput.parentElement.style.borderColor = 'var(--border-color)';
-});
-
-// Floating Button
-const floatingBtn = document.querySelector('.floating-btn');
-floatingBtn.addEventListener('click', () => {
-    alert('Fitur AI Assistant akan segera hadir! 🤖');
-});
+if (searchInput) {
+    searchInput.addEventListener('focus', () => {
+        searchInput.parentElement.style.borderColor = 'var(--red-primary)';
+    });
+    searchInput.addEventListener('blur', () => {
+        searchInput.parentElement.style.borderColor = 'var(--border-color)';
+    });
+}
 
 console.log('YUKIDO Motorsport Website Loaded Successfully! 🏁');
 
-// --- Fitur Khusus Halaman Produk ---
-
-// 1. Filter Kategori (Tab)
+// =========================================
+// FITUR KHUSUS HALAMAN PRODUK
+// =========================================
 const catTabs = document.querySelectorAll('.cat-tab');
 const productCards = document.querySelectorAll('.produk-card');
 
 catTabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        // Hapus active dari semua tab
         catTabs.forEach(t => t.classList.remove('active'));
-        // Tambah active ke tab yang diklik
         tab.classList.add('active');
         
         const category = tab.getAttribute('data-category');
-        
         productCards.forEach(card => {
             if (category === 'all' || card.getAttribute('data-category') === category) {
                 card.style.display = 'block';
@@ -92,12 +83,11 @@ catTabs.forEach(tab => {
     });
 });
 
-// 2. Search Produk (Real-time)
-const searchInput = document.getElementById('searchProduct');
-if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
+// Search Produk (Real-time) - VARIABLE NAME FIXED!
+const searchProductInput = document.getElementById('searchProduct');
+if (searchProductInput) {
+    searchProductInput.addEventListener('input', (e) => {
         const keyword = e.target.value.toLowerCase();
-        
         productCards.forEach(card => {
             const title = card.querySelector('h3').textContent.toLowerCase();
             if (title.includes(keyword)) {
@@ -109,44 +99,38 @@ if (searchInput) {
     });
 }
 
-// 3. Fungsi Add to Cart (Update Badge)
-let cartCount = 3; // Mulai dari 3 sesuai desain
-
+// Add to Cart Logic
+let cartCount = 3; 
 function addToCart() {
     cartCount++;
-    document.getElementById('cartBadge').textContent = cartCount;
-    document.getElementById('sidebarCartBadge').textContent = cartCount + ' Part';
-    
-    // Efek visual sederhana
     const badge = document.getElementById('cartBadge');
-    badge.style.transform = 'scale(1.5)';
-    setTimeout(() => {
-        badge.style.transform = 'scale(1)';
-    }, 200);
+    const sidebarBadge = document.getElementById('sidebarCartBadge');
     
+    if (badge) badge.textContent = cartCount;
+    if (sidebarBadge) sidebarBadge.textContent = cartCount + ' Part';
+    
+    if (badge) {
+        badge.style.transform = 'scale(1.5)';
+        setTimeout(() => badge.style.transform = 'scale(1)', 200);
+    }
     alert('Produk berhasil ditambahkan ke Keranjang Balap! 🏁');
 }
 
-// 4. Reset Filter
+// Reset Filter
 const btnReset = document.querySelector('.btn-reset');
 if (btnReset) {
     btnReset.addEventListener('click', () => {
-        // Reset search
-        if(searchInput) searchInput.value = '';
-        
-        // Reset tab ke 'all'
+        if(searchProductInput) searchProductInput.value = '';
         catTabs.forEach(t => t.classList.remove('active'));
-        document.querySelector('.cat-tab[data-category="all"]').classList.add('active');
-        
-        // Tampilkan semua produk
-        productCards.forEach(card => {
-            card.style.display = 'block';
-        });
+        const allTab = document.querySelector('.cat-tab[data-category="all"]');
+        if(allTab) allTab.classList.add('active');
+        productCards.forEach(card => card.style.display = 'block');
     });
 }
 
-// --- Fitur Khusus Halaman Keranjang ---
-
+// =========================================
+// FITUR KHUSUS HALAMAN KERANJANG
+// =========================================
 function formatRupiah(angka) {
     return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
@@ -168,7 +152,6 @@ function updateCartCalculations() {
         const qtyInput = item.querySelector('.qty-input');
         const qty = parseInt(qtyInput.value) || 1;
         
-        // Update Subtotal per item
         const itemSubtotal = price * qty;
         item.querySelector('.item-subtotal').innerHTML = `${formatRupiah(itemSubtotal)}<br><span class="per-unit">SUBTOTAL</span>`;
         
@@ -176,34 +159,39 @@ function updateCartCalculations() {
         subtotal += itemSubtotal;
         totalWeight += (weight * qty);
 
-        // Update Telemetry Bars (Simulasi sederhana)
         if(index === 0) {
             const pct = Math.round(((weight * qty) / (totalWeight || 1)) * 100);
-            document.getElementById('weight1').textContent = `${(weight * qty).toFixed(2)} kg (${pct}%)`;
-            document.querySelector('.telem-item:nth-child(1) .progress-fill').style.width = `${pct}%`;
+            const w1 = document.getElementById('weight1');
+            if(w1) w1.textContent = `${(weight * qty).toFixed(2)} kg (${pct}%)`;
+            const p1 = document.querySelector('.telem-item:nth-child(1) .progress-fill');
+            if(p1) p1.style.width = `${pct}%`;
         } else if(index === 1) {
             const pct = Math.round(((weight * qty) / (totalWeight || 1)) * 100);
-            document.getElementById('weight2').textContent = `${(weight * qty).toFixed(2)} kg (${pct}%)`;
-            document.querySelector('.telem-item:nth-child(2) .progress-fill').style.width = `${pct}%`;
+            const w2 = document.getElementById('weight2');
+            if(w2) w2.textContent = `${(weight * qty).toFixed(2)} kg (${pct}%)`;
+            const p2 = document.querySelector('.telem-item:nth-child(2) .progress-fill');
+            if(p2) p2.style.width = `${pct}%`;
         } else if(index === 2) {
             const pct = Math.round(((weight * qty) / (totalWeight || 1)) * 100);
-            document.getElementById('weight3').textContent = `${(weight * qty).toFixed(2)} kg (${pct}%)`;
-            document.querySelector('.telem-item:nth-child(3) .progress-fill').style.width = `${pct}%`;
+            const w3 = document.getElementById('weight3');
+            if(w3) w3.textContent = `${(weight * qty).toFixed(2)} kg (${pct}%)`;
+            const p3 = document.querySelector('.telem-item:nth-child(3) .progress-fill');
+            if(p3) p3.style.width = `${pct}%`;
         }
     });
 
-    document.getElementById('totalWeight').textContent = `${totalWeight.toFixed(2)} kg`;
-    document.getElementById('summaryItems').textContent = `${totalItems} Barang (${totalJenis} Jenis Produk)`;
-    document.getElementById('summarySubtotal').textContent = formatRupiah(subtotal);
-    document.getElementById('slotCount').textContent = `${totalJenis} Produk Terpilih`;
-    document.getElementById('cartBadge').textContent = totalJenis;
-    document.getElementById('sidebarCartBadge').textContent = `${totalJenis} Part`;
+    const tw = document.getElementById('totalWeight'); if(tw) tw.textContent = `${totalWeight.toFixed(2)} kg`;
+    const si = document.getElementById('summaryItems'); if(si) si.textContent = `${totalItems} Barang (${totalJenis} Jenis Produk)`;
+    const ss = document.getElementById('summarySubtotal'); if(ss) ss.textContent = formatRupiah(subtotal);
+    const sc = document.getElementById('slotCount'); if(sc) sc.textContent = `${totalJenis} Produk Terpilih`;
+    const cb = document.getElementById('cartBadge'); if(cb) cb.textContent = totalJenis;
+    const sb = document.getElementById('sidebarCartBadge'); if(sb) sb.textContent = `${totalJenis} Part`;
 
     const grandTotal = subtotal + ongkir - diskon;
-    document.getElementById('grandTotal').textContent = formatRupiah(grandTotal > 0 ? grandTotal : 0);
+    const gt = document.getElementById('grandTotal'); 
+    if(gt) gt.textContent = formatRupiah(grandTotal > 0 ? grandTotal : 0);
 }
 
-// Event Listeners untuk tombol +/- dan input
 document.querySelectorAll('.qty-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         const input = e.target.parentElement.querySelector('.qty-input');
@@ -224,7 +212,6 @@ document.querySelectorAll('.qty-input').forEach(input => {
     });
 });
 
-// Hapus Item
 document.querySelectorAll('.remove-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         const item = e.target.closest('.cart-item');
@@ -237,7 +224,6 @@ document.querySelectorAll('.remove-btn').forEach(btn => {
     });
 });
 
-// Kosongkan Keranjang
 const clearCartBtn = document.getElementById('clearCartBtn');
 if(clearCartBtn) {
     clearCartBtn.addEventListener('click', () => {
@@ -248,25 +234,21 @@ if(clearCartBtn) {
     });
 }
 
-// Jalankan kalkulasi awal jika di halaman keranjang
 if(document.querySelector('.cart-layout')) {
     updateCartCalculations();
 }
 
-// --- Fitur Khusus Halaman Checkout ---
-
-// 1. Payment Tabs Switching
+// =========================================
+// FITUR KHUSUS HALAMAN CHECKOUT
+// =========================================
 const payTabs = document.querySelectorAll('.pay-tab');
 payTabs.forEach(tab => {
     tab.addEventListener('click', () => {
         payTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        // Di sini bisa ditambahkan logic untuk show/hide konten tab lain (QRIS, E-Wallet, dll)
-        // Untuk sekarang kita fokus ke tab VA yang aktif.
     });
 });
 
-// 2. Shipping & Bank Selection (Visual Active State)
 document.querySelectorAll('.shipping-card').forEach(card => {
     card.addEventListener('click', () => {
         document.querySelectorAll('.shipping-card').forEach(c => c.classList.remove('active'));
@@ -281,35 +263,32 @@ document.querySelectorAll('.bank-card').forEach(card => {
     });
 });
 
-// 3. Accordion Toggle
 document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
         const item = header.parentElement;
         const body = header.nextElementSibling;
         const icon = header.querySelector('i:last-child');
         
-        // Tutup semua accordion lain
         document.querySelectorAll('.accordion-item').forEach(otherItem => {
             if (otherItem !== item) {
                 otherItem.classList.remove('active');
                 otherItem.querySelector('.accordion-body').style.display = 'none';
-                otherItem.querySelector('.accordion-header i:last-child').style.transform = 'rotate(0deg)';
+                const otherIcon = otherItem.querySelector('.accordion-header i:last-child');
+                if(otherIcon) otherIcon.style.transform = 'rotate(0deg)';
             }
         });
 
-        // Toggle yang diklik
         item.classList.toggle('active');
         if (item.classList.contains('active')) {
             body.style.display = 'block';
-            icon.style.transform = 'rotate(180deg)';
+            if(icon) icon.style.transform = 'rotate(180deg)';
         } else {
             body.style.display = 'none';
-            icon.style.transform = 'rotate(0deg)';
+            if(icon) icon.style.transform = 'rotate(0deg)';
         }
     });
 });
 
-// 4. Copy Virtual Account Number
 const copyVaBtn = document.getElementById('copyVaBtn');
 if (copyVaBtn) {
     copyVaBtn.addEventListener('click', () => {
@@ -320,34 +299,30 @@ if (copyVaBtn) {
             copyVaBtn.style.background = '#00cc66';
             copyVaBtn.style.color = 'white';
             copyVaBtn.style.borderColor = '#00cc66';
-            
             setTimeout(() => {
                 copyVaBtn.innerHTML = originalText;
                 copyVaBtn.style.background = '';
                 copyVaBtn.style.color = '';
                 copyVaBtn.style.borderColor = '';
             }, 2000);
-        }).catch(err => {
-            console.error('Gagal menyalin: ', err);
         });
     });
 }
 
-// 5. Simulasi Tombol Bayar Sekarang
 const btnPayNow = document.querySelector('.btn-pay-now');
 if (btnPayNow) {
     btnPayNow.addEventListener('click', () => {
         btnPayNow.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES PEMBAYARAN...';
         setTimeout(() => {
-            alert('Pembayaran berhasil disimulasikan! Pesanan Anda sedang diproses oleh tim Paddock YUKIDO. 🏁');
+            alert('Pembayaran berhasil disimulasikan! Pesanan Anda sedang diproses. 🏁');
             btnPayNow.innerHTML = '<i class="fas fa-lock"></i> BAYAR SEKARANG & BUAT PESANAN';
         }, 1500);
     });
 }
 
-// --- Fitur Khusus Halaman Garansi ---
-
-// 1. Simulasi Upload File
+// =========================================
+// FITUR KHUSUS HALAMAN GARANSI
+// =========================================
 function setupFileUpload(inputId, dropZoneId, fileNameId) {
     const input = document.getElementById(inputId);
     const dropZone = document.getElementById(dropZoneId);
@@ -355,7 +330,6 @@ function setupFileUpload(inputId, dropZoneId, fileNameId) {
 
     if (dropZone && input) {
         dropZone.addEventListener('click', () => input.click());
-        
         input.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 fileNameDisplay.textContent = `Terpilih: ${e.target.files[0].name}`;
@@ -365,14 +339,11 @@ function setupFileUpload(inputId, dropZoneId, fileNameId) {
         });
     }
 }
-
 setupFileUpload('file1', 'dropZone1', 'fileName1');
 setupFileUpload('file2', 'dropZone2', 'fileName2');
 
-// 2. Simulasi Tracking Tiket
 const btnCekTiket = document.getElementById('btnCekTiket');
 const trackStatus = document.getElementById('trackStatus');
-
 if (btnCekTiket) {
     btnCekTiket.addEventListener('click', () => {
         const ticketId = document.getElementById('ticketInput').value.trim();
@@ -386,74 +357,200 @@ if (btnCekTiket) {
     });
 }
 
-// 3. FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const faqItem = button.parentElement;
         const isActive = faqItem.classList.contains('active');
-        
-        // Tutup semua FAQ
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.classList.remove('active');
-        });
-
-        // Buka yang diklik jika sebelumnya tertutup
-        if (!isActive) {
-            faqItem.classList.add('active');
-        }
+        document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+        if (!isActive) faqItem.classList.add('active');
     });
 });
 
-// 4. Form Submission Simulation
 const garansiForm = document.getElementById('garansiForm');
 if (garansiForm) {
     garansiForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = garansiForm.querySelector('.btn-submit-klaim');
         const originalText = btn.innerHTML;
-        
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENGIRIM DATA KE SERVER QC...';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENGIRIM DATA...';
         btn.disabled = true;
-        
         setTimeout(() => {
-            alert('Klaim garansi berhasil dikirim! Tiket Anda: YKD-CLM-88492. Tim QC akan menghubungi via WhatsApp dalam 1x24 jam.');
+            alert('Klaim garansi berhasil dikirim! Tim QC akan menghubungi via WhatsApp.');
             btn.innerHTML = originalText;
             btn.disabled = false;
             garansiForm.reset();
-            document.querySelectorAll('.file-name').forEach(el => el.textContent = '');
-            document.querySelectorAll('.drop-zone').forEach(el => {
-                el.style.borderColor = '';
-                el.style.background = '';
-            });
         }, 2000);
     });
 }
 
-// --- Fitur Khusus Halaman Tim Balap ---
-
-// 1. Interaksi Kartu Tim (Simulasi View Profile)
+// =========================================
+// FITUR KHUSUS HALAMAN TIM BALAP
+// =========================================
 document.querySelectorAll('.team-card').forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
         const name = card.querySelector('h3').textContent;
-        const role = card.querySelector('.team-role').textContent;
-        // Efek visual klik
         card.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-            card.style.transform = '';
-            alert(`Membuka profil lengkap:\n\n${name}\n${role}\n\n(Data statistik balap dan riwayat podium akan dimuat di sini.)`);
-        }, 150);
+        setTimeout(() => card.style.transform = '', 150);
     });
 });
 
-// 2. Smooth Scroll untuk CTA Buttons
-document.querySelectorAll('.cta-buttons a').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        // Biarkan link normal berjalan, tapi tambahkan efek
-        btn.style.opacity = '0.7';
-        setTimeout(() => btn.style.opacity = '1', 200);
+// =========================================
+// FITUR HALAMAN KONFIRMASI PEMBAYARAN
+// =========================================
+function copyOrderId() {
+    const orderId = document.getElementById('orderId');
+    if(orderId) {
+        navigator.clipboard.writeText(orderId.innerText);
+        alert('Nomor Order berhasil disalin!');
+    }
+}
+
+function copyVa() {
+    const vaNumber = document.getElementById('vaNumber');
+    if(vaNumber) {
+        navigator.clipboard.writeText(vaNumber.innerText.replace(/\s/g, ''));
+        alert('Nomor Virtual Account berhasil disalin!');
+    }
+}
+
+let time = 2 * 60 * 60; 
+const countdownEl = document.getElementById('countdown');
+if (countdownEl) {
+    const timer = setInterval(() => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
+        countdownEl.innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        if (time <= 0) {
+            clearInterval(timer);
+            countdownEl.innerText = "WAKTU HABIS";
+        }
+        time--;
+    }, 1000);
+}
+
+// =========================================
+// FITUR HALAMAN LOGIN
+// =========================================
+function switchAuth(type) {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const tabs = document.querySelectorAll('.auth-tab');
+    if (!loginForm || !registerForm) return;
+
+    if (type === 'login') {
+        loginForm.classList.add('active');
+        registerForm.classList.remove('active');
+        tabs[0].classList.add('active');
+        tabs[1].classList.remove('active');
+    } else {
+        loginForm.classList.remove('active');
+        registerForm.classList.add('active');
+        tabs[0].classList.remove('active');
+        tabs[1].classList.add('active');
+    }
+}
+
+const loginFormEl = document.getElementById('loginForm');
+if (loginFormEl) {
+    loginFormEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Login berhasil! Mengalihkan ke Dashboard...');
+        window.location.href = 'index.html';
     });
-});
+}
 
-console.log('YUKIDO Racing Team Page Loaded Successfully! 🏁🏍️');
+// =========================================
+// LOGIKA AI CHATBOT YUKIDO
+// =========================================
+const chatbotToggle = document.getElementById('chatbotToggle');
+const chatbotContainer = document.getElementById('chatbotContainer');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotInput = document.getElementById('chatbotInput');
+const chatbotSend = document.getElementById('chatbotSend');
+const chatbotMessages = document.getElementById('chatbotMessages');
 
+if (chatbotToggle) {
+    chatbotToggle.addEventListener('click', () => {
+        chatbotContainer.classList.toggle('active');
+        if (chatbotContainer.classList.contains('active')) {
+            setTimeout(() => chatbotInput.focus(), 300);
+        }
+    });
+}
+
+if (chatbotClose) {
+    chatbotClose.addEventListener('click', () => {
+        chatbotContainer.classList.remove('active');
+    });
+}
+
+function sendMessage() {
+    const text = chatbotInput.value.trim();
+    if (!text) return;
+    addMessage(text, 'user-message');
+    chatbotInput.value = '';
+    const typingId = showTypingIndicator();
+    setTimeout(() => {
+        removeTypingIndicator(typingId);
+        const response = getAIResponse(text.toLowerCase());
+        addMessage(response, 'bot-message');
+    }, 1200);
+}
+
+if (chatbotSend) chatbotSend.addEventListener('click', sendMessage);
+if (chatbotInput) {
+    chatbotInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+}
+
+function addMessage(text, className) {
+    const div = document.createElement('div');
+    div.className = `message ${className}`;
+    div.innerHTML = text; 
+    chatbotMessages.appendChild(div);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight; 
+}
+
+function showTypingIndicator() {
+    const id = 'typing-' + Date.now();
+    const div = document.createElement('div');
+    div.className = 'typing-indicator';
+    div.id = id;
+    div.innerHTML = '<span></span><span></span><span></span>';
+    chatbotMessages.appendChild(div);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    return id;
+}
+
+function removeTypingIndicator(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+}
+
+function getAIResponse(input) {
+    if (input.includes('halo') || input.includes('hi') || input.includes('pagi') || input.includes('siang') || input.includes('malam')) {
+        return "Halo! 👋 Selamat datang di YUKIDO Motorsport. Ada yang bisa saya bantu terkait part balap, garansi, atau lokasi showroom kami?";
+    }
+    if (input.includes('garansi') || input.includes('klaim') || input.includes('rusak')) {
+        return "Garansi resmi YUKIDO berlaku <b>6 bulan</b> untuk part keras (cakram, shockbreaker) dan <b>1 bulan</b> untuk part consumable. Ajukan klaim di halaman <a href='garansi.html' style='color:var(--red-primary); font-weight:bold;'>Klaim Garansi</a> kami.";
+    }
+    if (input.includes('ongkir') || input.includes('kiriman') || input.includes('ekspedisi') || input.includes('biaya kirim')) {
+        return "Kami bekerja sama dengan JNE Trucking, SiCepat, dan Instant Paddock. Estimasi biaya mulai dari <b>Rp 35.000</b> dengan asuransi kerusakan 100% included! ";
+    }
+    if (input.includes('lokasi') || input.includes('alamat') || input.includes('toko') || input.includes('showroom')) {
+        return "Showroom & Workshop kami berada di: <br><b>PT YUKIDO POWER TEKNIK</b><br>Kawasan Industri, Serang, Banten.<br>Buka Senin-Sabtu, 08.00 - 19.00 WIB.  <a href='lokasi.html' style='color:var(--red-primary)'>Lihat di Peta</a>";
+    }
+    if (input.includes('bayar') || input.includes('metode pembayaran') || input.includes('transfer')) {
+        return "Kami menerima pembayaran via Virtual Account (BCA, Mandiri, BNI, BRI), QRIS Dinamis, GoPay, OVO, dan Debit Online. Transaksi dienkripsi SSL 256-bit. ";
+    }
+    if (input.includes('cnc') || input.includes('material') || input.includes('bahan') || input.includes('spesifikasi')) {
+        return "Part CNC YUKIDO terbuat dari <b>Billet Aluminium 6061-T6</b> dan <b>Stainless Steel 410</b> dengan toleransi mesin 0.02 mikron, diuji tahan panas hingga 680°C! 🔥";
+    }
+    if (input.includes('terima kasih') || input.includes('makasih') || input.includes('thanks')) {
+        return "Sama-sama! 🏁 Selalu siap mendukung performa balap Anda. Jangan ragu untuk bertanya lagi!";
+    }
+    return "Maaf, saya belum mengerti pertanyaan tersebut. 🤖 <br><br>Coba ketik: <b>'garansi'</b>, <b>'ongkir'</b>, <b>'lokasi'</b>, atau <b>'cara bayar'</b>.";
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pembayaran - YUKIDO Motorsport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo"><span class="logo-icon">🏁</span><span class="logo-text">YUKIDO</span><span class="logo-sub">PADDOCK</span></a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="btn-secondary" style="padding: 8px 16px; font-size: 13px;"><i class="fas fa-arrow-left"></i> KEMBALI KE BERANDA</a>
+        </div>
+    </nav>
+
+    <main class="main-content" style="margin-left: 0; margin-top: 60px; display: flex; justify-content: center; align-items: flex-start; padding: 60px 20px;">
+        <div class="konfirmasi-container">
+            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+            <h1>PESANAN BERHASIL DIBUAT!</h1>
+            <p>Terima kasih telah berbelanja di YUKIDO Motorsport. Selesaikan pembayaran Anda sebelum waktu habis.</p>
+            
+            <div class="order-id-box">
+                <span>Nomor Order Anda:</span>
+                <strong id="orderId">YKD-ORD-2025-8831</strong>
+                <button class="btn-copy-small" onclick="copyOrderId()"><i class="fas fa-copy"></i> Salin</button>
+            </div>
+
+            <div class="countdown-box">
+                <span>Selesaikan pembayaran dalam:</span>
+                <div class="timer" id="countdown">01:59:59</div>
+                <p class="timer-warning"><i class="fas fa-exclamation-triangle"></i> Pesanan akan otomatis dibatalkan jika waktu habis.</p>
+            </div>
+
+            <div class="payment-detail-box">
+                <div class="detail-row">
+                    <span>Metode Pembayaran</span>
+                    <strong>Virtual Account BCA</strong>
+                </div>
+                <div class="detail-row highlight">
+                    <span>Nomor Virtual Account</span>
+                    <div class="va-copy">
+                        <strong id="vaNumber">8271 9028 1148 2910</strong>
+                        <button class="btn-copy-small" onclick="copyVa()"><i class="fas fa-copy"></i> Salin</button>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <span>Total Tagihan</span>
+                    <strong class="text-red" style="font-size: 24px;">Rp 2.785.000</strong>
+                </div>
+            </div>
+
+            <div class="instruction-box">
+                <h3><i class="fas fa-list-ol"></i> Cara Pembayaran via BCA Mobile:</h3>
+                <ol>
+                    <li>Buka aplikasi BCA Mobile dan login.</li>
+                    <li>Pilih menu <strong>m-Transfer</strong> > <strong>BCA Virtual Account</strong>.</li>
+                    <li>Masukkan Nomor Virtual Account: <strong>8271902811482910</strong></li>
+                    <li>Periksa detail pesanan dan masukkan PIN BCA Mobile Anda.</li>
+                    <li>Simpan bukti pembayaran sebagai referensi klaim garansi.</li>
+                </ol>
+            </div>
+
+            <div class="konfirmasi-actions">
+                <a href="index.html" class="btn-primary" style="width: 100%; justify-content: center;">KEMBALI KE BERANDA</a>
+                <a href="garansi.html" class="btn-secondary" style="width: 100%; justify-content: center;">PANDUAN KLAIM GARANSI</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
