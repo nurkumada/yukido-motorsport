@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout & Pembayaran - YUKIDO Motorsport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🏁</span>
+                <span class="logo-text">YUKIDO</span>
+                <span class="logo-sub">PADDOCK</span>
+            </a>
+        </div>
+        <div class="nav-center">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Cari part balap...">
+                <span class="shortcut">⌘K</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-link">BERANDA</a>
+            <a href="produk.html" class="nav-link">SEMUA PRODUK</a>
+            <a href="garansi.html" class="nav-link">GARANSI</a>
+            <a href="tim-balap.html" class="nav-link">TIM BALAP & AHM</a>
+            <div class="nav-icons">
+                <a href="keranjang.html" class="icon-btn cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartBadge">3</span>
+                </a>
+                <button class="btn-cs"><i class="fas fa-headset"></i> BANTUAN CS</button>
+                <button class="icon-btn"><i class="fas fa-user"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">🏁</span>
+                <div><div class="logo-text">YUKIDO</div><div class="logo-sub">PADDOCK</div></div>
+            </div>
+            <button class="close-sidebar" id="closeSidebar"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i><input type="text" placeholder="Telusuri part atau seri...">
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home"></i><span>Beranda</span></a>
+            <a href="produk.html" class="menu-item"><i class="fas fa-th-large"></i><span>Semua Produk</span></a>
+            <a href="#" class="menu-item"><i class="fas fa-layer-group"></i><span>Kategori Produk</span></a>
+            <a href="garansi.html" class="menu-item"><i class="fas fa-shield-alt"></i><span>Klaim Garansi</span></a>
+            <a href="tim-balap.html" class="menu-item"><i class="fas fa-flag-checkered"></i><span>Tim Balap YUKIDO</span></a>
+            <a href="#" class="menu-item"><i class="fas fa-handshake"></i><span>Dukungan AHM</span></a>
+            <a href="#" class="menu-item"><i class="fas fa-map-marker-alt"></i><span>Lokasi Kami</span></a>
+            <a href="keranjang.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i><span>Keranjang Belanja</span>
+                <span class="badge" id="sidebarCartBadge">3 Part</span>
+            </a>
+            <a href="#" class="menu-item"><i class="fas fa-user-circle"></i><span>Akun / Login</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="telemetry-status">
+                <span>YUKIDO TELEMETRY</span>
+                <span class="status-indicator"><span class="dot"></span> ONLINE</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header & Progress -->
+        <div class="checkout-header">
+            <div class="breadcrumb"><span class="dot red"></span> SECURE CHECKOUT CONSOLE V4.2 • JAPAN TELEMETRY LINKED</div>
+            <div class="checkout-title-row">
+                <div>
+                    <h1 class="page-title">CHECKOUT & GERBANG PEMBAYARAN</h1>
+                    <p class="page-subtitle">Selesaikan pemesanan suku cadang berspesifikasi balap dengan enkripsi multi-lapisan 256-bit.</p>
+                </div>
+                <div class="checkout-progress">
+                    <div class="step completed"><span class="step-num">1</span> Pengiriman</div>
+                    <div class="step active"><span class="step-num">2</span> Pembayaran</div>
+                    <div class="step"><span class="step-num">3</span> Konfirmasi</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sandbox Alert -->
+        <div class="sandbox-alert">
+            <div class="alert-icon"><i class="fas fa-code"></i></div>
+            <div class="alert-content">
+                <h4>Simulasi Checkout Prototipe <span class="badge-red" style="font-size:9px; padding:2px 6px;">READY-TO-PLUG</span></h4>
+                <p>Siap untuk integrasi payment gateway Midtrans / Xendit / DOKU. Transaksi saat ini beroperasi pada sandbox telemetry.</p>
+            </div>
+            <div class="alert-badges">
+                <span class="badge-dark">SANDBOX ENV</span>
+                <span class="badge-success"><i class="fas fa-circle" style="font-size:6px;"></i> API 200 OK</span>
+            </div>
+        </div>
+
+        <div class="checkout-layout">
+            <!-- Left Column: Forms -->
+            <div class="checkout-main">
+                
+                <!-- Section 01: Pengiriman -->
+                <section class="checkout-section">
+                    <div class="section-header-row">
+                        <h2><span class="section-num">01</span> INFORMASI PENGIRIMAN PADDOCK</h2>
+                        <span class="section-sub"><i class="fas fa-truck"></i> JALUR DARAT / INSTANT</span>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>NAMA PENERIMA *</label>
+                            <div class="input-icon"><i class="fas fa-user"></i><input type="text" value="Budi Santoso"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>WHATSAPP / TELEPON *</label>
+                            <div class="input-icon"><i class="fas fa-phone"></i><input type="text" value="+62 812-3456-7890"></div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>ALAMAT EMAIL (UNTUK NOTIFIKASI PELACAKAN SERIAL) *</label>
+                            <div class="input-icon"><i class="fas fa-envelope"></i><input type="email" value="budi.santoso@paddock-racing.id"></div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>ALAMAT PENGIRIMAN LENGKAP *</label>
+                            <textarea rows="2">Jl. Otomotif Balap No. 42, Paddock Banten (Samping Bengkel Dyno YUKIDO)</textarea>
+                        </div>
+                        <div class="form-group"><label>PROVINSI</label><input type="text" value="Banten" readonly></div>
+                        <div class="form-group"><label>KOTA / KAB</label><input type="text" value="Tangerang" readonly></div>
+                        <div class="form-group"><label>KECAMATAN</label><input type="text" value="Kelapa Dua" readonly></div>
+                        <div class="form-group"><label>KODE POS</label><input type="text" value="15810" readonly></div>
+                    </div>
+
+                    <div class="shipping-options">
+                        <div class="shipping-header">
+                            <h3>PILIHAN EKSPEDISI LOGISTIK BALAP</h3>
+                            <span class="shipping-note"><i class="fas fa-shield-alt"></i> ASURANSI KERUSAKAN 100% INCLUDED</span>
+                        </div>
+                        <div class="shipping-grid">
+                            <div class="shipping-card active">
+                                <div class="shipping-top">
+                                    <strong>JNE Trucking</strong>
+                                    <i class="fas fa-check-circle" style="color:var(--red-primary)"></i>
+                                </div>
+                                <p>2 - 3 Hari Kerja</p>
+                                <span class="shipping-price">Rp 35.000</span>
+                            </div>
+                            <div class="shipping-card">
+                                <div class="shipping-top">
+                                    <strong>SiCepat BEST</strong>
+                                    <i class="fas fa-circle-notch" style="color:var(--text-muted)"></i>
+                                </div>
+                                <p>Besok Sampai (1 Hari)</p>
+                                <span class="shipping-price">Rp 45.000</span>
+                            </div>
+                            <div class="shipping-card">
+                                <div class="shipping-top">
+                                    <strong>Instant Paddock</strong>
+                                    <i class="fas fa-bolt" style="color:var(--text-muted)"></i>
+                                </div>
+                                <p>Tiba 3 Jam Maks</p>
+                                <span class="shipping-price">Rp 65.000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top:20px;">
+                        <label><i class="fas fa-clipboard-list"></i> INSTRUKSI KHUSUS / CATATAN PADDOCK</label>
+                        <textarea rows="2" placeholder="Contoh: Tolong packing kayu dan bubble wrap ekstra untuk piringan disc brake CNC">Tolong packing kayu dan bubble wrap ekstra untuk piringan disc brake CNC</textarea>
+                    </div>
+                </section>
+
+                <!-- Section 02: Pembayaran -->
+                <section class="checkout-section">
+                    <div class="section-header-row">
+                        <h2><span class="section-num">02</span> PILIHAN METODE PEMBAYARAN</h2>
+                        <span class="section-sub">ISO 27001 &nbsp; PCI-DSS v4.0</span>
+                    </div>
+
+                    <div class="payment-tabs">
+                        <button class="pay-tab active" data-target="va"><i class="fas fa-university"></i> VIRTUAL ACCOUNT</button>
+                        <button class="pay-tab" data-target="qris"><i class="fas fa-qrcode"></i> QRIS INSTANT</button>
+                        <button class="pay-tab" data-target="ewallet"><i class="fas fa-wallet"></i> E-WALLET</button>
+                        <button class="pay-tab" data-target="card"><i class="fas fa-credit-card"></i> KARTU DEBIT/KREDIT</button>
+                    </div>
+
+                    <div class="payment-content" id="pay-va">
+                        <h4 class="sub-title">PILIH BANK REKANAN RESMI</h4>
+                        <div class="bank-grid">
+                            <div class="bank-card active">
+                                <strong>BCA</strong>
+                                <span>Verifikasi Otomatis</span>
+                            </div>
+                            <div class="bank-card">
+                                <strong>MANDIRI</strong>
+                                <span>Livin' Online</span>
+                            </div>
+                            <div class="bank-card">
+                                <strong>BNI</strong>
+                                <span>Wondr / BNI Mobile</span>
+                            </div>
+                            <div class="bank-card">
+                                <strong>BRI</strong>
+                                <span>BRImo Instant</span>
+                            </div>
+                            <div class="bank-card">
+                                <strong>PERMATA</strong>
+                                <span>PermataME</span>
+                            </div>
+                        </div>
+
+                        <div class="va-display">
+                            <div class="va-header">
+                                <span class="va-label"><i class="fas fa-circle" style="color:#00cc66; font-size:8px;"></i> Nomor Akun Virtual BCA</span>
+                            </div>
+                            <div class="va-number-row">
+                                <span class="va-number" id="vaNumber">8271 9028 1148 2910</span>
+                                <button class="btn-copy" id="copyVaBtn"><i class="fas fa-copy"></i> SALIN NOMOR VA</button>
+                            </div>
+                            <span class="va-sub">A.N. YUKIDO MOTORSPORT AUTOMOTIVE ID</span>
+                        </div>
+
+                        <div class="accordion-container">
+                            <h4 class="sub-title">PETUNJUK PEMBAYARAN RESMI:</h4>
+                            <div class="accordion-item">
+                                <button class="accordion-header"><i class="fas fa-university"></i> Pembayaran via ATM <i class="fas fa-chevron-down"></i></button>
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>Masukkan kartu ATM dan PIN Anda.</li>
+                                        <li>Pilih menu "Transaksi Lainnya" > "Transfer" > "Ke Rekening BCA Virtual Account".</li>
+                                        <li>Masukkan nomor VA: 8271 9028 1148 2910.</li>
+                                        <li>Konfirmasi detail pembayaran dan selesaikan transaksi.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="accordion-item active">
+                                <button class="accordion-header"><i class="fas fa-mobile-alt"></i> Pembayaran via Mobile Banking (m-BCA / BCA Mobile / myBCA) <i class="fas fa-chevron-up"></i></button>
+                                <div class="accordion-body" style="display:block;">
+                                    <ol>
+                                        <li>Login ke aplikasi mobile banking smartphone Anda.</li>
+                                        <li>Akses menu m-Transfer > BCA Virtual Account.</li>
+                                        <li>Tempel/masukkan nomor VA 8271 9028 1148 2910.</li>
+                                        <li>Masukkan PIN transaksi. Verifikasi pesanan terkonfirmasi dalam 5 detik.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header"><i class="fas fa-laptop"></i> Pembayaran via Internet Banking (KlikBCA) <i class="fas fa-chevron-down"></i></button>
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>Login ke KlikBCA (klikbca.com).</li>
+                                        <li>Pilih menu "Transfer Dana" > "Transfer ke BCA Virtual Account".</li>
+                                        <li>Masukkan nomor VA dan nominal sesuai tagihan.</li>
+                                        <li>Masukkan Respon Key BCA untuk konfirmasi.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bottom Guarantees -->
+                <div class="checkout-guarantees">
+                    <div class="guarantee-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Garansi Pabrik 100%</h4>
+                        <p>Ganti baru jika cacat toleransi balap</p>
+                    </div>
+                    <div class="guarantee-card">
+                        <i class="fas fa-lock"></i>
+                        <h4>SSL 256-Bit TLS 1.3</h4>
+                        <p>Koneksi perbankan enkripsi militer</p>
+                    </div>
+                    <div class="guarantee-card">
+                        <i class="fas fa-handshake"></i>
+                        <h4>AHM Compatible</h4>
+                        <p>Teruji spesifikasi motor pabrikan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Summary -->
+            <div class="checkout-summary">
+                <div class="summary-box sticky">
+                    <div class="summary-header">
+                        <h3>RINGKASAN PESANAN</h3>
+                        <span class="text-red" style="font-size:12px; font-weight:600;">3 Part Balap</span>
+                    </div>
+                    
+                    <div class="summary-items">
+                        <div class="sum-item">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=50&h=50&fit=crop" alt="Disc">
+                            <div>
+                                <span>YUKIDO Racing Disc Brake Pro 300mm Floating</span>
+                                <span class="sum-qty">1x Unit</span>
+                            </div>
+                            <span class="sum-price">Rp 850.000</span>
+                        </div>
+                        <div class="sum-item">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=50&h=50&fit=crop" alt="Shock">
+                            <div>
+                                <span>YUKIDO Monoshock Race Spec Sub-Tank</span>
+                                <span class="sum-qty">1x Unit</span>
+                            </div>
+                            <span class="sum-price">Rp 1.450.000</span>
+                        </div>
+                        <div class="sum-item">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=50&h=50&fit=crop" alt="Line">
+                            <div>
+                                <span>YUKIDO Selang Rem Braided Steel</span>
+                                <span class="sum-qty">2x Unit</span>
+                            </div>
+                            <span class="sum-price">Rp 550.000</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-row"><span>ONEXPRESS</span><span class="text-red">Hemat Rp 100.000</span></div>
+                    <div class="summary-row"><span>Subtotal Produk (4 Item)</span><span>Rp 2.850.000</span></div>
+                    <div class="summary-row"><span>Ongkos Kirim Paddock (JNE Trucking)</span><span>Rp 35.000</span></div>
+                    <div class="summary-row"><span>Diskon Kupon Promo</span><span class="text-red">-Rp 100.000</span></div>
+                    <div class="summary-row"><span>Biaya Layanan Payment Gateway</span><span style="color:#00cc66">GRATIS (0%)</span></div>
+
+                    <div class="summary-total">
+                        <span>TOTAL PEMBAYARAN AKHIR <span style="color:#00cc66; font-size:10px;">● PAJAK INCLUDED</span></span>
+                        <span class="total-price">Rp 2.785.000</span>
+                    </div>
+
+                    <button class="btn-pay-now"><i class="fas fa-lock"></i> BAYAR SEKARANG & BUAT PESANAN</button>
+                    <a href="keranjang.html" class="btn-back-cart"><i class="fas fa-arrow-left"></i> KEMBALI KE KERANJANG</a>
+                    
+                    <p class="disclaimer">Dengan menekan "Bayar Sekarang", Anda menyetujui Ketentuan Balap & Kebijakan Privasi Suku Cadang Resmi YUKIDO.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo"><span class="logo-icon">🏁</span><div><div class="logo-text">YUKIDO</div><div class="logo-sub">MOTORSPORT</div></div></div>
+                    <p>Obsesi presisi tinggi berstandar motorsport Jepang. Suku cadang mesin, transmisi, pengereman, dan suspensi performa tinggi untuk lintasan balap dan jalan raya harian.</p>
+                    <div class="footer-badge"><span class="dot red"></span> Verifikasi Resmi AHM & FIM National Standard</div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>KATEGORI PRODUK</h4>
+                        <ul><li><a href="#">Piston & Blok Silinder</a></li><li><a href="#">Sistem Pengereman Keramik</a></li><li><a href="#">Kopling Balap Kevlar</a></li><li><a href="#">ECU Programmable</a></li><li><a href="#">Pelumas Racing Sintetik</a></li></ul>
+                    </div>
+                    <div class="link-column">
+                        <h4>LAYANAN GARANSI</h4>
+                        <ul><li><a href="#">Panduan Klaim 100%</a></li><li><a href="#">Cek Keaslian Part Seri</a></li><li><a href="#">Garansi Sirkuit 6 Bulan</a></li><li><a href="#">Dukungan Tim Balap</a></li><li><a href="#">Pusat Servis Rekanan AHM</a></li></ul>
+                    </div>
+                    <div class="link-column">
+                        <h4>PADDOCK & WORKSHOP</h4>
+                        <ul><li>Grand Paddock YUKIDO Arena</li><li>Jl. Otomotif Presisi No. 88, Tangerang</li><li>Senin - Sabtu: 08:00 - 19:00 WIB</li><li class="phone">Hotline: +62 21 5599-AUTO</li></ul>
+                        <div class="coords">COORD: -6.2088° S, 106.8456° E</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 YUKIDO Automotive Precision Systems. Hak Cipta Dilindungi.</div>
+                <div class="footer-badges"><span>AHM CERTIFIED</span><span>JAPAN MOTORSPORT HERITAGE</span></div>
+            </div>
+        </footer>
+
+        <button class="floating-btn"><i class="fas fa-robot"></i> TANYA AI</button>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

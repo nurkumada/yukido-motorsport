@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klaim Garansi - YUKIDO Motorsport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🏁</span>
+                <span class="logo-text">YUKIDO</span>
+                <span class="logo-sub">PADDOCK</span>
+            </a>
+        </div>
+        <div class="nav-center">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Cari part balap...">
+                <span class="shortcut">⌘K</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-link">BERANDA</a>
+            <a href="produk.html" class="nav-link">SEMUA PRODUK</a>
+            <a href="garansi.html" class="nav-link active">GARANSI</a>
+            <a href="tim-balap.html" class="nav-link">TIM BALAP & AHM</a>
+            <div class="nav-icons">
+                <a href="keranjang.html" class="icon-btn cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartBadge">3</span>
+                </a>
+                <button class="btn-cs"><i class="fas fa-headset"></i> BANTUAN CS</button>
+                <button class="icon-btn"><i class="fas fa-user"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">🏁</span>
+                <div><div class="logo-text">YUKIDO</div><div class="logo-sub">PADDOCK</div></div>
+            </div>
+            <button class="close-sidebar" id="closeSidebar"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i><input type="text" placeholder="Telusuri part atau seri...">
+        </div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item"><i class="fas fa-home"></i><span>Beranda</span></a>
+            <a href="produk.html" class="menu-item"><i class="fas fa-th-large"></i><span>Semua Produk</span></a>
+            <a href="#" class="menu-item"><i class="fas fa-layer-group"></i><span>Kategori Produk</span></a>
+            <a href="garansi.html" class="menu-item active"><i class="fas fa-shield-alt"></i><span>Klaim Garansi</span></a>
+            <a href="tim-balap.html" class="menu-item"><i class="fas fa-flag-checkered"></i><span>Tim Balap YUKIDO</span></a>
+            <a href="#" class="menu-item"><i class="fas fa-handshake"></i><span>Dukungan AHM</span></a>
+            <a href="#" class="menu-item"><i class="fas fa-map-marker-alt"></i><span>Lokasi Kami</span></a>
+            <a href="keranjang.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i><span>Keranjang Belanja</span>
+                <span class="badge" id="sidebarCartBadge">3 Part</span>
+            </a>
+            <a href="#" class="menu-item"><i class="fas fa-user-circle"></i><span>Akun / Login</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="telemetry-status">
+                <span>YUKIDO TELEMETRY</span>
+                <span class="status-indicator"><span class="dot"></span> ONLINE</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="garansi-header">
+            <div class="breadcrumb"><span class="dot red"></span> SISTEM VERIFIKASI MUTU MOTORSPORT</div>
+            <div class="garansi-title-row">
+                <div>
+                    <h1 class="page-title">PUSAT LAYANAN & <span class="text-red">KLAIM GARANSI RESMI</span> YUKIDO</h1>
+                    <p class="page-subtitle">Komitmen kami terhadap mutu dan kepuasan pelanggan dengan proses garansi yang cepat, transparan, dan terstandarisasi sirkuit balap nasional.</p>
+                </div>
+                <div class="sla-badge">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <span class="sla-label">SLA RESPON QC</span>
+                        <strong>Maksimal 1x24 Jam</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 Steps Section -->
+        <section class="steps-section">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <i class="fas fa-search step-icon"></i>
+                <h3>CEK MASA GARANSI</h3>
+                <p>Cakupan garansi pabrik 6 hingga 12 bulan penuh tergantung klasifikasi part racing dan kode batch serial.</p>
+                <span class="step-tag">Presisi Toleransi 0.01mm</span>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <i class="fas fa-file-invoice step-icon"></i>
+                <h3>SIAPKAN BUKTI</h3>
+                <p>Sediakan nomor nota/invoice resmi serta foto detail penampang fisik komponen yang mengalami anomali.</p>
+                <span class="step-tag">Faktur & Barcode Tertera</span>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <i class="fas fa-laptop-medical step-icon"></i>
+                <h3>ISI FORMULIR ONLINE</h3>
+                <p>Lengkapi formulir telemetri klaim di bawah dengan teliti agar data diteruskan langsung ke bengkel QC.</p>
+                <span class="step-tag">Sistem Digital Auto-Ticketing</span>
+            </div>
+            <div class="step-card">
+                <div class="step-number">04</div>
+                <i class="fas fa-check-double step-icon"></i>
+                <h3>VERIFIKASI & GANTI UNIT</h3>
+                <p>Inspeksi kilat dan penukaran unit baru atau servis teknis bersertifikat dalam 1x24 jam kerja.</p>
+                <span class="step-tag">Garansi Sirkuit 100%</span>
+            </div>
+        </section>
+
+        <div class="garansi-layout">
+            <!-- Left Column: Form -->
+            <div class="form-column">
+                <div class="form-box">
+                    <div class="form-header">
+                        <h2><i class="fas fa-file-alt"></i> FORMULIR KLAIM GARANSI DIGITAL</h2>
+                        <span class="form-rev">FORM-REV: 2025.4</span>
+                    </div>
+                    <p class="form-subtitle">Seluruh data divalidasi langsung oleh Divisi Standarisasi Mutu YUKIDO</p>
+
+                    <form id="garansiForm">
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>NAMA LENGKAP PEMILIK *</label>
+                                <input type="text" placeholder="Contoh: Budi Santoso" required>
+                            </div>
+                            <div class="form-group">
+                                <label>ALAMAT EMAIL AKTIF *</label>
+                                <input type="email" placeholder="budi@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>NOMOR WHATSAPP / HP *</label>
+                                <input type="tel" placeholder="081234567890" required>
+                            </div>
+                            <div class="form-group">
+                                <label>NOMOR PESANAN / INVOICE *</label>
+                                <input type="text" placeholder="YKD-2025-8831" required>
+                            </div>
+                            <div class="form-group">
+                                <label>NAMA PRODUK YUKIDO *</label>
+                                <select required>
+                                    <option value="">Pilih Part Motorsport</option>
+                                    <option>YUKIDO Racing Disc Brake Pro 300mm</option>
+                                    <option>YUKIDO Monoshock Nitrogen Sub-Tank</option>
+                                    <option>YUKIDO Titanium Header Racing Exhaust</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>TANGGAL PEMBELIAN *</label>
+                                <input type="date" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>KATEGORI KERUSAKAN / ANOMALI *</label>
+                            <select required>
+                                <option value="">Pilih Jenis Masalah</option>
+                                <option>Cacat Material / Patah</option>
+                                <option>Kegagalan Fungsi (Rem blong, shock bocor)</option>
+                                <option>Ketidaksesuaian Dimensi / Mounting</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>DESKRIPSI DETAIL MASALAH *</label>
+                            <textarea rows="4" placeholder="Jelaskan kronologi kejadian, indikasi malfungsi pada sirkuit/jalan raya, dan torsi pemasangan yang diaplikasikan..." required></textarea>
+                        </div>
+
+                        <div class="upload-grid">
+                            <div class="upload-box">
+                                <label>FOTO KERUSAKAN FISIK</label>
+                                <div class="drop-zone" id="dropZone1">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Klik / Tarik foto kerusakan (Maks 10MB)</p>
+                                    <span class="file-types">JPG, PNG, WEBP</span>
+                                    <input type="file" id="file1" accept="image/*" hidden>
+                                    <p class="file-name" id="fileName1"></p>
+                                </div>
+                            </div>
+                            <div class="upload-box">
+                                <label>BUKTI PEMBELIAN / FAKTUR</label>
+                                <div class="drop-zone" id="dropZone2">
+                                    <i class="fas fa-receipt"></i>
+                                    <p>Klik / Tarik bukti nota toko/invoice</p>
+                                    <span class="file-types">PDF, JPG, PNG</span>
+                                    <input type="file" id="file2" accept=".pdf,image/*" hidden>
+                                    <p class="file-name" id="fileName2"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">Saya menyatakan bahwa seluruh data yang diberikan adalah benar dan suku cadang digunakan sesuai spesifikasi pabrikan YUKIDO. Saya menyetujui <a href="#" class="text-red">Syarat & Ketentuan Garansi</a> YUKIDO Racing Systems.</label>
+                        </div>
+
+                        <button type="submit" class="btn-submit-klaim"><i class="fas fa-paper-plane"></i> KIRIM KLAIM GARANSI</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Tracking & Info -->
+            <div class="info-column">
+                <!-- Ticket Tracker -->
+                <div class="track-box">
+                    <div class="track-header">
+                        <h3><i class="fas fa-radar"></i> PELACAK TIKET KLAIM</h3>
+                    </div>
+                    <p class="track-desc">Masukkan kode referensi tiket untuk memantau proses inspeksi laboratorium & bengkel teknis secara real-time.</p>
+                    
+                    <div class="track-input-group">
+                        <input type="text" id="ticketInput" value="YKD-CLM-77921" placeholder="Masukkan ID Tiket">
+                        <button class="btn-cek" id="btnCekTiket">CEK</button>
+                    </div>
+                    <p class="track-demo">Demo ID: YKD-CLM-77921 | Updated: Hari ini</p>
+
+                    <div class="track-status" id="trackStatus" style="display: none;">
+                        <div class="status-header">
+                            <span>TIKET AKTIF: <strong>YKD-CLM-77921</strong></span>
+                            <span class="status-badge">DALAM INVESTIGASI QC</span>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item completed">
+                                <div class="dot"></div>
+                                <div class="content">
+                                    <strong>1. Tiket Diterima Sistem</strong>
+                                    <span>14 Feb 2025 - 09:30 WIB • Formulir & berkas diverifikasi valid.</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item active">
+                                <div class="dot"></div>
+                                <div class="content">
+                                    <strong>2. Pemeriksaan Laboratorium QC</strong>
+                                    <span>Sedang berlangsung • Analisis metalurgi & toleransi seal.</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="dot"></div>
+                                <div class="content">
+                                    <strong>3. Keputusan & Penggantian Unit</strong>
+                                    <span>Estimasi 1x24 jam kerja setelah inspeksi selesai.</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="dot"></div>
+                                <div class="content">
+                                    <strong>4. Pengiriman Part Baru ke Pemilik</strong>
+                                    <span>Resi ekspres akan diteruskan via WhatsApp otomatis.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Priority Desk -->
+                <div class="priority-box">
+                    <h3><i class="fas fa-headset"></i> PADDOCK PRIORITY DESK</h3>
+                    <p>Khusus pembalap terdaftar kejurda atau pengguna mendesak sebelum race day, hubungi hotline mekanik kami:</p>
+                    <div class="contact-row">
+                        <span>WA QC Urgent:</span>
+                        <strong>+62 811-9870-AUTO</strong>
+                    </div>
+                    <div class="contact-row">
+                        <span>Email Audit:</span>
+                        <strong>qc@yukidomotorsport.id</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="section-header-center">
+                <div class="section-badge">INFORMASI KEBIJAKAN</div>
+                <h2 class="section-title">FAQ GARANSI RESMI YUKIDO</h2>
+                <p class="section-description">Transparansi standar kelayakan penukaran dan jaminan keaslian part.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Berapa lama masa garansi resmi suku cadang balap YUKIDO? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Masa garansi bervariasi tergantung kategori produk. Untuk part consumable (kampas rem, rantai) garansi 1 bulan. Untuk part keras (cakram, kaliper, shockbreaker) garansi resmi 6 bulan untuk penggunaan jalan raya, dan 3 bulan untuk penggunaan sirkuit balap kompetitif.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Kondisi apa saja yang membatalkan klaim garansi? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Klaim akan ditolak jika ditemukan: Kerusakan akibat kecelakaan (crash), modifikasi non-standar, penggunaan di luar spesifikasi teknis (over-rev, over-load), tidak adanya bukti pembelian resmi, atau segel pabrik rusak.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Dokumen apa saja yang wajib disertakan saat klaim? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Wajib menyertakan: 1) Foto jelas bagian yang rusak, 2) Foto nomor seri/batch code pada produk, 3) Invoice atau bukti pembelian resmi dari dealer YUKIDO, 4) Kronologi singkat kerusakan.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Berapa estimasi waktu penyelesaian klaim unit baru? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>SLA (Service Level Agreement) kami adalah maksimal 1x24 jam kerja sejak berkas dinyatakan lengkap oleh tim QC. Untuk kasus kompleks yang memerlukan uji lab metalurgi, estimasi bisa memakan waktu 3-5 hari kerja.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo"><span class="logo-icon">🏁</span><div><div class="logo-text">YUKIDO</div><div class="logo-sub">MOTORSPORT</div></div></div>
+                    <p>Obsesi presisi tinggi berstandar motorsport Jepang. Suku cadang mesin, transmisi, pengereman, dan suspensi performa tinggi untuk lintasan balap dan jalan raya harian.</p>
+                    <div class="footer-badge"><span class="dot red"></span> Verifikasi Resmi AHM & FIM National Standard</div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>KATEGORI PRODUK</h4>
+                        <ul><li><a href="#">Piston & Blok Silinder</a></li><li><a href="#">Sistem Pengereman Keramik</a></li><li><a href="#">Kopling Balap Kevlar</a></li><li><a href="#">ECU Programmable</a></li><li><a href="#">Pelumas Racing Sintetik</a></li></ul>
+                    </div>
+                    <div class="link-column">
+                        <h4>LAYANAN GARANSI</h4>
+                        <ul><li><a href="#">Panduan Klaim 100%</a></li><li><a href="#">Cek Keaslian Part Seri</a></li><li><a href="#">Garansi Sirkuit 6 Bulan</a></li><li><a href="#">Dukungan Tim Balap</a></li><li><a href="#">Pusat Servis Rekanan AHM</a></li></ul>
+                    </div>
+                    <div class="link-column">
+                        <h4>PADDOCK & WORKSHOP</h4>
+                        <ul><li>Grand Paddock YUKIDO Arena</li><li>Jl. Otomotif Presisi No. 88, Tangerang</li><li>Senin - Sabtu: 08:00 - 19:00 WIB</li><li class="phone">Hotline: +62 21 5599-AUTO</li></ul>
+                        <div class="coords">COORD: -6.2088° S, 106.8456° E</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 YUKIDO Automotive Precision Systems. Hak Cipta Dilindungi.</div>
+                <div class="footer-badges"><span>AHM CERTIFIED</span><span>JAPAN MOTORSPORT HERITAGE</span></div>
+            </div>
+        </footer>
+
+        <button class="floating-btn"><i class="fas fa-robot"></i> TANYA AI</button>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
