@@ -2114,3 +2114,177 @@ body {
     .hero-stats { flex-direction: column; }
 }
 
+/* --- Styles Khusus Halaman Kategori Produk --- */
+.kategori-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 40px 30px;
+}
+
+.kategori-detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.kategori-detail-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--red-primary);
+    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.2);
+}
+
+.kategori-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.kategori-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.kategori-detail-card:hover .kategori-image img {
+    transform: scale(1.1);
+}
+
+.kategori-overlay {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--red-primary);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.kategori-content {
+    padding: 25px;
+}
+
+.kategori-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(225, 6, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.kategori-icon i {
+    font-size: 24px;
+    color: var(--red-primary);
+}
+
+.kategori-content h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.kategori-content > p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.kategori-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.kategori-list li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.kategori-list li i {
+    color: var(--red-primary);
+    font-size: 12px;
+}
+
+.btn-kategori {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.btn-kategori:hover {
+    background: var(--red-primary);
+    border-color: var(--red-primary);
+    color: white;
+}
+
+/* CTA Section */
+.kategori-cta {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #1a0505 100%);
+    border-top: 1px solid var(--border-color);
+    padding: 60px 30px;
+    text-align: center;
+}
+
+.kategori-cta .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.kategori-cta h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.kategori-cta p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.kategori-cta .cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+    .kategori-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .kategori-cta h2 {
+        font-size: 22px;
+    }
+    .kategori-cta .cta-buttons {
+        flex-direction: column;
+    }
+}
