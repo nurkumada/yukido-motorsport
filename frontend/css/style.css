@@ -2851,3 +2851,26 @@ body {
         height: 400px;
     }
 }
+
+/* === Styling Logo JPG === */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 0;
+}
+
+.logo-img {
+    height: 35px; /* Ukuran logo di navbar atas */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Logo di Sidebar (lebih besar) */
+.sidebar .logo {
+    padding: 15px 20px;
+}
+
+.sidebar .logo-img {
+    height: 45px;
+}
