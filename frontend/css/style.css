@@ -71,12 +71,14 @@ body {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 1px;
+    padding-right: 5px;
+    color: #ff1a1a;
 }
 
 .logo-sub {
     font-size: 12px;
     color: var(--red-primary);
-    font-weight: 600;
+    font-weight: 555;
 }
 
 .nav-center {
@@ -184,7 +186,29 @@ body {
 }
 
 /* Sidebar */
+/* Sidebar Default (Tersembunyi di kiri) */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px; /* Sesuaikan dengan lebar desain Anda */
+    height: 100vh;
+    background-color: #1a1a1a; /* Sesuaikan dengan warna YUKIDO */
+    z-index: 1000;
+    
+    /* Pindahkan sidebar ke luar layar kiri */
+    transform: translateX(-100%); 
+    
+    /* Efek transisi halus saat dibuka/tutup */
+    transition: transform 0.3s ease-in-out; 
+    overflow-y: auto;
+}
+
+/* Sidebar saat terbuka (Class 'active' ditambahkan oleh JS) */
+.sidebar.active {
+    transform: translateX(0); /* Kembali ke posisi semula di dalam layar */
+}
+/* .sidebar {
     position: fixed;
     left: 0;
     top: 60px;
@@ -196,7 +220,7 @@ body {
     flex-direction: column;
     z-index: 999;
     transition: transform 0.3s;
-}
+} */
 
 .sidebar-header {
     display: flex;
@@ -208,6 +232,7 @@ body {
 
 .close-sidebar {
     background: none;
+    align-items: right;
     border: none;
     color: var(--text-primary);
     font-size: 20px;
@@ -2852,7 +2877,7 @@ body {
     }
 }
 
-/* === Styling Logo JPG === */
+/* === Styling Logo PNG === */
 .logo {
     display: flex;
     align-items: center;
