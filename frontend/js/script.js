@@ -7,11 +7,25 @@ const menuToggle = document.getElementById('menuToggle');
 const closeSidebar = document.getElementById('closeSidebar');
 const sidebar = document.getElementById('sidebar');
 
-if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
+function updateSidebarLayout() {
+    document.body.classList.toggle(
+        'sidebar-open',
+        sidebar && sidebar.classList.contains('active')
+    );
 }
+
+if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+        updateSidebarLayout();
+    });
+}
+
 if (closeSidebar && sidebar) {
-    closeSidebar.addEventListener('click', () => sidebar.classList.remove('active'));
+    closeSidebar.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        updateSidebarLayout();
+    });
 }
 
 // 2. Tab Filter (General)
@@ -554,3 +568,15 @@ function getAIResponse(input) {
     }
     return "Maaf, saya belum mengerti pertanyaan tersebut. 🤖 <br><br>Coba ketik: <b>'garansi'</b>, <b>'ongkir'</b>, <b>'lokasi'</b>, atau <b>'cara bayar'</b>.";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.querySelector(
+        ".menu-toggle, .hamburger, #menu-toggle"
+    );
+
+    if (!toggleButton) return;
+
+    toggleButton.addEventListener("click", function () {
+        document.body.classList.toggle("sidebar-closed");
+    });
+});

@@ -2899,3 +2899,243 @@ body {
 .sidebar .logo-img {
     height: 45px;
 }
+
+/* === YUKIDO SHARED LAYOUT OVERRIDES === */
+.top-nav {
+    height: 60px;
+    box-sizing: border-box;
+}
+.sidebar {
+    top: 60px;
+    height: calc(100vh - 60px);
+    z-index: 1050;
+}
+.main-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-left: 0 !important;
+    margin-top: 60px;
+    box-sizing: border-box;
+}
+body.sidebar-open .sidebar { transform: translateX(0); }
+.menu-toggle {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+.menu-toggle:hover { background: #292929; color: var(--red-primary); }
+@media (max-width: 768px) {
+    .top-nav { padding: 0 12px; }
+    .nav-right .nav-link, .nav-right .btn-cs { display: none; }
+    .main-content { margin-left: 0 !important; }
+}
+
+
+/* === YUKIDO: shared minimal header + single sidebar navigation === */
+.top-nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 24px 0 16px;
+    background: #111111;
+    border-bottom: 1px solid #292929;
+    z-index: 1200;
+}
+.nav-left { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; min-width: 0; }
+.menu-toggle {
+    flex: 0 0 40px; width: 40px; height: 40px; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; background: transparent; border: 0; border-radius: 8px;
+    font-size: 20px; cursor: pointer; transition: background .2s ease, color .2s ease;
+}
+.menu-toggle:hover, .menu-toggle:focus-visible { background: #252525; color: #ff1a1a; outline: none; }
+.brand-lockup { display: flex; align-items: center; gap: 8px; text-decoration: none; white-space: nowrap; min-width: 0; }
+.brand-lockup .logo-img { height: 30px; width: 34px; object-fit: contain; }
+.brand-name { color: #ff1a1a; font-size: 17px; line-height: 1; font-weight: 800; letter-spacing: 1px; }
+.brand-lockup .logo-sub { color: #ff1a1a; font-size: 10px; font-weight: 600; }
+.nav-center { flex: 1 1 400px; max-width: 400px; min-width: 140px; margin: 0 auto; }
+.search-bar { width: 100%; height: 38px; padding: 0 11px; display: flex; align-items: center; gap: 9px; background: #1a1a1a; border: 1px solid #303030; border-radius: 7px; }
+.search-bar i { margin: 0; color: #a0a0a0; }
+.search-bar input { min-width: 0; width: 100%; color: #fff; background: transparent; border: 0; outline: 0; font: inherit; font-size: 13px; }
+.search-bar input::placeholder { color: #8b8b8b; }
+.search-bar .shortcut { flex: 0 0 auto; }
+.header-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.header-actions .icon-btn { width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 1px solid transparent; border-radius: 8px; color: #ddd; text-decoration: none; font-size: 16px; }
+.header-actions .icon-btn:hover { background: #242424; border-color: #333; color: #ff1a1a; }
+.header-actions .cart-btn { position: relative; }
+.header-actions .badge { top: 1px; right: 0; }
+.sidebar {
+    position: fixed; top: 56px; left: 0; bottom: 0; width: 260px; height: auto;
+    display: flex; flex-direction: column; background: #181818;
+    border-right: 1px solid #2b2b2b; z-index: 1150;
+    transform: translateX(-100%); transition: transform .25s ease; overflow-y: auto;
+}
+.sidebar.active { transform: translateX(0); }
+.sidebar-menu { flex: 1; padding: 14px 0; overflow-y: auto; }
+.sidebar .menu-item { min-height: 44px; padding: 11px 18px; gap: 12px; font-size: 13px; }
+.sidebar .menu-item i { flex: 0 0 18px; width: 18px; }
+.sidebar .menu-item.active { color: #fff; background: #252525; border-left: 3px solid #e10600; padding-left: 15px; }
+.sidebar-footer { padding: 14px 16px; border-top: 1px solid #2b2b2b; }
+.sidebar-backdrop:not([hidden]) { position: fixed; inset: 56px 0 0; display: block; background: rgba(0,0,0,.38); z-index: 1100; }
+.main-content { width: 100%; max-width: 100%; min-width: 0; margin: 56px 0 0 !important; box-sizing: border-box; }
+body { overflow-x: hidden; }
+@media (min-width: 900px) {
+    .sidebar.active ~ .sidebar-backdrop { background: transparent; pointer-events: none; }
+}
+@media (max-width: 760px) {
+    .top-nav { gap: 10px; padding: 0 10px; }
+    .nav-left { gap: 7px; }
+    .brand-lockup { gap: 5px; }
+    .brand-lockup .logo-img { width: 28px; height: 27px; }
+    .brand-name { font-size: 14px; }
+    .brand-lockup .logo-sub { display: none; }
+    .nav-center { flex: 1 1 auto; min-width: 0; margin: 0; }
+    .search-bar { padding: 0 8px; }
+    .search-bar .shortcut { display: none; }
+    .header-actions { gap: 2px; }
+    .header-actions .icon-btn { width: 32px; height: 36px; }
+}
+@media (max-width: 390px) {
+    .top-nav { gap: 6px; padding: 0 7px; }
+    .brand-lockup .logo-img { display: none; }
+    .brand-name { font-size: 13px; }
+    .header-actions .icon-btn { width: 28px; }
+}
+
+
+/* =========================================================
+   YUKIDO SHARED HEADER — desain minimalis final
+   Header dan sidebar dikelola dari components/layout.html
+   ========================================================= */
+.top-nav {
+    height: 78px;
+    padding: 0 28px;
+    gap: 24px;
+    background: #111111;
+    border-bottom: 1px solid #303030;
+}
+.nav-left { gap: 14px; min-width: 0; }
+.menu-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 40px;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    background: #242424;
+    color: #f5f5f5;
+    font-size: 18px;
+    transition: background .2s ease, color .2s ease;
+}
+.menu-toggle:hover { background: #303030; color: #ff1a1a; }
+.brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    min-width: 0;
+}
+.logo-img {
+    display: block;
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    border-radius: 5px;
+    background: #050505;
+}
+.brand-copy { display: flex; flex-direction: column; line-height: 1.2; gap: 4px; }
+.brand-name {
+    color: #ff1717;
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+.brand-subtitle {
+    color: #9a9a9a;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .35px;
+}
+.header-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.header-actions .icon-btn,
+.search-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    background: #202020;
+    color: #bcbcbc;
+    font-size: 17px;
+    text-decoration: none;
+    transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.header-actions .icon-btn:hover,
+.search-toggle:hover { color: #ffffff; border-color: #555555; background: #292929; }
+.header-search-wrap { display: flex; align-items: center; gap: 8px; }
+.header-search { display: none; width: min(300px, 32vw); margin: 0; }
+.header-search-wrap.search-open .header-search { display: flex; }
+.header-search-wrap.search-open .search-toggle { display: none; }
+.header-search input { min-width: 0; }
+.header-actions .cart-btn .badge { top: -5px; right: -5px; min-width: 17px; text-align: center; }
+.sidebar {
+    top: 78px;
+    height: calc(100vh - 78px);
+    width: 260px;
+    background: #171717;
+    border-right: 1px solid #303030;
+    z-index: 1050;
+}
+.sidebar-backdrop {
+    position: fixed;
+    inset: 78px 0 0;
+    z-index: 1040;
+    background: rgba(0,0,0,.55);
+}
+.sidebar-backdrop[hidden] { display: none; }
+.main-content {
+    width: 100%;
+    min-width: 0;
+    margin: 78px 0 0;
+    transition: none;
+}
+body { overflow-x: hidden; }
+@media (min-width: 900px) {
+    .sidebar.active ~ .sidebar-backdrop { display: block; }
+}
+@media (max-width: 700px) {
+    .top-nav { height: 68px; padding: 0 14px; gap: 10px; }
+    .menu-toggle { width: 38px; height: 38px; flex-basis: 38px; }
+    .nav-left { gap: 9px; }
+    .brand-lockup { gap: 8px; }
+    .logo-img { width: 34px; height: 34px; }
+    .brand-name { font-size: 16px; }
+    .brand-subtitle { font-size: 10px; }
+    .header-actions { gap: 6px; }
+    .header-actions .icon-btn, .search-toggle { width: 36px; height: 36px; font-size: 15px; }
+    .header-search { position: absolute; top: 72px; right: 12px; width: min(300px, calc(100vw - 24px)); background: #1a1a1a; z-index: 1200; }
+    .sidebar { top: 68px; height: calc(100vh - 68px); }
+    .sidebar-backdrop { inset: 68px 0 0; }
+    .main-content { margin-top: 68px; }
+}
+@media (max-width: 390px) {
+    .top-nav { padding: 0 9px; }
+    .brand-subtitle { display: none; }
+    .brand-name { font-size: 15px; }
+    .header-actions { gap: 4px; }
+    .header-actions .icon-btn, .search-toggle { width: 33px; height: 34px; }
+}
