@@ -12,7 +12,7 @@
     <nav class="top-nav">
         <div class="nav-left">
             <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars"></i> 
             </button>
         <a href="index.html" class="logo">
             <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
@@ -25,22 +25,14 @@
         <div class="nav-center">
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Cari part balap...">
-                <span class="shortcut">⌘K</span>
+                <input type="text" placeholder="Pencarian">
             </div>
         </div>
         
-        <div class="nav-right">
-            <a href="index.html" class="nav-link active">BERANDA</a>
-            <a href="produk.html" class="nav-link">SEMUA PRODUK</a>
-            <a href="kategori-produk.html" class="nav-link">KATEGORI</a>
-            <a href="garansi.html" class="nav-link">GARANSI</a>
-            <a href="tim-balap.html" class="nav-link">TIM BALAP</a>
-            
+        <div class="nav-right">            
             <div class="nav-icons">
                 <a href="keranjang.html" class="icon-btn cart-btn">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge">3</span>
                 </a>
                 <button class="btn-cs">
                     <i class="fas fa-headset"></i> BANTUAN CS
@@ -54,18 +46,19 @@
 
     <!-- Sidebar (SUDAH DIPERBAIKI LINK-NYA) -->
     <aside class="sidebar" id="sidebar">
- <div class="sidebar-header" style="display: flex; align-items: center;">
-            <!-- Tombol Garis 3 (Close) ditaruh di paling kiri -->
-            <button class="close-sidebar" id="closeSidebar" style="background: transparent; border: none; color: white; font-size: 1.5rem; cursor: pointer; margin-right: 15px;">
-                <i class="fas fa-bars"></i>
-            </button>
-            
+<div class="sidebar-header">
+            <!-- Logo Sidebar (Di Kiri) -->
             <div class="logo">
                 <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
+                <div class="logo-text">YUKIDO</div>
             </div>
-            <div class="logo-text">YUKIDO</div>
+            
+            <!-- Tombol X Sidebar (Di Kanan) -->
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        
+
         <div class="sidebar-search">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Telusuri part atau seri...">
@@ -103,7 +96,6 @@
             <a href="keranjang.html" class="menu-item">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Keranjang Belanja</span>
-                <span class="badge">3 Part</span>
             </a>
             <a href="login.html" class="menu-item">
                 <i class="fas fa-user-circle"></i>
@@ -123,94 +115,26 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Status Bar -->
-        <div class="status-bar">
-            <div class="status-item">
-                <span class="dot red"></span>
-                STATUS PADDOCK: AKTIF 2025
-            </div>
-            <div class="status-item">
-                SERI KEJURDA & ONEPRIX READY
-            </div>
-            <div class="status-item right">
-                <i class="fas fa-certificate"></i>
-                ISO-9001 / FIM COMPLIANT
-            </div>
-        </div>
 
         <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-badge">
-                <i class="fas fa-bolt"></i>
-                RACING SPECIFICATION DIVISION
-            </div>
-            
-            <h1 class="hero-title">
-                PRECISION MEETS<br>
-                <span class="text-red">RACING PERFORMANCE</span>
-            </h1>
-            
-            <p class="hero-description">
-                Dirancang untuk ketahanan ekstrem dan performa puncak di sirkuit balap profesional 
-                maupun lintasan jalan raya harian dengan toleransi CNC mikron.
-            </p>
-            
-            <div class="hero-features">
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i>
-                    GARANSI RESMI YUKIDO
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i>
-                    UJI DURABILITAS BALAP
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i>
-                    DUKUNGAN TEKNIS SIAGA
-                </div>
-            </div>
-            
-            <div class="hero-buttons">
-                <a href="produk.html" class="btn-primary">
-                    LIHAT SEMUA PRODUK <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="kategori-produk.html" class="btn-secondary" style="text-decoration: none;">
-                    <i class="fas fa-th-large"></i> JELAJAHI KATEGORI
-                </a>
-            </div>
-            
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="Racing Parts">
-                <div class="hero-image-badge">
-                    <span class="badge-red">ONEXPRESS 2024 PODIUM CHOICE</span>
-                </div>
-            </div>
-            
-            <div class="hero-specs">
-                <div class="spec-item">
-                    <div class="spec-label">MATERIAL</div>
-                    <div class="spec-value">TITANIUM & 6061-T6 CNC</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">THERMAL TOLERANCE</div>
-                    <div class="spec-value">820°C RATED</div>
-                </div>
-            </div>
-        </section>
+         <section class="hero-section">
+    <!-- Container khusus untuk mode full gambar -->
+    <div class="hero-container full-image-mode">
+        <img src="images/iklan.png" alt="Banner Promo YUKIDO" class="iklan-hero-img-full">
+    </div>
+</section>
 
         <!-- Kategori Pilihan -->
         <section class="kategori-section">
             <div class="section-header">
                 <div>
-                    <div class="section-badge">
-                        <span class="dot red"></span>
-                        KLASIFIKASI PART BALAP
-                    </div>
                     <h2 class="section-title">KATEGORI PILIHAN</h2>
                 </div>
                 <p class="section-description">
-                    Pilihan komponen berdaya tahan tinggi dikelompokkan berdasarkan 
-                    modul aerodinamika, kinetik pengereman, dan handling.
+                    Menyediakan beragam produk perkakas dan alat-alat teknik
+                    berkualitas tinggi dengan harga yang kompetitif. 
+                    Mengembangkan produk yang inovatif dan relevan 
+                    dengan kebutuhan pasar, didukung oleh teknologi terkini. 
                 </p>
             </div>
             
@@ -542,7 +466,7 @@
             <div class="section-header">
                 <div>
                     <div class="section-badge">SHOWROOM & WORKSHOP</div>
-                    <h2 class="section-title">KUNJUNGI GRAND PADDOCK YUKIDO</h2>
+                    <h2 class="section-title">PT YUKIDO POWER TEKNIK</h2>
                 </div>
                 <p class="section-description">
                     Layanan pemasangan mekanik profesional, dyno test tuning, dan pembelian part langsung dengan inspeksi visual.
@@ -563,9 +487,8 @@
                         <div class="detail-item">
                             <i class="fas fa-clock"></i>
                             <div>
-                                <span class="label">JAM OPERASIONAL PADDOCK:</span>
+                                <span class="label">JAM OPERASIONAL :</span>
                                 <span class="value">Senin - Sabtu: 08.00 - 18.00 WIB</span>
-                                <span class="sub-value">Minggu: Khusus Panggilan Darurat Tim Balap Sirkuit</span>
                             </div>
                         </div>
                         
@@ -574,14 +497,14 @@
                             <div>
                                 <span class="label">ALAMAT SHOWROOM:</span>
                                 <span class="value">Caringin, Kec. Legok, Kab. Tangerang, Banten</span>
-                                <span class="sub-value">Grand Paddock PT YUKIDO POWER TEKNIK</span>
+                                <span class="sub-value">PT YUKIDO POWER TEKNIK</span>
                             </div>
                         </div>
                         
                         <div class="detail-item">
                             <i class="fas fa-phone"></i>
                             <div>
-                                <span class="label">HOTLINE MEKANIK & DYNO:</span>
+                                <span class="label">HOTLINE:</span>
                                 <span class="value phone">+62 21 5599-AUTO (Ext. 02)</span>
                             </div>
                         </div>

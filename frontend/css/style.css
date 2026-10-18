@@ -225,18 +225,23 @@ body {
 .sidebar-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: flex-start; /* Meratakan ke kiri */
+    gap: 15px; /* Jarak antara icon dan logo, samakan dengan .nav-left */
+    height: 60px; /* WAJIB: Samakan dengan tinggi .top-nav */
+    padding: 0 20px; /* WAJIB: Samakan dengan padding .top-nav */
     border-bottom: 1px solid var(--border-color);
 }
 
 .close-sidebar {
     background: none;
-    align-items: right;
     border: none;
     color: var(--text-primary);
-    font-size: 20px;
+    font-size: 20px; /* Samakan dengan ukuran icon .menu-toggle */
+    padding: 8px; /* Samakan dengan padding .menu-toggle */
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sidebar-search {
@@ -329,9 +334,10 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-left: 280px;
+    margin-left: 0; /* Ubah dari 280px menjadi 0 */
     margin-top: 60px;
     min-height: calc(100vh - 60px);
+    width: 100%; /* Tambahkan ini agar background penuh */
 }
 
 /* Status Bar */
@@ -360,7 +366,94 @@ body {
 .hero-section {
     padding: 60px 30px;
     position: relative;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    /* Ganti bagian background menjadi kode di bawah ini */
+    background: radial-gradient(circle at center top, rgba(225, 6, 0, 0.15) 0%, var(--bg-primary) 50%, var(--bg-secondary) 100%);
+}
+
+/* Container khusus agar gambar berada di tengah dan responsif */
+.hero-container.full-image-mode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Batas lebar gambar maksimal, lu bisa ubah kalau mau lebih lebar/kecil */
+    margin: 0 auto;
+}
+
+/* Styling gambarnya agar full width mengikuti container */
+.iklan-hero-img-full {
+    width: 100%;
+    height: auto;
+    border-radius: 12px; /* Membuat sudut gambar sedikit membulat */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Efek bayangan */
+    transition: transform 0.3s ease;
+}
+
+/* (Opsional) Efek membesar sedikit saat kursor diarahkan ke gambar */
+.iklan-hero-img-full:hover {
+    transform: scale(1.02);
+}
+
+/* Container untuk membagi dua sisi (Kiri Teks, Kanan Gambar) */
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Meratakan ke tengah secara vertikal */
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.hero-text-content {
+    flex: 1; /* Mengambil ruang untuk teks */
+    max-width: 700px;
+}
+
+.hero-image-content {
+    flex: 1; /* Mengambil sisa ruang untuk gambar */
+    display: flex;
+    justify-content: flex-end; /* Mendorong gambar ke kanan */
+    align-items: center;
+}
+
+/* Styling Khusus untuk Gambar Iklan */
+.iklan-hero-img {
+    width: 100%;
+    max-width: 500px; /* Batas maksimal ukuran gambar */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Efek bayangan elegan */
+    transition: transform 0.3s ease;
+}
+
+.iklan-hero-img:hover {
+    transform: scale(1.02); /* Efek membesar sedikit saat di-hover */
+}
+
+/* --- Penyesuaian Responsif (Layar HP) --- */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column; /* Mengubah susunan menjadi atas-bawah */
+        text-align: center; /* Menengahkan teks */
+    }
+    
+    .hero-text-content {
+        max-width: 100%;
+    }
+    
+    .hero-features {
+        justify-content: center; /* Menengahkan list fitur */
+        flex-wrap: wrap; /* Mencegah tumpang tindih di layar kecil */
+    }
+    
+    .hero-buttons {
+        justify-content: center; /* Menengahkan tombol */
+    }
+    
+    .hero-image-content {
+        justify-content: center;
+        margin-top: 30px;
+    }
 }
 
 .hero-badge {
