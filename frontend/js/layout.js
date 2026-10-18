@@ -60,4 +60,3 @@ document.addEventListener('DOMContentLoaded', async () => {
         mount.innerHTML = '<p style="padding:12px;color:#ff4d4d">Header tidak dapat dimuat. Jalankan proyek melalui VS Code Live Server.</p>';
     }
 });
-p
