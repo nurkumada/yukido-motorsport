@@ -555,7 +555,7 @@ function getAIResponse(input) {
         return "Kami bekerja sama dengan JNE Trucking, SiCepat, dan Instant Paddock. Estimasi biaya mulai dari <b>Rp 35.000</b> dengan asuransi kerusakan 100% included! ";
     }
     if (input.includes('lokasi') || input.includes('alamat') || input.includes('toko') || input.includes('showroom')) {
-        return "Showroom & Workshop kami berada di: <br><b>PT YUKIDO POWER TEKNIK</b><br>Kawasan Industri, Serang, Banten.<br>Buka Senin-Sabtu, 08.00 - 19.00 WIB.  <a href='lokasi.html' style='color:var(--red-primary)'>Lihat di Peta</a>";
+        return "Showroom & Workshop kami berada di: <br><b>PT YUKIDO POWER TEKNIK</b><br>Caringin, Kec.Legok, Kabupaten Tangerang, Banten.<br>Buka Senin-Sabtu, 08.00 - 19.00 WIB.  <a href='lokasi.html' style='color:var(--red-primary)'>Lihat di Peta</a>";
     }
     if (input.includes('bayar') || input.includes('metode pembayaran') || input.includes('transfer')) {
         return "Kami menerima pembayaran via Virtual Account (BCA, Mandiri, BNI, BRI), QRIS Dinamis, GoPay, OVO, dan Debit Online. Transaksi dienkripsi SSL 256-bit. ";
