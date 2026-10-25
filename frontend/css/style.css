@@ -20,7 +20,13 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    /* Gunakan background-color sebagai dasar, dan background-image untuk gradasinya */
     background-color: var(--bg-primary);
+    background-image: linear-gradient(to bottom, #5a0505 0%, var(--bg-primary) 1000px);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -367,7 +373,7 @@ body {
     padding: 60px 30px;
     position: relative;
     /* Ganti bagian background menjadi kode di bawah ini */
-    background: radial-gradient(circle at center top, rgba(225, 6, 0, 0.15) 0%, var(--bg-primary) 50%, var(--bg-secondary) 100%);
+    background-image: linear-gradient(to bottom, #5a0505 0%, var(--bg-primary) 500px);
 }
 
 /* Container khusus agar gambar berada di tengah dan responsif */
@@ -376,7 +382,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px; /* Batas lebar gambar maksimal, lu bisa ubah kalau mau lebih lebar/kecil */
+    max-width: 1200px; 
     margin: 0 auto;
 }
 
@@ -746,6 +752,7 @@ body {
     background: var(--bg-card);
     border-radius: 12px;
     overflow: hidden;
+    
     transition: transform 0.3s;
 }
 
@@ -997,7 +1004,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: flex-start !important; /* Memaksa posisi awal sejajar atas */
 }
 
 .sirkuit-image {
@@ -1058,7 +1065,15 @@ body {
 }
 
 .sirkuit-info .section-title {
-    font-size: 28px;
+    font-size: 34px !important;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.sirkuit-info .section-description {
+    font-size: 16px !important;
+    line-height: 1.7;
+    margin-bottom: 25px;
 }
 
 .sirkuit-features {
@@ -1078,14 +1093,13 @@ body {
 }
 
 .feature h4 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 5px;
+    font-size: 18px !important;
+    margin-bottom: 8px;
 }
 
 .feature p {
-    font-size: 13px;
-    color: var(--text-secondary);
+    font-size: 15px !important;
+    line-height: 1.6;
 }
 
 .sirkuit-buttons {
