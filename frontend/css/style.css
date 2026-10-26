@@ -634,73 +634,167 @@ body {
     max-width: 500px;
 }
 
-/* Kategori Grid */
-.kategori-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+/* ====================================================
+   CSS UNTUK SLIDER KATEGORI PILIHAN (11 BINGKAI)
+==================================================== */
+
+/* Pembungkus utama area slider dan tombol */
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
 }
 
+/* Pengaturan area kartu yang bisa digeser */
+.kategori-slider {
+    display: flex;
+    gap: 20px; /* Jarak antar bingkai */
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    scroll-behavior: smooth; /* Efek geser (scroll) halus */
+    padding: 10px 0 20px 0;
+    width: 100%;
+    
+    /* Menyembunyikan scrollbar bawaan agar rapi */
+    -ms-overflow-style: none;  /* Untuk Internet Explorer / Edge */
+    scrollbar-width: none;  /* Untuk Firefox */
+}
+
+/* Menyembunyikan scrollbar untuk Chrome, Safari, dan Opera */
+.kategori-slider::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Desain untuk masing-masing bingkai (kartu) */
 .kategori-card {
-    background: var(--bg-card);
-    border-radius: 12px;
+    flex: 0 0 320px; /* Menahan ukuran lebar bingkai tetap 320px agar tidak mengecil */
+    background: #1a1a1a; /* Warna latar belakang gelap */
+    border-radius: 12px; /* Sudut melengkung */
+    border: 1px solid #333; /* Garis tepi tipis */
     overflow: hidden;
-    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
+/* Efek sedikit melayang saat kartu disorot kursor */
 .kategori-card:hover {
     transform: translateY(-5px);
+    border-color: #e10600;
 }
 
+/* Bagian Gambar Kategori */
 .kategori-image {
     position: relative;
-    height: 200px;
+    width: 100%;
+    height: 180px; /* Tinggi gambar seragam */
 }
 
 .kategori-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Menjaga agar gambar tidak gepeng */
 }
 
-.badge-count {
+/* Label jumlah part merah di pojok kanan atas gambar */
+.kategori-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--red-primary);
-    color: white;
+    top: 15px;
+    right: 15px;
+    background-color: #e10600;
+    color: #fff;
     padding: 4px 10px;
-    border-radius: 6px;
     font-size: 12px;
-    font-weight: 600;
-}
-
-.kategori-card h3 {
-    font-size: 16px;
     font-weight: 700;
-    padding: 15px 15px 10px;
+    border-radius: 4px;
 }
 
-.kategori-card p {
-    font-size: 13px;
-    color: var(--text-secondary);
-    padding: 0 15px 15px;
+/* Bagian Informasi Teks (Bawah Gambar) */
+.kategori-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Mendorong tombol katalog selalu ke bawah */
 }
 
-.link-arrow {
+.kategori-info h3 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.kategori-info p {
+    font-size: 14px;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Tombol Buka Katalog */
+.btn-katalog {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 0 15px 15px;
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
-.link-arrow:hover {
-    color: var(--red-primary);
+.btn-katalog i {
+    font-size: 12px;
+}
+
+.btn-katalog:hover {
+    color: #e10600;
+}
+
+/* ====================================================
+   TOMBOL PANAH KIRI & KANAN (SLIDE NAVIGATION)
+==================================================== */
+.slide-btn {
+    background-color: rgba(225, 6, 0, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+.slide-btn:hover {
+    background-color: #ff1a1a;
+    transform: scale(1.1);
+}
+
+.left-btn {
+    left: -20px; /* Menggeser tombol kiri sedikit ke luar area */
+}
+
+.right-btn {
+    right: -20px; /* Menggeser tombol kanan sedikit ke luar area */
+}
+
+/* Responsif: Menyembunyikan tombol panah di layar HP (karena pengguna bisa langsung swipe dengan jari) */
+@media (max-width: 768px) {
+    .slide-btn {
+        display: none;
+    }
+    .kategori-slider {
+        padding: 10px 15px; /* Memberi sedikit ruang di pinggir layar HP */
+    }
 }
 
 /* Produk Grid */
