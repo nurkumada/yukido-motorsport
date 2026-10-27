@@ -1021,64 +1021,214 @@ body {
     gap: 8px;
 }
 
-/* Standar Grid */
-.standar-grid {
+
+
+/* SECTION VIDEO TIKTOK YUKIDO */
+.video-yukido-section {
+    padding: 85px 40px;
+    background: #0b0b0b;
+    color: #fff;
+}
+
+.video-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.video-badge {
+    display: inline-block;
+    color: #ff2929;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.video-header h2 {
+    font-size: clamp(30px, 3.2vw, 46px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0 0 18px;
+}
+
+.video-header p {
+    color: #bdbdbd;
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* GRID VIDEO TIKTOK */
+.video-yukido-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1750px;
+    margin: 0 auto;
+    align-items: stretch;
 }
 
-.standar-card {
-    background: var(--bg-card);
+/* CARD VIDEO */
+.video-yukido-card {
+    background: #191919;
+    border: 1px solid #363636;
     border-radius: 12px;
-    padding: 25px;
-    transition: transform 0.3s;
+    overflow: hidden;
+    transition: transform .3s ease, border-color .3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.standar-card:hover {
-    transform: translateY(-5px);
+.video-yukido-card:hover {
+    transform: translateY(-6px);
+    border-color: #fe2c55;
 }
 
-.standar-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--red-primary);
-    border-radius: 12px;
+/* THUMBNAIL TIKTOK */
+.video-thumbnail {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.standar-label {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-}
-
-.standar-card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.standar-card p {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.standar-link {
-    font-size: 12px;
-    color: var(--red-primary);
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: linear-gradient(135deg, #252525, #080808, #292929);
+    flex-shrink: 0;
     text-decoration: none;
-    font-weight: 600;
+}
+
+/* IKON TIKTOK */
+.tiktok-placeholder {
+    color: #fff;
+    font-size: 100px;
+    line-height: 1;
+    text-shadow: -4px 0 #25f4ee, 4px 0 #fe2c55;
+    transition: transform .3s ease;
+}
+
+.video-yukido-card:hover .tiktok-placeholder {
+    transform: scale(1.1);
+}
+
+/* TOMBOL PLAY */
+.tiktok-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #fe2c55;
+    color: #fff;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    font-size: 20px;
+    border: 3px solid #25f4ee;
+    box-shadow: 0 0 15px #000;
+    transition: background .3s ease;
 }
+
+.video-yukido-card:hover .tiktok-play {
+    background: #e91e49;
+}
+
+/* TEKS DI DALAM CARD */
+.video-info {
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.video-category {
+    color: #fe2c55;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.video-info h3 {
+    font-size: 21px;
+    line-height: 1.45;
+    margin: 14px 0;
+}
+
+.video-info p {
+    color: #bdbdbd;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* TOMBOL TIKTOK RATA DI BAWAH */
+.video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 24px;
+    align-self: flex-start;
+    transition: color .3s ease;
+}
+
+.video-link:hover {
+    color: #25f4ee;
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+    .video-yukido-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .video-info h3 {
+        font-size: 19px;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    .video-yukido-section {
+        padding: 50px 18px;
+    }
+
+    .video-header h2 {
+        font-size: 28px;
+    }
+
+    .video-header p {
+        font-size: 14px;
+    }
+
+    .video-yukido-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .video-info {
+        padding: 22px;
+    }
+
+    .video-info h3 {
+        font-size: 19px;
+    }
+
+    .tiktok-placeholder {
+        font-size: 85px;
+    }
+}
+
 
 /* Sirkuit Section */
 .sirkuit-content {
@@ -1293,98 +1443,161 @@ body {
     color: var(--text-secondary);
 }
 
-/* Footer */
-.footer {
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border-color);
-    padding: 60px 30px 20px;
+/* --- FOOTER LAYOUT REVISI (AREA LEBIH LEBAR & FONT LEBIH BESAR) --- */
+
+.footer-yukido {
+    background-color: #121212;
+    color: #ffffff;
+    padding: 70px 0 50px;
+    border-top: 4px solid #e10600;
+    font-family: Arial, sans-serif;
+    width: 100%;
 }
 
-.footer-content {
+.footer-container {
+    max-width: 1400px; /* Diperlebar agar tidak terlalu banyak area kosong di kiri-kanan */
+    width: 92%;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 40px;
-    margin-bottom: 40px;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap: 60px;
 }
 
-.footer-brand p {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin: 15px 0;
-    line-height: 1.6;
-}
-
-.footer-badge {
+/* Kolom 1: Brand & Logo */
+.brand-logo {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-secondary);
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+.logo-text {
+    font-size: 34px; /* Font diperbesar */
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
-.link-column h4 {
-    font-size: 12px;
+.red-text {
+    color: #e10600;
+}
+
+.logo-sub {
+    font-size: 15px;
+    color: #a0a0a0;
+}
+
+.brand-desc {
+    font-size: 16px;
+    color: #b0b0b0;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    max-width: 500px;
+}
+
+.copyright-text {
+    font-size: 15px;
     font-weight: 700;
-    margin-bottom: 15px;
-    color: var(--text-primary);
+    color: #ffffff;
+    letter-spacing: 0.5px;
 }
 
-.link-column ul {
+/* Kolom 2 & 3: Headings / Judul Bagian */
+.footer-sitemap h3,
+.store-section h3,
+.follow-section h3 {
+    font-size: 18px; /* Judul diperbesar */
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 22px;
+    letter-spacing: 0.8px;
+}
+
+.footer-sitemap ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.link-column li {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
+.footer-sitemap li {
+    margin-bottom: 16px;
 }
 
-.link-column a {
-    color: var(--text-secondary);
+.footer-sitemap a {
+    color: #ffffff;
     text-decoration: none;
+    font-size: 16px; /* Link diperbesar */
+    font-weight: 700;
     transition: color 0.3s;
 }
 
-.link-column a:hover {
-    color: var(--text-primary);
+.footer-sitemap a:hover {
+    color: #e10600;
 }
 
-.link-column .phone {
-    color: var(--red-primary);
+/* Kolom 3: Official Store & Follow Us */
+.store-section {
+    margin-bottom: 30px;
 }
 
-.coords {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 10px;
-}
-
-.footer-bottom {
+.store-badges {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    font-size: 12px;
-    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.footer-badges {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-badges span {
-    font-size: 11px;
+.store-badge {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 10px 18px; /* Tombol toko diperbesar */
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #333;
+    transition: 0.3s;
 }
 
+.store-badge:hover {
+    border-color: #e10600;
+    color: #e10600;
+}
+
+/* Lingkaran Sosial Media */
+.social-circles {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    width: 46px; /* Lingkaran icon diperbesar */
+    height: 46px;
+    background-color: #ffffff;
+    color: #121212;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    background-color: #e10600;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* Responsif untuk Layar HP/Tablet */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
 /* Floating Button */
 .floating-btn {
     position: fixed;
