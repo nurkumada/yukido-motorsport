@@ -23,7 +23,7 @@ body {
     
     /* Gunakan background-color sebagai dasar, dan background-image untuk gradasinya */
     background-color: var(--bg-primary);
-    background-image: linear-gradient(to bottom, #5a0505 0%, var(--bg-primary) 1000px);
+    background-image: linear-gradient(to bottom, #100202 0%, var(--bg-primary) 1000px);
     background-repeat: no-repeat;
     min-height: 100vh;
     
@@ -355,31 +355,37 @@ body {
     margin-left: auto;
 }
 
-/* Hero Section */
+/* ====================================================
+   HERO SECTION (IKLAN FULL LAYAR) & JARAK KE KATEGORI
+==================================================== */
 .hero-section {
-    padding: 60px 30px;
-    position: relative;
-    /* Ganti bagian background menjadi kode di bawah ini */
-    background-image: linear-gradient(to bottom, #5a0505 0%, var(--bg-primary) 500px);
+    width: 100%;
+    padding-top: 90px !important; /* Jarak atas agar tidak tertutup navbar */
+    padding-left: 0 !important;   /* Memaksa kiri mentok layar */
+    padding-right: 0 !important;  /* Memaksa kanan mentok layar */
+    
+    /* INI ADALAH JARAK DARI IKLAN KE PRODUK BAWAHNYA */
+    margin-bottom: 80px !important; 
 }
 
-/* Container khusus agar gambar berada di tengah dan responsif */
 .hero-container.full-image-mode {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    max-width: 1200px; 
-    margin: 0 auto;
+    max-width: 100% !important; /* Memaksa melebar 100% tanpa batas */
+    margin: 0;
+    padding: 0;
 }
 
-/* Styling gambarnya agar full width mengikuti container */
 .iklan-hero-img-full {
-    width: 100%;
+    width: 100% !important;
     height: auto;
-    border-radius: 12px; /* Membuat sudut gambar sedikit membulat */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Efek bayangan */
-    transition: transform 0.3s ease;
+    display: block;
+    border-radius: 0 !important; /* Lengkungan dihapus agar menempel sempurna di ujung layar */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Memastikan slider kategori (Hand Tools dkk) benar-benar terdorong ke bawah */
+.kategori-slider {
+    margin-top: 40px !important; 
 }
 
 /* (Opsional) Efek membesar sedikit saat kursor diarahkan ke gambar */
@@ -1024,39 +1030,97 @@ body {
 
 
 /* SECTION VIDEO TIKTOK YUKIDO */
-.video-yukido-section {
-    padding: 85px 40px;
-    background: #0b0b0b;
-    color: #fff;
+/* ====================================================
+   TIKTOK SECTION HEADER (RATA KIRI DENGAN TOMBOL KANAN)
+==================================================== */
+.video-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    padding: 0 20px;
 }
 
-.video-header {
-    text-align: center;
-    margin-bottom: 48px;
+.video-header-left {
+    max-width: 700px;
+    text-align: left;
 }
 
 .video-badge {
-    display: inline-block;
-    color: #ff2929;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(225, 6, 0, 0.1);
+    color: #e10600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(225, 6, 0, 0.3);
+}
+
+.video-header-left h2 {
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: 900;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.video-header-left p {
+    font-size: 15px;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Tombol Follow TikTok di Kanan */
+.video-header-right {
+    padding-bottom: 5px; /* Menyelaraskan tombol dengan teks p */
+}
+
+.btn-follow-tiktok {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #121212;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
     font-size: 14px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
+    font-weight: 700;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
 }
 
-.video-header h2 {
-    font-size: clamp(30px, 3.2vw, 46px);
-    font-weight: 900;
-    line-height: 1.2;
-    margin: 0 0 18px;
+.btn-follow-tiktok .fa-tiktok {
+    color: #00f2fe; /* Warna cyan khas TikTok */
+    font-size: 18px;
+    text-shadow: 2px 2px 0px #fe0979; /* Efek glitch 3D TikTok */
 }
 
-.video-header p {
-    color: #bdbdbd;
-    font-size: 17px;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto;
+.btn-follow-tiktok .fa-arrow-right {
+    color: #e10600;
+    font-size: 12px;
+}
+
+.btn-follow-tiktok:hover {
+    background-color: #1a1a1a;
+    border-color: #e10600;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(225, 6, 0, 0.2);
+}
+
+/* Responsif untuk Layar Kecil (HP) */
+@media (max-width: 768px) {
+    .video-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
 }
 
 /* GRID VIDEO TIKTOK */
@@ -1585,12 +1649,78 @@ body {
     transition: 0.3s;
 }
 
-.social-btn:hover {
+..social-btn:hover {
     background-color: #e10600;
     color: #ffffff;
     transform: translateY(-3px);
 }
 
+/* ====================================================
+   WARNA ORIGINAL BRAND (E-COMMERCE & SOSMED)
+==================================================== */
+
+/* Pengaturan khusus ikon gambar (Tokopedia) */
+.icon-img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+/* Ukuran khusus untuk logo asli Tokopedia */
+.icon-tokped-asli {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 50%; /* Membuat background kotak pada jpg menjadi bulat rapi */
+    background-color: #ffffff; /* Memastikan logo terlihat jelas di tema gelap */
+}
+
+/* --- WARNA TOMBOL OFFICIAL STORE --- */
+/* Tokopedia */
+.store-badge.tokped-btn i, .store-badge.tokped-btn img { color: #42b549; }
+.store-badge.tokped-btn:hover { border-color: #42b549; color: #42b549; }
+
+/* Shopee */
+.store-badge.shopee-btn i { color: #ee4d2d; }
+.store-badge.shopee-btn:hover { border-color: #ee4d2d; color: #ee4d2d; }
+
+/* TikTok Shop */
+.store-badge.tiktok-btn i { color: #00f2fe; text-shadow: 1px 1px 0px #fe0979; }
+.store-badge.tiktok-btn:hover { border-color: #ffffff; color: #ffffff; }
+
+/* Lazada */
+.store-badge.lazada-btn i {
+    color: #0f136d;
+    background: -webkit-linear-gradient(45deg, #0f136d, #ff4c3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.store-badge.lazada-btn:hover { border-color: #ff4c3b; color: #ff4c3b; }
+
+/* --- WARNA LINGKARAN SOSIAL MEDIA --- */
+/* Facebook */
+.social-btn.facebook { color: #1877F2; }
+.social-btn.facebook:hover { background-color: #1877F2; color: #ffffff; border:none; }
+
+/* Instagram */
+.social-btn.instagram { color: #E1306C; }
+.social-btn.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff; border:none;
+}
+
+/* TikTok */
+.social-btn.tiktok { color: #000000; }
+.social-btn.tiktok i { text-shadow: 1px 1px 0px #fe0979; }
+.social-btn.tiktok:hover { background-color: #000000; color: #00f2fe; border:none; }
+
+/* YouTube */
+.social-btn.youtube { color: #FF0000; }
+.social-btn.youtube:hover { background-color: #FF0000; color: #ffffff; border:none; }
+
+
+/* ====================================================
+   RESPONSIF DAN TOMBOL LAINNYA
+==================================================== */
 /* Responsif untuk Layar HP/Tablet */
 @media (max-width: 992px) {
     .footer-container {
@@ -1598,6 +1728,7 @@ body {
         gap: 40px;
     }
 }
+
 /* Floating Button */
 .floating-btn {
     position: fixed;

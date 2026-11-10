@@ -120,7 +120,7 @@
          <section class="hero-section">
     <!-- Container khusus untuk mode full gambar -->
     <div class="hero-container full-image-mode">
-        <img src="images/iklan.png" alt="Banner Promo YUKIDO" class="iklan-hero-img-full">
+        <img src="images/yukido.png" alt="Banner Promo YUKIDO" class="iklan-hero-img-full">
     </div>
 </section>
 
@@ -277,7 +277,7 @@
             <div class="section-header">
                 <div>
                     <div class="section-badge">
-                        <span class="badge-red">RACING SELECTION</span>
+                        <span class="badge-red">TOOLS SELECTION</span>
                         STOK TERSEDIA & TERUJI
                     </div>
                     <h2 class="section-title">PRODUK POPULER</h2>
@@ -428,15 +428,23 @@
 <!-- SECTION VIDEO TIKTOK YUKIDO -->
 <section class="video-yukido-section">
     <div class="video-header">
-        <span class="video-badge">YUKIDO TIKTOK COLLECTION</span>
-        <h2>KENALI PRODUK YUKIDO LEBIH DEKAT</h2>
-        <p>
-            Temukan informasi produk, cara penggunaan, dan keunggulan
-            peralatan Yukido melalui video TikTok berikut.
-        </p>
+        <div class="video-header-left">
+            <span class="video-badge"><i class="fab fa-tiktok"></i> YUKIDO OFFICIAL TIKTOK</span>
+            <h2>KENALI PRODUK YUKIDO LEBIH DEKAT</h2>
+            <p>Temukan informasi produk, cara penggunaan, dan keunggulan peralatan Yukido melalui video TikTok berikut.</p>
+        </div>
+        <div class="video-header-right">
+            <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-follow-tiktok">
+                <i class="fab fa-tiktok"></i> Follow TikTok @PT.YUKIDO POWER TEKNIK <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
 
     <div class="video-yukido-grid">
+        <!-- (BIAKAN KODE KARTU VIDEO 1, 2, 3, 4 TETAP SEPERTI SEBELUMNYA) -->
 
         <!-- VIDEO 1 -->
         <div class="video-yukido-card">
@@ -741,16 +749,25 @@
             </ul>
         </div>
 
-        <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
+       <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
         <div class="footer-col footer-social-store">
             <!-- Official Store -->
             <div class="store-section">
                 <h3>OFFICIAL STORE</h3>
                 <div class="store-badges">
-                    <a href="#" class="store-badge"><i class="fas fa-shopping-bag"></i> Tokopedia</a>
-                    <a href="#" class="store-badge"><i class="fab fa-tiktok"></i> TikTok Shop</a>
-                    <a href="#" class="store-badge"><i class="fas fa-store"></i> Shopee</a>
-                    <a href="#" class="store-badge"><i class="fas fa-box"></i> Lazada</a>
+                    <!-- Ganti tanda # dengan link toko Anda -->
+                    <a href="#" target="_blank" class="store-badge tokped-btn">
+                        <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
+                    </a>
+                    <a href="#" target="_blank" class="store-badge tiktok-btn">
+                        <i class="fab fa-tiktok"></i> TikTok Shop
+                    </a>
+                    <a href="#" target="_blank" class="store-badge shopee-btn">
+                        <i class="fas fa-shopping-bag"></i> Shopee
+                    </a>
+                    <a href="#" target="_blank" class="store-badge lazada-btn">
+                        <i class="fas fa-heart"></i> Lazada
+                    </a>
                 </div>
             </div>
 
@@ -758,16 +775,14 @@
             <div class="follow-section">
                 <h3>FOLLOW US</h3>
                 <div class="social-circles">
-                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+                    <!-- Ganti tanda # dengan link sosmed Anda -->
+                    <a href="#" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-
-    </div>
-</footer>
 
         <!-- Floating Button -->
         <button class="floating-btn">
@@ -801,7 +816,7 @@
     </div>
 </div>
 
-    <!-- Tombol Floating (Pastikan ini ada di bagian bawah sebelum </main> atau </body>) -->
+    <!-- Tombol Floating (Pastikan ini ada di bagian bawah sebelum </main> atau </body>
     <button class="floating-btn" id="chatbotToggle">
         <i class="fas fa-robot"></i> TANYA AI
     </button>
