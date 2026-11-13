@@ -108,223 +108,155 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Page Header -->
-        <div class="cart-header">
-            <div class="cart-header-top">
-                <span class="breadcrumb"><span class="dot red"></span> PIT LANE CART CHECKOUT SYSTEM / ID: YKD-CRT-8921B</span>
-            </div>
-            <div class="cart-title-row">
-                <div>
-                    <h1 class="page-title">Keranjang Belanja <span class="text-red"></span></h1>
-                    <p class="page-subtitle">Daftar komponen mekanis presisi tinggi yang disiapkan untuk perakitan unit kompetisi Anda.</p>
+        <div class="shopee-cart-wrapper">
+            <!-- Header Halaman -->
+            <div class="shopee-cart-header">
+                <div class="header-left">
+                    <h1><i class="fas fa-shopping-bag"></i> Keranjang Belanja</h1>
+                    <span class="store-official-badge"><i class="fas fa-check-circle"></i> YUKIDO Official Store</span>
                 </div>
-                <div class="cart-status-box">
-                    <div class="status-item"><i class="fas fa-cloud-upload-alt"></i> STATUS STORAGE<br><strong>Auto-Saved Lokal (Tersinkron)</strong></div>
-                    <div class="status-item"><i class="fas fa-box-open"></i> SLOT PADDOCK<br><strong id="slotCount">3 Produk Terpilih</strong></div>
-                </div>
+                <p class="header-sub">Pilih perkakas yang ingin Anda checkout sekarang.</p>
             </div>
-        </div>
 
-        <div class="cart-layout">
-            <!-- Left Column: Cart Items -->
-            <div class="cart-items-column">
-                <div class="cart-table-header">
-                    <span>KOMPONEN / SPESIFIKASI BALAP</span>
-                    <span>HARGA SATUAN</span>
-                    <span>KUANTITAS</span>
-                    <span>SUBTOTAL PART</span>
+            <!-- Bar Header Kolom Tabel -->
+            <div class="shopee-table-head">
+                <div class="col-check">
+                    <input type="checkbox" id="selectAllTop" checked>
+                </div>
+                <div class="col-product">Produk</div>
+                <div class="col-price">Harga Satuan</div>
+                <div class="col-qty">Kuantitas</div>
+                <div class="col-total">Total Harga</div>
+                <div class="col-action">Aksi</div>
+            </div>
+
+            <!-- Kelompok Toko -->
+            <div class="shopee-store-group">
+                <div class="store-group-header">
+                    <input type="checkbox" id="selectStore" checked>
+                    <span class="mall-tag">OFFICIAL</span>
+                    <strong>PT. Yukido Power Teknik</strong>
+                    <span class="free-ship-note"><i class="fas fa-truck"></i> Gratis Ongkir s/d Rp 50.000</span>
                 </div>
 
                 <!-- Item 1 -->
-                <div class="cart-item" data-price="850000" data-weight="1.35">
-                    <div class="item-info">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&h=100&fit=crop" alt="Disc Brake">
-                        <div>
-                            <span class="item-badge">RACE PRO</span>
-                            <span class="item-sku">SKU: YKD-DB-300 <span class="tag">CNC FLOATING</span></span>
-                            <h3>YUKIDO Racing Disc Brake Pro 300mm Floating CNC</h3>
-                            <p class="item-variant">Varian: Bracket Monoblock 100mm (Universal Pitch)</p>
-                            <span class="stock-status"><i class="fas fa-check-circle"></i> Stok Paddock Tersedia (9 unit)</span>
+                <div class="shopee-cart-item" data-price="685000">
+                    <div class="col-check">
+                        <input type="checkbox" class="item-check" checked>
+                    </div>
+                    <div class="col-product">
+                        <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=150&h=150&fit=crop" alt="Impact Wrench">
+                        <div class="prod-meta">
+                            <h3>YUKIDO Cordless Impact Wrench Brushless 21V Heavy Duty</h3>
+                            <span class="prod-variant">Varian: Full Set 2 Baterai + Koper</span>
+                            <span class="prod-warranty"><i class="fas fa-shield-alt"></i> Garansi Resmi 1 Tahun</span>
                         </div>
                     </div>
-                    <div class="item-price">Rp 850.000<br><span class="per-unit">PER PIECE</span></div>
-                    <div class="item-qty">
-                        <button class="qty-btn minus">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn plus">+</button>
-                        <button class="remove-btn"><i class="fas fa-trash-alt"></i></button>
+                    <div class="col-price">Rp 685.000</div>
+                    <div class="col-qty">
+                        <div class="shopee-qty-box">
+                            <button type="button" class="shopee-qty-btn minus">-</button>
+                            <input type="number" value="1" min="1" class="shopee-qty-input">
+                            <button type="button" class="shopee-qty-btn plus">+</button>
+                        </div>
                     </div>
-                    <div class="item-subtotal">Rp 850.000<br><span class="per-unit">SUBTOTAL</span></div>
+                    <div class="col-total item-row-total">Rp 685.000</div>
+                    <div class="col-action">
+                        <button type="button" class="btn-del-item">Hapus</button>
+                    </div>
                 </div>
 
                 <!-- Item 2 -->
-                <div class="cart-item" data-price="1450000" data-weight="1.75">
-                    <div class="item-info">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&h=100&fit=crop" alt="Monoshock">
-                        <div>
-                            <span class="item-badge" style="background:#ff6b00">GAS NITRO</span>
-                            <span class="item-sku">SKU: YKD-SUSP-330 <span class="tag">REBOUND ADJUST</span></span>
-                            <h3>YUKIDO Monoshock Race Spec Sub-Tank 330mm</h3>
-                            <p class="item-variant">Varian: Red Spring / Nitrogen Sub-Tank 330mm</p>
-                            <span class="stock-status"><i class="fas fa-check-circle"></i> Stok Terverifikasi Pabrik (4 unit)</span>
+                <div class="shopee-cart-item" data-price="425000">
+                    <div class="col-check">
+                        <input type="checkbox" class="item-check" checked>
+                    </div>
+                    <div class="col-product">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=150&h=150&fit=crop" alt="Kunci Sok Set">
+                        <div class="prod-meta">
+                            <h3>YUKIDO Kunci Sok Set 46 Pcs Chrome Vanadium (Cr-V)</h3>
+                            <span class="prod-variant">Varian: Box Merah 1/4 Inch</span>
+                            <span class="prod-warranty"><i class="fas fa-shield-alt"></i> Garansi Seumur Hidup</span>
                         </div>
                     </div>
-                    <div class="item-price">Rp 1.450.000<br><span class="per-unit">PER UNIT</span></div>
-                    <div class="item-qty">
-                        <button class="qty-btn minus">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn plus">+</button>
-                        <button class="remove-btn"><i class="fas fa-trash-alt"></i></button>
+                    <div class="col-price">Rp 425.000</div>
+                    <div class="col-qty">
+                        <div class="shopee-qty-box">
+                            <button type="button" class="shopee-qty-btn minus">-</button>
+                            <input type="number" value="1" min="1" class="shopee-qty-input">
+                            <button type="button" class="shopee-qty-btn plus">+</button>
+                        </div>
                     </div>
-                    <div class="item-subtotal">Rp 1.450.000<br><span class="per-unit">SUBTOTAL</span></div>
+                    <div class="col-total item-row-total">Rp 425.000</div>
+                    <div class="col-action">
+                        <button type="button" class="btn-del-item">Hapus</button>
+                    </div>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="cart-item" data-price="275000" data-weight="0.32">
-                    <div class="item-info">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&h=100&fit=crop" alt="Braided Line">
-                        <div>
-                            <span class="item-badge" style="background:#666">STEEL BRAIDED</span>
-                            <span class="item-sku">SKU: YKD-BRK-LINE <span class="tag">ZERO EXPANSION</span></span>
-                            <h3>YUKIDO Selang Rem Braided Steel High Pressure</h3>
-                            <p class="item-variant">Varian: Carbon Smoke Front 95cm Banjo 20°</p>
-                            <span class="stock-status"><i class="fas fa-check-circle"></i> Ready Stock Jakarta (22 unit)</span>
+                <div class="shopee-cart-item" data-price="310000">
+                    <div class="col-check">
+                        <input type="checkbox" class="item-check" checked>
+                    </div>
+                    <div class="col-product">
+                        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=150&h=150&fit=crop" alt="Mesin Gerinda">
+                        <div class="prod-meta">
+                            <h3>YUKIDO Mesin Gerinda Tangan Angle Grinder 4 Inch 600W</h3>
+                            <span class="prod-variant">Varian: Unit + Mata Potong Besi</span>
+                            <span class="prod-warranty"><i class="fas fa-shield-alt"></i> Garansi Resmi 1 Tahun</span>
                         </div>
                     </div>
-                    <div class="item-price">Rp 275.000<br><span class="per-unit">PER SET</span></div>
-                    <div class="item-qty">
-                        <button class="qty-btn minus">-</button>
-                        <input type="number" value="2" min="1" class="qty-input">
-                        <button class="qty-btn plus">+</button>
-                        <button class="remove-btn"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                    <div class="item-subtotal">Rp 550.000<br><span class="per-unit">SUBTOTAL</span></div>
-                </div>
-
-                <!-- Cart Actions -->
-                <div class="cart-actions-row">
-                    <a href="produk.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> LANJUT BELANJA DI KATALOG</a>
-                    <div class="action-buttons">
-                        <button class="btn-filter-action"><i class="fas fa-save"></i> SIMPAN SPEK</button>
-                        <button class="btn-reset" id="clearCartBtn"><i class="fas fa-trash"></i> KOSONGKAN KERANJANG</button>
-                    </div>
-                </div>
-
-                <!-- Cart Telemetry -->
-                <div class="telemetry-box">
-                    <div class="telemetry-header">
-                        <h3><i class="fas fa-chart-line"></i> ANALISIS BEBAN KOMPONEN (CART TELEMETRY)</h3>
-                        <span>Total Est: <strong id="totalWeight">3.42 kg</strong></span>
-                    </div>
-                    <div class="telemetry-bars">
-                        <div class="telem-item">
-                            <div class="telem-info"><span>Brake System Rotor (Pro 300mm)</span><span id="weight1">1.35 kg (39%)</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 39%"></div></div>
+                    <div class="col-price">Rp 310.000</div>
+                    <div class="col-qty">
+                        <div class="shopee-qty-box">
+                            <button type="button" class="shopee-qty-btn minus">-</button>
+                            <input type="number" value="2" min="1" class="shopee-qty-input">
+                            <button type="button" class="shopee-qty-btn plus">+</button>
                         </div>
-                        <div class="telem-item">
-                            <div class="telem-info"><span>Rear Suspension Sub-Tank</span><span id="weight2">1.75 kg (51%)</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 51%"></div></div>
-                        </div>
-                        <div class="telem-item">
-                            <div class="telem-info"><span>Hydraulic Braided Lines</span><span id="weight3">0.32 kg (10%)</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 10%"></div></div>
-                        </div>
+                    </div>
+                    <div class="col-total item-row-total">Rp 620.000</div>
+                    <div class="col-action">
+                        <button type="button" class="btn-del-item">Hapus</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Order Summary -->
-            <div class="cart-summary-column">
-                <div class="summary-box">
-                    <div class="summary-header">
-                        <h3>RINGKASAN PESANAN RESMI</h3>
-                        <span class="badge-red">FIM COMPLIANT</span>
+            <!-- Bar Voucher & Checkout Bawah -->
+            <div class="shopee-checkout-bar">
+                <div class="voucher-row">
+                    <div class="voucher-label">
+                        <i class="fas fa-ticket-alt"></i> <strong>Voucher YUKIDO</strong>
                     </div>
-                    
-                    <div class="summary-row">
-                        <span>Total Jumlah Item</span>
-                        <strong id="summaryItems">4 Barang (3 Jenis Produk)</strong>
-                    </div>
-                    <div class="summary-row">
-                        <span>Subtotal Produk</span>
-                        <strong id="summarySubtotal">Rp 2.850.000</strong>
-                    </div>
-                    <div class="summary-row">
-                        <span>Estimasi Ekspedisi <i class="fas fa-info-circle"></i></span>
-                        <strong>Rp 35.000</strong>
-                        <span class="sub-text"><i class="fas fa-bolt"></i> JNE / J&T Cargo Sirkuit Proteksi Penuh</span>
-                    </div>
-                    <div class="summary-row discount">
-                        <span>Diskon Promo Paddock (ONEXPRESS)</span>
-                        <strong class="text-red">-Rp 100.000</strong>
-                    </div>
-                    <div class="summary-row">
-                        <span><i class="fas fa-shield-alt" style="color:#00cc66"></i> Garansi Proteksi Pengiriman</span>
-                        <strong style="color:#00cc66">GRATIS</strong>
-                    </div>
-
-                    <div class="coupon-section">
-                        <label>KUPON BALAP / VOUCHER SPONSOR</label>
-                        <div class="coupon-input-group">
-                            <input type="text" value="ONEXPRESS" readonly>
-                            <i class="fas fa-check-circle" style="color:#00cc66"></i>
-                            <button class="btn-apply">TERAPKAN</button>
-                        </div>
-                        <p class="coupon-note">Kupon Aktif: Hemat Rp 100.000 untuk part performa rem & suspensi.</p>
-                    </div>
-
-                    <div class="total-section">
-                        <div class="total-label">TOTAL AKHIR PEMBAYARAN <span class="badge-small">SUDAH TERMASUK PPN</span></div>
-                        <div class="total-amount">
-                            <span class="currency">IDR (Rupiah)</span>
-                            <span class="price" id="grandTotal">Rp 2.785.000</span>
-                        </div>
-                    </div>
-
-                    <a href="checkout.html" class="btn-checkout">LANJUT KE CHECKOUT & PEMBAYARAN <i class="fas fa-arrow-right"></i></a>
-
-                    <div class="security-badges">
-                        <div><i class="fas fa-lock"></i> Enkripsi SSL 256-Bit Paddock End-to-End</div>
-                        <div><i class="fas fa-check-circle"></i> 100% Produk Original YUKIDO Motorsport</div>
-                    </div>
-
-                    <div class="payment-methods">
-                        <label>METODE PEMBAYARAN RESMI TERSEDIA</label>
-                        <div class="payment-icons">
-                            <span>BCA VA</span><span>Mandiri VA</span><span>BRI Virtual</span>
-                            <span>QRIS Dinamis</span><span>GoPay / Ovo</span><span>Debit Online</span>
-                        </div>
+                    <div class="voucher-action">
+                        <span class="voucher-applied" id="voucherBadge">Diskon Bengkel -Rp 50.000 Terpakai</span>
+                        <button type="button" class="btn-voucher-toggle" id="btnToggleVoucher">Ubah / Lepas</button>
                     </div>
                 </div>
 
-                <!-- Chat Pit Box -->
-                <div class="chat-pit-box">
-                    <div class="chat-pit-header">
-                        <i class="fas fa-headset"></i>
-                        <div>
-                            <h4>Konsultasi Rasio & Setup?</h4>
-                            <p>Teknisi mekanik sirkuit siap membantu</p>
-                        </div>
+                <div class="checkout-action-row">
+                    <div class="left-controls">
+                        <label class="select-all-label">
+                            <input type="checkbox" id="selectAllBottom" checked>
+                            Pilih Semua (<span id="totalJenisProduk">3</span>)
+                        </label>
+                        <button type="button" class="btn-delete-selected" id="btnDeleteSelected">Hapus</button>
+                        <a href="produk.html" class="link-continue">+ Tambah Perkakas Lain</a>
                     </div>
-                    <button class="btn-chat">CHAT PIT</button>
+
+                    <div class="right-checkout">
+                        <div class="total-summary">
+                            <div class="total-text">
+                                Total (<span id="selectedProductCount">3</span> produk):
+                                <span class="shopee-grand-total" id="shopeeGrandTotal">Rp 1.680.000</span>
+                            </div>
+                            <div class="hemat-text" id="hematText">Hemat Rp 50.000</div>
+                        </div>
+                        <a href="checkout.html" class="btn-shopee-checkout">Checkout</a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Guarantee Banner -->
-        <div class="guarantee-banner">
-            <div class="guarantee-icon"><i class="fas fa-award"></i></div>
-            <div class="guarantee-content">
-                <div class="guarantee-title">JAMINAN PADDOCK & QC SIRKUIT <span class="tag-small">ISO 9001 / AHM Standard</span></div>
-                <h3>Garansi Pabrik Resmi & Uji Kendali Mutu Laboratorium QC</h3>
-                <p>Setiap suku cadang balap YUKIDO dilindungi garansi pabrik resmi dan lolos uji kendali mutu laboratorium QC ekstrem sebelum pengiriman. Penggantian 100% bila ditemukan cacat manufaktur dalam 180 hari.</p>
-            </div>
-            <div class="guarantee-specs">
-                <div class="spec-box"><span class="spec-label">TOLERANSI MESIN</span><span class="spec-val">± 0.005 mm CNC</span></div>
-                <div class="spec-box"><span class="spec-label">UJI TEKANAN HIDROLIK</span><span class="spec-val" style="color:#00cc66">1200 PSI Passed</span></div>
-            </div>
-            <button class="btn-secondary">DETAIL GARANSI PABRIK</button>
-        </div>
+    </main>
 
        <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
 <footer class="footer-yukido">
