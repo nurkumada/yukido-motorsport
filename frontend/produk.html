@@ -134,214 +134,27 @@
                 <input type="text" id="searchProduct" placeholder="Cari Produk">
             </div>
             <div class="filter-actions">
-                <select class="filter-select">
-                    <option>Urutkan: Rekomendasi</option>
-                    <option>Harga Terendah</option>
-                    <option>Harga Tertinggi</option>
-                    <option>Terbaru</option>
-                </select>
+                <select class="filter-select" id="sortProducts">
+    <option value="newest">Terbaru</option>
+    <option value="price_low">Harga Terendah</option>
+    <option value="price_high">Harga Tertinggi</option>
+    <option value="name">Nama Produk</option>
+</select>
                 <button class="btn-filter-action"><i class="fas fa-sliders-h"></i> FILTER TEKNIS</button>
                 <button class="btn-reset">RESET</button>
             </div>
         </div>
 
         <!-- Category Tabs -->
-        <div class="category-tabs">
-            <button class="cat-tab active" data-category="all">Semua Kategori</button>
-            <button class="cat-tab" data-category="pengereman">Air Tools</button>
-            <button class="cat-tab" data-category="suspensi">Pneumatic</button>
-            <button class="cat-tab" data-category="exhaust">Automotive</button>
-            <button class="cat-tab" data-category="aksesoris">Accessories</button>
-            <button class="cat-tab" data-category="transmisi">Hand Tools</button>
-            <button class="cat-tab" data-category="pendingin">Screwdriver</button>
-            <button class="cat-tab" data-category="pendingin">Accessories</button>
-            <button class="cat-tab" data-category="pendingin">Insulation</button>
-            <button class="cat-tab" data-category="pendingin">General</button>
-            <button class="cat-tab" data-category="pendingin">Inverter</button>
-        </div>
+      <div class="category-tabs" id="categoryTabs">
+    <button class="cat-tab active" data-category-id="">
+        Semua Kategori
+    </button>
+</div>
 
-        <!-- Product Grid (12 Items) -->
-        <div class="produk-grid" id="productGrid">
-            <!-- Produk 1 -->
-            <div class="produk-card" data-category="pengereman">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Disc Brake">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Racing Disc Brake Pro 300mm</h3>
-                    <p class="harga">Rp 850.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 2 -->
-            <div class="produk-card" data-category="suspensi">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Monoshock">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Monoshock Nitrogen Sub-Tank 330mm</h3>
-                    <p class="harga">Rp 1.450.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 3 -->
-            <div class="produk-card" data-category="exhaust">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Exhaust">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Titanium Header Racing Exhaust</h3>
-                    <p class="harga">Rp 2.100.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 4 -->
-            <div class="produk-card" data-category="pengereman">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Master Cylinder">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO CNC Billet Master Cylinder Radial</h3>
-                    <p class="harga">Rp 980.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 5 -->
-            <div class="produk-card" data-category="pengereman">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Kaliper">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Kaliper Rem 4 Piston CNC Monoblock</h3>
-                    <p class="harga">Rp 1.250.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 6 -->
-            <div class="produk-card" data-category="aksesoris">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Footstep">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Footstep Underbone Duralium Series</h3>
-                    <p class="harga">Rp 680.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 7 -->
-            <div class="produk-card" data-category="pengereman">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Selang Rem">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Selang Rem Braided Steel High Pressure</h3>
-                    <p class="harga">Rp 275.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 8 -->
-            <div class="produk-card" data-category="aksesoris">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Velg">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Velg Racing Alloy Ring 17 Lightweight</h3>
-                    <p class="harga">Rp 2.450.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 9 -->
-            <div class="produk-card" data-category="suspensi">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Shockbreaker">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Shockbreaker Depan Up-Side Down Gold</h3>
-                    <p class="harga">Rp 2.800.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 10 -->
-            <div class="produk-card" data-category="transmisi">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Rantai">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Rantai O-Ring 415 Gold Racing</h3>
-                    <p class="harga">Rp 340.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 11 -->
-            <div class="produk-card" data-category="aksesoris">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Handle">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Handle Tuas Kopling & Rem Lipat CNC</h3>
-                    <p class="harga">Rp 320.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produk 12 -->
-            <div class="produk-card" data-category="pendingin">
-                <div class="produk-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Radiator">
-                </div>
-                <div class="produk-info">
-                    <h3>YUKIDO Radiator Aluminium Curve High Capacity</h3>
-                    <p class="harga">Rp 1.150.000</p>
-                    <div class="produk-actions">
-                        <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;"><i class="fas fa-info-circle"></i> DETAIL</a>
-                        <button class="btn-beli" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> BELI</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+   <div class="produk-grid" id="productGrid">
+    <p>Memuat produk Yukido...</p>
+</div>
 
         <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
 <footer class="footer-yukido">
@@ -446,6 +259,7 @@
     <!-- === AKHIR AI CHATBOT WIDGET === -->
     <script src="js/layout.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/products-api.js"></script>
     
 </body>
 </html>
