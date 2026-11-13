@@ -3,87 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Daftar Akun - YUKIDO Motorsport</title>
+    <title>Masuk / Daftar Akun Resmi - YUKIDO Power Teknik</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="auth-body">
     <div class="auth-container">
+        <!-- Panel Kiri: Identitas Brand Perkakas YUKIDO -->
         <div class="auth-left">
-            <div class="auth-brand">
-                        <a href="index.html" class="logo">
-            <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
-            <span class="logo-icon"></span>
-            <span class="logo-text">YUKIDO</span>
-            <span class="logo-sub">ユキドジャパンテクノロジ</span>
-        </a>
-                <h1>YUKIDO <span class="text-red"></span></h1>
-                <p>Precision Meets Racing Performance. Bergabunglah dengan komunitas balap terbesar di Indonesia.</p>
+            <div class="auth-top-badge">
+                <span class="dot red"></span> PORTAL AKUN RESMI YUKIDO
             </div>
+
+            <div class="auth-brand">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-yukido.png" alt="YUKIDO Power Teknik Logo" class="logo-img">
+                    <div class="logo-stack">
+                        <span class="logo-text">YUKIDO<span class="reg-mark">®</span></span>
+                        <span class="logo-sub">ユキドジャパンテクノロジー</span>
+                    </div>
+                </a>
+                <h1>PERKAKAS PRESISI <span class="text-red">JAPAN TECHNOLOGY</span></h1>
+                <p>Kelola pesanan peralatan teknik, klaim Garansi Seumur Hidup, dan nikmati penawaran resmi PT. Yukido Power Teknik dalam satu akun.</p>
+            </div>
+
             <div class="auth-features">
-                <div class="auth-feat"><i class="fas fa-check-circle"></i> Akses eksklusif part limited edition</div>
-                <div class="auth-feat"><i class="fas fa-check-circle"></i> Tracking pesanan & garansi real-time</div>
-                <div class="auth-feat"><i class="fas fa-check-circle"></i> Poin reward untuk setiap pembelian</div>
+                <div class="auth-feat">
+                    <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <strong>Akses Klaim Garansi Seumur Hidup</strong>
+                        <span>Pantau status tukar baru hand tools & servis unit mesin resmi.</span>
+                    </div>
+                </div>
+                <div class="auth-feat">
+                    <div class="feat-icon"><i class="fas fa-tools"></i></div>
+                    <div>
+                        <strong>Katalog Lengkap 200+ Perkakas Heavy-Duty</strong>
+                        <span>Mulai dari Hand Tools Cr-V, Cordless Brushless, hingga Mesin Las IGBT.</span>
+                    </div>
+                </div>
+                <div class="auth-feat">
+                    <div class="feat-icon"><i class="fas fa-tags"></i></div>
+                    <div>
+                        <strong>Promo & Poin Reward Member</strong>
+                        <span>Dapatkan potongan harga paket alat teknik dan poin setiap transaksi.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-left-footer">
+                <span>PT. YUKIDO POWER TEKNIK • INDUSTRIAL & WORKSHOP GRADE</span>
             </div>
         </div>
 
+        <!-- Panel Kanan: Form Masuk, Daftar & Lupa Kata Sandi -->
         <div class="auth-right">
-            <div class="auth-tabs">
-                <button class="auth-tab active" onclick="switchAuth('login')">MASUK</button>
-                <button class="auth-tab" onclick="switchAuth('register')">DAFTAR AKUN</button>
+            <div class="auth-tabs" id="authTabs">
+                <button type="button" class="auth-tab active" id="tabLogin" onclick="switchAuth('login')">MASUK AKUN</button>
+                <button type="button" class="auth-tab" id="tabRegister" onclick="switchAuth('register')">DAFTAR BARU</button>
             </div>
 
-            <!-- Login Form -->
+            <!-- 1. Form Masuk -->
             <form id="loginForm" class="auth-form active">
-                <h2>Selamat Datang Kembali!</h2>
-                <p class="auth-subtitle">Masuk untuk melanjutkan belanja part balap Anda.</p>
+                <div class="form-title-block">
+                    <h2>Selamat Datang Kembali!</h2>
+                    <p class="auth-subtitle">Masuk ke akun YUKIDO Anda untuk melacak pengiriman perkakas dan riwayat belanja.</p>
+                </div>
                 
                 <div class="form-group">
-                    <label>EMAIL ATAU NOMOR HP</label>
-                    <input type="text" placeholder="contoh@email.com" required>
+                    <label>EMAIL ATAU NOMOR WHATSAPP</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" placeholder="contoh@email.com atau 0812xxxx" required>
+                    </div>
                 </div>
+
                 <div class="form-group">
                     <label>KATA SANDI</label>
-                    <input type="password" placeholder="••••••••" required>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Masukkan kata sandi Anda" required>
+                        <button type="button" class="toggle-pass" onclick="togglePassword('loginPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="form-options">
-                    <label class="checkbox-label"><input type="checkbox"> Ingat Saya</label>
-                    <a href="#" class="forgot-link">Lupa Kata Sandi?</a>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> Ingat sesi saya
+                    </label>
+                    <a href="javascript:void(0)" class="forgot-link" onclick="switchAuth('forgot')">Lupa Kata Sandi?</a>
                 </div>
 
-                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">MASUK KE AKUN</button>
+                <button type="submit" class="btn-auth-submit">
+                    <i class="fas fa-sign-in-alt"></i> MASUK SEKARANG
+                </button>
                 
-                <div class="auth-divider"><span>ATAU MASUK DENGAN</span></div>
-                <button type="button" class="btn-social"><i class="fab fa-google"></i> Google</button>
+                <div class="auth-divider"><span>ATAU MASUK CEPAT DENGAN</span></div>
+                <button type="button" class="btn-social">
+                    <i class="fab fa-google"></i> Lanjutkan dengan Google
+                </button>
             </form>
 
-            <!-- Register Form -->
+            <!-- 2. Form Daftar Akun Baru -->
             <form id="registerForm" class="auth-form">
-                <h2>Buat Akun Paddock</h2>
-                <p class="auth-subtitle">Daftar untuk mendapatkan akses garansi dan promo eksklusif.</p>
+                <div class="form-title-block">
+                    <h2>Buat Akun YUKIDO</h2>
+                    <p class="auth-subtitle">Daftar gratis untuk kemudahan belanja alat teknik & layanan garansi resmi.</p>
+                </div>
                 
                 <div class="form-group">
                     <label>NAMA LENGKAP</label>
-                    <input type="text" placeholder="Nama sesuai KTP" required>
-                </div>
-                <div class="form-group">
-                    <label>EMAIL</label>
-                    <input type="email" placeholder="contoh@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label>NOMOR WHATSAPP</label>
-                    <input type="tel" placeholder="081234567890" required>
-                </div>
-                <div class="form-group">
-                    <label>KATA SANDI</label>
-                    <input type="password" placeholder="Min. 8 karakter" required>
+                    <div class="input-with-icon">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">DAFTAR SEKARANG</button>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>EMAIL AKTIF</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="nama@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>NOMOR WHATSAPP</label>
+                        <div class="input-with-icon">
+                            <i class="fab fa-whatsapp"></i>
+                            <input type="tel" placeholder="081234567890" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>KATA SANDI BARU</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regPassword" placeholder="Minimal 8 karakter" minlength="8" required>
+                        <button type="button" class="toggle-pass" onclick="togglePassword('regPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth-submit">
+                    <i class="fas fa-user-plus"></i> DAFTAR AKUN RESMI
+                </button>
             </form>
 
-            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            <!-- 3. Form Lupa Kata Sandi -->
+            <form id="forgotForm" class="auth-form" onsubmit="handleResetPassword(event)">
+                <div class="form-title-block">
+                    <h2>Atur Ulang Kata Sandi</h2>
+                    <p class="auth-subtitle">Masukkan Email atau Nomor WhatsApp yang terdaftar untuk menerima kode verifikasi (OTP) reset sandi.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>EMAIL ATAU NOMOR WHATSAPP TERDAFTAR</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-paper-plane"></i>
+                        <input type="text" id="resetTarget" placeholder="contoh@email.com atau 0812xxxx" required>
+                    </div>
+                </div>
+
+                <div id="resetSuccessBox" class="reset-success-box" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Link & Kode OTP Terkirim!</strong>
+                        <p id="resetSuccessText">Silakan cek kotak masuk Email atau pesan WhatsApp Anda untuk membuat kata sandi baru.</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth-submit">
+                    <i class="fas fa-key"></i> KIRIM KODE RESET SANDI
+                </button>
+
+                <button type="button" class="btn-back-login" onclick="switchAuth('login')">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Halaman Masuk
+                </button>
+            </form>
+
+            <a href="index.html" class="back-home">
+                <i class="fas fa-home"></i> Kembali ke Beranda YUKIDO
+            </a>
         </div>
     </div>
 

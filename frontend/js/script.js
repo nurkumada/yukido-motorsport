@@ -444,37 +444,64 @@ if (countdownEl) {
     }, 1000);
 }
 
-// =========================================
-// FITUR HALAMAN LOGIN
-// =========================================
-function switchAuth(type) {
+// === AUTH PAGE LOGIC (LOGIN, REGISTER & LUPA KATA SANDI) ===
+function switchAuth(mode) {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
-    const tabs = document.querySelectorAll('.auth-tab');
+    const forgotForm = document.getElementById('forgotForm');
+    const authTabs = document.getElementById('authTabs');
+    const tabLogin = document.getElementById('tabLogin');
+    const tabRegister = document.getElementById('tabRegister');
+
     if (!loginForm || !registerForm) return;
 
-    if (type === 'login') {
+    loginForm.classList.remove('active');
+    registerForm.classList.remove('active');
+    if (forgotForm) forgotForm.classList.remove('active');
+
+    if (mode === 'login') {
+        if (authTabs) authTabs.style.display = 'grid';
         loginForm.classList.add('active');
-        registerForm.classList.remove('active');
-        tabs[0].classList.add('active');
-        tabs[1].classList.remove('active');
-    } else {
-        loginForm.classList.remove('active');
+        if (tabLogin) tabLogin.classList.add('active');
+        if (tabRegister) tabRegister.classList.remove('active');
+    } else if (mode === 'register') {
+        if (authTabs) authTabs.style.display = 'grid';
         registerForm.classList.add('active');
-        tabs[0].classList.remove('active');
-        tabs[1].classList.add('active');
+        if (tabRegister) tabRegister.classList.add('active');
+        if (tabLogin) tabLogin.classList.remove('active');
+    } else if (mode === 'forgot' && forgotForm) {
+        if (authTabs) authTabs.style.display = 'none';
+        forgotForm.classList.add('active');
+        const successBox = document.getElementById('resetSuccessBox');
+        if (successBox) successBox.style.display = 'none';
     }
 }
 
-const loginFormEl = document.getElementById('loginForm');
-if (loginFormEl) {
-    loginFormEl.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Login berhasil! Mengalihkan ke Dashboard...');
-        window.location.href = 'index.html';
-    });
+function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const icon = btn.querySelector('i');
+    if (!input || !icon) return;
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
 }
 
+function handleResetPassword(e) {
+    e.preventDefault();
+    const targetInput = document.getElementById('resetTarget');
+    const box = document.getElementById('resetSuccessBox');
+    const text = document.getElementById('resetSuccessText');
+
+    if (targetInput && box && text) {
+        text.textContent = `Kode verifikasi dan tautan atur ulang kata sandi telah dikirim ke ${targetInput.value.trim()}.`;
+        box.style.display = 'flex';
+    }
+}
 // =========================================
 // LOGIKA AI CHATBOT YUKIDO
 // =========================================
