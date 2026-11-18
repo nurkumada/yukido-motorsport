@@ -2850,6 +2850,616 @@ nav.navbar {
     .va-number { font-size: 20px; }
 }
 
+/* =========================================================
+   SIMPLE CHECKOUT PAGE - CLEAN LAYOUT MERAH-HITAM YUKIDO
+   ========================================================= */
+.simple-checkout-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 25px 30px 45px;
+}
+
+.simple-checkout-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.simple-checkout-topbar h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.simple-checkout-topbar h1 span {
+    color: var(--red-primary);
+}
+
+.btn-back-simple {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.btn-back-simple:hover {
+    border-color: var(--red-primary);
+    color: var(--text-primary);
+}
+
+.simple-grid {
+    display: grid;
+    grid-template-columns: 1fr 370px;
+    gap: 22px;
+    align-items: start;
+}
+
+.sc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 18px;
+}
+
+.sc-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sc-card-title i {
+    color: var(--red-primary);
+    margin-right: 8px;
+}
+
+/* Form Alamat Clean */
+.sc-form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sc-form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.sc-input,
+.sc-textarea {
+    width: 100%;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 11px 14px;
+    color: var(--text-primary);
+    font-size: 13.5px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.sc-input::placeholder,
+.sc-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.sc-input:focus,
+.sc-textarea:focus {
+    border-color: var(--red-primary);
+}
+
+/* Pesanan Anda */
+.sc-store-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: -10px 0 14px 0;
+}
+
+.sc-order-list .sum-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sc-order-list .sum-item:last-child {
+    border-bottom: none;
+}
+
+.sc-order-list .sum-item img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.sc-order-list .sum-item > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.sc-order-list .sum-item > div span:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.sc-order-list .sum-qty {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.sc-order-list .sum-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--red-primary);
+}
+
+/* Pilihan Kurir Compact */
+.sc-courier-section {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.sc-courier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.sc-courier-label {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.sc-weight-badge {
+    font-size: 11.5px;
+    color: var(--text-muted);
+}
+
+.sc-courier-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 14px 0;
+}
+
+.sc-courier-row .shipping-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sc-courier-row .shipping-card.active {
+    border-color: var(--red-primary);
+    background: rgba(225, 6, 0, 0.08);
+}
+
+.sc-courier-row .shipping-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.sc-courier-row .shipping-card p {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin: 3px 0;
+}
+
+.sc-courier-row .shipping-price {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Metode Pembayaran List */
+.sc-pay-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sc-pay-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 15px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.sc-pay-option.active {
+    border-color: var(--red-primary);
+    background: rgba(225, 6, 0, 0.08);
+}
+
+.sc-pay-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sc-pay-left i {
+    width: 24px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.sc-pay-option.active .sc-pay-left i {
+    color: var(--red-primary);
+}
+
+.sc-pay-left strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.sc-pay-left small {
+    display: block;
+    font-size: 11.5px;
+    color: var(--text-muted);
+}
+
+.sc-radio-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sc-pay-option.active .sc-radio-dot {
+    border-color: var(--red-primary);
+}
+
+.sc-pay-option.active .sc-radio-dot::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red-primary);
+}
+
+.sc-pay-detail-panel {
+    margin-top: 14px;
+    padding: 14px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.sc-mini-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.sc-mini-chips .bank-card {
+    padding: 8px 14px;
+    border-radius: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+}
+
+.sc-mini-chips .bank-card.active {
+    border-color: var(--red-primary);
+    color: var(--text-primary);
+    background: rgba(225, 6, 0, 0.14);
+}
+
+.sc-va-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sc-va-label {
+    color: var(--text-muted);
+    display: block;
+}
+
+.sc-va-number {
+    font-size: 16px;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.sc-qris-box {
+    text-align: center;
+}
+
+.sc-qris-box img {
+    width: 140px;
+    height: 140px;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.sc-qris-box p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 8px 0 0;
+}
+
+/* Ringkasan Kanan */
+.sc-summary-sticky {
+    position: sticky;
+    top: 86px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.sc-sum-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.sc-sum-row span:last-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.sc-sum-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 14px 0;
+}
+
+.sc-sum-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.sc-sum-total > span:first-child {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.sc-sum-total .total-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--red-primary);
+}
+
+.sc-btn-order {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: var(--red-primary);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.sc-btn-order:hover {
+    background: var(--red-hover);
+}
+
+@media (max-width: 960px) {
+    .simple-grid {
+        grid-template-columns: 1fr;
+    }
+    .simple-checkout-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 35px 30px 45px;
+    }
+}
+
+@media (max-width: 640px) {
+    .sc-form-row-2,
+    .sc-courier-row {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================================================
+   LOGO PNG BANK, E-WALLET, QRIS & KARTU (CHECKOUT)
+   ========================================================= */
+.sc-mini-chips .bank-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 14px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.sc-mini-chips .bank-card strong {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1;
+}
+
+.sc-mini-chips .bank-card:hover {
+    border-color: var(--text-muted);
+}
+
+.sc-mini-chips .bank-card.active {
+    border-color: var(--red-primary);
+    color: var(--text-primary);
+    background: rgba(225, 6, 0, 0.12);
+}
+
+.pay-logo-img {
+    width: 48px;
+    height: 22px;
+    object-fit: contain;
+    background: transparent;
+    padding: 0;
+    display: block;
+    flex-shrink: 0;
+}
+
+.pay-logo-qris {
+    height: 30px;
+    max-width: 96px;
+    padding: 0;
+}
+
+/* Bank VA */
+.logo-bca {
+    background: #005baa;
+    color: #ffffff;
+    font-style: italic;
+}
+
+.logo-mandiri {
+    background: #003d79;
+    color: #ffb700;
+    text-transform: lowercase;
+}
+
+.logo-bni {
+    background: #f15a23;
+    color: #ffffff;
+}
+
+.logo-bri {
+    background: #00529c;
+    color: #ffffff;
+}
+
+.logo-permata {
+    background: #007a33;
+    color: #ffffff;
+}
+
+/* QRIS */
+.logo-qris {
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid #d1d5db;
+    letter-spacing: 1px;
+}
+
+/* E-Wallet */
+.logo-gopay {
+    background: #00aed6;
+    color: #ffffff;
+    text-transform: lowercase;
+}
+
+.logo-ovo {
+    background: #4c3494;
+    color: #ffffff;
+}
+
+.logo-dana {
+    background: #118eea;
+    color: #ffffff;
+}
+
+.logo-shopeepay {
+    background: #ee4d2d;
+    color: #ffffff;
+}
+
+/* Kartu Debit / Kredit */
+.logo-visa {
+    background: #1a1f71;
+    color: #ffffff;
+    font-style: italic;
+}
+
+.logo-mc {
+    background: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #333333;
+    gap: 4px;
+}
+
+.mc-circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.mc-circle.red {
+    background: #eb001b;
+}
+
+.mc-circle.orange {
+    background: #f79e1b;
+    margin-left: -5px;
+}
+
+.logo-gpn {
+    background: #c8102e;
+    color: #ffffff;
+}
+
 /* ============================================================================
    CSS KONTEN UTAMA: KLAIM GARANSI CEPAT & ABOUT US (garansi.html)
    ============================================================================ */

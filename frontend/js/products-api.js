@@ -1,4 +1,3 @@
-
 const YUKIDO_API = "../backend";
 
 let yukidoProducts = [];
@@ -29,41 +28,29 @@ function escapeHTML(value) {
     })[char]);
 }
 
-// Menentukan lokasi gambar
-
 // Menentukan lokasi gambar produk
-
 function productImage(path) {
     if (!path) {
         return "images/yukido.png";
     }
 
-    // URL gambar dari website eksternal
     if (/^https?:\/\//i.test(path)) {
         return path;
     }
 
-    // Ubah backslash menjadi forward slash
     path = path.replace(/\\/g, "/");
 
-    // Jika menggunakan path absolut
     if (path.startsWith("/")) {
         return path;
     }
 
-    // Lokasi gambar relatif dari folder frontend
     return path.replace(/^\.?\//, "");
 }
-
-
 
 // Mengambil kategori dari database
 async function loadCategories() {
     try {
-        const response = await fetch(
-            `${YUKIDO_API}/categories/index.php`
-        );
-
+        const response = await fetch(`${YUKIDO_API}/categories/index.php`);
         const result = await response.json();
 
         if (!result.success) {
@@ -85,7 +72,6 @@ async function loadCategories() {
                 </button>
             `);
         });
-
     } catch (error) {
         console.error("Gagal mengambil kategori:", error);
     }
@@ -96,10 +82,7 @@ async function loadProducts() {
     try {
         productGrid.innerHTML = "<p>Memuat produk Yukido...</p>";
 
-        const response = await fetch(
-            `${YUKIDO_API}/products/index.php`
-        );
-
+        const response = await fetch(`${YUKIDO_API}/products/index.php`);
         const result = await response.json();
 
         if (!result.success) {
@@ -107,12 +90,9 @@ async function loadProducts() {
         }
 
         yukidoProducts = result.data;
-
         renderProducts();
-
     } catch (error) {
         console.error("Gagal mengambil produk:", error);
-
         productGrid.innerHTML = `
             <p>Produk gagal dimuat. Periksa koneksi backend.</p>
         `;
@@ -144,15 +124,11 @@ function renderProducts() {
     } else if (sort === "name") {
         filtered.sort((a, b) => a.name.localeCompare(b.name));
     } else {
-        filtered.sort((a, b) =>
-            new Date(b.created_at) - new Date(a.created_at)
-        );
+        filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     }
 
     if (filtered.length === 0) {
-        productGrid.innerHTML = `
-            <p>Produk tidak ditemukan.</p>
-        `;
+        productGrid.innerHTML = `<p>Produk tidak ditemukan.</p>`;
         return;
     }
 
@@ -207,7 +183,6 @@ function renderProducts() {
 // Klik kategori
 categoryTabs.addEventListener("click", event => {
     const button = event.target.closest(".cat-tab");
-
     if (!button) return;
 
     categoryTabs.querySelectorAll(".cat-tab").forEach(tab => {
@@ -215,60 +190,38 @@ categoryTabs.addEventListener("click", event => {
     });
 
     button.classList.add("active");
-
     yukidoCategory = button.dataset.categoryId;
     renderProducts();
 });
 
-// Pencarian
+// Pencarian & pengurutan
 searchProduct.addEventListener("input", renderProducts);
-
-// Pengurutan
 sortProducts.addEventListener("change", renderProducts);
 
 // Tombol reset
 const resetButton = document.querySelector(".btn-reset");
-
 if (resetButton) {
     resetButton.addEventListener("click", () => {
         searchProduct.value = "";
         yukidoCategory = "";
 
         categoryTabs.querySelectorAll(".cat-tab").forEach(tab => {
-            tab.classList.toggle(
-                "active",
-                tab.dataset.categoryId === ""
-            );
+            tab.classList.toggle("active", tab.dataset.categoryId === "");
         });
 
         sortProducts.value = "newest";
-
         renderProducts();
     });
 }
 
-// Menjalankan kedua API
-async function initializeYukidoCatalog() {
-    await Promise.all([
-        loadCategories(),
-        loadProducts()
-    ]);
-}
-
-initializeYukidoCatalog();
-
-
 // =========================================
-// TAMBAH PRODUK KE KERANJANG DATABASE
+// TAMBAH PRODUK & LANGSUNG KE CHECKOUT
 // =========================================
-
 productGrid.addEventListener("click", async function (event) {
     const button = event.target.closest("[data-add-product]");
-
     if (!button) return;
 
     const productId = Number(button.dataset.addProduct);
-
     if (!productId) return;
 
     const originalText = button.innerHTML;
@@ -297,38 +250,32 @@ productGrid.addEventListener("click", async function (event) {
                 window.location.href = "login.html";
                 return;
             }
-
             throw new Error(result.message || "Produk gagal ditambahkan.");
         }
 
-        alert("Produk berhasil ditambahkan ke keranjang!");
-
+        if (result.cart_item_id) {
+            sessionStorage.setItem(
+                "yukido_checkout_items",
+                JSON.stringify([Number(result.cart_item_id)])
+            );
+            window.location.href = "checkout.html";
+        } else {
+            window.location.href = "keranjang.html";
+        }
     } catch (error) {
-        console.error("Gagal menambahkan produk:", error);
+        console.error("Gagal memproses pembelian:", error);
         alert(error.message);
-
-    } finally {
         button.disabled = false;
         button.innerHTML = originalText;
     }
 });
 
+// Jalankan inisialisasi katalog
+async function initializeYukidoCatalog() {
+    await Promise.all([
+        loadCategories(),
+        loadProducts()
+    ]);
+}
 
 initializeYukidoCatalog();
-
-// TEST EVENT TOMBOL BELI
-productGrid.addEventListener("click", async function(event) {
-    const button = event.target.closest(".btn-beli");
-
-    if (!button) return;
-
-    console.log("TOMBOL BELI DIKLIK");
-
-    const productId = Number(button.dataset.addProduct);
-
-    console.log("PRODUCT ID:", productId);
-
-    alert("Tombol BELI berhasil diklik. ID Produk: " + productId);
-});
-
-

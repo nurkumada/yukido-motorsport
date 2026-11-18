@@ -18,33 +18,33 @@
                     <div class="pg-status-badge pending" id="pgStatusBadge">
                         <i class="fas fa-clock"></i> MENUNGGU PEMBAYARAN
                     </div>
-                    <span class="pg-order-id">No. Pesanan: <strong id="pgOrderId">YKD-2026-8831</strong></span>
+                    <span class="pg-order-id">No. Pesanan: <strong id="pgOrderId">-</strong></span>
                 </div>
 
                 <!-- Total & Batas Waktu -->
                 <div class="pg-amount-box">
                     <div class="pg-total-col">
                         <span>Total Pembayaran</span>
-                        <h2 id="pgTotalAmount">Rp 1.705.000</h2>
+                        <h2 id="pgTotalAmount">Rp 0</h2>
                     </div>
                     <div class="pg-timer-col">
                         <span>Bayar Dalam</span>
-                        <div class="pg-countdown" id="countdown">01:59:59</div>
+                        <div class="pg-countdown" id="countdown">02:00:00</div>
                     </div>
                 </div>
 
                 <!-- Detail Metode Pembayaran -->
                 <div class="pg-method-box">
                     <div class="pg-method-head">
-                        <span id="pgMethodName">BCA Virtual Account</span>
+                        <span id="pgMethodName">Memuat metode...</span>
                         <span class="pg-auto-verify"><i class="fas fa-bolt"></i> Verifikasi Otomatis</span>
                     </div>
 
-                    <!-- Tampilan VA / E-Wallet -->
+                    <!-- Tampilan VA / E-Wallet / Kartu Debit -->
                     <div class="pg-va-area" id="pgVaArea">
-                        <label>Nomor Virtual Account / Kode Bayar:</label>
+                        <label id="pgCodeLabel">Nomor Virtual Account / Kode Bayar:</label>
                         <div class="pg-va-row">
-                            <strong id="vaNumber">8271 9028 1148 2910</strong>
+                            <strong id="vaNumber">-</strong>
                             <button type="button" class="pg-btn-copy" id="btnCopyPgCode">
                                 <i class="fas fa-copy"></i> Salin
                             </button>
@@ -55,21 +55,25 @@
                     <div class="pg-qris-area" id="pgQrisArea" style="display: none;">
                         <p>Scan kode QRIS di bawah menggunakan aplikasi m-Banking atau E-Wallet Anda:</p>
                         <div class="pg-qr-box">
-                            <i class="fas fa-qrcode"></i>
+                            <img id="pgQrisImg" src="" alt="QRIS YUKIDO" style="width:170px; height:170px; border-radius:8px; background:#fff; padding:8px; margin-bottom:8px;">
                             <span>PT YUKIDO POWER TEKNIK</span>
-                            <small>NMID: ID1020268831001</small>
+                            <small id="pgQrisNmid">NMID: ID1020268831001</small>
                         </div>
                     </div>
+                </div>
+
+                <!-- Rincian Pesanan & Pengiriman -->
+                <div class="pg-guide-box" style="margin-bottom: 16px;">
+                    <h4><i class="fas fa-box-open"></i> Rincian Pesanan & Pengiriman</h4>
+                    <div id="pgOrderItems" style="font-size: 13px; margin-top: 8px;"></div>
+                    <div id="pgShippingInfo" style="font-size: 12px; color: #aaa; margin-top: 10px; padding-top: 8px; border-top: 1px solid #2a2a2a;"></div>
                 </div>
 
                 <!-- Petunjuk Pembayaran Singkat -->
                 <div class="pg-guide-box">
                     <h4><i class="fas fa-info-circle"></i> Petunjuk Pembayaran</h4>
                     <ol id="pgInstructionList">
-                        <li>Buka aplikasi Mobile Banking / ATM sesuai bank yang dipilih.</li>
-                        <li>Pilih menu <strong>Transfer &gt; Virtual Account</strong>.</li>
-                        <li>Masukkan nomor Virtual Account di atas dan pastikan nominal sesuai.</li>
-                        <li>Status pesanan otomatis berubah menjadi <strong>Lunas</strong> setelah pembayaran berhasil.</li>
+                        <li>Memuat instruksi pembayaran...</li>
                     </ol>
                 </div>
 
@@ -86,5 +90,6 @@
 
     <script src="js/layout.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/konfirmasi-api.js"></script>
 </body>
 </html>
