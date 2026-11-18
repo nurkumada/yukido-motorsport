@@ -285,50 +285,6 @@ productGrid.addEventListener("keydown", function(event) {
         `detail-produk.php?id=${card.dataset.productDetail}`;
 });
 
-
-// =========================================
-// KLIK KARTU PRODUK UNTUK DETAIL
-// =========================================
-
-productGrid.addEventListener("click", function(event) {
-
-    // Jangan buka detail ketika tombol diklik
-    if (event.target.closest("button")) {
-        return;
-    }
-
-    const card = event.target.closest("[data-product-detail]");
-
-    if (!card) return;
-
-    const productId = card.dataset.productDetail;
-
-    window.location.href =
-        `detail-produk.php?id=${productId}`;
-});
-
-// Mendukung tombol Enter pada keyboard
-productGrid.addEventListener("keydown", function(event) {
-
-    if (event.key !== "Enter" && event.key !== " ") {
-        return;
-    }
-
-    if (event.target.closest("button")) {
-        return;
-    }
-
-    const card = event.target.closest("[data-product-detail]");
-
-    if (!card) return;
-
-    event.preventDefault();
-
-    window.location.href =
-        `detail-produk.php?id=${card.dataset.productDetail}`;
-});
-
-
 // =========================================
 // TAMBAH KERANJANG DAN BELI
 // =========================================

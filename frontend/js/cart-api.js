@@ -351,28 +351,28 @@ document.getElementById("btnDeleteSelected")?.addEventListener("click", async ()
     }
 });
 
+
 document.querySelector(".btn-shopee-checkout")
-?.addEventListener("click", event => {
+    ?.addEventListener("click", event => {
 
     event.preventDefault();
 
-    
-    const ids = Array.from(selectedItems).map(item =>
-        Number(item.value)
-    );
+    // selectedItems sudah berisi angka ID cart_item
+    const ids = Array.from(selectedItems)
+        .map(id => Number(id))
+        .filter(id => Number.isInteger(id) && id > 0);
 
     if (ids.length === 0) {
         alert("Pilih minimal satu produk untuk checkout.");
         return;
     }
 
+    // Simpan ID produk keranjang untuk halaman checkout
     sessionStorage.setItem(
         "yukido_checkout_items",
         JSON.stringify(ids)
     );
 
+    // Pindah ke checkout
     window.location.href = "checkout.html";
-
 });
-
-document.addEventListener("DOMContentLoaded", loadCart);

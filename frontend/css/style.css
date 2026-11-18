@@ -6056,144 +6056,28 @@ body { overflow-x: hidden; }
 }
 
 
-/* =====================================
-   PRODUCT ACTION BUTTON - FIX
-===================================== */
-
-
-/* AREA TOMBOL PRODUK */
-.produk-actions {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    width: 100%;
-    margin-top: 12px;
-}
-
-/* TOMBOL KERANJANG */
-.produk-actions .btn-cart-add {
-    box-sizing: border-box !important;
-
-    display: flex !important;
-    flex: 0 0 52px !important;
-
-    width: 52px !important;
-    min-width: 52px !important;
-    max-width: 52px !important;
-    height: 44px !important;
-
-    padding: 0 !important;
-    margin: 0 !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    background: #242424 !important;
-    color: white !important;
-
-    border: 1px solid var(--red-primary) !important;
-    border-radius: 7px !important;
-
-    font-size: 20px !important;
-    cursor: pointer;
-}
-
-/* IKON KERANJANG */
-.produk-actions .btn-cart-add i {
-    font-size: 20px !important;
-    line-height: 1 !important;
-}
-
-/* HOVER KERANJANG */
-.produk-actions .btn-cart-add:hover {
-    background: var(--red-primary) !important;
-    color: white !important;
-}
-
-/* TOMBOL BELI */
-.produk-actions .btn-beli {
-    box-sizing: border-box !important;
-
-    display: flex !important;
-    flex: 1 !important;
-
-    height: 44px !important;
-    min-width: 0 !important;
-
-    padding: 0 12px !important;
-    margin: 0 !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    background: var(--red-primary) !important;
-    color: white !important;
-
-    border: none !important;
-    border-radius: 7px !important;
-
-    font-size: 12px !important;
-    font-weight: 700 !important;
-
-    cursor: pointer;
-}
-
-.produk-actions .btn-beli:hover {
-    background: var(--red-hover) !important;
-}
-
-/* STOK HABIS */
-.produk-actions button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-/* RESPONSIVE HP */
-@media (max-width: 768px) {
-    .produk-actions {
-        gap: 8px !important;
-    }
-
-    .produk-actions .btn-cart-add {
-        flex-basis: 46px !important;
-        width: 46px !important;
-        min-width: 46px !important;
-        max-width: 46px !important;
-        height: 42px !important;
-    }
-
-    .produk-actions .btn-cart-add i {
-        font-size: 18px !important;
-    }
-
-    .produk-actions .btn-beli {
-        height: 42px !important;
-    }
-}
-
 
 /* ==========================================
-   FINAL FIX TOMBOL KERANJANG YUKIDO
-   Letakkan paling akhir style.css
+   TOMBOL KERANJANG YUKIDO - FINAL
 ========================================== */
 
-.produk-grid .produk-card .produk-actions {
+.produk-actions {
     display: flex !important;
-    width: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
     gap: 10px !important;
-    align-items: stretch !important;
+    width: 100% !important;
 }
 
-/* Keranjang dibuat lebih besar */
-.produk-grid .produk-card .produk-actions > button.btn-cart-add {
-    display: flex !important;
-
+/* Tombol keranjang */
+.produk-actions > .btn-cart-add {
     box-sizing: border-box !important;
-    flex: 0 0 55px !important;
+    display: flex !important;
+    flex: 0 0 58px !important;
 
-    width: 55px !important;
-    min-width: 55px !important;
-    max-width: 55px !important;
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
     height: 44px !important;
 
     padding: 0 !important;
@@ -6203,34 +6087,25 @@ body { overflow-x: hidden; }
     justify-content: center !important;
 
     background: #292929 !important;
-    color: #ffffff !important;
-
+    color: white !important;
     border: 1px solid #e00000 !important;
     border-radius: 7px !important;
 
-    font-size: 21px !important;
+    cursor: pointer !important;
 }
 
-/* Ukuran ikon keranjang */
-.produk-grid .produk-card .produk-actions > button.btn-cart-add i {
-    font-size: 21px !important;
-    display: inline-block !important;
-}
-
-/* Hover keranjang */
-.produk-grid .produk-card .produk-actions > button.btn-cart-add:hover {
-    background: #e00000 !important;
-    color: #ffffff !important;
+.produk-actions > .btn-cart-add i {
+    font-size: 22px !important;
 }
 
 /* Tombol BELI */
-.produk-grid .produk-card .produk-actions > button.btn-beli {
+.produk-actions > .btn-beli {
+    box-sizing: border-box !important;
     display: flex !important;
-    flex: 1 1 auto !important;
+    flex: 1 1 0 !important;
 
-    width: auto !important;
-    min-width: 0 !important;
     height: 44px !important;
+    min-width: 0 !important;
 
     padding: 0 12px !important;
     margin: 0 !important;
@@ -6239,8 +6114,7 @@ body { overflow-x: hidden; }
     justify-content: center !important;
 
     background: #e00000 !important;
-    color: #ffffff !important;
-
+    color: white !important;
     border: none !important;
     border-radius: 7px !important;
 
@@ -6248,18 +6122,25 @@ body { overflow-x: hidden; }
     font-weight: 700 !important;
 }
 
-/* Mobile */
+/* Stok habis */
+.produk-actions > button:disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+}
+
+/* Responsive HP */
 @media (max-width: 768px) {
-    .produk-grid .produk-card .produk-actions > button.btn-cart-add {
-        flex-basis: 46px !important;
-        width: 46px !important;
-        min-width: 46px !important;
-        max-width: 46px !important;
+    .produk-actions > .btn-cart-add {
+        flex-basis: 48px !important;
+        width: 48px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
         height: 42px !important;
     }
 
-    .produk-grid .produk-card .produk-actions > button.btn-beli {
+    .produk-actions > .btn-beli {
         height: 42px !important;
     }
 }
+
 
