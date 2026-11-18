@@ -608,6 +608,7 @@ $adminName = $_SESSION['user']['full_name'] ?? 'Administrator';
         <a href="dashboard.php">Dashboard</a>
         <a href="products.php">Manajemen Produk</a>
         <a href="categories.php" class="active">Manajemen Kategori</a>
+        <a href="orders.php">Manajemen Pesanan</a>
     </nav>
 </aside>
 

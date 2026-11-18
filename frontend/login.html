@@ -1,521 +1,243 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masuk / Daftar Akun Resmi - YUKIDO Power Teknik</title>
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=9">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body class="auth-body">
 
-<div class="auth-container">
+<div class="auth-wrapper" id="authWrapper">
+    <!-- Latar Belakang Diagonal Animasi Merah-Hitam -->
+    <div class="curved-shape"></div>
+    <div class="curved-shape2"></div>
 
-    <!-- PANEL KIRI -->
-    <div class="auth-left">
-
-        <div class="auth-top-badge">
-            <span class="dot red"></span>
-            PORTAL AKUN RESMI YUKIDO
+    <!-- =====================================
+         FORM 1: LOGIN (POSISI KIRI)
+         ===================================== -->
+    <div class="form-box Login">
+        <div class="auth-mini-brand animation" style="--i:0; --j:20;">
+            <img src="images/logo-yukido.png" alt="YUKIDO">
+            <span>YUKIDO<b>®</b></span>
         </div>
 
-        <div class="auth-brand">
-            <a href="index.html" class="logo">
-                <img src="images/logo-yukido.png"
-                     alt="YUKIDO Power Teknik Logo"
-                     class="logo-img">
+        <h2 class="animation" style="--i:1; --j:21;">Masuk Akun</h2>
 
-                <div class="logo-stack">
-                    <span class="logo-text">
-                        YUKIDO<span class="reg-mark">®</span>
-                    </span>
-                    <span class="logo-sub">
-                        ユキドジャパンテクノロジー
-                    </span>
-                </div>
-            </a>
+        <!-- Notifikasi Login -->
+        <div id="loginMessage" class="auth-msg-box animation" style="--i:1; --j:21; display:none;"></div>
 
-            <h1>
-                PERKAKAS PRESISI
-                <span class="text-red">JAPAN TECHNOLOGY</span>
-            </h1>
-
-            <p>
-                Kelola pesanan peralatan teknik, klaim Garansi Seumur Hidup,
-                dan nikmati penawaran resmi PT. Yukido Power Teknik
-                dalam satu akun.
-            </p>
-        </div>
-
-        <div class="auth-features">
-
-            <div class="auth-feat">
-                <div class="feat-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <div>
-                    <strong>Akses Klaim Garansi Seumur Hidup</strong>
-                    <span>
-                        Pantau status tukar baru hand tools & servis unit mesin resmi.
-                    </span>
-                </div>
+        <form id="loginForm">
+            <div class="input-box animation" style="--i:2; --j:22;">
+                <input type="text" id="loginEmail" required autocomplete="username" placeholder=" ">
+                <label>Email atau Nomor WhatsApp</label>
+                <i class="fas fa-envelope"></i>
             </div>
 
-            <div class="auth-feat">
-                <div class="feat-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <div>
-                    <strong>Katalog Lengkap 200+ Perkakas Heavy-Duty</strong>
-                    <span>
-                        Mulai dari Hand Tools Cr-V, Cordless Brushless,
-                        hingga Mesin Las IGBT.
-                    </span>
-                </div>
+            <div class="input-box animation" style="--i:3; --j:23;">
+                <input type="password" id="loginPassword" required autocomplete="current-password" placeholder=" ">
+                <label>Kata Sandi</label>
+                <button type="button" class="toggle-pass-btn" onclick="togglePassword('loginPassword', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
             </div>
 
-            <div class="auth-feat">
-                <div class="feat-icon">
-                    <i class="fas fa-tags"></i>
-                </div>
-                <div>
-                    <strong>Promo & Poin Reward Member</strong>
-                    <span>
-                        Dapatkan penawaran paket alat teknik dan poin setiap transaksi.
-                    </span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="auth-left-footer">
-            <span>
-                PT. YUKIDO POWER TEKNIK • INDUSTRIAL & WORKSHOP GRADE
-            </span>
-        </div>
-
-    </div>
-
-
-    <!-- PANEL KANAN -->
-    <div class="auth-right">
-
-        <div class="auth-tabs" id="authTabs">
-            <button type="button"
-                    class="auth-tab active"
-                    id="tabLogin"
-                    onclick="switchAuth('login')">
-                MASUK AKUN
-            </button>
-
-            <button type="button"
-                    class="auth-tab"
-                    id="tabRegister"
-                    onclick="switchAuth('register')">
-                DAFTAR BARU
-            </button>
-        </div>
-
-
-        <!-- PESAN NOTIFIKASI -->
-        <div id="authMessage"
-             role="status"
-             aria-live="polite"
-             style="display:none; margin-bottom:18px;">
-        </div>
-
-
-        <!-- FORM LOGIN -->
-        <form id="loginForm" class="auth-form active">
-
-            <div class="form-title-block">
-                <h2>Selamat Datang Kembali!</h2>
-                <p class="auth-subtitle">
-                    Masuk ke akun YUKIDO Anda untuk melacak pengiriman
-                    perkakas dan riwayat belanja.
-                </p>
-            </div>
-
-            <div class="form-group">
-                <label>EMAIL ATAU NOMOR WHATSAPP</label>
-
-                <div class="input-with-icon">
-                    <i class="fas fa-envelope"></i>
-
-                    <input type="text"
-                           id="loginEmail"
-                           placeholder="contoh@email.com atau 0812xxxx"
-                           autocomplete="username"
-                           required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>KATA SANDI</label>
-
-                <div class="input-with-icon">
-                    <i class="fas fa-lock"></i>
-
-                    <input type="password"
-                           id="loginPassword"
-                           placeholder="Masukkan kata sandi Anda"
-                           autocomplete="current-password"
-                           required>
-
-                    <button type="button"
-                            class="toggle-pass"
-                            onclick="togglePassword('loginPassword', this)">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="form-options">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="rememberMe">
-                    Ingat sesi saya
+            <div class="auth-extra-row animation" style="--i:3; --j:23;">
+                <label class="remember-chk">
+                    <input type="checkbox" id="rememberMe"> Ingat saya
                 </label>
-
-                <a href="javascript:void(0)"
-                   class="forgot-link"
-                   onclick="switchAuth('forgot')">
-                    Lupa Kata Sandi?
-                </a>
+                <a href="javascript:void(0)" onclick="showMsg('loginMessage', 'Fitur reset sandi akan aktif setelah integrasi OTP.', 'error')">Lupa sandi?</a>
             </div>
 
-            <button type="submit"
-                    class="btn-auth-submit"
-                    id="loginButton">
-                <i class="fas fa-sign-in-alt"></i>
-                MASUK SEKARANG
-            </button>
-
-            <div class="auth-divider">
-                <span>ATAU MASUK DENGAN</span>
+            <div class="input-box animation" style="--i:4; --j:24;">
+                <button class="btn-anim" type="submit" id="loginButton">MASUK SEKARANG</button>
             </div>
 
-            <button type="button"
-                    class="btn-social"
-                    onclick="showMessage('Login Google belum tersedia. Silakan gunakan email atau nomor WhatsApp.', 'error')">
-                <i class="fab fa-google"></i>
-                Lanjutkan dengan Google
-            </button>
-
+            <div class="regi-link animation" style="--i:5; --j:25;">
+                <p>Belum punya akun YUKIDO? <a href="javascript:void(0)" class="SignUpLink">Daftar Baru</a></p>
+                <a href="index.html" class="back-beranda"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            </div>
         </form>
-
-
-        <!-- FORM REGISTER -->
-        <form id="registerForm" class="auth-form">
-
-            <div class="form-title-block">
-                <h2>Buat Akun YUKIDO</h2>
-                <p class="auth-subtitle">
-                    Daftar gratis untuk kemudahan belanja alat teknik
-                    dan layanan garansi resmi.
-                </p>
-            </div>
-
-            <div class="form-group">
-                <label>NAMA LENGKAP</label>
-
-                <div class="input-with-icon">
-                    <i class="fas fa-id-card"></i>
-
-                    <input type="text"
-                           id="regName"
-                           placeholder="Masukkan nama lengkap Anda"
-                           autocomplete="name"
-                           required>
-                </div>
-            </div>
-
-            <div class="form-row-2">
-
-                <div class="form-group">
-                    <label>EMAIL AKTIF</label>
-
-                    <div class="input-with-icon">
-                        <i class="fas fa-envelope"></i>
-
-                        <input type="email"
-                               id="regEmail"
-                               placeholder="nama@email.com"
-                               autocomplete="email"
-                               required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>NOMOR WHATSAPP</label>
-
-                    <div class="input-with-icon">
-                        <i class="fab fa-whatsapp"></i>
-
-                        <input type="tel"
-                               id="regPhone"
-                               placeholder="081234567890"
-                               autocomplete="tel"
-                               required>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <label>KATA SANDI BARU</label>
-
-                <div class="input-with-icon">
-                    <i class="fas fa-lock"></i>
-
-                    <input type="password"
-                           id="regPassword"
-                           placeholder="Minimal 8 karakter"
-                           minlength="8"
-                           autocomplete="new-password"
-                           required>
-
-                    <button type="button"
-                            class="toggle-pass"
-                            onclick="togglePassword('regPassword', this)">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-            </div>
-
-            <button type="submit"
-                    class="btn-auth-submit"
-                    id="registerButton">
-                <i class="fas fa-user-plus"></i>
-                DAFTAR AKUN RESMI
-            </button>
-
-            <p style="text-align:center; margin-top:15px; font-size:13px;">
-                Sudah memiliki akun?
-                <a href="javascript:void(0)"
-                   onclick="switchAuth('login')">
-                    Masuk sekarang
-                </a>
-            </p>
-
-        </form>
-
-
-        <!-- FORM LUPA PASSWORD -->
-        <form id="forgotForm" class="auth-form">
-
-            <div class="form-title-block">
-                <h2>Atur Ulang Kata Sandi</h2>
-                <p class="auth-subtitle">
-                    Fitur pemulihan kata sandi melalui email atau WhatsApp
-                    belum tersedia.
-                </p>
-            </div>
-
-            <div class="form-group">
-                <label>EMAIL ATAU NOMOR WHATSAPP TERDAFTAR</label>
-
-                <div class="input-with-icon">
-                    <i class="fas fa-envelope"></i>
-
-                    <input type="text"
-                           id="resetTarget"
-                           placeholder="Email atau nomor WhatsApp">
-                </div>
-            </div>
-
-            <button type="button"
-                    class="btn-auth-submit"
-                    onclick="showMessage('Fitur reset password akan tersedia setelah integrasi verifikasi email atau OTP.', 'error')">
-                <i class="fas fa-key"></i>
-                FITUR BELUM TERSEDIA
-            </button>
-
-            <button type="button"
-                    class="btn-back-login"
-                    onclick="switchAuth('login')">
-                <i class="fas fa-arrow-left"></i>
-                Kembali ke Halaman Masuk
-            </button>
-
-        </form>
-
-
-        <a href="index.html" class="back-home">
-            <i class="fas fa-home"></i>
-            Kembali ke Beranda YUKIDO
-        </a>
-
     </div>
 
+    <!-- PANEL INFO LOGIN (POSISI KANAN) -->
+    <div class="info-content Login">
+        <div class="neon-lamp-wrap animation" style="--i:0; --j:20;">
+            <div class="neon-ring"></div>
+            <div class="neon-core">
+                <img src="images/logo-yukido.png" alt="YUKIDO">
+            </div>
+        </div>
+        <span class="info-pill animation" style="--i:1; --j:21;">JAPAN TECHNOLOGY</span>
+        <h2 class="animation" style="--i:2; --j:22;">SELAMAT DATANG KEMBALI!</h2>
+        <p class="animation" style="--i:3; --j:23;">
+            Masuk untuk melacak pesanan perkakas heavy-duty dan kelola klaim Garansi Seumur Hidup.
+        </p>
+    </div>
+
+    <!-- =====================================
+         FORM 2: REGISTER (POSISI KANAN)
+         ===================================== -->
+    <div class="form-box Register">
+        <div class="auth-mini-brand animation" style="--i:17; --j:0;">
+            <img src="images/logo-yukido.png" alt="YUKIDO">
+            <span>YUKIDO<b>®</b></span>
+        </div>
+
+        <h2 class="animation" style="--i:18; --j:1;">Daftar Akun</h2>
+
+        <!-- Notifikasi Register -->
+        <div id="registerMessage" class="auth-msg-box animation" style="--i:18; --j:1; display:none;"></div>
+
+        <form id="registerForm">
+            <div class="input-box animation" style="--i:19; --j:2;">
+                <input type="text" id="regName" required autocomplete="name" placeholder=" ">
+                <label>Nama Lengkap</label>
+                <i class="fas fa-user"></i>
+            </div>
+
+            <div class="input-box animation" style="--i:20; --j:3;">
+                <input type="email" id="regEmail" required autocomplete="email" placeholder=" ">
+                <label>Email Aktif</label>
+                <i class="fas fa-envelope"></i>
+            </div>
+
+            <div class="input-box animation" style="--i:21; --j:4;">
+                <input type="tel" id="regPhone" required autocomplete="tel" placeholder=" ">
+                <label>Nomor WhatsApp</label>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+
+            <div class="input-box animation" style="--i:22; --j:5;">
+                <input type="password" id="regPassword" required minlength="8" autocomplete="new-password" placeholder=" ">
+                <label>Kata Sandi (Min. 8 Karakter)</label>
+                <button type="button" class="toggle-pass-btn" onclick="togglePassword('regPassword', this)">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+
+            <div class="input-box animation" style="--i:23; --j:6;">
+                <button class="btn-anim" type="submit" id="registerButton">DAFTAR SEKARANG</button>
+            </div>
+
+            <div class="regi-link animation" style="--i:24; --j:7;">
+                <p>Sudah memiliki akun? <a href="javascript:void(0)" class="SignInLink">Masuk Sekarang</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- PANEL INFO REGISTER (POSISI KIRI) -->
+    <div class="info-content Register">
+        <span class="info-pill animation" style="--i:17; --j:0;">OFFICIAL MEMBER</span>
+        <h2 class="animation" style="--i:18; --j:1;">GABUNG BERSAMA YUKIDO!</h2>
+        <p class="animation" style="--i:19; --j:2;">
+            Daftar gratis untuk akses cepat 200+ katalog perkakas bengkel & industri serta garansi tukar baru resmi.
+        </p>
+    </div>
 </div>
-
-
-<script src="js/script.js"></script>
 
 <script>
 const API_AUTH = "../backend/auth/";
+const authWrapper = document.getElementById("authWrapper");
+const signUpLink = document.querySelector(".SignUpLink");
+const signInLink = document.querySelector(".SignInLink");
 
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-const authMessage = document.getElementById("authMessage");
+/* ANIMASI GESER LOGIN <-> REGISTER */
+signUpLink.addEventListener("click", () => {
+    authWrapper.classList.add("active");
+    hideMsgs();
+});
 
+signInLink.addEventListener("click", () => {
+    authWrapper.classList.remove("active");
+    hideMsgs();
+});
 
-/* GANTI FORM LOGIN / REGISTER / FORGOT */
-function switchAuth(type) {
-
-    document.querySelectorAll(".auth-form").forEach(form => {
-        form.classList.remove("active");
-    });
-
-    document.querySelectorAll(".auth-tab").forEach(tab => {
-        tab.classList.remove("active");
-    });
-
-    if (type === "login") {
-        loginForm.classList.add("active");
-        document.getElementById("tabLogin").classList.add("active");
-    }
-
-    if (type === "register") {
-        registerForm.classList.add("active");
-        document.getElementById("tabRegister").classList.add("active");
-    }
-
-    if (type === "forgot") {
-        document.getElementById("forgotForm").classList.add("active");
-    }
-
-    clearMessage();
-}
-
-
-/* TAMPILKAN / SEMBUNYIKAN PASSWORD */
-function togglePassword(inputId, button) {
-
+/* TOGGLE MATA PASSWORD */
+function togglePassword(inputId, btn) {
     const input = document.getElementById(inputId);
-    const icon = button.querySelector("i");
-
+    const icon = btn.querySelector("i");
     if (input.type === "password") {
         input.type = "text";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
+        icon.classList.replace("fa-eye", "fa-eye-slash");
     } else {
         input.type = "password";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
+        icon.classList.replace("fa-eye-slash", "fa-eye");
     }
 }
-
 
 /* NOTIFIKASI */
-function showMessage(message, type = "success") {
-
-    authMessage.style.display = "block";
-
-    authMessage.style.padding = "12px 15px";
-    authMessage.style.borderRadius = "8px";
-    authMessage.style.fontSize = "14px";
-
-    if (type === "success") {
-        authMessage.style.background = "#e8f8ee";
-        authMessage.style.color = "#176b37";
-    } else {
-        authMessage.style.background = "#fdeaea";
-        authMessage.style.color = "#a32121";
-    }
-
-    authMessage.textContent = message;
+function showMsg(boxId, text, type = "success") {
+    const box = document.getElementById(boxId);
+    box.style.display = "block";
+    box.className = "auth-msg-box " + (type === "success" ? "msg-ok" : "msg-err");
+    box.textContent = text;
 }
 
-function clearMessage() {
-    authMessage.style.display = "none";
-    authMessage.textContent = "";
+function hideMsgs() {
+    ["loginMessage", "registerMessage"].forEach(id => {
+        const el = document.getElementById(id);
+        el.style.display = "none";
+        el.textContent = "";
+    });
 }
-
 
 /* PROSES LOGIN */
-loginForm.addEventListener("submit", async function(event) {
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    hideMsgs();
 
-    event.preventDefault();
-    clearMessage();
-
-    const button = document.getElementById("loginButton");
+    const btn = document.getElementById("loginButton");
     const identifier = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value;
 
-    button.disabled = true;
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES...';
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES...';
 
     try {
-
-        const response = await fetch(API_AUTH + "login.php", {
+        const res = await fetch(API_AUTH + "login.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             credentials: "same-origin",
-            body: JSON.stringify({
-                email: identifier,
-                password: password
-            })
+            body: JSON.stringify({ email: identifier, password: password })
         });
 
-        const result = await response.json();
+        const result = await res.json();
+        if (!res.ok || !result.success) throw new Error(result.message || "Login gagal.");
 
-        if (!response.ok || !result.success) {
-            throw new Error(result.message || "Login gagal.");
-        }
-
-        showMessage("Login berhasil. Mengalihkan halaman...", "success");
-
+        showMsg("loginMessage", "Login berhasil! Mengalihkan...", "success");
         setTimeout(() => {
-
-            if (result.user.role === "admin") {
-                window.location.href = "../backend/admin/dashboard.php";
-            } else {
-                window.location.href = "produk.html";
-            }
-
+            window.location.href = result.user.role === "admin"
+                ? "../backend/admin/dashboard.php"
+                : "produk.html";
         }, 700);
 
-    } catch (error) {
-
-        showMessage(error.message || "Tidak dapat terhubung ke server.", "error");
-
-        button.disabled = false;
-        button.innerHTML = '<i class="fas fa-sign-in-alt"></i> MASUK SEKARANG';
+    } catch (err) {
+        showMsg("loginMessage", err.message || "Gagal terhubung ke server.", "error");
+        btn.disabled = false;
+        btn.textContent = "MASUK SEKARANG";
     }
-
 });
 
-
 /* PROSES REGISTER */
-registerForm.addEventListener("submit", async function(event) {
+document.getElementById("registerForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    hideMsgs();
 
-    event.preventDefault();
-    clearMessage();
-
-    const button = document.getElementById("registerButton");
-
+    const btn = document.getElementById("registerButton");
     const fullName = document.getElementById("regName").value.trim();
     const email = document.getElementById("regEmail").value.trim();
     const phone = document.getElementById("regPhone").value.trim();
     const password = document.getElementById("regPassword").value;
 
-    button.disabled = true;
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENDAFTARKAN...';
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENDAFTARKAN...';
 
     try {
-
-        const response = await fetch(API_AUTH + "register.php", {
+        const res = await fetch(API_AUTH + "register.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             credentials: "same-origin",
             body: JSON.stringify({
                 full_name: fullName,
@@ -525,34 +247,20 @@ registerForm.addEventListener("submit", async function(event) {
             })
         });
 
-        const result = await response.json();
+        const result = await res.json();
+        if (!res.ok || !result.success) throw new Error(result.message || "Registrasi gagal.");
 
-        if (!response.ok || !result.success) {
-            throw new Error(result.message || "Registrasi gagal.");
-        }
-
-        registerForm.reset();
-
-        switchAuth("login");
-
+        this.reset();
+        authWrapper.classList.remove("active");
         document.getElementById("loginEmail").value = email;
+        showMsg("loginMessage", "Registrasi berhasil! Silakan masuk dengan akun baru Anda.", "success");
 
-        showMessage(
-            "Registrasi berhasil! Silakan login menggunakan akun baru Anda.",
-            "success"
-        );
-
-    } catch (error) {
-
-        showMessage(error.message || "Tidak dapat terhubung ke server.", "error");
-
+    } catch (err) {
+        showMsg("registerMessage", err.message || "Gagal terhubung ke server.", "error");
     } finally {
-
-        button.disabled = false;
-        button.innerHTML = '<i class="fas fa-user-plus"></i> DAFTAR AKUN RESMI';
-
+        btn.disabled = false;
+        btn.textContent = "DAFTAR SEKARANG";
     }
-
 });
 </script>
 

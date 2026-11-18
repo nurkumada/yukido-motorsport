@@ -38,6 +38,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
     height: 60px;
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
@@ -45,7 +46,8 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    z-index: 1000;
+    z-index: 1001;
+    box-sizing: border-box;
 }
 
 .nav-left {
@@ -67,6 +69,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none;
 }
 
 .logo-icon {
@@ -391,9 +394,10 @@ body {
     opacity: 1;
     transition: opacity 0.2s 0.08s ease;
 }
-/* ... kode .sidebar, .menu-item, .telemetry-status sebelumnya ... */
 
+/* --- BODY & MAIN CONTENT OFFSET --- */
 body {
+    padding-top: 60px !important;
     padding-left: 92px !important;
     transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -402,17 +406,13 @@ body.sidebar-open {
     padding-left: 264px !important;
 }
 
-.top-nav,
-header,
-nav.navbar {
-    position: fixed !important;
-    top: 0;
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 1001;
+.main-content {
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+    width: 100%;
 }
 
-/* 👇 TARUH KODE RESPONSIVE HP DI PALING BAWAH SINI 👇 */
+/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
     body,
     body.sidebar-open {
@@ -5119,482 +5119,569 @@ nav.navbar {
 .ahm-disclaimer-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
 
 /* ============================================================================
-   HALAMAN LOGIN & DAFTAR AKUN (login.html - YUKIDO POWER TEKNIK)
-   ============================================================================ */
-/* ============================================================================
-   HALAMAN LOGIN, DAFTAR AKUN & LUPA KATA SANDI (login.html)
+   HALAMAN LOGIN & DAFTAR AKUN DENGAN ANIMASI DIAGONAL & NEON (YUKIDO)
    ============================================================================ */
 body.auth-body {
-    min-height: 100vh;
-    background: radial-gradient(circle at top right, #1f0606 0%, #0a0a0a 55%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    color: #ffffff;
+    padding: 20px !important;
+    margin: 0 !important;
+    min-height: 100vh !important;
+    background: radial-gradient(circle at center, #1b0505 0%, #090909 70%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    box-sizing: border-box !important;
 }
 
-.auth-container {
-    width: 100%;
-    max-width: 1120px;
-    background: #121212;
-    border: 1px solid #262626;
-    border-radius: 16px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+.auth-wrapper,
+.auth-wrapper * {
+    box-sizing: border-box;
 }
 
-/* Panel Kiri */
-.auth-left {
-    background: linear-gradient(155deg, #161616 0%, #1d0606 100%);
-    border-right: 1px solid #262626;
-    padding: 44px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 28px;
+.auth-wrapper::before,
+.auth-wrapper::after {
+    display: none !important;
+    content: none !important;
 }
 
-.auth-top-badge {
+.auth-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 850px !important;
+    height: 520px !important;
+    background: #121212 !important;
+    border: 1.5px solid #e50914 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 0 35px rgba(229, 9, 20, 0.28), 0 25px 60px rgba(0, 0, 0, 0.85) !important;
+    overflow: hidden !important;
+}
+
+/* --- LATAR DIAGONAL MERAH-HITAM --- */
+.auth-wrapper .curved-shape {
+    position: absolute !important;
+    right: -40px !important;
+    top: -10px !important;
+    height: 660px !important;
+    width: 920px !important;
+    background: linear-gradient(135deg, #7a040a 0%, #c80812 45%, #ff1e27 100%) !important;
+    border-left: 2px solid rgba(255, 90, 90, 0.6) !important;
+    transform: rotate(10deg) skewY(38deg);
+    transform-origin: bottom right;
+    transition: transform 1.4s ease;
+    transition-delay: 1.2s;
+    z-index: 1 !important;
+    pointer-events: none;
+}
+
+.auth-wrapper.active .curved-shape {
+    transform: rotate(0deg) skewY(0deg);
+    transition-delay: 0.35s;
+}
+
+.auth-wrapper .curved-shape2 {
+    position: absolute !important;
+    left: 240px !important;
+    top: 100% !important;
+    height: 740px !important;
+    width: 920px !important;
+    background: #121212 !important;
+    border-top: 2px solid #e50914 !important;
+    transform: rotate(0deg) skewY(0deg);
+    transform-origin: bottom left;
+    transition: transform 1.4s ease;
+    transition-delay: 0.35s;
+    z-index: 1 !important;
+    pointer-events: none;
+}
+
+.auth-wrapper.active .curved-shape2 {
+    transform: rotate(-11deg) skewY(-39deg);
+    transition-delay: 1s;
+}
+
+/* --- FORM BOX (KIRI LOGIN / KANAN REGISTER) --- */
+.auth-wrapper .form-box {
+    position: absolute !important;
+    top: 0 !important;
+    width: 50% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    z-index: 3 !important;
+    background: transparent !important;
+}
+
+.auth-wrapper .form-box.Login {
+    left: 0 !important;
+    padding: 0 42px !important;
+}
+
+.auth-wrapper .form-box.Register {
+    right: 0 !important;
+    padding: 0 42px !important;
+    pointer-events: none;
+}
+
+.auth-wrapper.active .form-box.Register {
+    pointer-events: auto;
+}
+
+.auth-wrapper.active .form-box.Login {
+    pointer-events: none;
+}
+
+/* Animasi Geser Form Login */
+.form-box.Login .animation {
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0);
+    transition: 0.7s ease;
+    transition-delay: calc(0.08s * var(--j));
+}
+
+.auth-wrapper.active .form-box.Login .animation {
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(0.08s * var(--i));
+}
+
+/* Animasi Geser Form Register */
+.form-box.Register .animation {
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: 0.7s ease;
+    transition-delay: calc(0.08s * var(--j));
+}
+
+.auth-wrapper.active .form-box.Register .animation {
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(0.08s * var(--i));
+}
+
+/* Brand Mini & Judul Form */
+.auth-mini-brand {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    color: #e50914;
-    background: rgba(229, 9, 20, 0.12);
-    border: 1px solid rgba(229, 9, 20, 0.25);
-    padding: 6px 12px;
-    border-radius: 6px;
-    width: fit-content;
-}
-
-.auth-top-badge .dot.red {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #e50914;
-    display: inline-block;
-}
-
-.auth-brand .logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 22px;
-    text-decoration: none;
-}
-
-.auth-brand .logo-img {
-    height: 42px;
-    width: auto;
-}
-
-.logo-stack {
-    display: flex;
-    flex-direction: column;
-}
-
-.auth-brand .logo-text {
-    font-size: 26px;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 1px;
-    line-height: 1;
-}
-
-.auth-brand .reg-mark {
-    color: #e50914;
-    font-size: 14px;
-}
-
-.auth-brand .logo-sub {
-    font-size: 11px;
-    color: #a3a3a3;
-    margin-top: 4px;
-}
-
-.auth-brand h1 {
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1.25;
-    margin-bottom: 12px;
-}
-
-.auth-brand .text-red {
-    color: #e50914;
-}
-
-.auth-brand p {
-    font-size: 14px;
-    color: #a3a3a3;
-    line-height: 1.65;
-}
-
-.auth-features {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.auth-feat {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid #242424;
-    padding: 14px 16px;
-    border-radius: 10px;
-}
-
-.auth-feat .feat-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: rgba(229, 9, 20, 0.15);
-    color: #e50914;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-}
-
-.auth-feat strong {
-    display: block;
-    font-size: 13.5px;
-    color: #ffffff;
-    margin-bottom: 2px;
-}
-
-.auth-feat span {
-    font-size: 12px;
-    color: #a3a3a3;
-    line-height: 1.45;
-}
-
-.auth-left-footer {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #737373;
-    border-top: 1px solid #262626;
-    padding-top: 16px;
-}
-
-/* Panel Kanan */
-.auth-right {
-    padding: 44px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.auth-tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: #1a1a1a;
-    border: 1px solid #262626;
-    border-radius: 10px;
-    padding: 4px;
-    margin-bottom: 28px;
-}
-
-.auth-tab {
-    background: transparent;
-    border: none;
-    color: #a3a3a3;
-    padding: 11px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.6px;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.auth-tab.active {
-    background: #e50914;
-    color: #ffffff;
-}
-
-.auth-form {
-    display: none;
-}
-
-.auth-form.active {
-    display: block;
-}
-
-.form-title-block h2 {
-    font-size: 22px;
-    font-weight: 800;
     margin-bottom: 6px;
 }
 
-.auth-subtitle {
+.auth-mini-brand img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.auth-mini-brand span {
     font-size: 13px;
-    color: #a3a3a3;
-    margin-bottom: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #ffffff;
 }
 
-.auth-right .form-group {
-    margin-bottom: 16px;
+.auth-mini-brand b {
+    color: #e50914;
 }
 
-.auth-right .form-group label {
-    display: block;
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: #d4d4d4;
-    margin-bottom: 7px;
+.auth-wrapper .form-box h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    color: #ffffff;
 }
 
-.input-with-icon {
+/* Floating Underline Input */
+.auth-wrapper .input-box {
     position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-with-icon > i {
-    position: absolute;
-    left: 14px;
-    color: #737373;
-    font-size: 14px;
-}
-
-.input-with-icon input {
     width: 100%;
     height: 44px;
-    background: #1c1c1c;
-    border: 1px solid #2a2a2a;
-    border-radius: 8px;
-    padding: 0 40px 0 40px;
-    color: #ffffff;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s ease;
-}
-
-.input-with-icon input:focus {
-    border-color: #e50914;
-}
-
-.toggle-pass {
-    position: absolute;
-    right: 12px;
-    background: transparent;
-    border: none;
-    color: #737373;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.toggle-pass:hover {
-    color: #ffffff;
-}
-
-.form-row-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.form-options {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    margin-top: 4px;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #a3a3a3;
-    cursor: pointer;
-}
-
-.checkbox-label input {
-    accent-color: #e50914;
-}
-
-.forgot-link {
-    color: #e50914;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.forgot-link:hover {
-    text-decoration: underline;
-}
-
-.btn-auth-submit {
-    width: 100%;
-    height: 46px;
     margin-top: 18px;
-    background: #e50914;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
+}
+
+.auth-wrapper .form-box.Register .input-box {
+    margin-top: 14px;
+    height: 40px;
+}
+
+.auth-wrapper .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
     font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 0.7px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    transition: background 0.2s ease;
+    color: #ffffff !important;
+    font-weight: 500;
+    border-bottom: 2px solid #444444 !important;
+    padding: 0 28px 0 0 !important;
+    transition: border-color 0.4s ease;
 }
 
-.btn-auth-submit:hover {
-    background: #b80710;
+.auth-wrapper .input-box input:focus,
+.auth-wrapper .input-box input:not(:placeholder-shown) {
+    border-bottom-color: #e50914 !important;
 }
 
-.auth-divider {
-    position: relative;
-    text-align: center;
-    margin: 22px 0 16px;
-}
-
-.auth-divider::before {
-    content: "";
+.auth-wrapper .input-box label {
     position: absolute;
     top: 50%;
     left: 0;
-    right: 0;
-    height: 1px;
-    background: #262626;
-}
-
-.auth-divider span {
-    position: relative;
-    background: #121212;
-    padding: 0 12px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #737373;
-    letter-spacing: 0.8px;
-}
-
-.btn-social {
-    width: 100%;
-    height: 44px;
-    background: #1c1c1c;
-    border: 1px solid #2e2e2e;
-    border-radius: 8px;
-    color: #ffffff;
+    transform: translateY(-50%);
     font-size: 13.5px;
+    color: #9e9e9e;
+    pointer-events: none;
+    transition: 0.4s ease;
+}
+
+.auth-wrapper .input-box input:focus ~ label,
+.auth-wrapper .input-box input:not(:placeholder-shown) ~ label {
+    top: -4px;
+    font-size: 11.5px;
+    color: #e50914;
     font-weight: 600;
+}
+
+.auth-wrapper .input-box > i,
+.auth-wrapper .toggle-pass-btn {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #888888;
+    background: transparent;
+    border: none;
+    padding: 0;
+    transition: 0.4s ease;
+}
+
+.auth-wrapper .toggle-pass-btn {
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.2s ease;
 }
 
-.btn-social:hover {
-    border-color: #e50914;
-    background: #222222;
-}
-
-/* Kotak Notifikasi & Tombol Kembali Lupa Kata Sandi */
-.reset-success-box {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    background: rgba(34, 197, 94, 0.12);
-    border: 1px solid rgba(34, 197, 94, 0.35);
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-top: 14px;
-    color: #ffffff;
-}
-
-.reset-success-box i {
-    color: #22c55e;
-    font-size: 18px;
-    margin-top: 2px;
-}
-
-.reset-success-box strong {
-    display: block;
-    font-size: 13.5px;
-    margin-bottom: 3px;
-}
-
-.reset-success-box p {
-    font-size: 12.5px;
-    color: #d4d4d4;
-    line-height: 1.5;
-}
-
-.btn-back-login {
-    width: 100%;
-    height: 42px;
-    margin-top: 12px;
-    background: #1c1c1c;
-    border: 1px solid #2e2e2e;
-    border-radius: 8px;
-    color: #d4d4d4;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s ease;
-}
-
-.btn-back-login:hover {
-    border-color: #e50914;
-    color: #ffffff;
-}
-
-.back-home {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 24px;
-    font-size: 13px;
-    color: #a3a3a3;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.back-home:hover {
+.auth-wrapper .input-box input:focus ~ i,
+.auth-wrapper .input-box input:not(:placeholder-shown) ~ i,
+.auth-wrapper .toggle-pass-btn:hover {
     color: #e50914;
 }
 
-/* Responsive Login Page */
-@media (max-width: 900px) {
-    .auth-container {
-        grid-template-columns: 1fr;
-    }
+/* Remember & Lupa Sandi */
+.auth-extra-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #a3a3a3;
+}
 
-    .auth-left {
-        border-right: none;
-        border-bottom: 1px solid #262626;
-        padding: 32px 24px;
-    }
+.remember-chk {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
 
-    .auth-right {
-        padding: 32px 24px;
+.remember-chk input {
+    accent-color: #e50914;
+}
+
+.auth-extra-row a {
+    color: #e50914;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-extra-row a:hover {
+    text-decoration: underline;
+}
+
+/* Tombol Submit Gradient Merah-Hitam */
+.btn-anim {
+    position: relative;
+    width: 100%;
+    height: 42px;
+    background: transparent;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    border: 2px solid #e50914;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-anim::before {
+    content: "";
+    position: absolute;
+    height: 300%;
+    width: 100%;
+    background: linear-gradient(#121212, #e50914, #121212, #e50914);
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: 0.5s ease;
+}
+
+.btn-anim:hover::before {
+    top: 0;
+}
+
+.btn-anim:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Link Switch & Kembali */
+.regi-link {
+    font-size: 12.5px;
+    text-align: center;
+    margin-top: 14px;
+    color: #bdbdbd;
+}
+
+.regi-link p {
+    margin: 0 0 8px 0;
+}
+
+.regi-link p a {
+    text-decoration: none;
+    color: #e50914;
+    font-weight: 700;
+}
+
+.regi-link p a:hover {
+    text-decoration: underline;
+}
+
+.back-beranda {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.back-beranda:hover {
+    color: #ffffff;
+}
+
+/* Alert Box */
+.auth-msg-box {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.msg-ok {
+    background: rgba(0, 204, 102, 0.14);
+    border: 1px solid rgba(0, 204, 102, 0.35);
+    color: #00e676;
+}
+
+.msg-err {
+    background: rgba(229, 9, 20, 0.14);
+    border: 1px solid rgba(229, 9, 20, 0.4);
+    color: #ff7b7b;
+}
+
+/* --- PANEL INFO DIAGONAL (KANAN LOGIN / KIRI REGISTER) --- */
+.auth-wrapper .info-content {
+    position: absolute !important;
+    top: 0 !important;
+    width: 50% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    z-index: 3 !important;
+    pointer-events: none;
+}
+
+.auth-wrapper .info-content.Login {
+    right: 0 !important;
+    text-align: right !important;
+    padding: 0 38px 30px 95px !important;
+}
+
+.auth-wrapper .info-content.Register {
+    left: 0 !important;
+    text-align: left !important;
+    padding: 0 95px 30px 38px !important;
+}
+
+.info-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.info-content.Login .info-pill {
+    align-self: flex-end;
+}
+
+.info-content h2 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.info-content p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.92);
+    margin: 0;
+}
+
+/* Animasi Info Login */
+.info-content.Login .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: 0.7s ease;
+    transition-delay: calc(0.08s * var(--j));
+}
+
+.auth-wrapper.active .info-content.Login .animation {
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(0.08s * var(--i));
+}
+
+/* Animasi Info Register */
+.info-content.Register .animation {
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: 0.7s ease;
+    transition-delay: calc(0.08s * var(--j));
+}
+
+.auth-wrapper.active .info-content.Register .animation {
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(0.08s * var(--i));
+}
+
+/* =========================================================
+   ANIMASI LAMPU NEON TELEMETRY (PANEL KANAN LOGIN)
+   ========================================================= */
+.neon-lamp-wrap {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+}
+
+.info-content.Register .neon-lamp-wrap {
+    align-self: flex-start;
+}
+
+.neon-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2.5px solid transparent;
+    border-top-color: #ffffff;
+    border-right-color: #ffccd0;
+    box-shadow: 0 0 22px rgba(255, 255, 255, 0.65), inset 0 0 14px rgba(255, 255, 255, 0.35);
+    animation: spinNeonLamp 3s linear infinite;
+}
+
+.neon-core {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(18, 18, 18, 0.85) 75%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulseNeonCore 2.2s ease-in-out infinite alternate;
+}
+
+.neon-core img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes spinNeonLamp {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseNeonCore {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+        transform: scale(0.96);
+    }
+    100% {
+        box-shadow: 0 0 26px rgba(255, 255, 255, 0.75), 0 0 42px rgba(229, 9, 20, 0.8);
+        transform: scale(1.04);
     }
 }
 
-@media (max-width: 520px) {
-    .form-row-2 {
-        grid-template-columns: 1fr;
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .auth-wrapper {
+        max-width: 420px !important;
+        height: auto !important;
+        min-height: 490px !important;
+    }
+
+    .auth-wrapper .curved-shape,
+    .auth-wrapper .curved-shape2,
+    .auth-wrapper .info-content {
+        display: none !important;
+    }
+
+    .auth-wrapper .form-box {
+        position: relative !important;
+        width: 100% !important;
+        padding: 36px 26px !important;
+    }
+
+    .auth-wrapper .form-box.Register {
+        display: none !important;
+    }
+
+    .auth-wrapper.active .form-box.Login {
+        display: none !important;
+    }
+
+    .auth-wrapper.active .form-box.Register {
+        display: flex !important;
     }
 }
 

@@ -249,7 +249,7 @@ $adminName = $_SESSION['user']['full_name'] ?? 'Administrator';
         <div class="brand">YUKIDO</div>
         <small>Motorsport Admin Panel</small>
 
-        <nav class="menu">
+      <nav class="menu">
     <a href="dashboard.php" class="active">Dashboard</a>
     <a href="products.php">Manajemen Produk</a>
     <a href="categories.php">Manajemen Kategori</a>

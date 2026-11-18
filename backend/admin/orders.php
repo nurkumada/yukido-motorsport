@@ -21,7 +21,7 @@ $adminName = $_SESSION['user']['full_name'] ?? 'Administrator';
 
     <title>Manajemen Pesanan | Yukido Motorsport</title>
 
-    <style>
+  <style>
         * {
             margin: 0;
             padding: 0;
@@ -34,11 +34,52 @@ $adminName = $_SESSION['user']['full_name'] ?? 'Administrator';
             color: #222;
         }
 
-        .main {
-            padding: 30px;
-            max-width: 1600px;
-            margin: auto;
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #151515;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 30px 20px;
         }
+
+        .brand {
+            font-size: 23px;
+            font-weight: bold;
+            color: #e63939;
+            margin-bottom: 8px;
+        }
+
+        .sidebar small {
+            color: #aaa;
+        }
+
+        .menu {
+            margin-top: 45px;
+        }
+
+        .menu a {
+            display: block;
+            text-decoration: none;
+            color: #ccc;
+            padding: 14px 15px;
+            margin-bottom: 8px;
+            border-radius: 7px;
+        }
+
+        .menu a.active,
+        .menu a:hover {
+            background: #e63939;
+            color: white;
+        }
+
+        .main {
+            margin-left: 250px;
+            padding: 30px;
+        }
+
 
         .topbar {
             display: flex;
@@ -386,6 +427,18 @@ $adminName = $_SESSION['user']['full_name'] ?? 'Administrator';
 </head>
 
 <body>
+
+<aside class="sidebar">
+    <div class="brand">YUKIDO</div>
+    <small>Motorsport Admin Panel</small>
+
+    <nav class="menu">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="products.php">Manajemen Produk</a>
+        <a href="categories.php">Manajemen Kategori</a>
+        <a href="orders.php">Manajemen Pesanan</a>
+    </nav>
+</aside>
 
 <main class="main">
 

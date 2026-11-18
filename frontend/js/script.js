@@ -1,14 +1,24 @@
 // =========================================
-// 1. SIDEBAR TOGGLE (GARIS 3)
+// 1. SIDEBAR TOGGLE (GARIS 3) & ACTIVE LINK
 // =========================================
 const menuToggle = document.getElementById('menuToggle');
 const sidebar = document.getElementById('sidebar');
 
 function updateSidebarLayout() {
-    document.body.classList.toggle(
-        'sidebar-open',
-        sidebar && sidebar.classList.contains('expanded')
-    );
+    const isExpanded = sidebar && sidebar.classList.contains('expanded');
+    document.body.classList.toggle('sidebar-open', isExpanded);
+    localStorage.setItem('yukido_sidebar_expanded', isExpanded ? 'true' : 'false');
+}
+
+// Terapkan status sidebar terakhir (bawaan terbuka / 'true')
+if (sidebar) {
+    const savedState = localStorage.getItem('yukido_sidebar_expanded');
+    if (savedState === 'false') {
+        sidebar.classList.remove('expanded');
+    } else {
+        sidebar.classList.add('expanded');
+    }
+    updateSidebarLayout();
 }
 
 if (menuToggle && sidebar) {
@@ -17,15 +27,18 @@ if (menuToggle && sidebar) {
         sidebar.classList.toggle('expanded');
         updateSidebarLayout();
     });
+}
 
-    // Tutup kembali sidebar ke mode ikon saat klik di luar area sidebar
-    document.addEventListener('click', (e) => {
-        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-            sidebar.classList.remove('expanded');
-            updateSidebarLayout();
+// Otomatis tandai menu sidebar yang aktif sesuai halaman
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.sidebar-menu .menu-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === currentPage) {
+            item.classList.add('active');
         }
     });
-}
+});
 
 // 2. Tab Filter (General)
 const tabs = document.querySelectorAll('.tab');
@@ -138,8 +151,6 @@ if (btnReset) {
         productCards.forEach(card => card.style.display = 'block');
     });
 }
-
-
 
 // =========================================
 // FITUR KHUSUS HALAMAN CHECKOUT
@@ -470,11 +481,3 @@ function getAIResponse(input) {
     }
     return "Maaf, saya belum mengerti pertanyaan tersebut. 🤖 <br><br>Coba ketik: <b>'garansi'</b>, <b>'ongkir'</b>, <b>'lokasi'</b>, atau <b>'cara bayar'</b>.";
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleButton = document.querySelector(".menu-toggle, .hamburger, #menu-toggle");
-    if (!toggleButton) return;
-    toggleButton.addEventListener("click", function () {
-        document.body.classList.toggle("sidebar-closed");
-    });
-});
