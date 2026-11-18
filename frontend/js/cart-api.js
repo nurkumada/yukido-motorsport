@@ -351,16 +351,28 @@ document.getElementById("btnDeleteSelected")?.addEventListener("click", async ()
     }
 });
 
-document.querySelector(".btn-shopee-checkout")?.addEventListener("click", event => {
-    const ids = [...selectedItems];
+document.querySelector(".btn-shopee-checkout")
+?.addEventListener("click", event => {
+
+    event.preventDefault();
+
+    
+    const ids = Array.from(selectedItems).map(item =>
+        Number(item.value)
+    );
 
     if (ids.length === 0) {
-        event.preventDefault();
         alert("Pilih minimal satu produk untuk checkout.");
         return;
     }
 
-    sessionStorage.setItem("yukido_checkout_items", JSON.stringify(ids));
+    sessionStorage.setItem(
+        "yukido_checkout_items",
+        JSON.stringify(ids)
+    );
+
+    window.location.href = "checkout.html";
+
 });
 
 document.addEventListener("DOMContentLoaded", loadCart);
