@@ -1,30 +1,29 @@
 // =========================================
-// YUKIDO POWER TEKNIK - MAIN SCRIPT
+// 1. SIDEBAR TOGGLE (GARIS 3)
 // =========================================
-
-// 1. Sidebar Toggle
 const menuToggle = document.getElementById('menuToggle');
-const closeSidebar = document.getElementById('closeSidebar');
 const sidebar = document.getElementById('sidebar');
 
 function updateSidebarLayout() {
     document.body.classList.toggle(
         'sidebar-open',
-        sidebar && sidebar.classList.contains('active')
+        sidebar && sidebar.classList.contains('expanded')
     );
 }
 
 if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar.classList.toggle('expanded');
         updateSidebarLayout();
     });
-}
 
-if (closeSidebar && sidebar) {
-    closeSidebar.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-        updateSidebarLayout();
+    // Tutup kembali sidebar ke mode ikon saat klik di luar area sidebar
+    document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+            sidebar.classList.remove('expanded');
+            updateSidebarLayout();
+        }
     });
 }
 
