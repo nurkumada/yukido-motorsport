@@ -100,6 +100,8 @@ async function loadProducts() {
 }
 
 // Menampilkan kartu produk
+
+// Menampilkan kartu produk
 function renderProducts() {
     const keyword = searchProduct.value.toLowerCase().trim();
     const sort = sortProducts.value;
@@ -117,6 +119,7 @@ function renderProducts() {
         return matchesKeyword && matchesCategory;
     });
 
+    // Pengurutan produk
     if (sort === "price_low") {
         filtered.sort((a, b) => Number(a.price) - Number(b.price));
     } else if (sort === "price_high") {
@@ -124,31 +127,45 @@ function renderProducts() {
     } else if (sort === "name") {
         filtered.sort((a, b) => a.name.localeCompare(b.name));
     } else {
-        filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        filtered.sort((a, b) =>
+            new Date(b.created_at) - new Date(a.created_at)
+        );
     }
 
+    // Jika produk tidak ditemukan
     if (filtered.length === 0) {
         productGrid.innerHTML = `<p>Produk tidak ditemukan.</p>`;
         return;
     }
 
+    // Menampilkan kartu produk
     productGrid.innerHTML = filtered.map(product => `
-        <div class="produk-card">
+        <div
+            class="produk-card"
+            data-product-detail="${Number(product.id)}"
+            role="link"
+            tabindex="0"
+        >
+
             <div class="produk-image">
                 <img
                     src="${escapeHTML(productImage(product.image_path))}"
                     alt="${escapeHTML(product.name)}"
-                    onerror="this.onerror=null;this.src='images/yukido.png';">
+                    onerror="this.onerror=null;this.src='images/yukido.png';"
+                >
             </div>
 
             <div class="produk-info">
+
                 <p class="kategori-label">
                     ${escapeHTML(product.category_name || "Produk Yukido")}
                 </p>
 
                 <h3>${escapeHTML(product.name)}</h3>
 
-                <p class="harga">${rupiah(product.price)}</p>
+                <p class="harga">
+                    ${rupiah(product.price)}
+                </p>
 
                 <p>
                     ${product.warranty_type === "lifetime"
@@ -158,27 +175,40 @@ function renderProducts() {
                             : "Tanpa Garansi"}
                 </p>
 
-                <p>Stok: ${Number(product.stock)}</p>
+                <p>
+                    Stok: ${Number(product.stock)}
+                </p>
 
                 <div class="produk-actions">
-                    <a
-                        href="detail-produk.php?id=${Number(product.id)}"
-                        class="btn-detail"
-                        style="text-decoration:none;">
-                        <i class="fas fa-info-circle"></i> DETAIL
-                    </a>
 
-                    <button
-                        class="btn-beli"
-                        type="button"
-                        data-add-product="${Number(product.id)}">
-                        <i class="fas fa-shopping-cart"></i> BELI
-                    </button>
-                </div>
+    <!-- TOMBOL KERANJANG -->
+    <button
+        class="btn-cart-add"
+        type="button"
+        title="Tambah ke keranjang"
+        data-cart-add="${Number(product.id)}"
+        ${Number(product.stock) < 1 ? "disabled" : ""}
+    >
+        <i class="fas fa-shopping-cart"></i>
+    </button>
+
+    <!-- TOMBOL BELI -->
+    <button
+        class="btn-beli"
+        type="button"
+        data-add-product="${Number(product.id)}"
+        ${Number(product.stock) < 1 ? "disabled" : ""}
+    >
+        BELI
+    </button>
+
+</div>
             </div>
         </div>
     `).join("");
 }
+
+
 
 // Klik kategori
 categoryTabs.addEventListener("click", event => {
@@ -215,27 +245,134 @@ if (resetButton) {
 }
 
 // =========================================
-// TAMBAH PRODUK & LANGSUNG KE CHECKOUT
+// KLIK KARTU PRODUK UNTUK MELIHAT DETAIL
 // =========================================
-productGrid.addEventListener("click", async function (event) {
-    const button = event.target.closest("[data-add-product]");
+productGrid.addEventListener("click", function(event) {
+
+    // Abaikan klik tombol keranjang dan beli
+    if (event.target.closest("button")) {
+        return;
+    }
+
+    const card = event.target.closest("[data-product-detail]");
+
+    if (!card) return;
+
+    const productId = card.dataset.productDetail;
+
+    window.location.href =
+        `detail-produk.php?id=${productId}`;
+});
+
+// Mendukung navigasi menggunakan keyboard
+productGrid.addEventListener("keydown", function(event) {
+
+    if (event.key !== "Enter" && event.key !== " ") {
+        return;
+    }
+
+    if (event.target.closest("button")) {
+        return;
+    }
+
+    const card = event.target.closest("[data-product-detail]");
+
+    if (!card) return;
+
+    event.preventDefault();
+
+    window.location.href =
+        `detail-produk.php?id=${card.dataset.productDetail}`;
+});
+
+
+// =========================================
+// KLIK KARTU PRODUK UNTUK DETAIL
+// =========================================
+
+productGrid.addEventListener("click", function(event) {
+
+    // Jangan buka detail ketika tombol diklik
+    if (event.target.closest("button")) {
+        return;
+    }
+
+    const card = event.target.closest("[data-product-detail]");
+
+    if (!card) return;
+
+    const productId = card.dataset.productDetail;
+
+    window.location.href =
+        `detail-produk.php?id=${productId}`;
+});
+
+// Mendukung tombol Enter pada keyboard
+productGrid.addEventListener("keydown", function(event) {
+
+    if (event.key !== "Enter" && event.key !== " ") {
+        return;
+    }
+
+    if (event.target.closest("button")) {
+        return;
+    }
+
+    const card = event.target.closest("[data-product-detail]");
+
+    if (!card) return;
+
+    event.preventDefault();
+
+    window.location.href =
+        `detail-produk.php?id=${card.dataset.productDetail}`;
+});
+
+
+// =========================================
+// TAMBAH KERANJANG DAN BELI
+// =========================================
+
+productGrid.addEventListener("click", async function(event) {
+
+    // Mendeteksi tombol keranjang
+    const cartButton = event.target.closest("[data-cart-add]");
+
+    // Mendeteksi tombol beli
+    const buyButton = event.target.closest("[data-add-product]");
+
+    const button = cartButton || buyButton;
+
     if (!button) return;
 
-    const productId = Number(button.dataset.addProduct);
+    const productId = Number(
+        cartButton
+            ? cartButton.dataset.cartAdd
+            : buyButton.dataset.addProduct
+    );
+
     if (!productId) return;
+
+    const isBuy = Boolean(buyButton);
 
     const originalText = button.innerHTML;
 
     try {
         button.disabled = true;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES...';
+
+        button.innerHTML = isBuy
+            ? '<i class="fas fa-spinner fa-spin"></i> MEMPROSES...'
+            : '<i class="fas fa-spinner fa-spin"></i>';
 
         const response = await fetch(`${YUKIDO_API}/cart/add.php`, {
             method: "POST",
+
             headers: {
                 "Content-Type": "application/json"
             },
+
             credentials: "same-origin",
+
             body: JSON.stringify({
                 product_id: productId,
                 quantity: 1
@@ -245,30 +382,68 @@ productGrid.addEventListener("click", async function (event) {
         const result = await response.json();
 
         if (!response.ok || !result.success) {
+
             if (response.status === 401) {
-                alert("Silakan login terlebih dahulu untuk membeli produk.");
+                alert("Silakan login terlebih dahulu.");
+
                 window.location.href = "login.html";
                 return;
             }
-            throw new Error(result.message || "Produk gagal ditambahkan.");
+
+            throw new Error(
+                result.message || "Produk gagal ditambahkan."
+            );
         }
 
-        if (result.cart_item_id) {
-            sessionStorage.setItem(
-                "yukido_checkout_items",
-                JSON.stringify([Number(result.cart_item_id)])
-            );
-            window.location.href = "checkout.html";
-        } else {
-            window.location.href = "keranjang.html";
+        // Jika hanya menambahkan ke keranjang
+        if (cartButton) {
+
+            alert("Produk berhasil ditambahkan ke keranjang!");
+
+            button.innerHTML =
+                '<i class="fas fa-check"></i>';
+
+            button.classList.add("is-added");
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove("is-added");
+                button.disabled = false;
+            }, 1200);
+
+            return;
         }
+
+        // Jika tombol BELI ditekan
+        if (buyButton) {
+
+            if (result.cart_item_id) {
+
+                sessionStorage.setItem(
+                    "yukido_checkout_items",
+                    JSON.stringify([
+                        Number(result.cart_item_id)
+                    ])
+                );
+
+                window.location.href = "checkout.html";
+
+            } else {
+                window.location.href = "keranjang.html";
+            }
+        }
+
     } catch (error) {
-        console.error("Gagal memproses pembelian:", error);
+
+        console.error("Gagal memproses produk:", error);
+
         alert(error.message);
+
         button.disabled = false;
         button.innerHTML = originalText;
     }
 });
+
 
 // Jalankan inisialisasi katalog
 async function initializeYukidoCatalog() {
