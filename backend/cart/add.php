@@ -5,8 +5,11 @@ header("Content-Type: application/json; charset=UTF-8");
 
 require_once __DIR__ . "/../config/database.php";
 
-// Memeriksa login
-if (!isset($_SESSION["user"]["id"])) {
+// Memeriksa login (mendukung format $_SESSION['user']['id'] dan $_SESSION['user_id'])
+$userId = $_SESSION["user"]["id"] ?? ($_SESSION["user_id"] ?? null);
+$userRole = $_SESSION["user"]["role"] ?? ($_SESSION["role"] ?? "customer");
+
+if (!$userId) {
     http_response_code(401);
     echo json_encode([
         "success" => false,
@@ -15,12 +18,12 @@ if (!isset($_SESSION["user"]["id"])) {
     exit;
 }
 
-// Hanya pelanggan yang dapat menambahkan produk
-if ($_SESSION["user"]["role"] !== "customer") {
+// Hanya pelanggan yang dapat menambahkan produk (blokir jika admin)
+if ($userRole === "admin") {
     http_response_code(403);
     echo json_encode([
         "success" => false,
-        "message" => "Akses hanya untuk pelanggan."
+        "message" => "Akun admin tidak dapat melakukan pembelian."
     ]);
     exit;
 }
@@ -35,8 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit;
 }
 
-// Mengambil data JSON
-$data = json_decode(file_get_contents("php://input"), true);
+// Mengambil data JSON atau fallback ke $_POST
+$rawInput = file_get_contents("php://input");
+$data = json_decode($rawInput, true);
+if (!is_array($data)) {
+    $data = $_POST;
+}
 
 $productId = filter_var($data["product_id"] ?? null, FILTER_VALIDATE_INT);
 $quantity  = filter_var($data["quantity"] ?? 1, FILTER_VALIDATE_INT);
@@ -50,7 +57,7 @@ if (!$productId || $productId < 1 || !$quantity || $quantity < 1) {
     exit;
 }
 
-$userId = (int) $_SESSION["user"]["id"];
+$userId = (int) $userId;
 
 try {
     $conn->beginTransaction();
@@ -118,6 +125,7 @@ try {
         WHERE cart_id = :cart_id
           AND product_id = :product_id
         LIMIT 1
+        FOR UPDATE
     ");
     $stmt->execute([
         "cart_id" => $cartId,
@@ -190,10 +198,10 @@ try {
     if ($conn->inTransaction()) {
         $conn->rollBack();
     }
-    error_log($e->getMessage());
+    error_log("Cart Add Error: " . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         "success" => false,
-        "message" => "Terjadi kesalahan saat menambahkan produk."
+        "message" => "Terjadi kesalahan saat menambahkan produk: " . $e->getMessage()
     ]);
 }

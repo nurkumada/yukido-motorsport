@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pesanan - Yukido Motorsport</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Detail Pesanan - YUKIDO Motorsport</title>
+    <link rel="stylesheet" href="css/style.css?v=14">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <main class="container">
-        <h1>Detail Pesanan</h1>
-        <div id="order-detail">Memuat detail pesanan...</div>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <img src="images/logo-yukido.png" alt="YUKIDO Logo" class="logo-img">
+                <span class="logo-text">YUKIDO</span>
+                <span class="logo-sub">ユキドジャパンテクノロジ</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="login.html" class="od-nav-link">
+                <i class="fas fa-user-circle"></i> Akun & Pesanan
+            </a>
+        </div>
+    </nav>
+
+    <main class="order-detail-wrap">
+        <a href="javascript:history.back()" class="back-order-btn">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar Pesanan
+        </a>
+
+        <div id="order-detail">
+            <div class="od-card od-state-box">
+                <i class="fas fa-spinner fa-spin od-spinner-icon"></i>
+                <p>Memuat detail pesanan...</p>
+            </div>
+        </div>
     </main>
 
-    <script src="js/detail-pesanan-api.js"></script>
+  <script src="js/detail-pesanan-api.js?v=6"></script>
 </body>
 </html>

@@ -228,7 +228,7 @@ if (btnPayNow) {
     btnPayNow.addEventListener('click', () => {
         btnPayNow.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MEMPROSES PEMBAYARAN...';
         setTimeout(() => {
-            alert('Pembayaran berhasil disimulasikan! Pesanan Anda sedang diproses.');
+            alert('Pembayaran berhasil dikonfirmasi! Pesanan Anda sedang diproses.');
             btnPayNow.innerHTML = '<i class="fas fa-lock"></i> BAYAR SEKARANG & BUAT PESANAN';
         }, 1500);
     });
@@ -636,8 +636,16 @@ async function syncWishlistUserSession() {
 }
 
 // =========================================
-// RESET TOMBOL "MEMPROSES..." SAAT KEMBALI (BACK) DARI HALAMAN LAIN
+// UBAH WARNA HARGA PRODUK JADI PUTIH & RESET TOMBOL BELI
 // =========================================
+function forceWhiteProductPrices() {
+    document.querySelectorAll('p, div, span').forEach(el => {
+        if (el.children.length === 0 && /^Rp\s*[\d.,]+$/i.test(el.textContent.trim())) {
+            el.style.setProperty('color', '#ffffff', 'important');
+        }
+    });
+}
+
 function resetStuckBuyButtons() {
     document.querySelectorAll('button, a').forEach(btn => {
         if (btn.textContent.trim().toUpperCase().includes('MEMPROSES')) {
@@ -650,17 +658,28 @@ function resetStuckBuyButtons() {
 window.addEventListener('pageshow', () => {
     resetStuckBuyButtons();
     injectWishlistButtons();
+    forceWhiteProductPrices();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     resetStuckBuyButtons();
     syncWishlistUserSession();
-    setTimeout(injectWishlistButtons, 500);
-    setTimeout(injectWishlistButtons, 1500);
+    forceWhiteProductPrices();
+
+    setTimeout(() => {
+        injectWishlistButtons();
+        forceWhiteProductPrices();
+    }, 500);
+
+    setTimeout(() => {
+        injectWishlistButtons();
+        forceWhiteProductPrices();
+    }, 1500);
 
     const observer = new MutationObserver(() => {
         resetStuckBuyButtons();
         injectWishlistButtons();
+        forceWhiteProductPrices();
     });
     observer.observe(document.body, { childList: true, subtree: true });
 });

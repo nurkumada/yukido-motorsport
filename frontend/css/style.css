@@ -3792,6 +3792,253 @@ body.sidebar-open {
     color: #ffffff;
 }
 
+/* =========================================
+   HALAMAN DETAIL PESANAN (detail-pesanan.html)
+   ========================================= */
+.od-nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.od-nav-link:hover {
+    color: #e50914;
+}
+
+.order-detail-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 105px 20px 60px;
+    color: #ffffff;
+}
+
+.back-order-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+}
+
+.back-order-btn:hover {
+    color: #ffffff;
+}
+
+.od-card {
+    background: #141414;
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+}
+
+.od-state-box {
+    text-align: center;
+    padding: 45px 20px;
+    color: #9ca3af;
+}
+
+.od-spinner-icon {
+    font-size: 26px;
+    color: #e50914;
+    margin-bottom: 10px;
+}
+
+.od-state-icon {
+    font-size: 32px;
+    color: #e50914;
+    margin-bottom: 10px;
+}
+
+.od-state-title {
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.od-state-desc {
+    color: #9ca3af;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.od-btn-primary {
+    display: inline-block;
+    background: #e50914;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.2s ease;
+}
+
+.od-btn-primary:hover {
+    background: #c40812;
+}
+
+.od-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 14px;
+    border-bottom: 1px solid #242424;
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+}
+
+.od-order-number {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 6px;
+}
+
+.od-order-date {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+.od-status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    background: rgba(34, 197, 94, 0.14);
+    border: 1px solid rgba(34, 197, 94, 0.45);
+    color: #22c55e;
+}
+
+.od-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.od-label {
+    color: #9ca3af;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.od-value {
+    color: #f3f4f6;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.od-sub-value {
+    color: #9ca3af;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.od-payment-status {
+    color: #22c55e;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.od-address-box {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #222222;
+}
+
+.od-address-text {
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.od-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.od-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #222222;
+}
+
+.od-item-row:last-child {
+    border-bottom: none;
+}
+
+.od-item-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.od-item-left img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #2e2e2e;
+    background: #ffffff;
+}
+
+.od-item-name {
+    font-weight: 700;
+    font-size: 14.5px;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.od-item-qty {
+    color: #9ca3af;
+    font-size: 12.5px;
+}
+
+.od-item-total {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 14.5px;
+}
+
+.od-summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    font-size: 14px;
+    color: #d1d5db;
+}
+
+.od-summary-discount {
+    color: #22c55e;
+}
+
+.od-summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    margin-top: 8px;
+    border-top: 1px solid #2a2a2a;
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.od-summary-total span:last-child {
+    color: #ffffff;
+}
+
 /* ============================================================================
    CSS KONTEN UTAMA: KLAIM GARANSI CEPAT & ABOUT US (garansi.html)
    ============================================================================ */
@@ -6714,4 +6961,16 @@ body { overflow-x: hidden; }
     box-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
 }
 
-
+/* =========================================
+   UBAH WARNA HARGA KARTU PRODUK JADI PUTIH
+   ========================================= */
+[style*="color: red"],
+[style*="color:red"],
+[style*="color: #ed0000"],
+[style*="color:#ed0000"],
+[style*="color: #e50914"],
+[style*="color:#e50914"],
+[style*="color: #ff0000"],
+[style*="color:#ff0000"] {
+    color: #ffffff !important;
+}

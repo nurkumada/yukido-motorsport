@@ -150,7 +150,7 @@ try {
         $orderId,
         $oldStatus,
         "processing",
-        "Pembayaran simulasi berhasil dikonfirmasi.",
+        "Pembayaran berhasil dikonfirmasi.",
         $userId
     ]);
 

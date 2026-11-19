@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -60,7 +59,7 @@ try {
         $cartId = (int) $cart["id"];
     }
 
-    // Mengambil produk dari keranjang
+    // Mengambil produk dari keranjang beserta gambar utama dari product_images
     $stmt = $conn->prepare("
         SELECT
             ci.id AS cart_item_id,
@@ -73,6 +72,13 @@ try {
             p.status,
             p.warranty_type,
             p.warranty_period_months,
+            (
+                SELECT pi.image_path
+                FROM product_images pi
+                WHERE pi.product_id = p.id
+                ORDER BY pi.is_primary DESC, pi.id ASC
+                LIMIT 1
+            ) AS image_path,
             (p.price * ci.quantity) AS subtotal
         FROM cart_items ci
         INNER JOIN products p
@@ -97,6 +103,7 @@ try {
         $item["price"] = (float) $item["price"];
         $item["stock"] = (int) $item["stock"];
         $item["subtotal"] = (float) $item["subtotal"];
+        $item["image_path"] = $item["image_path"] ?: "images/yukido.png";
 
         $totalQuantity += $item["quantity"];
         $grandTotal += $item["subtotal"];
