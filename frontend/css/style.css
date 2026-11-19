@@ -1224,6 +1224,140 @@ body.sidebar-open {
     cursor: not-allowed;
 }
 
+/* ==========================================
+   TOMBOL KERANJANG YUKIDO - FINAL
+========================================== */
+
+.produk-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+/* Tombol keranjang */
+.produk-actions > .btn-cart-add {
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex: 0 0 58px !important;
+
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+    height: 44px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: #292929 !important;
+    color: white !important;
+    border: 1px solid #e00000 !important;
+    border-radius: 7px !important;
+
+    cursor: pointer !important;
+}
+
+.produk-actions > .btn-cart-add i {
+    font-size: 22px !important;
+}
+
+/* Tombol BELI */
+.produk-actions > .btn-beli {
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex: 1 1 0 !important;
+
+    height: 44px !important;
+    min-width: 0 !important;
+
+    padding: 0 12px !important;
+    margin: 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: #e00000 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 7px !important;
+
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+/* Stok habis */
+.produk-actions > button:disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+}
+
+/* Responsive HP */
+@media (max-width: 768px) {
+    .produk-actions > .btn-cart-add {
+        flex-basis: 48px !important;
+        width: 48px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
+        height: 42px !important;
+    }
+
+    .produk-actions > .btn-beli {
+        height: 42px !important;
+    }
+}
+
+/* =========================================
+   TOMBOL WISHLIST PADA KARTU PRODUK (IKON LOVE SAJA)
+   ========================================= */
+.produk-card {
+    position: relative;
+}
+
+.btn-wishlist-card {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    padding: 4px !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff;
+    font-size: 21px !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 15 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.75));
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-wishlist-card:hover {
+    transform: scale(1.18);
+    background: transparent !important;
+    border: none !important;
+    color: #e50914 !important;
+}
+
+.btn-wishlist-card.active {
+    background: transparent !important;
+    border: none !important;
+    color: #e50914 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 2px 8px rgba(229, 9, 20, 0.65));
+}
+
+
 
 /* =========================================
    RESPONSIVE TABLET
@@ -5119,18 +5253,331 @@ body.sidebar-open {
 .ahm-disclaimer-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0; }
 
 /* ============================================================================
-   HALAMAN LOGIN & DAFTAR AKUN DENGAN ANIMASI DIAGONAL & NEON (YUKIDO)
+   1. HALAMAN AKUN SAYA (PESANAN & WISHLIST)
    ============================================================================ */
-body.auth-body {
-    padding: 20px !important;
-    margin: 0 !important;
-    min-height: 100vh !important;
-    background: radial-gradient(circle at center, #1b0505 0%, #090909 70%) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    color: #ffffff !important;
-    box-sizing: border-box !important;
+.akun-wrapper {
+    max-width: 1100px;
+    margin: 24px auto 60px;
+    padding: 0 24px;
+}
+
+.akun-page-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* Banner Atas (Belum Login vs Sudah Login) */
+.akun-banner-card {
+    background: #141414;
+    border: 1px solid #262626;
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.akun-banner-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.akun-banner-info p {
+    font-size: 13.5px;
+    color: #9e9e9e;
+    line-height: 1.5;
+    max-width: 650px;
+    margin: 0;
+}
+
+.akun-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.btn-akun-outline {
+    padding: 10px 26px;
+    border-radius: 999px;
+    border: 1.5px solid #e50914;
+    background: transparent;
+    color: #e50914;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-akun-outline:hover {
+    background: rgba(229, 9, 20, 0.12);
+}
+
+.btn-akun-solid {
+    padding: 10px 26px;
+    border-radius: 999px;
+    border: 1.5px solid #e50914;
+    background: #e50914;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-akun-solid:hover {
+    background: #b80710;
+    border-color: #b80710;
+}
+
+/* Kartu Utama Tab Pesanan & Wishlist */
+.akun-main-card {
+    background: #141414;
+    border: 1px solid #262626;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.akun-tabs-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #262626;
+    background: #181818;
+}
+
+.akun-tab-btn {
+    padding: 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    color: #888888;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.akun-tab-btn:hover {
+    color: #ffffff;
+}
+
+.akun-tab-btn.active {
+    color: #ffffff;
+    border-bottom-color: #e50914;
+}
+
+.akun-tab-body {
+    padding: 26px 28px 36px;
+    display: none;
+}
+
+.akun-tab-body.active {
+    display: block;
+}
+
+.akun-section-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.akun-section-top h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.akun-status-select {
+    background: #1c1c1c;
+    border: 1px solid #333333;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    outline: none;
+    cursor: pointer;
+    min-width: 190px;
+}
+
+.akun-status-select:focus {
+    border-color: #e50914;
+}
+
+/* Empty State */
+.akun-empty-state {
+    text-align: center;
+    padding: 56px 20px;
+}
+
+.akun-empty-state i {
+    font-size: 52px;
+    color: #444444;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.akun-empty-state h5 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.akun-empty-state p {
+    font-size: 13.5px;
+    color: #8e8e8e;
+    margin-bottom: 18px;
+}
+
+/* Daftar Pesanan */
+.order-list-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.order-item-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.order-item-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.order-code {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.order-date {
+    font-size: 12.5px;
+    color: #8e8e8e;
+}
+
+.order-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-top: 4px;
+}
+
+.badge-pending { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
+.badge-paid, .badge-completed, .badge-selesai { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+.badge-cancelled { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); }
+
+.order-item-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.order-total-price {
+    font-size: 16px;
+    font-weight: 800;
+    color: #e50914;
+}
+
+/* Daftar Wishlist */
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.wish-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.wish-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #111;
+}
+
+.wish-card h6 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.wish-price {
+    font-size: 14px;
+    font-weight: 800;
+    color: #e50914;
+}
+
+.wish-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.wish-actions a, .wish-actions button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ============================================================================
+   2. MODAL POPUP LOGIN & DAFTAR DENGAN ANIMASI DIAGONAL & NEON
+   ============================================================================ */
+.auth-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.auth-modal-overlay.show {
+    display: flex;
 }
 
 .auth-wrapper,
@@ -5156,7 +5603,31 @@ body.auth-body {
     overflow: hidden !important;
 }
 
-/* --- LATAR DIAGONAL MERAH-HITAM --- */
+.auth-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.auth-modal-close:hover {
+    background: #e50914;
+    border-color: #e50914;
+}
+
+/* Latar Diagonal Merah-Hitam */
 .auth-wrapper .curved-shape {
     position: absolute !important;
     right: -40px !important;
@@ -5199,7 +5670,7 @@ body.auth-body {
     transition-delay: 1s;
 }
 
-/* --- FORM BOX (KIRI LOGIN / KANAN REGISTER) --- */
+/* Form Box */
 .auth-wrapper .form-box {
     position: absolute !important;
     top: 0 !important;
@@ -5231,7 +5702,6 @@ body.auth-body {
     pointer-events: none;
 }
 
-/* Animasi Geser Form Login */
 .form-box.Login .animation {
     transform: translateX(0%);
     opacity: 1;
@@ -5247,7 +5717,6 @@ body.auth-body {
     transition-delay: calc(0.08s * var(--i));
 }
 
-/* Animasi Geser Form Register */
 .form-box.Register .animation {
     transform: translateX(120%);
     opacity: 0;
@@ -5263,7 +5732,6 @@ body.auth-body {
     transition-delay: calc(0.08s * var(--i));
 }
 
-/* Brand Mini & Judul Form */
 .auth-mini-brand {
     display: inline-flex;
     align-items: center;
@@ -5295,7 +5763,7 @@ body.auth-body {
     color: #ffffff;
 }
 
-/* Floating Underline Input */
+/* Floating Input */
 .auth-wrapper .input-box {
     position: relative;
     width: 100%;
@@ -5371,7 +5839,6 @@ body.auth-body {
     color: #e50914;
 }
 
-/* Remember & Lupa Sandi */
 .auth-extra-row {
     display: flex;
     justify-content: space-between;
@@ -5398,11 +5865,6 @@ body.auth-body {
     font-weight: 600;
 }
 
-.auth-extra-row a:hover {
-    text-decoration: underline;
-}
-
-/* Tombol Submit Gradient Merah-Hitam */
 .btn-anim {
     position: relative;
     width: 100%;
@@ -5440,7 +5902,6 @@ body.auth-body {
     cursor: not-allowed;
 }
 
-/* Link Switch & Kembali */
 .regi-link {
     font-size: 12.5px;
     text-align: center;
@@ -5449,7 +5910,7 @@ body.auth-body {
 }
 
 .regi-link p {
-    margin: 0 0 8px 0;
+    margin: 0;
 }
 
 .regi-link p a {
@@ -5458,25 +5919,6 @@ body.auth-body {
     font-weight: 700;
 }
 
-.regi-link p a:hover {
-    text-decoration: underline;
-}
-
-.back-beranda {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    color: #888888;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.back-beranda:hover {
-    color: #ffffff;
-}
-
-/* Alert Box */
 .auth-msg-box {
     padding: 8px 12px;
     border-radius: 6px;
@@ -5496,7 +5938,7 @@ body.auth-body {
     color: #ff7b7b;
 }
 
-/* --- PANEL INFO DIAGONAL (KANAN LOGIN / KIRI REGISTER) --- */
+/* Panel Info Diagonal & Neon */
 .auth-wrapper .info-content {
     position: absolute !important;
     top: 0 !important;
@@ -5556,7 +5998,6 @@ body.auth-body {
     margin: 0;
 }
 
-/* Animasi Info Login */
 .info-content.Login .animation {
     transform: translateX(0);
     opacity: 1;
@@ -5572,7 +6013,6 @@ body.auth-body {
     transition-delay: calc(0.08s * var(--i));
 }
 
-/* Animasi Info Register */
 .info-content.Register .animation {
     transform: translateX(-120%);
     opacity: 0;
@@ -5588,9 +6028,6 @@ body.auth-body {
     transition-delay: calc(0.08s * var(--i));
 }
 
-/* =========================================================
-   ANIMASI LAMPU NEON TELEMETRY (PANEL KANAN LOGIN)
-   ========================================================= */
 .neon-lamp-wrap {
     position: relative;
     width: 92px;
@@ -5652,34 +6089,41 @@ body.auth-body {
     }
 }
 
-/* --- RESPONSIVE MOBILE --- */
+/* ============================================================================
+   3. RESPONSIVE MOBILE
+   ============================================================================ */
 @media (max-width: 768px) {
+    .akun-banner-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .akun-banner-actions {
+        width: 100%;
+    }
+    .akun-banner-actions button {
+        flex: 1;
+    }
     .auth-wrapper {
         max-width: 420px !important;
         height: auto !important;
         min-height: 490px !important;
     }
-
     .auth-wrapper .curved-shape,
     .auth-wrapper .curved-shape2,
     .auth-wrapper .info-content {
         display: none !important;
     }
-
     .auth-wrapper .form-box {
         position: relative !important;
         width: 100% !important;
         padding: 36px 26px !important;
     }
-
     .auth-wrapper .form-box.Register {
         display: none !important;
     }
-
     .auth-wrapper.active .form-box.Login {
         display: none !important;
     }
-
     .auth-wrapper.active .form-box.Register {
         display: flex !important;
     }
@@ -6228,6 +6672,46 @@ body { overflow-x: hidden; }
     .produk-actions > .btn-beli {
         height: 42px !important;
     }
+}
+
+/* =========================================
+   TOMBOL WISHLIST PADA KARTU PRODUK
+   ========================================= */
+.produk-card {
+    position: relative;
+}
+
+.btn-wishlist-card {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(18, 18, 18, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+}
+
+.btn-wishlist-card:hover {
+    transform: scale(1.08);
+    border-color: #e50914;
+    color: #e50914;
+}
+
+.btn-wishlist-card.active {
+    background: #e50914;
+    border-color: #e50914;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
 }
 
 

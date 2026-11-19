@@ -481,3 +481,186 @@ function getAIResponse(input) {
     }
     return "Maaf, saya belum mengerti pertanyaan tersebut. 🤖 <br><br>Coba ketik: <b>'garansi'</b>, <b>'ongkir'</b>, <b>'lokasi'</b>, atau <b>'cara bayar'</b>.";
 }
+
+// =========================================
+// FITUR WISHLIST OTOMATIS DI KARTU PRODUK (IKON LOVE SAJA + PER AKUN)
+// =========================================
+let yukidoCurrentUserId = localStorage.getItem('yukido_active_user_id') || null;
+
+function getYukidoWishlistKey() {
+    return yukidoCurrentUserId ? `yukido_wishlist_${yukidoCurrentUserId}` : null;
+}
+
+function getYukidoWishlist() {
+    const key = getYukidoWishlistKey();
+    if (!key) return [];
+    try {
+        return JSON.parse(localStorage.getItem(key) || '[]');
+    } catch {
+        return [];
+    }
+}
+
+function saveYukidoWishlist(list) {
+    const key = getYukidoWishlistKey();
+    if (!key) return;
+    localStorage.setItem(key, JSON.stringify(list));
+}
+
+function extractProductPrice(card) {
+    const dataPrice = card.getAttribute('data-price');
+    if (dataPrice) return parseInt(dataPrice.replace(/[^\d]/g, ''), 10) || 0;
+
+    const textMatch = card.innerText.match(/Rp\s*([\d.,]+)/i);
+    if (textMatch && textMatch[1]) {
+        const numeric = textMatch[1].replace(/[^\d]/g, '');
+        return parseInt(numeric, 10) || 0;
+    }
+    return 0;
+}
+
+function applyWishlistBtnStyle(btn, isSaved) {
+    btn.style.setProperty('position', 'absolute', 'important');
+    btn.style.setProperty('top', '12px', 'important');
+    btn.style.setProperty('right', '12px', 'important');
+    btn.style.setProperty('width', 'auto', 'important');
+    btn.style.setProperty('min-width', '0', 'important');
+    btn.style.setProperty('height', 'auto', 'important');
+    btn.style.setProperty('padding', '4px', 'important');
+    btn.style.setProperty('background', 'transparent', 'important');
+    btn.style.setProperty('border', 'none', 'important');
+    btn.style.setProperty('border-radius', '0', 'important');
+    btn.style.setProperty('box-shadow', 'none', 'important');
+    btn.style.setProperty('color', isSaved ? '#e50914' : '#ffffff', 'important');
+    btn.style.setProperty('font-size', '21px', 'important');
+    btn.style.setProperty('line-height', '1', 'important');
+    btn.style.setProperty('cursor', 'pointer', 'important');
+    btn.style.setProperty('z-index', '15', 'important');
+    btn.style.setProperty('filter', 'drop-shadow(0 2px 5px rgba(0, 0, 0, 0.75))', 'important');
+    btn.style.setProperty('transition', 'transform 0.2s ease, color 0.2s ease', 'important');
+}
+
+function injectWishlistButtons() {
+    const buyButtons = Array.from(document.querySelectorAll('button, a')).filter(
+        el => el.textContent.trim().toUpperCase() === 'BELI'
+    );
+
+    const wishlist = getYukidoWishlist();
+
+    buyButtons.forEach(buyBtn => {
+        let card = buyBtn.parentElement;
+        while (card && card !== document.body && !card.querySelector('img')) {
+            card = card.parentElement;
+        }
+        if (!card || card === document.body || card.querySelector('.btn-wishlist-card')) return;
+
+        if (getComputedStyle(card).position === 'static') {
+            card.style.position = 'relative';
+        }
+
+        const titleEl = card.querySelector('h3, h4, h5, .product-title, .nama-produk');
+        const imgEl = card.querySelector('img');
+
+        const name = titleEl ? titleEl.textContent.trim() : 'Produk YUKIDO';
+        const image = imgEl ? imgEl.getAttribute('src') : 'images/yukido.png';
+        const id = card.getAttribute('data-id') || name.toLowerCase().replace(/\s+/g, '-');
+
+        const isSaved = wishlist.some(item => item.name === name);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn-wishlist-card' + (isSaved ? ' active' : '');
+        btn.title = isSaved ? 'Hapus dari Wishlist' : 'Simpan ke Wishlist';
+        btn.innerHTML = `<i class="${isSaved ? 'fas' : 'far'} fa-heart"></i>`;
+        applyWishlistBtnStyle(btn, isSaved);
+
+        btn.addEventListener('mouseenter', () => {
+            btn.style.setProperty('transform', 'scale(1.18)', 'important');
+            btn.style.setProperty('color', '#e50914', 'important');
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.setProperty('transform', 'scale(1)', 'important');
+            applyWishlistBtnStyle(btn, btn.classList.contains('active'));
+        });
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!yukidoCurrentUserId) {
+                alert('Silakan login terlebih dahulu untuk menyimpan produk ke Wishlist.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            let currentList = getYukidoWishlist();
+            const existingIndex = currentList.findIndex(item => item.name === name);
+            const latestPrice = extractProductPrice(card);
+
+            if (existingIndex > -1) {
+                currentList.splice(existingIndex, 1);
+                btn.classList.remove('active');
+                btn.title = 'Simpan ke Wishlist';
+                btn.innerHTML = '<i class="far fa-heart"></i>';
+                applyWishlistBtnStyle(btn, false);
+            } else {
+                currentList.push({ id, name, price: latestPrice, image });
+                btn.classList.add('active');
+                btn.title = 'Hapus dari Wishlist';
+                btn.innerHTML = '<i class="fas fa-heart"></i>';
+                applyWishlistBtnStyle(btn, true);
+            }
+
+            saveYukidoWishlist(currentList);
+        });
+
+        card.appendChild(btn);
+    });
+}
+
+async function syncWishlistUserSession() {
+    try {
+        const res = await fetch('../backend/auth/me.php', { credentials: 'same-origin' });
+        const data = await res.json();
+        if (data.logged_in && data.user) {
+            yukidoCurrentUserId = String(data.user.id);
+            localStorage.setItem('yukido_active_user_id', yukidoCurrentUserId);
+        } else {
+            yukidoCurrentUserId = null;
+            localStorage.removeItem('yukido_active_user_id');
+        }
+    } catch {
+        // biarkan fallback
+    }
+    injectWishlistButtons();
+}
+
+// =========================================
+// RESET TOMBOL "MEMPROSES..." SAAT KEMBALI (BACK) DARI HALAMAN LAIN
+// =========================================
+function resetStuckBuyButtons() {
+    document.querySelectorAll('button, a').forEach(btn => {
+        if (btn.textContent.trim().toUpperCase().includes('MEMPROSES')) {
+            btn.disabled = false;
+            btn.innerHTML = 'BELI';
+        }
+    });
+}
+
+window.addEventListener('pageshow', () => {
+    resetStuckBuyButtons();
+    injectWishlistButtons();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    resetStuckBuyButtons();
+    syncWishlistUserSession();
+    setTimeout(injectWishlistButtons, 500);
+    setTimeout(injectWishlistButtons, 1500);
+
+    const observer = new MutationObserver(() => {
+        resetStuckBuyButtons();
+        injectWishlistButtons();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+});

@@ -1,31 +1,27 @@
-
 <?php
 session_start();
 header("Content-Type: application/json; charset=UTF-8");
 
 require_once __DIR__ . "/../config/database.php";
 
-if (!isset($_SESSION["user"]["id"])) {
+$userId = $_SESSION["user"]["id"] ?? $_SESSION["user_id"] ?? null;
+
+if (!$userId) {
     http_response_code(401);
     echo json_encode([
         "success" => false,
-        "message" => "Silakan login terlebih dahulu."
+        "message" => "Silakan login terlebih dahulu.",
+        "data" => []
     ]);
     exit;
 }
 
-$isAdmin = ($_SESSION["user"]["role"] ?? "") === "admin";
-
-if (!$isAdmin) {
-    http_response_code(403);
-    echo json_encode([
-        "success" => false,
-        "message" => "Akses khusus admin."
-    ]);
-    exit;
-}
+$userId  = (int) $userId;
+$isAdmin = ($_SESSION["user"]["role"] ?? $_SESSION["role"] ?? "") === "admin";
 
 try {
+    $whereClause = $isAdmin ? "" : "WHERE o.user_id = :user_id";
+
     $sql = "
         SELECT
             o.*,
@@ -51,13 +47,18 @@ try {
                 LIMIT 1
             )
 
+        {$whereClause}
         GROUP BY o.id
         ORDER BY o.created_at DESC
     ";
 
     $stmt = $conn->prepare($sql);
-    $stmt->execute();
 
+    if (!$isAdmin) {
+        $stmt->bindValue(":user_id", $userId, PDO::PARAM_INT);
+    }
+
+    $stmt->execute();
     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode([
@@ -71,6 +72,7 @@ try {
     http_response_code(500);
     echo json_encode([
         "success" => false,
-        "message" => "Gagal mengambil daftar pesanan."
+        "message" => "Gagal mengambil daftar pesanan.",
+        "data" => []
     ]);
 }
