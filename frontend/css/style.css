@@ -1133,14 +1133,82 @@ body.home-page .telemetry-card {
 /* ====================================================
    CSS UNTUK SLIDER KATEGORI PILIHAN (11 BINGKAI)
 ==================================================== */
+.kategori-section {
+    position: relative;
+}
 
-/* Pembungkus utama area slider dan tombol */
+.kategori-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+}
+
+.kategori-section-heading {
+    margin: 0;
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--text-primary, #ffffff);
+    text-transform: uppercase;
+}
+
+/* Pembungkus utama area slider dan tombol kiri-kanan */
 .slider-container {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 12px;
+}
+
+/* Tombol < dan > di pinggir kiri-kanan, posisi tengah vertikal, semi-transparan */
+.kategori-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 12;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(20, 20, 20, 0.52);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: rgba(255, 255, 255, 0.9);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.kategori-scroll-prev {
+    left: 12px;
+}
+
+.kategori-scroll-next {
+    right: 12px;
+}
+
+.kategori-scroll-btn:hover {
+    background: rgba(225, 6, 0, 0.78);
+    border-color: rgba(255, 90, 85, 0.85);
+    color: #ffffff;
+}
+
+.kategori-scroll-prev:hover {
+    transform: translateY(-50%) translateX(-2px);
+}
+
+.kategori-scroll-next:hover {
+    transform: translateY(-50%) translateX(2px);
+}
+
+.kategori-scroll-btn:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 /* Pengaturan area kartu yang bisa digeser */
@@ -1151,7 +1219,7 @@ body.home-page .telemetry-card {
     scroll-behavior: smooth; /* Efek geser (scroll) halus */
     padding: 10px 0 20px 0;
     width: 100%;
-    
+
     /* Menyembunyikan scrollbar bawaan agar rapi */
     -ms-overflow-style: none;  /* Untuk Internet Explorer / Edge */
     scrollbar-width: none;  /* Untuk Firefox */
@@ -1159,25 +1227,25 @@ body.home-page .telemetry-card {
 
 /* Menyembunyikan scrollbar untuk Chrome, Safari, dan Opera */
 .kategori-slider::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
 /* Desain untuk masing-masing bingkai (kartu) */
 .kategori-card {
     flex: 0 0 320px; /* Menahan ukuran lebar bingkai tetap 320px agar tidak mengecil */
-    background: #1a1a1a; /* Warna latar belakang gelap */
+    background: var(--bg-card, #1a1a1a); /* Warna latar belakang gelap */
     border-radius: 12px; /* Sudut melengkung */
-    border: 1px solid #333; /* Garis tepi tipis */
+    border: 1px solid var(--border-color, #333333); /* Garis tepi tipis */
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 /* Efek sedikit melayang saat kartu disorot kursor */
 .kategori-card:hover {
     transform: translateY(-5px);
-    border-color: #e10600;
+    border-color: var(--red-primary, #e10600);
 }
 
 /* Bagian Gambar Kategori */
@@ -1185,12 +1253,14 @@ body.home-page .telemetry-card {
     position: relative;
     width: 100%;
     height: 180px; /* Tinggi gambar seragam */
+    overflow: hidden;
 }
 
 .kategori-image img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Menjaga agar gambar tidak gepeng */
+    display: block;
 }
 
 /* Label jumlah part merah di pojok kanan atas gambar */
@@ -1198,8 +1268,8 @@ body.home-page .telemetry-card {
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: #e10600;
-    color: #fff;
+    background-color: var(--red-primary, #e10600);
+    color: #ffffff;
     padding: 4px 10px;
     font-size: 12px;
     font-weight: 700;
@@ -1216,29 +1286,29 @@ body.home-page .telemetry-card {
 
 .kategori-info h3 {
     font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 10px;
+    color: var(--text-primary, #ffffff);
+    margin: 0 0 10px 0;
     text-transform: uppercase;
 }
 
 .kategori-info p {
     font-size: 14px;
-    color: #a0a0a0;
+    color: var(--text-secondary, #a0a0a0);
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
     flex-grow: 1;
 }
 
 /* Tombol Buka Katalog */
 .btn-katalog {
-    color: #ffffff;
+    color: var(--text-primary, #ffffff);
     text-decoration: none;
     font-size: 14px;
     font-weight: 700;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: 0.3s;
+    transition: color 0.25s ease;
 }
 
 .btn-katalog i {
@@ -1246,7 +1316,23 @@ body.home-page .telemetry-card {
 }
 
 .btn-katalog:hover {
-    color: #e10600;
+    color: var(--red-primary, #e10600);
+}
+
+@media (max-width: 600px) {
+    .kategori-scroll-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+    }
+
+    .kategori-scroll-prev {
+        left: 8px;
+    }
+
+    .kategori-scroll-next {
+        right: 8px;
+    }
 }
 
 /* ====================================================
@@ -2649,55 +2735,214 @@ body.home-page .telemetry-card {
 }
 
 /* --- Styles Khusus Halaman Produk --- */
-.page-header {
-    padding: 40px 30px 20px;
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-color);
+.catalog-hero-banner {
+    position: relative;
+    width: 100%;
+    background:
+        radial-gradient(ellipse at 58% 50%, rgba(229, 9, 20, 0.14) 0%, rgba(229, 9, 20, 0.03) 42%, transparent 72%),
+        linear-gradient(105deg, #0b0b0b 0%, #131313 52%, #0c0c0c 100%);
+    border-top: 1.5px solid var(--red-primary, #c80814);
+    border-bottom: 1px solid var(--border-color, #1f1f1f);
+    padding: 28px 30px;
+    overflow: hidden;
 }
 
-.breadcrumb {
+/* Efek Visual Latar Tengah (Grid, Watermark, Garis Racing Diagonal) */
+.catalog-hero-bg-fx {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-tech-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse at 55% 50%, rgba(0, 0, 0, 0.9) 25%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at 55% 50%, rgba(0, 0, 0, 0.9) 25%, transparent 80%);
+}
+
+.hero-watermark {
+    position: absolute;
+    left: 52%;
+    top: 50%;
+    transform: translate(-50%, -50%) skewX(-14deg);
+    font-size: clamp(64px, 9vw, 118px);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 8px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.055);
+    user-select: none;
+    white-space: nowrap;
+}
+
+.hero-center-slashes {
+    position: absolute;
+    left: 58%;
+    top: 0;
+    height: 100%;
     display: flex;
+    gap: 14px;
+    transform: skewX(-28deg);
+    opacity: 0.7;
+}
+
+.hero-center-slashes span {
+    display: block;
+    height: 100%;
+}
+
+.hero-center-slashes span:nth-child(1) {
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, rgba(229, 9, 20, 0.55) 50%, transparent 100%);
+}
+
+.hero-center-slashes span:nth-child(2) {
+    width: 18px;
+    background: linear-gradient(180deg, transparent 5%, rgba(229, 9, 20, 0.12) 50%, transparent 95%);
+    border-left: 1px solid rgba(229, 9, 20, 0.25);
+}
+
+.hero-center-slashes span:nth-child(3) {
+    width: 1px;
+    background: linear-gradient(180deg, transparent 10%, rgba(255, 255, 255, 0.14) 50%, transparent 90%);
+}
+
+.catalog-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.catalog-hero-content {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.catalog-hero-eyebrow {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--red-primary);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.page-title-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.page-title {
-    font-size: 36px;
+    gap: 9px;
+    font-size: 12.5px;
     font-weight: 800;
-    margin-bottom: 5px;
+    letter-spacing: 1px;
+    color: var(--text-primary, #ffffff);
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
-.page-subtitle {
-    font-size: 14px;
-    color: var(--text-secondary);
+.hero-red-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--red-primary, #e50914);
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.65);
 }
 
-.page-badge {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    display: flex;
+.catalog-hero-title {
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.08;
+    letter-spacing: 0.4px;
+    color: var(--text-primary, #ffffff);
+    text-transform: uppercase;
+    margin: 0 0 8px 0;
+}
+
+.catalog-hero-subtitle {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-secondary, #9e9e9e);
+    margin: 0 0 12px 0;
+}
+
+.catalog-warranty-badge {
+    display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 7px 15px;
+    border-radius: 999px;
+    background: rgba(18, 18, 18, 0.92);
+    border: 1.5px solid var(--red-primary, #d90b17);
+    color: var(--text-primary, #ffffff);
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 0 14px rgba(217, 11, 23, 0.16);
 }
 
-.page-badge i {
-    color: var(--red-primary);
+.catalog-warranty-badge i {
+    color: var(--red-primary, #e50914);
+    font-size: 14px;
+}
+
+/* Aksen Garis Mesh Merah Menyudut di Kanan */
+.catalog-hero-right-accent {
+    position: absolute;
+    right: 0;
+    top: 26%;
+    width: 240px;
+    height: 78%;
+    pointer-events: none;
+    z-index: 1;
+    background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(229, 9, 20, 0.72) 0px,
+            rgba(229, 9, 20, 0.72) 1.5px,
+            transparent 1.5px,
+            transparent 5.5px
+        ),
+        repeating-linear-gradient(
+            45deg,
+            rgba(229, 9, 20, 0.35) 0px,
+            rgba(229, 9, 20, 0.35) 1px,
+            transparent 1px,
+            transparent 6px
+        );
+    clip-path: polygon(
+        100% 0%,
+        76% 0%,
+        0% 100%,
+        100% 100%
+    );
+    -webkit-clip-path: polygon(
+        100% 0%,
+        76% 0%,
+        0% 100%,
+        100% 100%
+    );
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.15) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.catalog-hero-right-accent::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 30, 40, 0.95) 0%, rgba(190, 6, 15, 0.55) 65%, transparent 100%);
+    clip-path: polygon(
+        76% 0%,
+        78.2% 0%,
+        2.2% 100%,
+        0% 100%
+    );
+    -webkit-clip-path: polygon(
+        76% 0%,
+        78.2% 0%,
+        2.2% 100%,
+        0% 100%
+    );
 }
 
 /* Filter Container */
@@ -2858,7 +3103,7 @@ body.home-page .telemetry-card {
     font-weight: 700;
     margin-bottom: 10px;
     line-height: 1.4;
-    height: 42px; /* Menjaga tinggi judul tetap sama */
+    height: 42px;
     overflow: hidden;
 }
 
@@ -2868,8 +3113,6 @@ body.home-page .telemetry-card {
     color: var(--red-primary);
     margin-bottom: 15px;
 }
-
-
 
 .btn-detail {
     background: var(--bg-hover);
@@ -2910,12 +3153,41 @@ body.home-page .telemetry-card {
     }
 }
 
+@media (max-width: 768px) {
+    .catalog-hero-banner {
+        padding: 24px 18px;
+    }
+    .catalog-hero-eyebrow {
+        font-size: 11px;
+    }
+    .catalog-hero-subtitle {
+        font-size: 13.5px;
+        margin-bottom: 10px;
+    }
+    .catalog-warranty-badge {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+    .hero-watermark {
+        left: 65%;
+        font-size: 56px;
+    }
+    .hero-center-slashes {
+        display: none;
+    }
+    .catalog-hero-right-accent {
+        width: 150px;
+        height: 65%;
+        opacity: 0.75;
+    }
+}
+
 @media (max-width: 600px) {
     .produk-grid {
         grid-template-columns: 1fr;
     }
-    .page-title {
-        font-size: 28px;
+    .catalog-hero-title {
+        font-size: 26px;
     }
 }
 
@@ -5219,6 +5491,188 @@ body.home-page .telemetry-card {
 }
 
 /* --- Styles Khusus Halaman Kategori Produk --- */
+.category-hero-banner {
+    position: relative;
+    width: 100%;
+    background:
+        radial-gradient(ellipse at 58% 50%, rgba(229, 9, 20, 0.14) 0%, rgba(229, 9, 20, 0.03) 42%, transparent 72%),
+        linear-gradient(105deg, #0b0b0b 0%, #131313 52%, #0c0c0c 100%);
+    border-top: 1.5px solid var(--red-primary, #c80814);
+    border-bottom: 1px solid var(--border-color, #1f1f1f);
+    padding: 34px 30px 34px;
+    overflow: hidden;
+}
+
+.category-hero-bg-fx {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cat-tech-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse at 55% 50%, rgba(0, 0, 0, 0.9) 25%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at 55% 50%, rgba(0, 0, 0, 0.9) 25%, transparent 80%);
+}
+
+.cat-watermark {
+    position: absolute;
+    left: 52%;
+    top: 50%;
+    transform: translate(-50%, -50%) skewX(-14deg);
+    font-size: clamp(72px, 11vw, 148px);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 8px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.055);
+    user-select: none;
+    white-space: nowrap;
+}
+
+.cat-center-slashes {
+    position: absolute;
+    left: 58%;
+    top: 0;
+    height: 100%;
+    display: flex;
+    gap: 14px;
+    transform: skewX(-28deg);
+    opacity: 0.7;
+}
+
+.cat-center-slashes span {
+    display: block;
+    height: 100%;
+}
+
+.cat-center-slashes span:nth-child(1) {
+    width: 2px;
+    background: linear-gradient(180deg, transparent 0%, rgba(229, 9, 20, 0.55) 50%, transparent 100%);
+}
+
+.cat-center-slashes span:nth-child(2) {
+    width: 18px;
+    background: linear-gradient(180deg, transparent 5%, rgba(229, 9, 20, 0.12) 50%, transparent 95%);
+    border-left: 1px solid rgba(229, 9, 20, 0.25);
+}
+
+.cat-center-slashes span:nth-child(3) {
+    width: 1px;
+    background: linear-gradient(180deg, transparent 10%, rgba(255, 255, 255, 0.14) 50%, transparent 90%);
+}
+
+.category-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.category-hero-content {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.category-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #e50914;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.cat-red-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #e50914;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.65);
+}
+
+.category-hero-title {
+    font-size: clamp(30px, 4.2vw, 44px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: 0.4px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.category-hero-subtitle {
+    font-size: 15.5px;
+    font-weight: 500;
+    color: #9e9e9e;
+    margin: 0 0 14px 0;
+}
+
+.category-warranty-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #e5e7eb;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.category-warranty-line i {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.category-hero-right-accent {
+    position: absolute;
+    right: 0;
+    top: 26%;
+    width: 240px;
+    height: 78%;
+    pointer-events: none;
+    z-index: 1;
+    background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(229, 9, 20, 0.72) 0px,
+            rgba(229, 9, 20, 0.72) 1.5px,
+            transparent 1.5px,
+            transparent 5.5px
+        ),
+        repeating-linear-gradient(
+            45deg,
+            rgba(229, 9, 20, 0.35) 0px,
+            rgba(229, 9, 20, 0.35) 1px,
+            transparent 1px,
+            transparent 6px
+        );
+    clip-path: polygon(100% 0%, 76% 0%, 0% 100%, 100% 100%);
+    -webkit-clip-path: polygon(100% 0%, 76% 0%, 0% 100%, 100% 100%);
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.15) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.category-hero-right-accent::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 30, 40, 0.95) 0%, rgba(190, 6, 15, 0.55) 65%, transparent 100%);
+    clip-path: polygon(76% 0%, 78.2% 0%, 2.2% 100%, 0% 100%);
+    -webkit-clip-path: polygon(76% 0%, 78.2% 0%, 2.2% 100%, 0% 100%);
+}
+
 .kategori-detail-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -5384,6 +5838,36 @@ body.home-page .telemetry-card {
     }
 }
 
+@media (max-width: 768px) {
+    .category-hero-banner {
+        padding: 26px 18px 28px;
+    }
+    .category-hero-eyebrow {
+        font-size: 11.5px;
+    }
+    .category-hero-title {
+        font-size: 28px;
+    }
+    .category-hero-subtitle {
+        font-size: 14px;
+    }
+    .category-warranty-line {
+        font-size: 13px;
+    }
+    .cat-watermark {
+        left: 65%;
+        font-size: 64px;
+    }
+    .cat-center-slashes {
+        display: none;
+    }
+    .category-hero-right-accent {
+        width: 150px;
+        height: 65%;
+        opacity: 0.75;
+    }
+}
+
 @media (max-width: 600px) {
     .kategori-cta h2 {
         font-size: 22px;
@@ -5392,7 +5876,6 @@ body.home-page .telemetry-card {
         flex-direction: column;
     }
 }
-
 /* ============================================================================
    FIX FINAL LOKASI: 2 KOLOM SEJAJAR + FONT BESAR + RESPONSIVE HP
    ============================================================================ */
