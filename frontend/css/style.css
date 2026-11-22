@@ -32,423 +32,789 @@ body {
     overflow-x: hidden;
 }
 
-/* Top Navigation */
+/* =====================================================
+   GOOGLE FONTS - RACING / MOTORSPORT TYPOGRAPHY
+===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,700;1,700&family=Orbitron:wght@700;800;900&display=swap');
+
+/* =====================================================
+   TOP NAVIGATION BAR - CURVED SILK LIGHT & GLASS
+===================================================== */
+header.top-nav,
 .top-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 60px;
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    z-index: 1001;
-    box-sizing: border-box;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 64px !important;
+    background-color: #8f0209 !important;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23ff4d4d' stop-opacity='0'/%3E%3Cstop offset='45%25' stop-color='%23ff5252' stop-opacity='0.32'/%3E%3Cstop offset='82%25' stop-color='%23ff7575' stop-opacity='0.65'/%3E%3Cstop offset='100%25' stop-color='%23ff2a2a' stop-opacity='0.25'/%3E%3C/linearGradient%3E%3ClinearGradient id='s1' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0'/%3E%3Cstop offset='55%25' stop-color='%23ffffff' stop-opacity='0.28'/%3E%3Cstop offset='85%25' stop-color='%23ffffff' stop-opacity='0.52'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0.12'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 420 64 Q 980 6 1440 34 L 1440 64 Z' fill='url(%23g1)'/%3E%3Cpath d='M 420 64 Q 980 6 1440 34' fill='none' stroke='url(%23s1)' stroke-width='1.3'/%3E%3C/svg%3E"),
+        linear-gradient(90deg, #870107 0%, #b3040d 38%, #960209 72%, #720105 100%) !important;
+    background-size: 100% 100%, 100% 100% !important;
+    background-repeat: no-repeat !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 18px !important;
+    padding: 0 24px !important;
+    z-index: 1600 !important;
+    box-sizing: border-box !important;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .menu-toggle {
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 20px;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-radius: 8px;
+    color: #ffffff !important;
+    font-size: 17px;
     cursor: pointer;
-    padding: 8px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Logo + Jarak + Font Keren Topbar */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
 }
 
 .logo-icon {
-    font-size: 24px;
+    height: 36px !important;
+    width: auto !important;
+    margin-right: 2px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+.logo-icon img {
+    height: 100% !important;
+    width: auto !important;
+    max-height: 36px !important;
+    object-fit: contain !important;
+    display: block !important;
+    border-radius: 6px;
+}
+
+.logo-brand-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    line-height: 1 !important;
 }
 
 .logo-text {
-    font-size: 18px;
+    font-family: 'Orbitron', 'Chakra Petch', "Arial Black", sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    font-style: italic !important;
+    letter-spacing: 1.4px !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.logo-text sup {
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: 1px;
-    padding-right: 5px;
-    color: #ff1a1a;
+    margin-left: 1px;
 }
 
 .logo-sub {
-    font-size: 12px;
-    color: #ffffff;
-    font-weight: 555;
+    font-family: 'Chakra Petch', "Segoe UI", sans-serif !important;
+    font-size: 9px !important;
+    line-height: 1.15 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-weight: 700 !important;
+    margin-top: 2px !important;
+    padding-left: 0 !important;
+    border-left: none !important;
 }
 
+/* Search bar putih kapsul di tengah */
 .nav-center {
     flex: 1;
-    max-width: 400px;
-    margin: 0 20px;
-}
-
-.search-bar {
-    position: relative;
+    max-width: 560px;
+    min-width: 180px;
+    margin: 0 14px;
     display: flex;
     align-items: center;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 8px 12px;
 }
 
+.top-nav .search-bar,
+.search-bar {
+    position: relative;
+    width: 100%;
+    height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 0 18px !important;
+    box-sizing: border-box;
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.22),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.06) !important;
+}
+
+.top-nav .search-bar i,
 .search-bar i {
-    color: var(--text-secondary);
-    margin-right: 8px;
+    color: #6b7280 !important;
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
+.top-nav .search-bar input,
 .search-bar input {
     flex: 1;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 14px;
+    min-width: 0;
+    height: 100%;
+    background: transparent !important;
+    border: none !important;
+    color: #1f2937 !important;
+    font-size: 13px;
     outline: none;
+    line-height: normal;
+}
+
+.top-nav .search-bar input::placeholder,
+.search-bar input::placeholder {
+    color: #888e99 !important;
 }
 
 .search-bar .shortcut {
-    font-size: 11px;
-    color: var(--text-muted);
-    background: var(--bg-hover);
-    padding: 2px 6px;
-    border-radius: 3px;
+    display: none !important;
 }
 
+/* Bagian kanan: Favorit, Keranjang, Notifikasi | Akun */
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-
-.nav-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--text-primary);
+    gap: 18px;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .nav-icons {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
 }
 
 .icon-btn {
     position: relative;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 18px;
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
     cursor: pointer;
-    padding: 8px;
+    padding: 3px 4px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex-shrink: 0;
+    transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+}
+
+.icon-btn i {
+    font-size: 17px;
+    line-height: 1;
+    color: #ffffff !important;
+}
+
+.icon-btn .nav-icon-label,
+.icon-btn small,
+.icon-btn span.nav-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.94) !important;
 }
 
 .badge {
     position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--red-primary);
-    color: white;
+    top: -4px;
+    right: -2px;
+    min-width: 16px;
+    height: 16px;
+    background: #ffffff !important;
+    color: #b5050e !important;
     font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 10px;
-    font-weight: 600;
-}
-
-.btn-cs {
-    background: var(--red-primary);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
+    padding: 0 4px;
+    border-radius: 999px;
+    font-weight: 800;
+    line-height: 1;
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
-    transition: background 0.3s;
-}
-
-.btn-cs:hover {
-    background: var(--red-hover);
-}
-
-/* =========================================
-   FLOATING PILL SIDEBAR - YUKIDO
-   ========================================= */
-.sidebar,
-.sidebar * {
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
     box-sizing: border-box;
 }
 
-.sidebar {
+.nav-account-btn,
+.top-nav .btn-cs,
+.btn-cs {
+    position: relative;
+    height: 36px !important;
+    background: transparent !important;
+    border: none !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.28) !important;
+    border-radius: 0 !important;
+    padding: 0 4px 0 18px !important;
+    color: #ffffff !important;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: none !important;
+    white-space: nowrap;
+}
+
+/* =====================================================
+   SIDEBAR - TENGAH MERAH TUA PEKAT + KILAU ATAS & BAWAH
+===================================================== */
+.sidebar-backdrop {
     position: fixed;
-    top: 72px;
-    left: 14px;
-    bottom: 14px;
-    width: 64px !important;
-    height: auto;
-    background-color: #161616;
-    border: 1px solid #2a2a2a;
-    border-radius: 18px;
-    padding: 10px;
+    inset: 0;
+    z-index: 1650;
+    background: rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    cursor: pointer;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.sidebar-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.sidebar-open .main-content,
+body.sidebar-open main,
+body.sidebar-open .footer-yukido {
+    margin-left: 0 !important;
+}
+
+aside.sidebar,
+.sidebar,
+body.home-page .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 280px !important;
+    max-width: 86vw !important;
+    height: 100dvh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    background-color: #690106 !important;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 800' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='topGlow' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff3b3f' stop-opacity='0.42'/%3E%3Cstop offset='55%25' stop-color='%23b5040d' stop-opacity='0.14'/%3E%3Cstop offset='100%25' stop-color='%235c0004' stop-opacity='0'/%3E%3C/linearGradient%3E%3ClinearGradient id='botGlow' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23d90b16' stop-opacity='0.48'/%3E%3Cstop offset='58%25' stop-color='%23ff3b3f' stop-opacity='0.72'/%3E%3Cstop offset='100%25' stop-color='%23ff6b6b' stop-opacity='0.82'/%3E%3C/linearGradient%3E%3ClinearGradient id='botCurveStroke' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0.08'/%3E%3Cstop offset='55%25' stop-color='%23ffffff' stop-opacity='0.45'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0.58'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 0 110 Q 150 165 280 105 L 280 250 Q 130 215 0 265 Z' fill='url(%23topGlow)'/%3E%3Cpath d='M 0 712 Q 118 610 280 620 L 280 800 L 0 800 Z' fill='url(%23botGlow)'/%3E%3Cpath d='M 0 712 Q 118 610 280 620' fill='none' stroke='url(%23botCurveStroke)' stroke-width='1.4'/%3E%3C/svg%3E"),
+        linear-gradient(
+            180deg,
+            #9e030b 0%,
+            #7d0107 24%,
+            #630005 52%,
+            #570004 72%,
+            #7d0107 100%
+        ) !important;
+    background-size: 100% 100%, 100% 100% !important;
+    background-repeat: no-repeat !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow:
+        14px 0 38px rgba(0, 0, 0, 0.52),
+        inset -1px 0 0 rgba(255, 255, 255, 0.14) !important;
+    z-index: 1700 !important;
+    overflow: hidden !important;
+    transform: translateX(-104%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.22, 0.8, 0.25, 1), opacity 0.22s ease, visibility 0.3s ease;
+}
+
+aside.sidebar::after,
+.sidebar::after {
+    display: none !important;
+}
+
+aside.sidebar.expanded,
+aside.sidebar.active,
+.sidebar.expanded,
+.sidebar.active,
+body.home-page .sidebar.expanded,
+body.home-page .sidebar.active {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+.sidebar-header,
+body.home-page .sidebar-header {
+    min-height: 64px;
+    flex-shrink: 0;
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    z-index: 1000;
-    overflow: hidden;
-    transform: none !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: transparent !important;
+    border-bottom: none !important;
 }
 
-/* Melebar HANYA saat tombol garis 3 diklik (.expanded) */
-.sidebar.expanded {
-    width: 235px !important;
+/* Logo + Jarak + Font Keren Sidebar */
+.sidebar-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
 }
 
-/* --- SEARCH BAR --- */
-.sidebar-search {
+.sidebar-brand img {
+    width: 36px !important;
+    height: 32px !important;
+    margin-right: 2px !important;
+    object-fit: contain !important;
+    display: block !important;
+    border-radius: 6px;
+}
+
+.sidebar-brand span {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    line-height: 1 !important;
+}
+
+.sidebar-brand strong {
+    font-family: 'Orbitron', 'Chakra Petch', "Arial Black", sans-serif !important;
+    color: #ffffff !important;
+    font-size: 19px !important;
+    font-weight: 900 !important;
+    font-style: italic !important;
+    letter-spacing: 1.3px !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.sidebar-brand small {
+    font-family: 'Chakra Petch', "Segoe UI", sans-serif !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 8.5px !important;
+    line-height: 1.15 !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.4px !important;
+    text-transform: uppercase !important;
+    margin-top: 2px !important;
+}
+
+.sidebar-close {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.14) !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    border-radius: 50%;
+    color: #ffffff !important;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.sidebar-close:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.05);
+}
+
+/* Kartu kaca frosted "Masuk / Daftar" dengan kilau diagonal */
+.sidebar-welcome,
+body.home-page .sidebar-welcome {
     position: relative;
     display: flex;
     align-items: center;
-    width: 42px;
-    height: 38px;
-    margin: 0;
-    border-radius: 10px;
-    background-color: transparent;
+    gap: 12px;
+    margin: 6px 14px 14px;
+    padding: 13px 14px;
+    color: #ffffff !important;
+    text-decoration: none;
+    background: linear-gradient(
+        118deg,
+        rgba(255, 255, 255, 0.30) 0%,
+        rgba(255, 255, 255, 0.16) 44%,
+        rgba(205, 16, 26, 0.28) 68%,
+        rgba(130, 4, 12, 0.42) 100%
+    ) !important;
+    backdrop-filter: blur(16px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+    border: 1.2px solid rgba(255, 225, 225, 0.48) !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 10px 24px rgba(55, 0, 3, 0.38),
+        inset 0 1px 1px rgba(255, 255, 255, 0.65),
+        inset 0 -1px 1px rgba(255, 180, 180, 0.25) !important;
+    transition: transform 0.18s ease, box-shadow 0.2s ease;
+}
+
+.sidebar-welcome:hover,
+body.home-page .sidebar-welcome:hover {
+    transform: translateY(-1px);
+}
+
+.sidebar-welcome-icon,
+body.home-page .sidebar-welcome-icon {
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
-    transition: width 0.3s ease, background-color 0.2s ease;
-}
-
-.sidebar.expanded .sidebar-search {
-    width: 100%;
-    background-color: #222222;
-}
-
-.sidebar-search i {
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: none;
-    width: 42px;
-    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9e9e9e;
-    font-size: 15px;
-    pointer-events: none;
+    color: #ffffff !important;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.16) !important;
+    border: 1.2px solid rgba(255, 240, 240, 0.58) !important;
+    border-radius: 50%;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.22),
+        inset 0 1px 1px rgba(255, 255, 255, 0.65);
 }
 
-.sidebar-search input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    color: #ffffff;
-    font-size: 13px;
-    padding: 0 12px 0 42px;
-    opacity: 0;
-    pointer-events: none;
-    outline: none;
+.sidebar-welcome h4 {
+    color: #ffffff !important;
+    font-size: 13.5px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.25;
 }
 
-.sidebar.expanded .sidebar-search input {
-    opacity: 1;
-    pointer-events: auto;
-    transition: opacity 0.2s 0.08s ease;
+.sidebar-welcome p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 10.5px;
+    margin: 2px 0 0;
+    line-height: 1.25;
 }
 
-/* --- MENU NAVIGASI --- */
+.sidebar-welcome > i {
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 12px;
+}
+
+/* Daftar menu sidebar */
 .sidebar-menu {
     flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 0;
+    padding: 4px 14px 12px;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 .sidebar-menu::-webkit-scrollbar {
     display: none;
 }
 
-.menu-item {
+.sidebar-menu .menu-item,
+body.home-page .sidebar-menu .menu-item {
     position: relative;
+    width: 100%;
+    min-height: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
-    width: 42px;
-    height: 38px;
-    padding: 0;
-    gap: 0;
-    border-radius: 10px;
+    padding: 0 15px;
+    gap: 14px;
+    color: #ffffff !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 999px !important;
     text-decoration: none;
-    color: #9e9e9e;
     flex-shrink: 0;
-    overflow: hidden;
-    transition: width 0.3s ease, background-color 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease;
 }
 
-.menu-item::before,
-.menu-item::after {
-    display: none !important;
-}
-
-.sidebar.expanded .menu-item {
-    width: 100%;
-}
-
-.menu-item:hover {
-    background-color: #222222;
-    color: #ffffff;
-}
-
-.menu-item.active {
-    background-color: #262626;
-    color: #ffffff;
-    border-left: none !important;
-}
-
-.menu-item i {
-    width: 42px;
-    height: 38px;
+.sidebar-menu .menu-item i {
+    width: 20px;
+    min-width: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    color: #ffffff !important;
+    font-size: 16px;
     flex-shrink: 0;
 }
 
-.menu-item span {
-    font-size: 13px;
-    font-weight: 500;
+.sidebar-menu .menu-item span {
+    color: #ffffff !important;
+    font-size: 13.5px;
+    font-weight: 600;
     white-space: nowrap;
-    padding-left: 6px;
-    opacity: 0;
-    transition: opacity 0.15s ease;
 }
 
-.sidebar.expanded .menu-item span {
-    opacity: 1;
-    transition: opacity 0.2s 0.08s ease;
+.sidebar-menu .menu-item:hover,
+body.home-page .sidebar-menu .menu-item:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* --- FOOTER TELEMETRY --- */
-.sidebar-footer {
-    padding: 8px 0 0 0;
-    border-top: 1px solid #262626;
+.sidebar-menu .menu-item.active,
+body.home-page .sidebar-menu .menu-item.active {
+    background: linear-gradient(
+        90deg,
+        #f21620 0%,
+        #cf0913 50%,
+        rgba(170, 5, 13, 0.45) 100%
+    ) !important;
+    border: 1px solid rgba(255, 185, 185, 0.34) !important;
+    box-shadow:
+        0 6px 18px rgba(65, 0, 5, 0.36),
+        inset 0 1px 0 rgba(255, 220, 220, 0.42) !important;
+}
+
+.sidebar-menu .menu-item .fa-chevron-right {
+    margin-left: auto;
+    font-size: 11px;
+    opacity: 0.88;
+}
+
+.sidebar-menu .menu-badge,
+body.home-page .sidebar-menu .menu-badge {
+    margin-left: auto;
+    min-width: 21px;
+    height: 21px;
+    padding: 0 6px;
+    color: #9e030b !important;
+    background: #ffffff !important;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    box-sizing: border-box;
+}
+
+/* Footer tanpa garis hitam di atasnya, langsung kartu kaca frosted */
+.sidebar-footer,
+body.home-page .sidebar-footer {
     flex-shrink: 0;
-    overflow: hidden;
+    padding: 10px 14px 18px !important;
+    border-top: none !important;
+    background: transparent !important;
 }
 
-.telemetry-status {
+.telemetry-card,
+body.home-page .telemetry-card {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    height: 24px;
-    padding-left: 17px;
-    gap: 15px;
+    gap: 12px;
+    padding: 13px 15px !important;
+    background: linear-gradient(
+        118deg,
+        rgba(255, 255, 255, 0.32) 0%,
+        rgba(255, 255, 255, 0.16) 44%,
+        rgba(205, 16, 26, 0.26) 68%,
+        rgba(130, 4, 12, 0.40) 100%
+    ) !important;
+    backdrop-filter: blur(16px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+    border: 1.2px solid rgba(255, 225, 225, 0.48) !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 10px 24px rgba(55, 0, 3, 0.38),
+        inset 0 1px 1px rgba(255, 255, 255, 0.65),
+        inset 0 -1px 1px rgba(255, 180, 180, 0.25) !important;
 }
 
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #00e676;
+.telemetry-icon {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.16) !important;
+    border: 1.2px solid rgba(255, 240, 240, 0.58) !important;
+    color: #ffffff !important;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.22),
+        inset 0 1px 1px rgba(255, 255, 255, 0.65);
 }
 
-.telemetry-status .status-text {
+.telemetry-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.telemetry-info strong {
+    color: #ffffff !important;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.telemetry-info span {
+    color: rgba(255, 255, 255, 0.92) !important;
     font-size: 11px;
-    font-weight: 600;
-    color: #00e676;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.15s ease;
 }
 
-.sidebar.expanded .telemetry-status .status-text {
-    opacity: 1;
-    transition: opacity 0.2s 0.08s ease;
+.telemetry-dot {
+    display: none !important;
 }
 
-/* --- BODY & MAIN CONTENT OFFSET --- */
-body {
-    padding-top: 60px !important;
-    padding-left: 92px !important;
-    transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.sidebar-open {
-    padding-left: 264px !important;
-}
-
-.main-content {
-    margin-left: 0 !important;
-    padding-top: 0 !important;
-    width: 100%;
-}
-
-/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
-    body,
-    body.sidebar-open {
-        padding-left: 0 !important;
+    header.top-nav,
+    .top-nav {
+        height: 58px !important;
+        gap: 8px !important;
+        padding: 0 12px !important;
     }
 
-    .sidebar {
-        top: 66px;
-        left: 12px;
-        bottom: 12px;
-        width: 240px !important;
-        transform: translateX(calc(-100% - 24px)) !important;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .nav-left {
+        gap: 8px;
     }
 
-    .sidebar.expanded {
-        transform: translateX(0) !important;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85);
+    .menu-toggle {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
     }
 
-    .sidebar.expanded .sidebar-search {
-        width: 100%;
-        background-color: #222222;
+    .logo,
+    .sidebar-brand {
+        gap: 10px !important;
     }
 
-    .sidebar.expanded .sidebar-search input,
-    .sidebar.expanded .menu-item span,
-    .sidebar.expanded .telemetry-status .status-text {
-        opacity: 1;
-        pointer-events: auto;
+    .logo-icon {
+        height: 28px !important;
     }
 
-    .sidebar.expanded .menu-item {
-        width: 100%;
+    .logo-icon img {
+        max-height: 28px !important;
+    }
+
+    .logo-text,
+    .sidebar-brand strong {
+        font-size: 16px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .logo-sub,
+    .search-bar .shortcut,
+    .nav-link,
+    .icon-btn .nav-icon-label,
+    .icon-btn small,
+    .nav-account-btn span,
+    .btn-cs {
+        display: none !important;
+    }
+
+    .sidebar-brand small {
+        font-size: 7.5px !important;
+        letter-spacing: 1.1px !important;
+    }
+
+    .nav-center {
+        margin: 0 4px;
+        min-width: 70px;
+        max-width: none;
+    }
+
+    .top-nav .search-bar,
+    .search-bar {
+        height: 34px !important;
+        padding: 0 12px !important;
+    }
+
+    .top-nav .search-bar input,
+    .search-bar input {
+        font-size: 12px;
+    }
+
+    .nav-right,
+    .nav-icons {
+        gap: 8px;
+    }
+
+    .icon-btn i {
+        font-size: 16px;
+    }
+
+    aside.sidebar,
+    .sidebar,
+    body.home-page .sidebar {
+        width: 276px !important;
+        max-width: 85vw !important;
     }
 }
+
+
 /* Main Content */
 .main-content {
     margin-left: 0; /* Ubah dari 280px menjadi 0 */

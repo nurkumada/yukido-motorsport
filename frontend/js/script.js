@@ -1,33 +1,131 @@
 // =========================================
-// 1. SIDEBAR TOGGLE (GARIS 3) & ACTIVE LINK
+// 1. SIDEBAR TOGGLE (BURGUNDY GLASSMORPHISM) & ACTIVE LINK
 // =========================================
 const menuToggle = document.getElementById('menuToggle');
 const sidebar = document.getElementById('sidebar');
 
-function updateSidebarLayout() {
-    const isExpanded = sidebar && sidebar.classList.contains('expanded');
-    document.body.classList.toggle('sidebar-open', isExpanded);
-    localStorage.setItem('yukido_sidebar_expanded', isExpanded ? 'true' : 'false');
+function syncSidebarWelcomeCard() {
+    const nameEl = document.getElementById('sidebarWelcomeName');
+    const subEl = document.getElementById('sidebarWelcomeSub');
+    const linkEl = document.getElementById('sidebarWelcomeCard');
+    if (!nameEl || !subEl || !linkEl) return;
+
+    fetch('../backend/auth/me.php', { credentials: 'same-origin' })
+        .then(res => res.json())
+        .then(data => {
+            if (data && data.logged_in && data.user) {
+                nameEl.textContent = data.user.name || data.user.full_name || 'Akun YUKIDO';
+                subEl.textContent = data.user.email || 'Anggota Terverifikasi';
+                linkEl.setAttribute('href', 'akun.html');
+            } else {
+                nameEl.textContent = 'Selamat Datang';
+                subEl.textContent = 'Masuk atau kelola akun Anda';
+                linkEl.setAttribute('href', 'login.html');
+            }
+        })
+        .catch(() => {});
 }
 
-// Terapkan status sidebar terakhir (bawaan terbuka / 'true')
-if (sidebar) {
-    const savedState = localStorage.getItem('yukido_sidebar_expanded');
-    if (savedState === 'false') {
-        sidebar.classList.remove('expanded');
-    } else {
-        sidebar.classList.add('expanded');
+function initBurgundyGlassSidebar() {
+    if (!sidebar) return;
+
+    let backdrop = document.querySelector('.sidebar-backdrop');
+    if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'sidebar-backdrop';
+        document.body.appendChild(backdrop);
     }
-    updateSidebarLayout();
+
+    if (!sidebar.querySelector('.sidebar-header')) {
+        const existingMenu = sidebar.querySelector('.sidebar-menu');
+        const existingFooter = sidebar.querySelector('.sidebar-footer');
+
+        const headerHTML = `
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-brand">
+                <span>
+                 <strong>YUKIDO</strong>
+                <small>POWER TEKNIK</small>
+                </span>
+                </a>
+                <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Tutup Menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <a href="login.html" class="sidebar-welcome" id="sidebarWelcomeCard">
+                <div class="sidebar-welcome-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h4 id="sidebarWelcomeName">Selamat Datang</h4>
+                    <p id="sidebarWelcomeSub">Masuk atau kelola akun Anda</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        `;
+
+        sidebar.insertAdjacentHTML('afterbegin', headerHTML);
+
+        if (!existingFooter) {
+            sidebar.insertAdjacentHTML('beforeend', `
+                <div class="sidebar-footer">
+                    <a href="kategori-produk.html" class="telemetry-card" style="text-decoration:none;">
+                        <i class="fas fa-check-circle telemetry-icon"></i>
+                         <div class="telemetry-info">
+                        <strong>TOOLS SELECTION</strong>
+                        <span>Stok Tersedia &amp; Teruji</span>
+                         </div>
+                        <i class="fas fa-chevron-right" style="margin-left:auto;color:#fff;font-size:12px;"></i>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            `);
+        }
+
+        if (existingMenu) {
+            sidebar.insertBefore(existingMenu, sidebar.querySelector('.sidebar-footer'));
+        }
+    }
+
+    const closeBtn = sidebar.querySelector('.sidebar-close');
+
+    function setSidebarState(isOpen) {
+        sidebar.classList.toggle('expanded', isOpen);
+        sidebar.classList.toggle('active', isOpen);
+        backdrop.classList.toggle('active', isOpen);
+        document.body.classList.toggle('sidebar-open', isOpen);
+        localStorage.setItem('yukido_sidebar_expanded', isOpen ? 'true' : 'false');
+    }
+
+    // Bawaan tertutup saat halaman dimuat agar layar tetap lega
+    setSidebarState(false);
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = !sidebar.classList.contains('expanded');
+            setSidebarState(isOpen);
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setSidebarState(false);
+        });
+    }
+
+    backdrop.addEventListener('click', () => setSidebarState(false));
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setSidebarState(false);
+    });
+
+    syncSidebarWelcomeCard();
 }
 
-if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        sidebar.classList.toggle('expanded');
-        updateSidebarLayout();
-    });
-}
+initBurgundyGlassSidebar();
 
 // Otomatis tandai menu sidebar yang aktif sesuai halaman
 document.addEventListener('DOMContentLoaded', () => {
