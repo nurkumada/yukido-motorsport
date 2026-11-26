@@ -12,12 +12,12 @@
     <nav class="top-nav">
         <div class="nav-left">
             <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-        <a href="index.html" class="logo">
-            <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
-            <span class="logo-icon"></span>
-            <span class="logo-text">YUKIDO</span>
-            <span class="logo-sub">ユキドジャパンテクノロジ</span>
-        </a>
+            <a href="index.html" class="logo">
+                <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
+                <span class="logo-icon"></span>
+                <span class="logo-text">YUKIDO</span>
+                <span class="logo-sub">ユキドジャパンテクノロジ</span>
+            </a>
         </div>
         <div class="nav-center">
             <div class="search-bar">
@@ -37,55 +37,106 @@
             </div>
         </div>
     </nav>
-    <!-- Sidebar -->
-<aside class="sidebar expanded" id="sidebar">
-    <div class="sidebar-search">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Cari produk...">
+
+    <!-- ================= SIDEBAR GLASSY ================= -->
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+
+    <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+            <img src="images/logo-yukido.png" alt="YUKIDO">
+            <span>
+                <strong>YUKIDO</strong>
+                <small>POWER TEKNIK</small>
+            </span>
+        </a>
+
+        <button class="sidebar-close" id="sidebarClose"
+                type="button" aria-label="Tutup menu">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
-    
+
+    <!-- LOGIN / AKUN -->
+    <a href="login.html" class="sidebar-welcome">
+        <div class="sidebar-welcome-icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <div>
+            <h4>Masuk / Daftar</h4>
+            <p>Kelola akun dan pesanan Anda</p>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+    </a>
+
+    <!-- MENU NAVIGASI -->
     <nav class="sidebar-menu">
-        <a href="index.html" class="menu-item" title="Beranda">
-            <i class="fas fa-home"></i>
+
+        <a href="index.html" class="menu-item">
+            <i class="fas fa-house"></i>
             <span>Beranda</span>
         </a>
-        <a href="produk.html" class="menu-item" title="Semua Produk">
-            <i class="fas fa-th-large"></i>
+
+        <a href="produk.html" class="menu-item">
+            <i class="fas fa-cube"></i>
             <span>Semua Produk</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
         </a>
-        <a href="kategori-produk.html" class="menu-item" title="Kategori">
+
+        <a href="kategori-produk.html" class="menu-item">
             <i class="fas fa-layer-group"></i>
-            <span>Kategori</span>
+            <span>Kategori Produk</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
         </a>
-        <a href="garansi.html" class="menu-item" title="Klaim Garansi">
+
+        <a href="garansi.html" class="menu-item">
             <i class="fas fa-shield-alt"></i>
             <span>Klaim Garansi</span>
         </a>
-        <a href="gallery.html" class="menu-item" title="Gallery">
+
+        <a href="gallery.html" class="menu-item">
             <i class="fas fa-images"></i>
             <span>Gallery</span>
         </a>
-        <a href="lokasi.html" class="menu-item" title="Lokasi">
+
+        <a href="lokasi.html" class="menu-item">
             <i class="fas fa-map-marker-alt"></i>
             <span>Lokasi</span>
         </a>
-        <a href="keranjang.html" class="menu-item" title="Keranjang">
+
+        <a href="keranjang.html" class="menu-item">
             <i class="fas fa-shopping-cart"></i>
             <span>Keranjang</span>
+            <span class="menu-badge" id="sidebarCartBadge">0 Item</span>
         </a>
-        <a href="login.html" class="menu-item" title="Akun">
+
+        <a href="login.html" class="menu-item">
             <i class="fas fa-user-circle"></i>
             <span>Akun</span>
         </a>
+
     </nav>
-    
+
+    <!-- TELEMETRY -->
     <div class="sidebar-footer">
-        <div class="telemetry-status" title="YUKIDO TELEMETRY ONLINE">
-            <span class="dot"></span>
-            <span class="status-text">TELEMETRY ONLINE</span>
+        <div class="telemetry-card">
+            <div class="telemetry-icon">
+                <i class="fas fa-gauge-high"></i>
+            </div>
+            <div class="telemetry-info">
+                <strong>YUKIDO TELEMETRY</strong>
+                <span>
+                    <i class="telemetry-dot"></i>
+                    ONLINE
+                </span>
+            </div>
         </div>
     </div>
+
 </aside>
+
+<!-- BACKDROP -->
+<div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+
     <!-- Main Content -->
     <main class="main-content">
         <div class="shopee-cart-wrapper">
@@ -119,84 +170,11 @@
                     <span class="free-ship-note"><i class="fas fa-truck"></i> Gratis Ongkir s/d Rp 50.000</span>
                 </div>
 
-                <!-- Item 1 -->
-                <div class="shopee-cart-item" data-price="685000">
-                    <div class="col-check">
-                        <input type="checkbox" class="item-check" checked>
-                    </div>
-                    <div class="col-product">
-                        <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=150&h=150&fit=crop" alt="Impact Wrench">
-                        <div class="prod-meta">
-                            <h3>YUKIDO Cordless Impact Wrench Brushless 21V Heavy Duty</h3>
-                            <span class="prod-variant">Varian: Full Set 2 Baterai + Koper</span>
-                            <span class="prod-warranty"><i class="fas fa-shield-alt"></i> Garansi Resmi 1 Tahun</span>
-                        </div>
-                    </div>
-                    <div class="col-price">Rp 685.000</div>
-                    <div class="col-qty">
-                        <div class="shopee-qty-box">
-                            <button type="button" class="shopee-qty-btn minus">-</button>
-                            <input type="number" value="1" min="1" class="shopee-qty-input">
-                            <button type="button" class="shopee-qty-btn plus">+</button>
-                        </div>
-                    </div>
-                    <div class="col-total item-row-total">Rp 685.000</div>
-                    <div class="col-action">
-                        <button type="button" class="btn-del-item">Hapus</button>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="shopee-cart-item" data-price="425000">
-                    <div class="col-check">
-                        <input type="checkbox" class="item-check" checked>
-                    </div>
-                    <div class="col-product">
-                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=150&h=150&fit=crop" alt="Kunci Sok Set">
-                        <div class="prod-meta">
-                            <h3>YUKIDO Kunci Sok Set 46 Pcs Chrome Vanadium (Cr-V)</h3>
-                            <span class="prod-variant">Varian: Box Merah 1/4 Inch</span>
-                            <span class="prod-warranty"><i class="fas fa-shield-alt"></i> Garansi Seumur Hidup</span>
-                        </div>
-                    </div>
-                    <div class="col-price">Rp 425.000</div>
-                    <div class="col-qty">
-                        <div class="shopee-qty-box">
-                            <button type="button" class="shopee-qty-btn minus">-</button>
-                            <input type="number" value="1" min="1" class="shopee-qty-input">
-                            <button type="button" class="shopee-qty-btn plus">+</button>
-                        </div>
-                    </div>
-                    <div class="col-total item-row-total">Rp 425.000</div>
-                    <div class="col-action">
-                        <button type="button" class="btn-del-item">Hapus</button>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="shopee-cart-item" data-price="310000">
-                    <div class="col-check">
-                        <input type="checkbox" class="item-check" checked>
-                    </div>
-                    <div class="col-product">
-                        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=150&h=150&fit=crop" alt="Mesin Gerinda">
-                        <div class="prod-meta">
-                            <h3>YUKIDO Mesin Gerinda Tangan Angle Grinder 4 Inch 600W</h3>
-                            <span class="prod-variant">Varian: Unit + Mata Potong Besi</span>
-                            <span class="prod-warranty"><i class="fas fa-shield-alt"></i> Garansi Resmi 1 Tahun</span>
-                        </div>
-                    </div>
-                    <div class="col-price">Rp 310.000</div>
-                    <div class="col-qty">
-                        <div class="shopee-qty-box">
-                            <button type="button" class="shopee-qty-btn minus">-</button>
-                            <input type="number" value="2" min="1" class="shopee-qty-input">
-                            <button type="button" class="shopee-qty-btn plus">+</button>
-                        </div>
-                    </div>
-                    <div class="col-total item-row-total">Rp 620.000</div>
-                    <div class="col-action">
-                        <button type="button" class="btn-del-item">Hapus</button>
+                <!-- Kontainer Item Dinamis dari Database -->
+                <div id="cartItemsList">
+                    <div style="padding: 40px; text-align: center; color: #9ca3af;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 22px; color: #e50914; margin-bottom: 8px;"></i>
+                        <p>Memuat keranjang belanja...</p>
                     </div>
                 </div>
             </div>
@@ -217,7 +195,7 @@
                     <div class="left-controls">
                         <label class="select-all-label">
                             <input type="checkbox" id="selectAllBottom" checked>
-                            Pilih Semua (<span id="totalJenisProduk">3</span>)
+                            Pilih Semua (<span id="totalJenisProduk">0</span>)
                         </label>
                         <button type="button" class="btn-delete-selected" id="btnDeleteSelected">Hapus</button>
                         <a href="produk.html" class="link-continue">+ Tambah Perkakas Lain</a>
@@ -226,122 +204,112 @@
                     <div class="right-checkout">
                         <div class="total-summary">
                             <div class="total-text">
-                                Total (<span id="selectedProductCount">3</span> produk):
-                                <span class="shopee-grand-total" id="shopeeGrandTotal">Rp 1.680.000</span>
+                                Total (<span id="selectedProductCount">0</span> produk):
+                                <span class="shopee-grand-total" id="shopeeGrandTotal">Rp 0</span>
                             </div>
                             <div class="hemat-text" id="hematText">Hemat Rp 50.000</div>
                         </div>
-                        <a href="checkout.html" class="btn-shopee-checkout">Checkout</a>
+                        <a href="checkout.html" class="btn-shopee-checkout" id="btnShopeeCheckout">Checkout</a>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-       <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
-<footer class="footer-yukido">
-    <div class="footer-container">
-        
-        <!-- KOLOM 1: BRAND & COPYRIGHT -->
-        <div class="footer-col footer-brand">
-            <div class="brand-logo">
-                <span class="logo-text"><span class="red-text">YUKIDO</span>®</span>
-                <span class="logo-sub">ユキドジャパンテクノロジー</span>
-            </div>
-            <p class="brand-desc">
-                YUKIDO Tools adalah merek terpercaya untuk produk perkakas dan alat teknik berkualitas tinggi berstandar Jepang, dirancang untuk memenuhi tingginya tuntutan kerja di industri, bengkel profesional, hingga garasi Anda.
-            </p>
-            <div class="copyright-text">
-                YUKIDO® 2026 – HAK CIPTA DILINDUNGI.
-            </div>
-        </div>
-
-        <!-- KOLOM 2: SITEMAP & SUPPORT -->
-        <div class="footer-col footer-sitemap">
-            <h3>SITEMAP & SUPPORT</h3>
-            <ul>
-                <li><a href="semua-produk.html">E-KATALOG PRODUK</a></li>
-                <li><a href="lokasi.html">LOKASI & BENGKEL</a></li>
-                <li><a href="garansi.html">KLAIM GARANSI</a></li>
-                <li><a href="tim-balap.html">TIM BALAP YUKIDO</a></li>
-            </ul>
-        </div>
-
-       <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
-        <div class="footer-col footer-social-store">
-            <!-- Official Store -->
-            <div class="store-section">
-                <h3>OFFICIAL STORE</h3>
-                <div class="store-badges">
-                    <!-- Ganti tanda # dengan link toko Anda -->
-                    <a href="#" target="_blank" class="store-badge tokped-btn">
-                        <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
-                    </a>
-                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="store-badge tiktok-btn">
-                        <i class="fab fa-tiktok"></i> TikTok Shop
-                    </a>
-                    <a href="https://id.shp.ee/5iRfotBL" target="_blank" class="store-badge shopee-btn">
-                        <i class="fas fa-shopping-bag"></i> Shopee
-                    </a>
-                    <a href="#" target="_blank" class="store-badge lazada-btn">
-                        <i class="fas fa-heart"></i> Lazada
-                    </a>
+    <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
+    <footer class="footer-yukido">
+        <div class="footer-container">
+            <!-- KOLOM 1: BRAND & COPYRIGHT -->
+            <div class="footer-col footer-brand">
+                <div class="brand-logo">
+                    <span class="logo-text"><span class="red-text">YUKIDO</span>®</span>
+                    <span class="logo-sub">ユキドジャパンテクノロジー</span>
+                </div>
+                <p class="brand-desc">
+                    YUKIDO Tools adalah merek terpercaya untuk produk perkakas dan alat teknik berkualitas tinggi berstandar Jepang, dirancang untuk memenuhi tingginya tuntutan kerja di industri, bengkel profesional, hingga garasi Anda.
+                </p>
+                <div class="copyright-text">
+                    YUKIDO® 2026 – HAK CIPTA DILINDUNGI.
                 </div>
             </div>
 
-            <!-- Follow Us -->
-            <div class="follow-section">
-                <h3>FOLLOW US</h3>
-                <div class="social-circles">
-                    <!-- Ganti tanda # dengan link sosmed Anda -->
-                    <a href="#" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+            <!-- KOLOM 2: SITEMAP & SUPPORT -->
+            <div class="footer-col footer-sitemap">
+                <h3>SITEMAP & SUPPORT</h3>
+                <ul>
+                    <li><a href="produk.html">E-KATALOG PRODUK</a></li>
+                    <li><a href="lokasi.html">LOKASI & BENGKEL</a></li>
+                    <li><a href="garansi.html">KLAIM GARANSI</a></li>
+                    <li><a href="gallery.html">TIM BALAP YUKIDO</a></li>
+                </ul>
+            </div>
+
+            <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
+            <div class="footer-col footer-social-store">
+                <div class="store-section">
+                    <h3>OFFICIAL STORE</h3>
+                    <div class="store-badges">
+                        <a href="#" target="_blank" class="store-badge tokped-btn">
+                            <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
+                        </a>
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="store-badge tiktok-btn">
+                            <i class="fab fa-tiktok"></i> TikTok Shop
+                        </a>
+                        <a href="https://id.shp.ee/5iRfotBL" target="_blank" class="store-badge shopee-btn">
+                            <i class="fas fa-shopping-bag"></i> Shopee
+                        </a>
+                        <a href="#" target="_blank" class="store-badge lazada-btn">
+                            <i class="fas fa-heart"></i> Lazada
+                        </a>
+                    </div>
+                </div>
+
+                <div class="follow-section">
+                    <h3>FOLLOW US</h3>
+                    <div class="social-circles">
+                        <a href="#" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Floating Button -->
-        <button class="floating-btn">
-            <i class="fas fa-robot"></i> TANYA AI
-        </button>
-    </main>
+    </footer>
 
     <!-- === AI CHATBOT WIDGET === -->
-<div class="chatbot-container" id="chatbotContainer">
-    <div class="chatbot-header">
-        <div class="chatbot-title">
-            <i class="fas fa-robot"></i>
-            <div>
-                <strong>YUKIDO AI Assistant</strong>
-                <span class="chatbot-status">Online</span>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <div>
+                    <strong>YUKIDO AI Assistant</strong>
+                    <span class="chatbot-status">Online</span>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
+                <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
             </div>
         </div>
-        <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
-    </div>
-    
-    <div class="chatbot-messages" id="chatbotMessages">
-        <div class="message bot-message">
-            Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
-            <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
+        
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
+            <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
-    
-    <div class="chatbot-input-area">
-        <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
-        <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
-    </div>
-</div>
 
-    <!-- Tombol Floating (Pastikan ini ada di bagian bawah sebelum </main> atau </body>
     <button class="floating-btn" id="chatbotToggle">
         <i class="fas fa-robot"></i> TANYA AI
     </button>
     <!-- === AKHIR AI CHATBOT WIDGET === -->
+
     <script src="js/layout.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/cart-api.js"></script>
-    
+    <script src="js/cart-api.js?v=4"></script>
 </body>
 </html>

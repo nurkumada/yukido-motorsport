@@ -12,12 +12,12 @@
     <nav class="top-nav">
         <div class="nav-left">
             <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-        <a href="index.html" class="logo">
-            <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
-            <span class="logo-icon"></span>
-            <span class="logo-text">YUKIDO</span>
-            <span class="logo-sub">ユキドジャパンテクノロジ</span>
-        </a>
+            <a href="index.html" class="logo">
+                <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
+                <span class="logo-icon"></span>
+                <span class="logo-text">YUKIDO</span>
+                <span class="logo-sub">ユキドジャパンテクノロジ</span>
+            </a>
         </div>
         <div class="nav-center">
             <div class="search-bar">
@@ -38,84 +38,138 @@
         </div>
     </nav>
 
-    <!-- Sidebar (SUDAH DIPERBAIKI LINK-NYA) -->
-     <!-- Sidebar -->
-<aside class="sidebar expanded" id="sidebar">
-    <div class="sidebar-search">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Cari produk...">
-    </div>
-    
-    <nav class="sidebar-menu">
-        <a href="index.html" class="menu-item active" title="Beranda">
-            <i class="fas fa-home"></i>
-            <span>Beranda</span>
-        </a>
-        <a href="produk.html" class="menu-item" title="Semua Produk">
-            <i class="fas fa-th-large"></i>
-            <span>Semua Produk</span>
-        </a>
-        <a href="kategori-produk.html" class="menu-item" title="Kategori">
-            <i class="fas fa-layer-group"></i>
-            <span>Kategori</span>
-        </a>
-        <a href="garansi.html" class="menu-item" title="Klaim Garansi">
-            <i class="fas fa-shield-alt"></i>
-            <span>Klaim Garansi</span>
-        </a>
-        <a href="gallery.html" class="menu-item" title="Gallery">
-            <i class="fas fa-images"></i>
-            <span>Gallery</span>
-        </a>
-        <a href="lokasi.html" class="menu-item" title="Lokasi">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Lokasi</span>
-        </a>
-        <a href="keranjang.html" class="menu-item" title="Keranjang">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Keranjang</span>
-        </a>
-        <a href="login.html" class="menu-item" title="Akun">
-            <i class="fas fa-user-circle"></i>
-            <span>Akun</span>
-        </a>
-    </nav>
-    
-    <div class="sidebar-footer">
-        <div class="telemetry-status" title="YUKIDO TELEMETRY ONLINE">
-            <span class="dot"></span>
-            <span class="status-text">TELEMETRY ONLINE</span>
-        </div>
-    </div>
-</aside>
+    <!-- ================= SIDEBAR GLASSY ================= -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-brand">
+                <img src="images/logo-yukido.png" alt="YUKIDO">
+                <span>
+                    <strong>YUKIDO</strong>
+                    <small>POWER TEKNIK</small>
+                </span>
+            </a>
 
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Tutup menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- LOGIN / AKUN -->
+        <a href="login.html" class="sidebar-welcome">
+            <div class="sidebar-welcome-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h4>Masuk / Daftar</h4>
+                <p>Kelola akun dan pesanan Anda</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <!-- MENU NAVIGASI -->
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-house"></i>
+                <span>Beranda</span>
+            </a>
+
+            <a href="produk.html" class="menu-item">
+                <i class="fas fa-cube"></i>
+                <span>Semua Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="kategori-produk.html" class="menu-item">
+                <i class="fas fa-layer-group"></i>
+                <span>Kategori Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="garansi.html" class="menu-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Klaim Garansi</span>
+            </a>
+
+            <a href="gallery.html" class="menu-item">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="lokasi.html" class="menu-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Lokasi</span>
+            </a>
+
+            <a href="keranjang.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Keranjang</span>
+                <span class="menu-badge" id="sidebarCartBadge">0 Item</span>
+            </a>
+
+            <a href="login.html" class="menu-item">
+                <i class="fas fa-user-circle"></i>
+                <span>Akun</span>
+            </a>
+        </nav>
+
+        <!-- TELEMETRY -->
+        <div class="sidebar-footer">
+            <div class="telemetry-card">
+                <div class="telemetry-icon">
+                    <i class="fas fa-gauge-high"></i>
+                </div>
+                <div class="telemetry-info">
+                    <strong>YUKIDO TELEMETRY</strong>
+                    <span>
+                        <i class="telemetry-dot"></i>
+                        ONLINE
+                    </span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- BACKDROP -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="breadcrumb">
-                <span class="dot red"></span> KLASIFIKASI KOMPONEN MOTORSPORT
-            </div>
-            <div class="page-title-row">
-                <div>
-                    <h1 class="page-title">KATEGORI PRODUK</h1>
-                    <p class="page-subtitle" id="categorySubtitle">
-    Memuat kategori produk...
-</p>
-                </div>
-                <div class="page-badge">
-                    <i class="fas fa-check-circle"></i> 100% Garansi Seumur Hidup
+        <!-- Hero Banner Kategori Produk -->
+        <section class="category-hero-banner">
+            <div class="category-hero-bg-fx" aria-hidden="true">
+                <div class="cat-tech-grid"></div>
+                <span class="cat-watermark">YUKIDO</span>
+                <div class="cat-center-slashes">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
+
+            <div class="category-hero-inner">
+                <div class="category-hero-content">
+                    <div class="category-hero-eyebrow">
+                        <span class="cat-red-dot"></span>
+                        <span>KLASIFIKASI KOMPONEN MOTORSPORT</span>
+                    </div>
+
+                    <h1 class="category-hero-title">KATEGORI PRODUK</h1>
+                    <p class="category-hero-subtitle" id="categorySubtitle">Memuat kategori produk...</p>
+
+                    <div class="category-warranty-line">
+                        <i class="fas fa-check-circle"></i>
+                        <span>100% Garansi Seumur Hidup</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-hero-right-accent" aria-hidden="true"></div>
+        </section>
+
+        <!-- Kategori Grid Dinamis -->
+        <div class="kategori-detail-grid" id="kategoriGrid">
+            <p style="color:#aaa;">Memuat kategori produk...</p>
         </div>
-
-        
-<!-- Kategori Grid Dinamis -->
-<div class="kategori-detail-grid" id="kategoriGrid">
-    <p style="color:#aaa;">Memuat kategori produk...</p>
-</div>
-
 
         <!-- CTA Section -->
         <section class="kategori-cta">
@@ -129,284 +183,260 @@
             </div>
         </section>
 
-       <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
-<footer class="footer-yukido">
-    <div class="footer-container">
-        
-        <!-- KOLOM 1: BRAND & COPYRIGHT -->
-        <div class="footer-col footer-brand">
-            <div class="brand-logo">
-                <span class="logo-text"><span class="red-text">YUKIDO</span>®</span>
-                <span class="logo-sub">ユキドジャパンテクノロジー</span>
-            </div>
-            <p class="brand-desc">
-                YUKIDO Tools adalah merek terpercaya untuk produk perkakas dan alat teknik berkualitas tinggi berstandar Jepang, dirancang untuk memenuhi tingginya tuntutan kerja di industri, bengkel profesional, hingga garasi Anda.
-            </p>
-            <div class="copyright-text">
-                YUKIDO® 2026 – HAK CIPTA DILINDUNGI.
-            </div>
-        </div>
+        <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
+        <footer class="footer-yukido">
+            <div class="footer-container">
+                <!-- KOLOM 1: BRAND & COPYRIGHT -->
+                <div class="footer-col footer-brand">
+                    <div class="brand-logo">
+                        <span class="logo-text"><span class="red-text">YUKIDO</span>®</span>
+                        <span class="logo-sub">ユキドジャパンテクノロジー</span>
+                    </div>
+                    <p class="brand-desc">
+                        YUKIDO Tools adalah merek terpercaya untuk produk perkakas dan alat teknik berkualitas tinggi berstandar Jepang, dirancang untuk memenuhi tingginya tuntutan kerja di industri, bengkel profesional, hingga garasi Anda.
+                    </p>
+                    <div class="copyright-text">
+                        YUKIDO® 2026 – HAK CIPTA DILINDUNGI.
+                    </div>
+                </div>
 
-        <!-- KOLOM 2: SITEMAP & SUPPORT -->
-        <div class="footer-col footer-sitemap">
-            <h3>SITEMAP & SUPPORT</h3>
-            <ul>
-                <li><a href="semua-produk.html">E-KATALOG PRODUK</a></li>
-                <li><a href="lokasi.html">LOKASI & BENGKEL</a></li>
-                <li><a href="garansi.html">KLAIM GARANSI</a></li>
-                <li><a href="tim-balap.html">TIM BALAP YUKIDO</a></li>
-            </ul>
-        </div>
+                <!-- KOLOM 2: SITEMAP & SUPPORT -->
+                <div class="footer-col footer-sitemap">
+                    <h3>SITEMAP &amp; SUPPORT</h3>
+                    <ul>
+                        <li><a href="produk.html">E-KATALOG PRODUK</a></li>
+                        <li><a href="lokasi.html">LOKASI &amp; BENGKEL</a></li>
+                        <li><a href="garansi.html">KLAIM GARANSI</a></li>
+                        <li><a href="tim-balap.html">TIM BALAP YUKIDO</a></li>
+                    </ul>
+                </div>
 
-       <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
-        <div class="footer-col footer-social-store">
-            <!-- Official Store -->
-            <div class="store-section">
-                <h3>OFFICIAL STORE</h3>
-                <div class="store-badges">
-                    <!-- Ganti tanda # dengan link toko Anda -->
-                    <a href="#" target="_blank" class="store-badge tokped-btn">
-                        <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
-                    </a>
-                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="store-badge tiktok-btn">
-                        <i class="fab fa-tiktok"></i> TikTok Shop
-                    </a>
-                    <a href="https://id.shp.ee/5iRfotBL" target="_blank" class="store-badge shopee-btn">
-                        <i class="fas fa-shopping-bag"></i> Shopee
-                    </a>
-                    <a href="#" target="_blank" class="store-badge lazada-btn">
-                        <i class="fas fa-heart"></i> Lazada
-                    </a>
+                <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
+                <div class="footer-col footer-social-store">
+                    <!-- Official Store -->
+                    <div class="store-section">
+                        <h3>OFFICIAL STORE</h3>
+                        <div class="store-badges">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="store-badge tokped-btn">
+                                <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
+                            </a>
+                            <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" rel="noopener noreferrer" class="store-badge tiktok-btn">
+                                <i class="fab fa-tiktok"></i> TikTok Shop
+                            </a>
+                            <a href="https://id.shp.ee/5iRfotBL" target="_blank" rel="noopener noreferrer" class="store-badge shopee-btn">
+                                <i class="fas fa-shopping-bag"></i> Shopee
+                            </a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="store-badge lazada-btn">
+                                <i class="fas fa-heart"></i> Lazada
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Follow Us -->
+                    <div class="follow-section">
+                        <h3>FOLLOW US</h3>
+                        <div class="social-circles">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" rel="noopener noreferrer" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" rel="noopener noreferrer" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" rel="noopener noreferrer" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Follow Us -->
-            <div class="follow-section">
-                <h3>FOLLOW US</h3>
-                <div class="social-circles">
-                    <!-- Ganti tanda # dengan link sosmed Anda -->
-                    <a href="#" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
+        </footer>
 
         <!-- Floating Button -->
-        <button class="floating-btn">
+        <button class="floating-btn" id="chatbotToggle" type="button">
             <i class="fas fa-robot"></i> TANYA AI
         </button>
     </main>
 
     <!-- === AI CHATBOT WIDGET === -->
-<div class="chatbot-container" id="chatbotContainer">
-    <div class="chatbot-header">
-        <div class="chatbot-title">
-            <i class="fas fa-robot"></i>
-            <div>
-                <strong>YUKIDO AI Assistant</strong>
-                <span class="chatbot-status">Online</span>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <div>
+                    <strong>YUKIDO AI Assistant</strong>
+                    <span class="chatbot-status">Online</span>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbotClose" type="button"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
+                <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
             </div>
         </div>
-        <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
-    </div>
-    
-    <div class="chatbot-messages" id="chatbotMessages">
-        <div class="message bot-message">
-            Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
-            <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
+
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
+            <button id="chatbotSend" type="button"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
-    
-    <div class="chatbot-input-area">
-        <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
-        <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
-    </div>
-</div>
 
-    <!-- Tombol Floating (Pastikan ini ada di bagian bawah sebelum </main> atau </body>
-    <button class="floating-btn" id="chatbotToggle">
-        <i class="fas fa-robot"></i> TANYA AI
-    </button>
-    <!-- === AKHIR AI CHATBOT WIDGET === -->
     <script src="js/layout.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        const CATEGORY_API = "../backend/categories/index.php";
+        const PRODUCT_API = "../backend/products/index.php";
 
-<script>
-const CATEGORY_API = "../backend/categories/index.php";
-const PRODUCT_API = "../backend/products/index.php";
+        const kategoriGrid = document.getElementById("kategoriGrid");
+        const categorySubtitle = document.getElementById("categorySubtitle");
 
-const kategoriGrid = document.getElementById("kategoriGrid");
-const categorySubtitle = document.getElementById("categorySubtitle");
-
-function escapeCategoryHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-    })[char]);
-}
-
-// Deskripsi untuk kategori yang sudah dikenal
-const categoryDescriptions = {
-    "Air Tools": "Kategori ini mencakup peralatan kerja bertenaga angin bertekanan tinggi untuk kebutuhan bengkel otomotif dan industri.",
-    "Pneumatic": "Kategori ini berisi komponen instalasi saluran udara bertekanan, seperti selang kompresor, penyaring udara, dan konektor.",
-    "Automotive": "Kategori ini menyediakan berbagai peralatan perawatan, perbaikan, dan servis kendaraan bermotor.",
-    "Hand Tools": "Kategori ini mencakup perkakas tangan mekanik untuk mengencangkan atau mengendurkan berbagai jenis mur dan baut.",
-    "Pliers Tools": "Kategori ini berisi beragam jenis tang penjepit, pemotong kawat, kabel, dan tang khusus.",
-    "Screwdriver": "Kategori ini mencakup berbagai model obeng manual, obeng ketok, dan alat pendukung pekerjaan mekanik.",
-    "Accessories": "Kategori ini berisi berbagai aksesori dan perlengkapan pendukung pekerjaan bengkel dan industri.",
-    "Insulation": "Kategori ini berfokus pada peralatan penyambungan komponen elektronik dan kelistrikan.",
-    "General": "Kategori ini mencakup perkakas umum, alat ukur, perlengkapan bangunan, dan peralatan kerja.",
-    "Tools Storage": "Kategori ini menyediakan media penyimpanan dan pengorganisasian perkakas agar tertata rapi.",
-    "Inverter": "Kategori ini berisi mesin dan peralatan bertenaga listrik untuk pekerjaan bengkel dan konstruksi."
-};
-
-const categoryIcons = {
-    "Air Tools": "fa-circle-notch",
-    "Pneumatic": "fa-compress-arrows-alt",
-    "Automotive": "fa-car",
-    "Hand Tools": "fa-cogs",
-    "Pliers Tools": "fa-link",
-    "Screwdriver": "fa-screwdriver",
-    "Accessories": "fa-tools",
-    "Insulation": "fa-bolt",
-    "General": "fa-toolbox",
-    "Tools Storage": "fa-box",
-    "Inverter": "fa-bolt"
-};
-
-const defaultCategoryImage = "images/yukido.png";
-
-function getCategoryImage(path) {
-    if (!path) return defaultCategoryImage;
-
-    if (/^https?:\/\//i.test(path)) {
-        return path;
-    }
-
-    return path.startsWith("/")
-        ? path
-        : path.replace(/^\.?\//, "");
-}
-async function loadCategoryPage() {
-    try {
-        const [categoryResponse, productResponse] = await Promise.all([
-            fetch(CATEGORY_API),
-            fetch(PRODUCT_API)
-        ]);
-
-        if (!categoryResponse.ok || !productResponse.ok) {
-            throw new Error("Gagal menghubungi server.");
+        function escapeCategoryHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, char => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            })[char]);
         }
 
-        const categoryResult = await categoryResponse.json();
-        const productResult = await productResponse.json();
+        const categoryDescriptions = {
+            "Air Tools": "Kategori ini mencakup peralatan kerja bertenaga angin bertekanan tinggi untuk kebutuhan bengkel otomotif dan industri.",
+            "Pneumatic": "Kategori ini berisi komponen instalasi saluran udara bertekanan, seperti selang kompresor, penyaring udara, dan konektor.",
+            "Automotive": "Kategori ini menyediakan berbagai peralatan perawatan, perbaikan, dan servis kendaraan bermotor.",
+            "Hand Tools": "Kategori ini mencakup perkakas tangan mekanik untuk mengencangkan atau mengendurkan berbagai jenis mur dan baut.",
+            "Pliers Tools": "Kategori ini berisi beragam jenis tang penjepit, pemotong kawat, kabel, dan tang khusus.",
+            "Screwdriver": "Kategori ini mencakup berbagai model obeng manual, obeng ketok, dan alat pendukung pekerjaan mekanik.",
+            "Accessories": "Kategori ini berisi berbagai aksesori dan perlengkapan pendukung pekerjaan bengkel dan industri.",
+            "Insulation": "Kategori ini berfokus pada peralatan penyambungan komponen elektronik dan kelistrikan.",
+            "General": "Kategori ini mencakup perkakas umum, alat ukur, perlengkapan bangunan, dan peralatan kerja.",
+            "Tools Storage": "Kategori ini menyediakan media penyimpanan dan pengorganisasian perkakas agar tertata rapi.",
+            "Inverter": "Kategori ini berisi mesin dan peralatan bertenaga listrik untuk pekerjaan bengkel dan konstruksi."
+        };
 
-        if (!categoryResult.success || !productResult.success) {
-            throw new Error("Data kategori atau produk gagal dimuat.");
+        const categoryIcons = {
+            "Air Tools": "fa-circle-notch",
+            "Pneumatic": "fa-compress-arrows-alt",
+            "Automotive": "fa-car",
+            "Hand Tools": "fa-cogs",
+            "Pliers Tools": "fa-link",
+            "Screwdriver": "fa-screwdriver",
+            "Accessories": "fa-tools",
+            "Insulation": "fa-bolt",
+            "General": "fa-toolbox",
+            "Tools Storage": "fa-box",
+            "Inverter": "fa-bolt"
+        };
+
+        const defaultCategoryImage = "images/yukido.png";
+
+        function getCategoryImage(path) {
+            if (!path) return defaultCategoryImage;
+            if (/^https?:\/\//i.test(path)) return path;
+            return path.startsWith("/") ? path : path.replace(/^\.?\//, "");
         }
 
-        const categories = categoryResult.data || [];
-        const products = productResult.data || [];
+        async function loadCategoryPage() {
+            try {
+                const [categoryResponse, productResponse] = await Promise.all([
+                    fetch(CATEGORY_API),
+                    fetch(PRODUCT_API)
+                ]);
 
-        categorySubtitle.textContent =
-            `Jelajahi ${categories.length} kategori Produk`;
+                if (!categoryResponse.ok || !productResponse.ok) {
+                    throw new Error("Gagal menghubungi server.");
+                }
 
-        if (categories.length === 0) {
-            kategoriGrid.innerHTML =
-                '<p style="color:#aaa;">Belum ada kategori produk.</p>';
-            return;
-        }
+                const categoryResult = await categoryResponse.json();
+                const productResult = await productResponse.json();
 
-        kategoriGrid.innerHTML = categories.map(category => {
+                if (!categoryResult.success || !productResult.success) {
+                    throw new Error("Data kategori atau produk gagal dimuat.");
+                }
 
-            const categoryProducts = products.filter(product =>
-                Number(product.category_id) === Number(category.id)
-            );
+                const categories = categoryResult.data || [];
+                const products = productResult.data || [];
 
-            const productList = categoryProducts.length
-                ? categoryProducts.slice(0, 5).map(product => `
-                    <li>
-                        <i class="fas fa-check"></i>
-                        ${escapeCategoryHTML(product.name)}
-                    </li>
-                `).join("")
-                : `
-                    <li>
-                        <i class="fas fa-info-circle"></i>
-                        Belum ada produk dalam kategori ini
-                    </li>
+                categorySubtitle.textContent = `Jelajahi ${categories.length} kategori Produk`;
+
+                if (categories.length === 0) {
+                    kategoriGrid.innerHTML = '<p style="color:#aaa;">Belum ada kategori produk.</p>';
+                    return;
+                }
+
+                kategoriGrid.innerHTML = categories.map(category => {
+                    const categoryProducts = products.filter(product =>
+                        Number(product.category_id) === Number(category.id)
+                    );
+
+                    const totalProducts = Number(category.total_products ?? categoryProducts.length);
+
+                    const productList = categoryProducts.length
+                        ? categoryProducts.slice(0, 5).map(product => `
+                            <li>
+                                <i class="fas fa-check"></i>
+                                ${escapeCategoryHTML(product.name)}
+                            </li>
+                        `).join("")
+                        : `
+                            <li>
+                                <i class="fas fa-info-circle"></i>
+                                Belum ada produk dalam kategori ini
+                            </li>
+                        `;
+
+                    const description =
+                        categoryDescriptions[category.name] ||
+                        `Jelajahi berbagai produk ${category.name} dari YUKIDO untuk kebutuhan bengkel, otomotif, dan industri.`;
+
+                    const icon = categoryIcons[category.name] || "fa-layer-group";
+                    const categoryUrl = `produk.html?category=${encodeURIComponent(category.id)}`;
+
+                    return `
+                        <div class="kategori-detail-card">
+                            <div class="kategori-image">
+                                <img
+                                    src="${escapeCategoryHTML(getCategoryImage(category.image_path))}"
+                                    onerror="this.onerror=null;this.src='${defaultCategoryImage}'"
+                                    alt="${escapeCategoryHTML(category.name)}"
+                                    loading="lazy"
+                                >
+                                <div class="kategori-overlay">
+                                    <span class="kategori-count">
+                                        ${totalProducts} Produk
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="kategori-content">
+                                <div class="kategori-icon">
+                                    <i class="fas ${icon}"></i>
+                                </div>
+
+                                <h3>${escapeCategoryHTML(category.name)}</h3>
+                                <p>${escapeCategoryHTML(description)}</p>
+
+                                <ul class="kategori-list">
+                                    ${productList}
+                                </ul>
+
+                                <a href="${categoryUrl}" class="btn-kategori">
+                                    LIHAT SEMUA PRODUK
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }).join("");
+            } catch (error) {
+                console.error("Gagal memuat kategori:", error);
+                kategoriGrid.innerHTML = `
+                    <p style="color:#ff4444;">
+                        Kategori gagal dimuat. Silakan periksa koneksi backend.
+                    </p>
                 `;
+                categorySubtitle.textContent = "Jelajahi kategori Produk";
+            }
+        }
 
-            const description =
-                categoryDescriptions[category.name] ||
-                `Jelajahi berbagai produk ${category.name} dari YUKIDO untuk kebutuhan bengkel, otomotif, dan industri.`;
-
-            const icon =
-                categoryIcons[category.name] || "fa-layer-group";
-
-            return `
-                <div class="kategori-detail-card">
-
-                    <div class="kategori-image">
-                        <img
-                            src="${escapeCategoryHTML(getCategoryImage(category.image_path))}"
-onerror="this.onerror=null;this.src='${defaultCategoryImage}'"
-                            alt="${escapeCategoryHTML(category.name)}"
-                            loading="lazy"
-                        >
-
-                        <div class="kategori-overlay">
-                            <span class="kategori-count">
-                                ${Number(category.total_products)} Produk
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="kategori-content">
-
-                        <div class="kategori-icon">
-                            <i class="fas ${icon}"></i>
-                        </div>
-
-                        <h3>${escapeCategoryHTML(category.name)}</h3>
-
-                        <p>${escapeCategoryHTML(description)}</p>
-
-                        <ul class="kategori-list">
-                            ${productList}
-                        </ul>
-
-                        <a href="produk.html" class="btn-kategori">
-                            LIHAT SEMUA PRODUK
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-
-                    </div>
-                </div>
-            `;
-        }).join("");
-
-    } catch (error) {
-        console.error("Gagal memuat kategori:", error);
-
-        kategoriGrid.innerHTML = `
-            <p style="color:#ff4444;">
-                Kategori gagal dimuat. Silakan periksa koneksi backend.
-            </p>
-        `;
-
-        categorySubtitle.textContent = "Kategori produk";
-    }
-}
-
-loadCategoryPage();
-</script>
-
-    
+        loadCategoryPage();
+    </script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,14 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-       .detail-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 110px 20px 50px;
-    color: white;
-    box-sizing: border-box;
-    width: 100%;
-}
+        .detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 110px 20px 50px;
+            color: white;
+            box-sizing: border-box;
+            width: 100%;
+        }
 
         .back-link {
             display: inline-block;
@@ -67,6 +66,47 @@
             margin: 12px 0;
         }
 
+        .detail-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 22px;
+            flex-wrap: wrap;
+        }
+
+        .qty-control-detail {
+            display: inline-flex;
+            align-items: center;
+            background: #1b1b1b;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .qty-control-detail button {
+            width: 38px;
+            height: 44px;
+            background: transparent;
+            border: 0;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .qty-control-detail input {
+            width: 48px;
+            height: 44px;
+            background: transparent;
+            border: 0;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
         .btn-buy {
             background: #ed0000;
             color: white;
@@ -75,7 +115,15 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-buy:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .video-section {
@@ -107,7 +155,10 @@
         </a>
     </div>
 
-    <div class="nav-right">
+    <div class="nav-right" style="display: flex; align-items: center; gap: 20px;">
+        <a href="keranjang.html" style="color:white;text-decoration:none;">
+            <i class="fas fa-shopping-cart"></i> Keranjang
+        </a>
         <a href="produk.html" style="color:white;text-decoration:none;">
             <i class="fas fa-store"></i> Katalog Produk
         </a>
@@ -133,6 +184,7 @@
 
 <script>
 const API_URL = "../backend/products/detail.php";
+const CART_ADD_API = "../backend/cart/add.php";
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 
@@ -160,38 +212,79 @@ function getImagePath(path) {
     if (!path) {
         return "images/yukido.png";
     }
-
-    // Jika gambar berasal dari website eksternal
     if (/^https?:\/\//i.test(path)) {
         return path;
     }
-
-    // Normalisasi backslash menjadi forward slash
     path = path.replace(/\\/g, "/");
-
-    // Jika path absolut
     if (path.startsWith("/")) {
         return path;
     }
-
-    // Path relatif dari folder frontend
     return path.replace(/^\.?\//, "");
 }
-
 
 function getTikTokEmbed(url) {
     try {
         const parsed = new URL(url);
-
         if (!parsed.hostname.endsWith("tiktok.com")) return null;
-
         const match = parsed.pathname.match(/\/video\/(\d+)/);
-
         return match
             ? "https://www.tiktok.com/player/v1/" + match[1]
             : null;
     } catch {
         return null;
+    }
+}
+
+async function handleAddToCart(id, maxStock) {
+    const qtyInput = document.getElementById("detailQtyInput");
+    const btnAdd = document.getElementById("btnAddToCartDetail");
+    const quantity = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
+
+    if (maxStock <= 0) {
+        alert("Stok produk sedang habis.");
+        return;
+    }
+
+    if (quantity < 1 || quantity > maxStock) {
+        alert(`Jumlah harus antara 1 sampai ${maxStock}.`);
+        return;
+    }
+
+    const originalHTML = btnAdd.innerHTML;
+    btnAdd.disabled = true;
+    btnAdd.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENAMBAHKAN...';
+
+    try {
+        const response = await fetch(CART_ADD_API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "same-origin",
+            body: JSON.stringify({
+                product_id: Number(id),
+                quantity: quantity
+            })
+        });
+
+        if (response.status === 401) {
+            alert("Silakan login terlebih dahulu untuk menambahkan produk ke keranjang.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.message || "Gagal menambahkan produk ke keranjang.");
+        }
+
+        if (confirm("Produk berhasil ditambahkan ke keranjang! Lihat keranjang sekarang?")) {
+            window.location.href = "keranjang.html";
+        }
+    } catch (error) {
+        alert(error.message || "Gagal terhubung ke server.");
+    } finally {
+        btnAdd.disabled = false;
+        btnAdd.innerHTML = originalHTML;
     }
 }
 
@@ -213,6 +306,7 @@ async function loadProduct() {
         }
 
         const product = result.data;
+        const stock = Number(product.stock || 0);
 
         const image = product.images?.length
             ? getImagePath(product.images[0].image_path)
@@ -227,12 +321,12 @@ async function loadProduct() {
         detailContent.innerHTML = `
             <div class="detail-content">
                 <div>
-                   <img
+                    <img
                         src="${safeText(image)}"
                         alt="${safeText(product.name)}"
                         class="detail-image"
                         onerror="this.onerror=null; this.src='images/yukido.png';"
-                   >
+                    >
                 </div>
 
                 <div class="detail-info">
@@ -256,7 +350,7 @@ async function loadProduct() {
 
                     <p class="detail-stock">
                         <i class="fas fa-box"></i>
-                        Stok tersedia: ${safeText(product.stock)}
+                        Stok tersedia: ${stock}
                     </p>
 
                     <p class="detail-warranty">
@@ -264,13 +358,36 @@ async function loadProduct() {
                         ${warranty}
                     </p>
 
-                    <button class="btn-buy" onclick="alert('Fitur keranjang akan kita hubungkan selanjutnya.')">
-                        <i class="fas fa-shopping-cart"></i>
-                        TAMBAH KE KERANJANG
-                    </button>
+                    <div class="detail-actions">
+                        <div class="qty-control-detail">
+                            <button type="button" id="btnDetailMinus">-</button>
+                            <input type="number" id="detailQtyInput" value="1" min="1" max="${Math.max(1, stock)}">
+                            <button type="button" id="btnDetailPlus">+</button>
+                        </div>
+
+                        <button type="button" class="btn-buy" id="btnAddToCartDetail" ${stock <= 0 ? "disabled" : ""}>
+                            <i class="fas fa-shopping-cart"></i>
+                            ${stock <= 0 ? "STOK HABIS" : "TAMBAH KE KERANJANG"}
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
+
+        const qtyInput = document.getElementById("detailQtyInput");
+        document.getElementById("btnDetailMinus")?.addEventListener("click", () => {
+            const val = parseInt(qtyInput.value, 10) || 1;
+            if (val > 1) qtyInput.value = val - 1;
+        });
+
+        document.getElementById("btnDetailPlus")?.addEventListener("click", () => {
+            const val = parseInt(qtyInput.value, 10) || 1;
+            if (val < stock) qtyInput.value = val + 1;
+        });
+
+        document.getElementById("btnAddToCartDetail")?.addEventListener("click", () => {
+            handleAddToCart(product.id, stock);
+        });
 
         const videos = product.videos || [];
         const videoContainer = document.getElementById("productVideos");

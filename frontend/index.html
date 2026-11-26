@@ -11,246 +11,302 @@
     <!-- Top Navigation Bar -->
     <nav class="top-nav">
         <div class="nav-left">
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i> 
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu">
+                <i class="fas fa-bars"></i>
             </button>
-        <a href="index.html" class="logo">
-            <img src="images/logo-yukido.png" alt="YUKIDO Logo" class="logo-img">
-            <span class="logo-icon"></span>
-            <span class="logo-text"> YUKIDO </span>
-            <span class="logo-sub">ユキドジャパンテクノロジ</span>
-        </a>
+            <a href="index.html" class="logo">
+                <img src="images/logo-yukido.png" alt="YUKIDO Logo" class="logo-img">
+                <span class="logo-icon"></span>
+                <span class="logo-text">YUKIDO</span>
+                <span class="logo-sub">ユキドジャパンテクノロジ</span>
+            </a>
         </div>
-        
+
         <div class="nav-center">
             <div class="search-bar">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Pencarian">
             </div>
         </div>
-        
-        <div class="nav-right">            
+
+        <div class="nav-right">
             <div class="nav-icons">
-                <a href="keranjang.html" class="icon-btn cart-btn">
+                <a href="keranjang.html" class="icon-btn cart-btn" aria-label="Keranjang Belanja">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
-                <button class="btn-cs">
+                <button class="btn-cs" type="button">
                     <i class="fas fa-headset"></i> BANTUAN CS
                 </button>
-                <a href="login.html" class="icon-btn" style="text-decoration: none; color: inherit;">
+                <a href="login.html" class="icon-btn" style="text-decoration: none; color: inherit;" aria-label="Masuk atau Akun">
                     <i class="fas fa-user"></i>
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Sidebar -->
-<aside class="sidebar expanded" id="sidebar">
-    <div class="sidebar-search">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Cari produk...">
-    </div>
-    
-    <nav class="sidebar-menu">
-        <a href="index.html" class="menu-item" title="Beranda">
-            <i class="fas fa-home"></i>
-            <span>Beranda</span>
-        </a>
-        <a href="produk.html" class="menu-item" title="Semua Produk">
-            <i class="fas fa-th-large"></i>
-            <span>Semua Produk</span>
-        </a>
-        <a href="kategori-produk.html" class="menu-item" title="Kategori">
-            <i class="fas fa-layer-group"></i>
-            <span>Kategori</span>
-        </a>
-        <a href="garansi.html" class="menu-item" title="Klaim Garansi">
-            <i class="fas fa-shield-alt"></i>
-            <span>Klaim Garansi</span>
-        </a>
-        <a href="gallery.html" class="menu-item" title="Gallery">
-            <i class="fas fa-images"></i>
-            <span>Gallery</span>
-        </a>
-        <a href="lokasi.html" class="menu-item" title="Lokasi">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Lokasi</span>
-        </a>
-        <a href="keranjang.html" class="menu-item" title="Keranjang">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Keranjang</span>
-        </a>
-        <a href="login.html" class="menu-item" title="Akun">
-            <i class="fas fa-user-circle"></i>
-            <span>Akun</span>
-        </a>
-        
-    </nav>
-    
-    <div class="sidebar-footer">
-        <div class="telemetry-status" title="YUKIDO TELEMETRY ONLINE">
-            <span class="dot"></span>
-            <span class="status-text">TELEMETRY ONLINE</span>
+    <!-- ================= SIDEBAR GLASSY ================= -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-brand">
+                <img src="images/logo-yukido.png" alt="YUKIDO">
+                <span>
+                    <strong>YUKIDO</strong>
+                    <small>POWER TEKNIK</small>
+                </span>
+            </a>
+
+            <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Tutup menu">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-    </div>
-</aside>
+
+        <!-- LOGIN / AKUN -->
+        <a href="login.html" class="sidebar-welcome">
+            <div class="sidebar-welcome-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h4>Masuk / Daftar</h4>
+                <p>Kelola akun dan pesanan Anda</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <!-- MENU NAVIGASI -->
+        <nav class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-house"></i>
+                <span>Beranda</span>
+            </a>
+
+            <a href="produk.html" class="menu-item">
+                <i class="fas fa-cube"></i>
+                <span>Semua Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="kategori-produk.html" class="menu-item">
+                <i class="fas fa-layer-group"></i>
+                <span>Kategori Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="garansi.html" class="menu-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Klaim Garansi</span>
+            </a>
+
+            <a href="gallery.html" class="menu-item">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="lokasi.html" class="menu-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Lokasi</span>
+            </a>
+
+            <a href="keranjang.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Keranjang</span>
+                <span class="menu-badge" id="sidebarCartBadge">0 Item</span>
+            </a>
+
+            <a href="login.html" class="menu-item">
+                <i class="fas fa-user-circle"></i>
+                <span>Akun</span>
+            </a>
+        </nav>
+
+        <!-- TELEMETRY -->
+        <div class="sidebar-footer">
+            <div class="telemetry-card">
+                <div class="telemetry-icon">
+                    <i class="fas fa-gauge-high"></i>
+                </div>
+                <div class="telemetry-info">
+                    <strong>YUKIDO TELEMETRY</strong>
+                    <span>
+                        <i class="telemetry-dot"></i>
+                        ONLINE
+                    </span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- BACKDROP -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+
     <!-- Main Content -->
     <main class="main-content">
-
         <!-- Hero Section -->
-         <section class="hero-section">
-    <!-- Container khusus untuk mode full gambar -->
-    <div class="hero-container full-image-mode">
-        <img src="images/yukido.png" alt="Banner Promo YUKIDO" class="iklan-hero-img-full">
-    </div>
-</section>
+        <section class="hero-section">
+            <div class="hero-container full-image-mode">
+                <img src="images/yukido.png" alt="Banner Promo YUKIDO" class="iklan-hero-img-full">
+            </div>
+        </section>
 
         <!-- Kategori Pilihan -->
-        <div class="kategori-slider" id="kategoriSlider">
-    
-    <!-- Bingkai 1: AIR TOOLS -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/air_tools.png" alt="Air Tools">
-            <span class="kategori-badge">19 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>AIR TOOLS</h3>
-            <p>Compressor, air click valve, air impact wrench, sand blaster, air nailer gun, spraygun.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+        <section class="kategori-section">
+            <div class="kategori-top-bar">
+                <h2 class="kategori-section-heading">KATEGORI PRODUK</h2>
+            </div>
 
-    <!-- Bingkai 2: PNEUMATIC -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/pneumatic.png" alt="Pneumatic">
-            <span class="kategori-badge">16 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>PNEUMATIC</h3>
-            <p>Recoil hose PU, air hose compressor, tire pipe air hose, air hose PVC nylon, air filter.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+            <div class="slider-container">
+                <button class="kategori-scroll-btn kategori-scroll-prev" id="kategoriScrollPrev" type="button" aria-label="Geser kategori ke kiri">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-    <!-- Bingkai 3: AUTOMOTIVE -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/automotive.png" alt="Automotive">
-            <span class="kategori-badge">58 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>AUTOMOTIVE</h3>
-            <p>Dongkrak, alas kerja mekanik, pompa angin, alat pengukur tekanan angin, pompa tangan.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                <div class="kategori-slider" id="kategoriSlider">
+                    <!-- Bingkai 1: AIR TOOLS -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/air_tools.png" alt="Air Tools">
+                            <span class="kategori-badge">19 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>AIR TOOLS</h3>
+                            <p>Compressor, air click valve, air impact wrench, sand blaster, air nailer gun, spraygun.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 4: HAND TOOLS -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/hand_tools.png" alt="Hand Tools">
-            <span class="kategori-badge">100+ Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>HAND TOOLS</h3>
-            <p>Kunci ring pas, kunci L, palu, kunci sok, kunci inggris, alat pemotong presisi, dan aneka kunci bengkel.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                    <!-- Bingkai 2: PNEUMATIC -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/pneumatic.png" alt="Pneumatic">
+                            <span class="kategori-badge">16 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>PNEUMATIC</h3>
+                            <p>Recoil hose PU, air hose compressor, tire pipe air hose, air hose PVC nylon, air filter.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 5: PLIERS TOOLS -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/pilers_tools.png" alt="Pliers Tools">
-            <span class="kategori-badge">24 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>PLIERS TOOLS</h3>
-            <p>Tang kombinasi, tang potong, tang lancip (long nose), tang buaya, dan tang snap ring.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                    <!-- Bingkai 3: AUTOMOTIVE -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/automotive.png" alt="Automotive">
+                            <span class="kategori-badge">58 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>AUTOMOTIVE</h3>
+                            <p>Dongkrak, alas kerja mekanik, pompa angin, alat pengukur tekanan angin, pompa tangan.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 6: SCREWDRIVER -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/screwdriver.png" alt="Screwdriver">
-            <span class="kategori-badge">32 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>SCREWDRIVER</h3>
-            <p>Obeng plus, obeng minus, obeng set presisi, obeng ketrok, dan tespen listrik.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                    <!-- Bingkai 4: HAND TOOLS -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/hand_tools.png" alt="Hand Tools">
+                            <span class="kategori-badge">100+ Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>HAND TOOLS</h3>
+                            <p>Kunci ring pas, kunci L, palu, kunci sok, kunci inggris, alat pemotong presisi, dan aneka kunci bengkel.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 7: ACCESSORIES -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/accessories.png" alt="Accessories">
-            <span class="kategori-badge">85 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>ACCESSORIES</h3>
-            <p>Mata gerinda, mata bor, mata profil, carbon brush, amplas, dan kelengkapan power tools.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                    <!-- Bingkai 5: PLIERS TOOLS -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/pilers_tools.png" alt="Pliers Tools">
+                            <span class="kategori-badge">24 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>PLIERS TOOLS</h3>
+                            <p>Tang kombinasi, tang potong, tang lancip (long nose), tang buaya, dan tang snap ring.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 8: INSULATION -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/insulation.png" alt="Insulation">
-            <span class="kategori-badge">12 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>INSULATION</h3>
-            <p>Isolasi listrik, selotip kabel tahan panas, heat shrink tube, dan pelindung kabel mekanis.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                    <!-- Bingkai 6: SCREWDRIVER -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/screwdriver.png" alt="Screwdriver">
+                            <span class="kategori-badge">32 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>SCREWDRIVER</h3>
+                            <p>Obeng plus, obeng minus, obeng set presisi, obeng ketrok, dan tespen listrik.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 9: GENERAL -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/general.png" alt="General">
-            <span class="kategori-badge">45 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>GENERAL</h3>
-            <p>Meteran ukur, waterpas, siku ukur, pisau cutter, gembok, dan perlengkapan perkakas umum lainnya.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                    <!-- Bingkai 7: ACCESSORIES -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/accessories.png" alt="Accessories">
+                            <span class="kategori-badge">85 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>ACCESSORIES</h3>
+                            <p>Mata gerinda, mata bor, mata profil, carbon brush, amplas, dan kelengkapan power tools.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 10: TOOLS STORAGE -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/tools_storage.png" alt="Tools Storage">
-            <span class="kategori-badge">15 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>TOOLS STORAGE</h3>
-            <p>Kotak perkakas (toolbox), tas alat mekanik, troli perkakas susun, dan lemari penyimpanan bengkel.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+                    <!-- Bingkai 8: INSULATION -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/insulation.png" alt="Insulation">
+                            <span class="kategori-badge">12 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>INSULATION</h3>
+                            <p>Isolasi listrik, selotip kabel tahan panas, heat shrink tube, dan pelindung kabel mekanis.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
-    <!-- Bingkai 11: INVERTER -->
-    <div class="kategori-card">
-        <div class="kategori-image">
-            <img src="images/inverter.png" alt="Inverter">
-            <span class="kategori-badge">8 Part</span>
-        </div>
-        <div class="kategori-info">
-            <h3>INVERTER</h3>
-            <p>Mesin las inverter MMA/TIG, power inverter DC ke AC, dan perangkat pengelola daya bengkel.</p>
-            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
-</div>
+                    <!-- Bingkai 9: GENERAL -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/general.png" alt="General">
+                            <span class="kategori-badge">45 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>GENERAL</h3>
+                            <p>Meteran ukur, waterpas, siku ukur, pisau cutter, gembok, dan perlengkapan perkakas umum lainnya.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Bingkai 10: TOOLS STORAGE -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/tools_storage.png" alt="Tools Storage">
+                            <span class="kategori-badge">15 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>TOOLS STORAGE</h3>
+                            <p>Kotak perkakas (toolbox), tas alat mekanik, troli perkakas susun, dan lemari penyimpanan bengkel.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Bingkai 11: INVERTER -->
+                    <div class="kategori-card">
+                        <div class="kategori-image">
+                            <img src="images/inverter.png" alt="Inverter">
+                            <span class="kategori-badge">8 Part</span>
+                        </div>
+                        <div class="kategori-info">
+                            <h3>INVERTER</h3>
+                            <p>Mesin las inverter MMA/TIG, power inverter DC ke AC, dan perangkat pengelola daya bengkel.</p>
+                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="kategori-scroll-btn kategori-scroll-next" id="kategoriScrollNext" type="button" aria-label="Geser kategori ke kanan">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </section>
 
         <!-- Produk Rekomendasi -->
@@ -259,17 +315,17 @@
                 <div>
                     <div class="section-badge">
                         <span class="badge-red">TOOLS SELECTION</span>
-                        STOK TERSEDIA & TERUJI
+                        STOK TERSEDIA &amp; TERUJI
                     </div>
                     <h2 class="section-title">PRODUK POPULER</h2>
                 </div>
             </div>
-            
+
             <div class="produk-grid">
                 <!-- Produk 1 -->
                 <div class="produk-card">
                     <div class="produk-image">
-                        <img src="images/impack_wreck.png" alt="Impack Wrech">
+                        <img src="images/impack_wreck.png" alt="Impact Wrench">
                         <span class="badge-terlaris">TERLARIS</span>
                         <span class="sku">AB8-600FW</span>
                     </div>
@@ -291,14 +347,14 @@
                                 <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
                                     <i class="fas fa-info-circle"></i> DETAIL
                                 </a>
-                                <button class="btn-beli">
+                                <button class="btn-beli" type="button">
                                     <i class="fas fa-shopping-cart"></i> BELI
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Produk 2 -->
                 <div class="produk-card">
                     <div class="produk-image">
@@ -314,7 +370,7 @@
                             </span>
                         </div>
                         <h3>YUKIDO ANGLE GRINDER</h3>
-                        <p class="produk-desc">Mesin gerinda 4 inci dengan daya 540W yang cocok untuk memotong, menghaluskan, dan merapikan berbagai material. Memiliki desain praktis dan ergonomis sehingga nyaman digunakan untuk pekerjaan bengkel, konstruksi, maupun kebutuhan sehari-hari dan Ideal untuk membantu pekerjaan.</p>
+                        <p class="produk-desc">Mesin gerinda 4 inci dengan daya 540W yang cocok untuk memotong, menghaluskan, dan merapikan berbagai material. Memiliki desain praktis dan ergonomis sehingga nyaman digunakan untuk pekerjaan bengkel, konstruksi, maupun kebutuhan sehari-hari dan ideal untuk membantu pekerjaan.</p>
                         <div class="produk-footer">
                             <div>
                                 <span class="label">HARGA RESMI</span>
@@ -324,14 +380,14 @@
                                 <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
                                     <i class="fas fa-info-circle"></i> DETAIL
                                 </a>
-                                <button class="btn-beli">
+                                <button class="btn-beli" type="button">
                                     <i class="fas fa-shopping-cart"></i> BELI
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Produk 3 -->
                 <div class="produk-card">
                     <div class="produk-image">
@@ -346,7 +402,7 @@
                                 <i class="fas fa-star"></i> 0 (0)
                             </span>
                         </div>
-                        <h3>YUKIDO HIGH PREASSURE WHASER JET80</h3>
+                        <h3>YUKIDO HIGH PRESSURE WASHER JET80</h3>
                         <p class="produk-desc">Mesin cuci bertekanan tinggi JET80 yang cocok untuk membersihkan kendaraan bermotor, peralatan, dan berbagai permukaan dari kotoran membandel. Dilengkapi motor 500W dengan tekanan hingga 80 bar serta aksesori selang dan spray gun untuk mendukung proses pencucian yang praktis dan efisien.</p>
                         <div class="produk-footer">
                             <div>
@@ -357,18 +413,18 @@
                                 <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
                                     <i class="fas fa-info-circle"></i> DETAIL
                                 </a>
-                                <button class="btn-beli">
+                                <button class="btn-beli" type="button">
                                     <i class="fas fa-shopping-cart"></i> BELI
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Produk 4 -->
                 <div class="produk-card">
                     <div class="produk-image">
-                        <img src="images/dongkrak.png" alt="dongkrak">
+                        <img src="images/dongkrak.png" alt="Dongkrak">
                         <span class="badge-baru">BARU</span>
                         <span class="sku">AB-038T</span>
                     </div>
@@ -390,7 +446,7 @@
                                 <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
                                     <i class="fas fa-info-circle"></i> DETAIL
                                 </a>
-                                <button class="btn-beli">
+                                <button class="btn-beli" type="button">
                                     <i class="fas fa-shopping-cart"></i> BELI
                                 </button>
                             </div>
@@ -398,238 +454,232 @@
                     </div>
                 </div>
             </div>
+        </section>
 
-
-<!-- SECTION VIDEO TIKTOK YUKIDO -->
-<section class="video-yukido-section">
-    <div class="video-header">
-        <div class="video-header-left">
-            <span class="video-badge"><i class="fab fa-tiktok"></i> YUKIDO OFFICIAL TIKTOK</span>
-            <h2>KENALI PRODUK YUKIDO LEBIH DEKAT</h2>
-            <p>Temukan informasi produk, cara penggunaan, dan keunggulan peralatan Yukido melalui video TikTok berikut.</p>
-        </div>
-        <div class="video-header-right">
-            <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="btn-follow-tiktok">
-                <i class="fab fa-tiktok"></i> Follow TikTok @PT.YUKIDO POWER TEKNIK <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="video-yukido-grid">
-        <!-- (BIAKAN KODE KARTU VIDEO 1, 2, 3, 4 TETAP SEPERTI SEBELUMNYA) -->
-
-        <!-- VIDEO 1 -->
-        <div class="video-yukido-card">
-            <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7451798048012913926?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="video-thumbnail tiktok-thumbnail">
-                <div class="tiktok-placeholder">
-                    <i class="fab fa-tiktok"></i>
+        <!-- SECTION VIDEO TIKTOK YUKIDO -->
+        <section class="video-yukido-section">
+            <div class="video-header">
+                <div class="video-header-left">
+                    <span class="video-badge"><i class="fab fa-tiktok"></i> YUKIDO OFFICIAL TIKTOK</span>
+                    <h2>KENALI PRODUK YUKIDO LEBIH DEKAT</h2>
+                    <p>Temukan informasi produk, cara penggunaan, dan keunggulan peralatan Yukido melalui video TikTok berikut.</p>
                 </div>
-                <span class="tiktok-play">
-                    <i class="fas fa-play"></i>
-                </span>
-            </a>
-
-            <div class="video-info">
-                <span class="video-category">PRODUCT HIGHLIGHT</span>
-                <h3>Kenali Produk Unggulan Yukido</h3>
-                <p>
-                    Kenali fitur dan keunggulan produk Yukido
-                    untuk menunjang pekerjaan Anda.
-                </p>
-                <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7451798048012913926?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="video-link">
-                    TONTON DI TIKTOK
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- VIDEO 2 -->
-        <div class="video-yukido-card">
-            <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7686702337175391496?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="video-thumbnail tiktok-thumbnail">
-                <div class="tiktok-placeholder">
-                    <i class="fab fa-tiktok"></i>
+                <div class="video-header-right">
+                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn-follow-tiktok">
+                        <i class="fab fa-tiktok"></i> Follow TikTok @PT.YUKIDO POWER TEKNIK <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <span class="tiktok-play">
-                    <i class="fas fa-play"></i>
-                </span>
-            </a>
-
-            <div class="video-info">
-                <span class="video-category">HOW TO USE</span>
-                <h3>Tutorial Penggunaan Peralatan</h3>
-                <p>
-                    Pelajari cara menggunakan peralatan Yukido
-                    dengan tepat dan efektif.
-                </p>
-                <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7686702337175391496?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="video-link">
-                    TONTON DI TIKTOK
-                    <i class="fas fa-arrow-right"></i>
-                </a>
             </div>
-        </div>
 
-        <!-- VIDEO 3 -->
-        <div class="video-yukido-card">
-            <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7656005261038996743?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="video-thumbnail tiktok-thumbnail">
-                <div class="tiktok-placeholder">
-                    <i class="fab fa-tiktok"></i>
+            <div class="video-yukido-grid">
+                <!-- VIDEO 1 -->
+                <div class="video-yukido-card">
+                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7451798048012913926?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="video-thumbnail tiktok-thumbnail">
+                        <div class="tiktok-placeholder">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <span class="tiktok-play">
+                            <i class="fas fa-play"></i>
+                        </span>
+                    </a>
+
+                    <div class="video-info">
+                        <span class="video-category">PRODUCT HIGHLIGHT</span>
+                        <h3>Kenali Produk Unggulan Yukido</h3>
+                        <p>
+                            Kenali fitur dan keunggulan produk Yukido
+                            untuk menunjang pekerjaan Anda.
+                        </p>
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7451798048012913926?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="video-link">
+                            TONTON DI TIKTOK
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <span class="tiktok-play">
-                    <i class="fas fa-play"></i>
-                </span>
-            </a>
 
-            <div class="video-info">
-                <span class="video-category">PRODUCT DEMO</span>
-                <h3>Demonstrasi Performa Produk</h3>
-                <p>
-                    Lihat performa dan kemampuan produk Yukido
-                    saat digunakan.
-                </p>
-                <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7656005261038996743?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="video-link">
-                    TONTON DI TIKTOK
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
+                <!-- VIDEO 2 -->
+                <div class="video-yukido-card">
+                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7686702337175391496?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="video-thumbnail tiktok-thumbnail">
+                        <div class="tiktok-placeholder">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <span class="tiktok-play">
+                            <i class="fas fa-play"></i>
+                        </span>
+                    </a>
 
-        <!-- VIDEO 4 -->
-        <div class="video-yukido-card">
-            <a href="LINK_VIDEO_TIKTOK_4"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="video-thumbnail tiktok-thumbnail">
-                <div class="tiktok-placeholder">
-                    <i class="fab fa-tiktok"></i>
+                    <div class="video-info">
+                        <span class="video-category">HOW TO USE</span>
+                        <h3>Tutorial Penggunaan Peralatan</h3>
+                        <p>
+                            Pelajari cara menggunakan peralatan Yukido
+                            dengan tepat dan efektif.
+                        </p>
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7686702337175391496?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="video-link">
+                            TONTON DI TIKTOK
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <span class="tiktok-play">
-                    <i class="fas fa-play"></i>
-                </span>
-            </a>
 
-            <div class="video-info">
-                <span class="video-category">TIPS & INFORMATION</span>
-                <h3>Tips Perawatan Peralatan</h3>
-                <p>
-                    Dapatkan tips perawatan untuk menjaga
-                    performa dan usia pakai alat.
-                </p>
-                <a href="LINK_VIDEO_TIKTOK_4"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="video-link">
-                    TONTON DI TIKTOK
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+                <!-- VIDEO 3 -->
+                <div class="video-yukido-card">
+                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7656005261038996743?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="video-thumbnail tiktok-thumbnail">
+                        <div class="tiktok-placeholder">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <span class="tiktok-play">
+                            <i class="fas fa-play"></i>
+                        </span>
+                    </a>
+
+                    <div class="video-info">
+                        <span class="video-category">PRODUCT DEMO</span>
+                        <h3>Demonstrasi Performa Produk</h3>
+                        <p>
+                            Lihat performa dan kemampuan produk Yukido
+                            saat digunakan.
+                        </p>
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik/video/7656005261038996743?is_from_webapp=1&sender_device=pc&web_id=7703178556411708946"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="video-link">
+                            TONTON DI TIKTOK
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- VIDEO 4 -->
+                <div class="video-yukido-card">
+                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="video-thumbnail tiktok-thumbnail">
+                        <div class="tiktok-placeholder">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <span class="tiktok-play">
+                            <i class="fas fa-play"></i>
+                        </span>
+                    </a>
+
+                    <div class="video-info">
+                        <span class="video-category">TIPS &amp; INFORMATION</span>
+                        <h3>Tips Perawatan Peralatan</h3>
+                        <p>
+                            Dapatkan tips perawatan untuk menjaga
+                            performa dan usia pakai alat.
+                        </p>
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="video-link">
+                            TONTON DI TIKTOK
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-
-    </div>
-</section>
-
+        </section>
 
         <!-- Dari Sirkuit ke Jalan Raya -->
         <section class="sirkuit-section">
             <div class="sirkuit-content">
                 <div class="sirkuit-image">
-                    
-                   <!--video -->
                     <video autoplay loop muted playsinline style="width: 100%; height: 600px; border-radius: 12px; object-fit: cover;">
                         <source src="videos/yukido_race.mp4" type="video/mp4">
                         Browser Anda tidak mendukung tag video.
                     </video>
-                    
+
                     <div class="sirkuit-badge">
-                <span class="badge-red">YUKIDO TOOLS & EQUIPMENT</span>
-                <h3>STANDAR BENGKEL PROFESIONAL</h3>
-                <p>Perkakas heavy-duty andalan mekanik untuk segala kebutuhan perbaikan dan industri.</p>
-            </div>
-            <div class="sirkuit-stats">
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">PRESISI AKURAT</div>
+                        <span class="badge-red">YUKIDO TOOLS &amp; EQUIPMENT</span>
+                        <h3>STANDAR BENGKEL PROFESIONAL</h3>
+                        <p>Perkakas heavy-duty andalan mekanik untuk segala kebutuhan perbaikan dan industri.</p>
+                    </div>
+
+                    <div class="sirkuit-stats">
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">PRESISI AKURAT</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Daya Tahan Kerja</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Daya Tahan Kerja</div>
+
+                <!-- SISI KANAN: Teks Penjelasan -->
+                <div class="sirkuit-info">
+                    <div class="section-badge">
+                        <i class="fas fa-flag-checkered"></i>
+                        RACING HERITAGE &amp; ENGINEERING
+                    </div>
+                    <h2 class="section-title">DARI UJI COBA EKSTRIM SIRKUIT KE KINERJA PROFESIONAL</h2>
+                    <p class="section-description">
+                        Perkakas dan komponen YUKIDO bukan sekadar alat biasa. Setiap produk lahir dari tempaan ketat di sirkuit balap nasional untuk menguji daya tahan material di bawah tekanan maksimal. Standar kualitas balap inilah yang kami bawa ke dalam setiap lini perkakas bengkel dan industri demi performa yang tak tertandingi.
+                    </p>
+
+                    <div class="sirkuit-features">
+                        <div class="feature">
+                            <i class="fas fa-fire"></i>
+                            <div>
+                                <h4>Ketahanan di Bawah Tekanan Ekstrim</h4>
+                                <p>Teruji konsisten menahan gesekan, panas tinggi, dan beban kerja berat tanpa mengalami penurunan performa sedikit pun.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-medal"></i>
+                            <div>
+                                <h4>Standar Kualitas Juara</h4>
+                                <p>Mengusung presisi tingkat tinggi yang sama seperti yang diandalkan oleh tim balap profesional kelas kejuaraan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sirkuit-buttons">
+                        <a href="tim-balap.html" class="btn-primary">
+                            TIM BALAP YUKIDO <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="garansi.html" class="btn-secondary" style="text-decoration: none;">
+                            <i class="fas fa-shield-alt"></i> INFO GARANSI
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- SISI KANAN: Teks Penjelasan -->
-        <div class="sirkuit-info">
-            <div class="section-badge">
-                <i class="fas fa-flag-checkered"></i>
-            RACING HERITAGE & ENGINEERING
-             </div>
-                <h2 class="section-title">DARI UJI COBA EKSTRIM SIRKUIT KE KINERJA PROFESIONAL</h2>
-                <p class="section-description">
-                Perkakas dan komponen YUKIDO bukan sekadar alat biasa. Setiap produk lahir dari tempaan ketat di sirkuit balap nasional untuk menguji daya tahan material di bawah tekanan maksimal. Standar kualitas balap inilah yang kami bawa ke dalam setiap lini perkakas bengkel dan industri demi performa yang tak tertandingi.
-            </p>
-    
-        <div class="sirkuit-features">
-            <div class="feature">
-                <i class="fas fa-fire"></i>
-                <div>
-                <h4>Ketahanan di Bawah Tekanan Ekstrim</h4>
-                <p>Teruji konsisten menahan gesekan, panas tinggi, dan beban kerja berat tanpa mengalami penurunan performa sedikit pun.</p>
-            </div>
-            </div>
-            <div class="feature">
-            <i class="fas fa-medal"></i>
-            <div>
-                <h4>Standar Kualitas Juara</h4>
-                <p>Mengusung presisi tingkat tinggi yang sama seperti yang diandalkan oleh tim balap profesional kelas kejuaraan.</p>
-            </div>
-            </div>
-            </div>
-    
-        <div class="sirkuit-buttons">
-            <a href="tim-balap.html" class="btn-primary">
-            TIM BALAP YUKIDO <i class="fas fa-arrow-right"></i>
-            </a>
-             <button class="btn-secondary">
-                <i class="fas fa-shield-alt"></i> INFO GARANSI
-                 </button>
-                </div>
-            </div>
-            </div>
-            </div>
-    </section>
+        </section>
 
         <!-- Lokasi -->
         <section class="lokasi-section">
             <div class="section-header">
                 <div>
-                    <div class="section-badge">SHOWROOM & WORKSHOP</div>
+                    <div class="section-badge">SHOWROOM &amp; WORKSHOP</div>
                     <h2 class="section-title">PT YUKIDO POWER TEKNIK</h2>
                 </div>
                 <p class="section-description">
                     Layanan pemasangan mekanik profesional, dyno test tuning, dan pembelian part langsung dengan inspeksi visual.
                 </p>
             </div>
-            
+
             <div class="lokasi-content">
                 <div class="lokasi-info">
                     <div class="lokasi-header">
@@ -639,7 +689,7 @@
                             <a href="lokasi.html" class="link-small">LIHAT DETAIL LOKASI</a>
                         </div>
                     </div>
-                    
+
                     <div class="lokasi-details">
                         <div class="detail-item">
                             <i class="fas fa-clock"></i>
@@ -648,7 +698,7 @@
                                 <span class="value">Senin - Sabtu: 08.00 - 18.00 WIB</span>
                             </div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <i class="fas fa-map-pin"></i>
                             <div>
@@ -657,7 +707,7 @@
                                 <span class="sub-value">PT YUKIDO POWER TEKNIK</span>
                             </div>
                         </div>
-                        
+
                         <div class="detail-item">
                             <i class="fas fa-phone"></i>
                             <div>
@@ -666,26 +716,27 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="lokasi-buttons">
                         <a href="lokasi.html" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
                             <i class="fas fa-map"></i> BUKA PETA LENGKAP
                         </a>
-                        <button class="btn-secondary">
+                        <a href="https://maps.google.com/?q=-6.3210488,106.5761421" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration: none;">
                             <i class="fab fa-google"></i> GOOGLE MAPS
-                        </button>
+                        </a>
                     </div>
                 </div>
-                
+
                 <div class="lokasi-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1234567890!2d106.5761421!3d-6.3210488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e300280ab073%3A0xb4870f8cc5be134d!2sPT%20YUKIDO%20POWER%20TEKNIK!5e0!3m2!1sid!2sid!4v1728700000000!5m2!1sid!2sid" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1234567890!2d106.5761421!3d-6.3210488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e300280ab073%3A0xb4870f8cc5be134d!2sPT%20YUKIDO%20POWER%20TEKNIK!5e0!3m2!1sid!2sid!4v1728700000000!5m2!1sid!2sid"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Peta Lokasi PT Yukido Power Teknik">
                     </iframe>
                     <div class="map-info">
                         <span><i class="fas fa-map-marker-alt"></i> GPS: -6.3210° S, 106.5783° E | ELEVASI: 18M</span>
@@ -695,109 +746,142 @@
             </div>
         </section>
 
-       <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
-<footer class="footer-yukido">
-    <div class="footer-container">
-        
-        <!-- KOLOM 1: BRAND & COPYRIGHT -->
-        <div class="footer-col footer-brand">
-            <div class="brand-logo">
-                <span class="logo-text"><span class="red-text">YUKIDO</span>®</span>
-                <span class="logo-sub">ユキドジャパンテクノロジー</span>
-            </div>
-            <p class="brand-desc">
-                YUKIDO Tools adalah merek terpercaya untuk produk perkakas dan alat teknik berkualitas tinggi berstandar Jepang, dirancang untuk memenuhi tingginya tuntutan kerja di industri, bengkel profesional, hingga garasi Anda.
-            </p>
-            <div class="copyright-text">
-                YUKIDO® 2026 – HAK CIPTA DILINDUNGI.
-            </div>
-        </div>
+        <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
+        <footer class="footer-yukido">
+            <div class="footer-container">
+                <!-- KOLOM 1: BRAND & COPYRIGHT -->
+                <div class="footer-col footer-brand">
+                    <div class="brand-logo">
+                        <span class="logo-text"><span class="red-text">YUKIDO</span>®</span>
+                        <span class="logo-sub">ユキドジャパンテクノロジー</span>
+                    </div>
+                    <p class="brand-desc">
+                        YUKIDO Tools adalah merek terpercaya untuk produk perkakas dan alat teknik berkualitas tinggi berstandar Jepang, dirancang untuk memenuhi tingginya tuntutan kerja di industri, bengkel profesional, hingga garasi Anda.
+                    </p>
+                    <div class="copyright-text">
+                        YUKIDO® 2026 – HAK CIPTA DILINDUNGI.
+                    </div>
+                </div>
 
-        <!-- KOLOM 2: SITEMAP & SUPPORT -->
-        <div class="footer-col footer-sitemap">
-            <h3>SITEMAP & SUPPORT</h3>
-            <ul>
-                <li><a href="semua-produk.html">E-KATALOG PRODUK</a></li>
-                <li><a href="lokasi.html">LOKASI & BENGKEL</a></li>
-                <li><a href="garansi.html">KLAIM GARANSI</a></li>
-                <li><a href="tim-balap.html">TIM BALAP YUKIDO</a></li>
-            </ul>
-        </div>
+                <!-- KOLOM 2: SITEMAP & SUPPORT -->
+                <div class="footer-col footer-sitemap">
+                    <h3>SITEMAP &amp; SUPPORT</h3>
+                    <ul>
+                        <li><a href="produk.html">E-KATALOG PRODUK</a></li>
+                        <li><a href="lokasi.html">LOKASI &amp; BENGKEL</a></li>
+                        <li><a href="garansi.html">KLAIM GARANSI</a></li>
+                        <li><a href="tim-balap.html">TIM BALAP YUKIDO</a></li>
+                    </ul>
+                </div>
 
-       <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
-        <div class="footer-col footer-social-store">
-            <!-- Official Store -->
-            <div class="store-section">
-                <h3>OFFICIAL STORE</h3>
-                <div class="store-badges">
-                    <!-- Ganti tanda # dengan link toko Anda -->
-                    <a href="#" target="_blank" class="store-badge tokped-btn">
-                        <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
-                    </a>
-                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="store-badge tiktok-btn">
-                        <i class="fab fa-tiktok"></i> TikTok Shop
-                    </a>
-                    <a href="https://id.shp.ee/5iRfotBL" target="_blank" class="store-badge shopee-btn">
-                        <i class="fas fa-shopping-bag"></i> Shopee
-                    </a>
-                    <a href="#" target="_blank" class="store-badge lazada-btn">
-                        <i class="fas fa-heart"></i> Lazada
-                    </a>
+                <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
+                <div class="footer-col footer-social-store">
+                    <!-- Official Store -->
+                    <div class="store-section">
+                        <h3>OFFICIAL STORE</h3>
+                        <div class="store-badges">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="store-badge tokped-btn">
+                                <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
+                            </a>
+                            <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" rel="noopener noreferrer" class="store-badge tiktok-btn">
+                                <i class="fab fa-tiktok"></i> TikTok Shop
+                            </a>
+                            <a href="https://id.shp.ee/5iRfotBL" target="_blank" rel="noopener noreferrer" class="store-badge shopee-btn">
+                                <i class="fas fa-shopping-bag"></i> Shopee
+                            </a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="store-badge lazada-btn">
+                                <i class="fas fa-heart"></i> Lazada
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Follow Us -->
+                    <div class="follow-section">
+                        <h3>FOLLOW US</h3>
+                        <div class="social-circles">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" rel="noopener noreferrer" class="social-btn instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" rel="noopener noreferrer" class="social-btn tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Follow Us -->
-            <div class="follow-section">
-                <h3>FOLLOW US</h3>
-                <div class="social-circles">
-                    <!-- Ganti tanda # dengan link sosmed Anda -->
-                    <a href="#" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
+        </footer>
 
         <!-- Floating Button -->
-        <button class="floating-btn">
+        <button class="floating-btn" id="chatbotToggle" type="button">
             <i class="fas fa-robot"></i> TANYA AI
         </button>
     </main>
 
     <!-- === AI CHATBOT WIDGET === -->
-<div class="chatbot-container" id="chatbotContainer">
-    <div class="chatbot-header">
-        <div class="chatbot-title">
-            <i class="fas fa-robot"></i>
-            <div>
-                <strong>YUKIDO AI Assistant</strong>
-                <span class="chatbot-status">Online</span>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <div>
+                    <strong>YUKIDO AI Assistant</strong>
+                    <span class="chatbot-status">Online</span>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbotClose" type="button" aria-label="Tutup Chatbot">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
+                <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
             </div>
         </div>
-        <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
-    </div>
-    
-    <div class="chatbot-messages" id="chatbotMessages">
-        <div class="message bot-message">
-            Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
-            <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
+
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
+            <button id="chatbotSend" type="button" aria-label="Kirim Pesan">
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
     </div>
-    
-    <div class="chatbot-input-area">
-        <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
-        <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
-    </div>
-</div>
 
-    <!-- Tombol Floating (Pastikan ini ada di bagian bawah sebelum </main> atau </body>
-    <button class="floating-btn" id="chatbotToggle">
-        <i class="fas fa-robot"></i> TANYA AI
-    </button>
-    <!-- === AKHIR AI CHATBOT WIDGET === -->
     <script src="js/layout.js"></script>
     <script src="js/script.js"></script>
-    
+    <script>
+        (function () {
+            const slider = document.getElementById("kategoriSlider");
+            const prevBtn = document.getElementById("kategoriScrollPrev");
+            const nextBtn = document.getElementById("kategoriScrollNext");
+
+            if (!slider) return;
+
+            function getScrollStep() {
+                const card = slider.querySelector(".kategori-card");
+                return card ? card.getBoundingClientRect().width + 20 : 340;
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener("click", () => {
+                    const step = getScrollStep();
+                    if (slider.scrollLeft <= 5) {
+                        slider.scrollTo({ left: slider.scrollWidth, behavior: "smooth" });
+                    } else {
+                        slider.scrollBy({ left: -step, behavior: "smooth" });
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener("click", () => {
+                    const step = getScrollStep();
+                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+                        slider.scrollTo({ left: 0, behavior: "smooth" });
+                    } else {
+                        slider.scrollBy({ left: step, behavior: "smooth" });
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

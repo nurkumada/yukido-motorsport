@@ -1,8 +1,9 @@
-
 const CART_API = "../backend/cart";
 
 let cartItems = [];
 let selectedItems = new Set();
+let voucherApplied = false;
+const VOUCHER_DISCOUNT = 50000;
 
 function cartRupiah(value) {
     return new Intl.NumberFormat("id-ID", {
@@ -25,9 +26,17 @@ function cartEscape(value) {
 function cartImage(path) {
     if (!path) return "images/yukido.png";
     if (/^https?:\/\//i.test(path)) return path;
-    path = path.replace(/\\/g, "/");
-    if (path.startsWith("/")) return path;
-    return path.replace(/^\.?\//, "");
+
+    path = String(path).replace(/\\/g, "/").trim();
+
+    // Hapus awalan "./", "/", atau "frontend/" karena halaman sudah berada di dalam folder frontend/
+    path = path.replace(/^\.?\//, "").replace(/^frontend\//i, "");
+
+    if (path.startsWith("uploads/") || path.startsWith("images/")) {
+        return path;
+    }
+
+    return "uploads/products/" + path;
 }
 
 async function cartRequest(endpoint, data = null) {
@@ -46,7 +55,9 @@ async function cartRequest(endpoint, data = null) {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-        throw new Error(result.message || "Permintaan keranjang gagal.");
+        const err = new Error(result.message || "Permintaan keranjang gagal.");
+        err.status = response.status;
+        throw err;
     }
 
     return result;
@@ -56,7 +67,12 @@ async function loadCart() {
     const container = document.querySelector(".shopee-store-group");
     if (!container) return;
 
-    container.innerHTML = "<p>Memuat keranjang...</p>";
+    container.innerHTML = `
+        <div style="padding: 40px; text-align: center; color: #9ca3af;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 24px; color: #e50914; margin-bottom: 10px;"></i>
+            <p>Memuat keranjang...</p>
+        </div>
+    `;
 
     try {
         const result = await cartRequest("index");
@@ -69,24 +85,37 @@ async function loadCart() {
         renderCart();
     } catch (error) {
         console.error("Gagal memuat keranjang:", error);
-        container.innerHTML = `
-            <p>${cartEscape(error.message)}</p>
-        `;
+        if (error.status === 401) {
+            container.innerHTML = `
+                <div style="padding: 45px 20px; text-align: center;">
+                    <i class="fas fa-lock" style="font-size: 34px; color: #e50914; margin-bottom: 12px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 6px;">Silakan Login Terlebih Dahulu</h3>
+                    <p style="color: #9ca3af; margin-bottom: 18px;">Masuk ke akun YUKIDO Anda untuk melihat isi keranjang belanja.</p>
+                    <a href="login.html" class="btn-shopee-checkout" style="display: inline-block; text-decoration: none;">Login Sekarang</a>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div style="padding: 40px; text-align: center; color: #ef4444;">
+                    <p>${cartEscape(error.message)}</p>
+                </div>
+            `;
+        }
+        updateCartSummary();
     }
 }
 
 function renderCart() {
     const container = document.querySelector(".shopee-store-group");
-
     if (!container) return;
 
     if (cartItems.length === 0) {
         container.innerHTML = `
-            <div style="padding:40px;text-align:center;">
-                <i class="fas fa-shopping-cart" style="font-size:45px;"></i>
-                <h3>Keranjang masih kosong</h3>
-                <p>Silakan pilih produk yang ingin dibeli.</p>
-                <a href="produk.html">Belanja Sekarang</a>
+            <div style="padding: 45px 20px; text-align: center;">
+                <i class="fas fa-shopping-cart" style="font-size: 42px; color: #4b5563; margin-bottom: 12px;"></i>
+                <h3 style="color: #fff; margin-bottom: 6px;">Keranjang masih kosong</h3>
+                <p style="color: #9ca3af; margin-bottom: 18px;">Silakan pilih produk yang ingin dibeli.</p>
+                <a href="produk.html" class="btn-shopee-checkout" style="display: inline-block; text-decoration: none;">Belanja Sekarang</a>
             </div>
         `;
         updateCartSummary();
@@ -109,6 +138,7 @@ function renderCart() {
             const price = Number(item.price);
             const qty = Number(item.quantity);
             const checked = selectedItems.has(id);
+            const imgSrc = cartImage(item.image_path || item.image || item.product_image);
 
             return `
                 <div class="shopee-cart-item"
@@ -120,7 +150,7 @@ function renderCart() {
                     </div>
 
                     <div class="col-product">
-                        <img src="${cartEscape(cartImage(item.image_path))}"
+                        <img src="${cartEscape(imgSrc)}"
                              alt="${cartEscape(item.name)}"
                              onerror="this.onerror=null;this.src='images/yukido.png';">
                         <div class="prod-meta">
@@ -136,7 +166,7 @@ function renderCart() {
                                         ? `Garansi ${Number(item.warranty_period_months)} Bulan`
                                         : "Tanpa Garansi"}
                             </span>
-                            <small>Stok: ${Number(item.stock)}</small>
+                            <small style="color: #9ca3af;">Stok: ${Number(item.stock)}</small>
                         </div>
                     </div>
 
@@ -177,9 +207,12 @@ function updateCartSummary() {
         selectedItems.has(Number(item.cart_item_id))
     );
 
-    const total = selected.reduce((sum, item) =>
+    const subtotal = selected.reduce((sum, item) =>
         sum + Number(item.price) * Number(item.quantity), 0
     );
+
+    const discount = (voucherApplied && subtotal > VOUCHER_DISCOUNT) ? VOUCHER_DISCOUNT : 0;
+    const total = Math.max(0, subtotal - discount);
 
     const count = selected.reduce((sum, item) =>
         sum + Number(item.quantity), 0
@@ -211,10 +244,15 @@ function updateCartSummary() {
     const voucher = document.getElementById("voucherBadge");
     const hemat = document.getElementById("hematText");
 
-    if (voucher) voucher.textContent = "Voucher belum diterapkan";
-    if (hemat) hemat.textContent = "";
+    if (voucher) {
+        voucher.textContent = voucherApplied
+            ? "Diskon Bengkel -Rp 50.000 Terpakai"
+            : "Voucher belum diterapkan";
+    }
+    if (hemat) {
+        hemat.textContent = discount > 0 ? `Hemat ${cartRupiah(discount)}` : "";
+    }
 }
-
 
 async function updateCartItem(id, quantity) {
     const item = cartItems.find(
@@ -229,15 +267,13 @@ async function updateCartItem(id, quantity) {
     }
 
     try {
-        const result = await cartRequest("update", {
+        await cartRequest("update", {
             cart_item_id: id,
             quantity
         });
 
-        // Perbarui data lokal tanpa membuat ulang seluruh halaman
         item.quantity = quantity;
 
-        // Perbarui angka kuantitas
         const row = document.querySelector(
             `.shopee-cart-item[data-id="${id}"]`
         );
@@ -255,7 +291,6 @@ async function updateCartItem(id, quantity) {
             }
         }
 
-        // Perbarui total belanja
         updateCartSummary();
 
     } catch (error) {
@@ -263,7 +298,6 @@ async function updateCartItem(id, quantity) {
         await loadCart();
     }
 }
-
 
 async function deleteCartItem(id) {
     if (!confirm("Hapus produk ini dari keranjang?")) return;
@@ -332,6 +366,11 @@ document.addEventListener("change", async event => {
     }
 });
 
+document.getElementById("btnToggleVoucher")?.addEventListener("click", () => {
+    voucherApplied = !voucherApplied;
+    updateCartSummary();
+});
+
 document.getElementById("btnDeleteSelected")?.addEventListener("click", async () => {
     if (selectedItems.size === 0) {
         alert("Pilih produk yang ingin dihapus.");
@@ -351,13 +390,11 @@ document.getElementById("btnDeleteSelected")?.addEventListener("click", async ()
     }
 });
 
-
 document.querySelector(".btn-shopee-checkout")
     ?.addEventListener("click", event => {
 
     event.preventDefault();
 
-    // selectedItems sudah berisi angka ID cart_item
     const ids = Array.from(selectedItems)
         .map(id => Number(id))
         .filter(id => Number.isInteger(id) && id > 0);
@@ -367,12 +404,14 @@ document.querySelector(".btn-shopee-checkout")
         return;
     }
 
-    // Simpan ID produk keranjang untuk halaman checkout
     sessionStorage.setItem(
         "yukido_checkout_items",
         JSON.stringify(ids)
     );
 
-    // Pindah ke checkout
     window.location.href = "checkout.html";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadCart();
 });
