@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
     const CHECKOUT_API = "../backend/checkout";
     const STORAGE_KEY = "yukido_checkout_items";
@@ -61,16 +60,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         })[char]);
     };
 
-    function resolveImage(path) {
-        if (!path) return "images/yukido.png";
+    function resolveImage(rawPath) {
+        const fallback = "images/yukido.png";
+        if (!rawPath || typeof rawPath !== "string") return fallback;
 
-        if (/^https?:\/\//i.test(path)) {
-            return path;
+        const trimmed = rawPath.trim();
+        if (!trimmed) return fallback;
+
+        if (/^https?:\/\//i.test(trimmed)) {
+            return trimmed;
         }
 
-        path = path.replace(/\\/g, "/").replace(/^\.?\//, "");
+        const clean = trimmed
+            .replace(/\\/g, "/")
+            .replace(/^(\.\/|frontend\/)/, "");
 
-        return path.startsWith("/") ? path : `../${path}`;
+        if (clean.startsWith("../") || clean.startsWith("/")) {
+            return clean;
+        }
+
+        if (clean.startsWith("uploads/")) {
+            return `../${clean}`;
+        }
+
+        return clean;
     }
 
     // =====================================
@@ -165,17 +178,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         listEl.innerHTML = checkoutItems.map(item => `
             <div class="sum-item">
                 <img
-                    src="${escapeHTML(resolveImage(item.image_path))}"
+                    src="${escapeHTML(resolveImage(item.image_path || item.image))}"
                     alt="${escapeHTML(item.name)}"
-                    onerror="this.onerror=null;this.src='images/yukido.png'"
+                    onerror="this.onerror=null;this.src='images/yukido.png';"
                 >
 
                 <div>
                     <span>${escapeHTML(item.name)}</span>
 
                     <span class="sum-qty">
-                        ${Number(item.quantity)}x Unit
-                        • SKU: ${escapeHTML(item.sku)}
+                        ${Number(item.quantity)}x Unit - SKU: ${escapeHTML(item.sku || "-")}
                     </span>
                 </div>
 
@@ -353,7 +365,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // =====================================
-    // 7. PILIH BANK VIRTUAL ACCOUNT
+    // 7. PILIH BANK VIRTUAL ACCOUNT & SALIN
     // =====================================
 
     function updateVaPreview() {
@@ -415,6 +427,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("recipientPhone")
         ?.addEventListener("input", updateVaPreview);
 
+    const copyVaBtn = document.getElementById("copyVaBtn");
+    copyVaBtn?.addEventListener("click", async () => {
+        const vaText = (document.getElementById("vaNumber")?.textContent || "").replace(/\s+/g, "");
+        if (!vaText) return;
+        try {
+            await navigator.clipboard.writeText(vaText);
+            const prev = copyVaBtn.innerHTML;
+            copyVaBtn.innerHTML = '<i class="fas fa-check"></i> Tersalin';
+            setTimeout(() => {
+                copyVaBtn.innerHTML = prev;
+            }, 1500);
+        } catch {
+            alert("Nomor VA: " + vaText);
+        }
+    });
+
     // =====================================
     // 8. PILIH E-WALLET
     // =====================================
@@ -434,7 +462,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // =====================================
-    // 9. FORMAT NOMOR KARTU
+    // 9. FORMAT NOMOR & MASA BERLAKU KARTU
     // =====================================
 
     document.getElementById("cardNumber")
@@ -446,6 +474,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             event.target.value = value
                 .replace(/(.{4})/g, "$1 ")
                 .trim();
+        });
+
+    document.getElementById("cardExpiry")
+        ?.addEventListener("input", event => {
+            const digits = event.target.value
+                .replace(/\D/g, "")
+                .slice(0, 4);
+
+            event.target.value = digits.length > 2
+                ? `${digits.slice(0, 2)}/${digits.slice(2)}`
+                : digits;
         });
 
     // =====================================

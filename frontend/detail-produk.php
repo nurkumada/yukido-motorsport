@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Produk - YUKIDO Motorsport</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=10">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -195,7 +195,7 @@ function formatRupiah(value) {
         style: "currency",
         currency: "IDR",
         maximumFractionDigits: 0
-    }).format(Number(value));
+    }).format(Number(value || 0));
 }
 
 function safeText(value) {
@@ -215,11 +215,14 @@ function getImagePath(path) {
     if (/^https?:\/\//i.test(path)) {
         return path;
     }
-    path = path.replace(/\\/g, "/");
-    if (path.startsWith("/")) {
-        return path;
+    const clean = String(path).replace(/\\/g, "/").replace(/^(\.\/|frontend\/)/, "");
+    if (clean.startsWith("../") || clean.startsWith("/")) {
+        return clean;
     }
-    return path.replace(/^\.?\//, "");
+    if (clean.startsWith("uploads/")) {
+        return "../" + clean;
+    }
+    return clean;
 }
 
 function getTikTokEmbed(url) {
@@ -296,7 +299,8 @@ async function loadProduct() {
 
     try {
         const response = await fetch(
-            `${API_URL}?id=${encodeURIComponent(productId)}`
+            `${API_URL}?id=${encodeURIComponent(productId)}`,
+            { credentials: "same-origin" }
         );
 
         const result = await response.json();

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keranjang Belanja - YUKIDO Motorsport</title>
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=10">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Top Navigation -->
     <nav class="top-nav">
         <div class="nav-left">
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu"><i class="fas fa-bars"></i></button>
             <a href="index.html" class="logo">
                 <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
                 <span class="logo-icon"></span>
@@ -22,16 +22,16 @@
         <div class="nav-center">
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Pencarian">
+                <input type="text" id="topSearchInput" name="q" placeholder="Pencarian">
             </div>
         </div>
         <div class="nav-right">
             <div class="nav-icons">
-                <a href="keranjang.html" class="icon-btn cart-btn">
+                <a href="keranjang.html" class="icon-btn cart-btn" aria-label="Keranjang Belanja">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
-                <button class="btn-cs"><i class="fas fa-headset"></i> BANTUAN CS</button>
-                <a href="login.html" class="icon-btn" style="text-decoration: none; color: inherit;">
+                <button class="btn-cs" type="button"><i class="fas fa-headset"></i> BANTUAN CS</button>
+                <a href="login.html" class="icon-btn" style="text-decoration: none; color: inherit;" aria-label="Masuk atau Akun">
                     <i class="fas fa-user"></i>
                 </a>
             </div>
@@ -39,103 +39,103 @@
     </nav>
 
     <!-- ================= SIDEBAR GLASSY ================= -->
-<aside class="sidebar" id="sidebar" aria-hidden="true">
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
 
-    <div class="sidebar-header">
-        <a href="index.html" class="sidebar-brand">
-            <img src="images/logo-yukido.png" alt="YUKIDO">
-            <span>
-                <strong>YUKIDO</strong>
-                <small>POWER TEKNIK</small>
-            </span>
-        </a>
-
-        <button class="sidebar-close" id="sidebarClose"
-                type="button" aria-label="Tutup menu">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-
-    <!-- LOGIN / AKUN -->
-    <a href="login.html" class="sidebar-welcome">
-        <div class="sidebar-welcome-icon">
-            <i class="fas fa-user"></i>
-        </div>
-        <div>
-            <h4>Masuk / Daftar</h4>
-            <p>Kelola akun dan pesanan Anda</p>
-        </div>
-        <i class="fas fa-chevron-right"></i>
-    </a>
-
-    <!-- MENU NAVIGASI -->
-    <nav class="sidebar-menu">
-
-        <a href="index.html" class="menu-item">
-            <i class="fas fa-house"></i>
-            <span>Beranda</span>
-        </a>
-
-        <a href="produk.html" class="menu-item">
-            <i class="fas fa-cube"></i>
-            <span>Semua Produk</span>
-            <i class="fas fa-chevron-right menu-arrow"></i>
-        </a>
-
-        <a href="kategori-produk.html" class="menu-item">
-            <i class="fas fa-layer-group"></i>
-            <span>Kategori Produk</span>
-            <i class="fas fa-chevron-right menu-arrow"></i>
-        </a>
-
-        <a href="garansi.html" class="menu-item">
-            <i class="fas fa-shield-alt"></i>
-            <span>Klaim Garansi</span>
-        </a>
-
-        <a href="gallery.html" class="menu-item">
-            <i class="fas fa-images"></i>
-            <span>Gallery</span>
-        </a>
-
-        <a href="lokasi.html" class="menu-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Lokasi</span>
-        </a>
-
-        <a href="keranjang.html" class="menu-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Keranjang</span>
-            <span class="menu-badge" id="sidebarCartBadge">0 Item</span>
-        </a>
-
-        <a href="login.html" class="menu-item">
-            <i class="fas fa-user-circle"></i>
-            <span>Akun</span>
-        </a>
-
-    </nav>
-
-    <!-- TELEMETRY -->
-    <div class="sidebar-footer">
-        <div class="telemetry-card">
-            <div class="telemetry-icon">
-                <i class="fas fa-gauge-high"></i>
-            </div>
-            <div class="telemetry-info">
-                <strong>YUKIDO TELEMETRY</strong>
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-brand">
+                <img src="images/logo-yukido.png" alt="YUKIDO">
                 <span>
-                    <i class="telemetry-dot"></i>
-                    ONLINE
+                    <strong>YUKIDO</strong>
+                    <small>POWER TEKNIK</small>
                 </span>
+            </a>
+
+            <button class="sidebar-close" id="sidebarClose"
+                    type="button" aria-label="Tutup menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- LOGIN / AKUN -->
+        <a href="login.html" class="sidebar-welcome" id="sidebarWelcomeCard">
+            <div class="sidebar-welcome-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h4 id="sidebarWelcomeName">Masuk / Daftar</h4>
+                <p id="sidebarWelcomeSub">Kelola akun dan pesanan Anda</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <!-- MENU NAVIGASI -->
+        <nav class="sidebar-menu">
+
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-house"></i>
+                <span>Beranda</span>
+            </a>
+
+            <a href="produk.html" class="menu-item">
+                <i class="fas fa-cube"></i>
+                <span>Semua Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="kategori-produk.html" class="menu-item">
+                <i class="fas fa-layer-group"></i>
+                <span>Kategori Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="garansi.html" class="menu-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Klaim Garansi</span>
+            </a>
+
+            <a href="gallery.html" class="menu-item">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="lokasi.html" class="menu-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Lokasi</span>
+            </a>
+
+            <a href="keranjang.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Keranjang</span>
+                <span class="menu-badge" id="sidebarCartBadge">0 Item</span>
+            </a>
+
+            <a href="login.html" class="menu-item">
+                <i class="fas fa-user-circle"></i>
+                <span>Akun</span>
+            </a>
+
+        </nav>
+
+        <!-- TELEMETRY -->
+        <div class="sidebar-footer">
+            <div class="telemetry-card">
+                <div class="telemetry-icon">
+                    <i class="fas fa-gauge-high"></i>
+                </div>
+                <div class="telemetry-info">
+                    <strong>YUKIDO TELEMETRY</strong>
+                    <span>
+                        <i class="telemetry-dot"></i>
+                        ONLINE
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
 
-</aside>
+    </aside>
 
-<!-- BACKDROP -->
-<div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+    <!-- BACKDROP -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -235,10 +235,10 @@
 
             <!-- KOLOM 2: SITEMAP & SUPPORT -->
             <div class="footer-col footer-sitemap">
-                <h3>SITEMAP & SUPPORT</h3>
+                <h3>SITEMAP &amp; SUPPORT</h3>
                 <ul>
                     <li><a href="produk.html">E-KATALOG PRODUK</a></li>
-                    <li><a href="lokasi.html">LOKASI & BENGKEL</a></li>
+                    <li><a href="lokasi.html">LOKASI &amp; BENGKEL</a></li>
                     <li><a href="garansi.html">KLAIM GARANSI</a></li>
                     <li><a href="gallery.html">TIM BALAP YUKIDO</a></li>
                 </ul>
@@ -249,16 +249,16 @@
                 <div class="store-section">
                     <h3>OFFICIAL STORE</h3>
                     <div class="store-badges">
-                        <a href="#" target="_blank" class="store-badge tokped-btn">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="store-badge tokped-btn">
                             <img src="images/tokopedia.png" alt="Tokopedia" class="icon-tokped-asli"> Tokopedia
                         </a>
-                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="store-badge tiktok-btn">
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" rel="noopener noreferrer" class="store-badge tiktok-btn">
                             <i class="fab fa-tiktok"></i> TikTok Shop
                         </a>
-                        <a href="https://id.shp.ee/5iRfotBL" target="_blank" class="store-badge shopee-btn">
+                        <a href="https://id.shp.ee/5iRfotBL" target="_blank" rel="noopener noreferrer" class="store-badge shopee-btn">
                             <i class="fas fa-shopping-bag"></i> Shopee
                         </a>
-                        <a href="#" target="_blank" class="store-badge lazada-btn">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="store-badge lazada-btn">
                             <i class="fas fa-heart"></i> Lazada
                         </a>
                     </div>
@@ -267,10 +267,10 @@
                 <div class="follow-section">
                     <h3>FOLLOW US</h3>
                     <div class="social-circles">
-                        <a href="#" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/yukido_official?mdxt=OHEwZW41MzNrcWth" target="_blank" rel="noopener noreferrer" class="social-btn instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@pt.yukido.power.teknik?_r=1&_t=ZS-9BI6FlRFsXa" target="_blank" rel="noopener noreferrer" class="social-btn tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://youtube.com/@ptyukidopowerteknik?si=bgxC51Sionfmf3rR" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -287,23 +287,23 @@
                     <span class="chatbot-status">Online</span>
                 </div>
             </div>
-            <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+            <button class="chatbot-close" id="chatbotClose" type="button" aria-label="Tutup Chatbot"><i class="fas fa-times"></i></button>
         </div>
-        
+
         <div class="chatbot-messages" id="chatbotMessages">
             <div class="message bot-message">
                 Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
                 <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
             </div>
         </div>
-        
+
         <div class="chatbot-input-area">
-            <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
-            <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="chatbotInput" name="chatbot_message" placeholder="Ketik pertanyaan Anda...">
+            <button id="chatbotSend" type="button" aria-label="Kirim Pesan"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <button class="floating-btn" id="chatbotToggle">
+    <button class="floating-btn" id="chatbotToggle" type="button">
         <i class="fas fa-robot"></i> TANYA AI
     </button>
     <!-- === AKHIR AI CHATBOT WIDGET === -->

@@ -25,7 +25,7 @@
         <div class="nav-center">
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Pencarian">
+                <input type="text" id="topSearchInput" name="q" placeholder="Pencarian">
             </div>
         </div>
 
@@ -61,13 +61,13 @@
         </div>
 
         <!-- LOGIN / AKUN -->
-        <a href="login.html" class="sidebar-welcome">
+        <a href="login.html" class="sidebar-welcome" id="sidebarWelcomeCard">
             <div class="sidebar-welcome-icon">
                 <i class="fas fa-user"></i>
             </div>
             <div>
-                <h4>Masuk / Daftar</h4>
-                <p>Kelola akun dan pesanan Anda</p>
+                <h4 id="sidebarWelcomeName">Masuk / Daftar</h4>
+                <p id="sidebarWelcomeSub">Kelola akun dan pesanan Anda</p>
             </div>
             <i class="fas fa-chevron-right"></i>
         </a>
@@ -159,7 +159,6 @@
                 </button>
 
                 <div class="kategori-slider" id="kategoriSlider">
-                    <!-- Bingkai 1: AIR TOOLS -->
                     <div class="kategori-card">
                         <div class="kategori-image">
                             <img src="images/air_tools.png" alt="Air Tools">
@@ -172,7 +171,6 @@
                         </div>
                     </div>
 
-                    <!-- Bingkai 2: PNEUMATIC -->
                     <div class="kategori-card">
                         <div class="kategori-image">
                             <img src="images/pneumatic.png" alt="Pneumatic">
@@ -185,7 +183,6 @@
                         </div>
                     </div>
 
-                    <!-- Bingkai 3: AUTOMOTIVE -->
                     <div class="kategori-card">
                         <div class="kategori-image">
                             <img src="images/automotive.png" alt="Automotive">
@@ -198,7 +195,6 @@
                         </div>
                     </div>
 
-                    <!-- Bingkai 4: HAND TOOLS -->
                     <div class="kategori-card">
                         <div class="kategori-image">
                             <img src="images/hand_tools.png" alt="Hand Tools">
@@ -207,97 +203,6 @@
                         <div class="kategori-info">
                             <h3>HAND TOOLS</h3>
                             <p>Kunci ring pas, kunci L, palu, kunci sok, kunci inggris, alat pemotong presisi, dan aneka kunci bengkel.</p>
-                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Bingkai 5: PLIERS TOOLS -->
-                    <div class="kategori-card">
-                        <div class="kategori-image">
-                            <img src="images/pilers_tools.png" alt="Pliers Tools">
-                            <span class="kategori-badge">24 Part</span>
-                        </div>
-                        <div class="kategori-info">
-                            <h3>PLIERS TOOLS</h3>
-                            <p>Tang kombinasi, tang potong, tang lancip (long nose), tang buaya, dan tang snap ring.</p>
-                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Bingkai 6: SCREWDRIVER -->
-                    <div class="kategori-card">
-                        <div class="kategori-image">
-                            <img src="images/screwdriver.png" alt="Screwdriver">
-                            <span class="kategori-badge">32 Part</span>
-                        </div>
-                        <div class="kategori-info">
-                            <h3>SCREWDRIVER</h3>
-                            <p>Obeng plus, obeng minus, obeng set presisi, obeng ketrok, dan tespen listrik.</p>
-                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Bingkai 7: ACCESSORIES -->
-                    <div class="kategori-card">
-                        <div class="kategori-image">
-                            <img src="images/accessories.png" alt="Accessories">
-                            <span class="kategori-badge">85 Part</span>
-                        </div>
-                        <div class="kategori-info">
-                            <h3>ACCESSORIES</h3>
-                            <p>Mata gerinda, mata bor, mata profil, carbon brush, amplas, dan kelengkapan power tools.</p>
-                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Bingkai 8: INSULATION -->
-                    <div class="kategori-card">
-                        <div class="kategori-image">
-                            <img src="images/insulation.png" alt="Insulation">
-                            <span class="kategori-badge">12 Part</span>
-                        </div>
-                        <div class="kategori-info">
-                            <h3>INSULATION</h3>
-                            <p>Isolasi listrik, selotip kabel tahan panas, heat shrink tube, dan pelindung kabel mekanis.</p>
-                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Bingkai 9: GENERAL -->
-                    <div class="kategori-card">
-                        <div class="kategori-image">
-                            <img src="images/general.png" alt="General">
-                            <span class="kategori-badge">45 Part</span>
-                        </div>
-                        <div class="kategori-info">
-                            <h3>GENERAL</h3>
-                            <p>Meteran ukur, waterpas, siku ukur, pisau cutter, gembok, dan perlengkapan perkakas umum lainnya.</p>
-                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Bingkai 10: TOOLS STORAGE -->
-                    <div class="kategori-card">
-                        <div class="kategori-image">
-                            <img src="images/tools_storage.png" alt="Tools Storage">
-                            <span class="kategori-badge">15 Part</span>
-                        </div>
-                        <div class="kategori-info">
-                            <h3>TOOLS STORAGE</h3>
-                            <p>Kotak perkakas (toolbox), tas alat mekanik, troli perkakas susun, dan lemari penyimpanan bengkel.</p>
-                            <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Bingkai 11: INVERTER -->
-                    <div class="kategori-card">
-                        <div class="kategori-image">
-                            <img src="images/inverter.png" alt="Inverter">
-                            <span class="kategori-badge">8 Part</span>
-                        </div>
-                        <div class="kategori-info">
-                            <h3>INVERTER</h3>
-                            <p>Mesin las inverter MMA/TIG, power inverter DC ke AC, dan perangkat pengelola daya bengkel.</p>
                             <a href="kategori-produk.html" class="btn-katalog">BUKA KATALOG <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -321,8 +226,7 @@
                 </div>
             </div>
 
-            <div class="produk-grid">
-                <!-- Produk 1 -->
+            <div class="produk-grid" id="homeProdukGrid">
                 <div class="produk-card">
                     <div class="produk-image">
                         <img src="images/impack_wreck.png" alt="Impact Wrench">
@@ -337,113 +241,14 @@
                             </span>
                         </div>
                         <h3>YUKIDO CORDLESS IMPACT WRENCH 600Nm</h3>
-                        <p class="produk-desc">Mesin pembuka baut tanpa kabel dengan torsi maksimal 600 Nm, cocok untuk membantu pekerjaan otomotif dan perbengkelan. Dilengkapi baterai lithium-ion 48V serta berbagai aksesori soket untuk memudahkan proses melepas dan mengencangkan baut secara praktis dan efisien.</p>
+                        <p class="produk-desc">Mesin pembuka baut tanpa kabel dengan torsi maksimal 600 Nm, cocok untuk membantu pekerjaan otomotif dan perbengkelan.</p>
                         <div class="produk-footer">
                             <div>
                                 <span class="label">HARGA RESMI</span>
                                 <span class="harga">Rp 1.900.000</span>
                             </div>
                             <div class="produk-actions">
-                                <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                    <i class="fas fa-info-circle"></i> DETAIL
-                                </a>
-                                <button class="btn-beli" type="button">
-                                    <i class="fas fa-shopping-cart"></i> BELI
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produk 2 -->
-                <div class="produk-card">
-                    <div class="produk-image">
-                        <img src="images/gerinda.png" alt="Gerinda">
-                        <span class="badge-rekomendasi">REKOMENDASI</span>
-                        <span class="sku">AB0910B</span>
-                    </div>
-                    <div class="produk-info">
-                        <div class="produk-header">
-                            <span class="produk-type">MESIN GERINDA 4INCH</span>
-                            <span class="rating">
-                                <i class="fas fa-star"></i> 0 (0)
-                            </span>
-                        </div>
-                        <h3>YUKIDO ANGLE GRINDER</h3>
-                        <p class="produk-desc">Mesin gerinda 4 inci dengan daya 540W yang cocok untuk memotong, menghaluskan, dan merapikan berbagai material. Memiliki desain praktis dan ergonomis sehingga nyaman digunakan untuk pekerjaan bengkel, konstruksi, maupun kebutuhan sehari-hari dan ideal untuk membantu pekerjaan.</p>
-                        <div class="produk-footer">
-                            <div>
-                                <span class="label">HARGA RESMI</span>
-                                <span class="harga">Rp 544.000</span>
-                            </div>
-                            <div class="produk-actions">
-                                <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                    <i class="fas fa-info-circle"></i> DETAIL
-                                </a>
-                                <button class="btn-beli" type="button">
-                                    <i class="fas fa-shopping-cart"></i> BELI
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produk 3 -->
-                <div class="produk-card">
-                    <div class="produk-image">
-                        <img src="images/jet_cleaner.png" alt="JET CLEANER">
-                        <span class="badge-performa">PERFORMA TINGGI</span>
-                        <span class="sku">JET-80FW</span>
-                    </div>
-                    <div class="produk-info">
-                        <div class="produk-header">
-                            <span class="produk-type">MESIN CUCI JET STEAM MOTOR / MOBIL</span>
-                            <span class="rating">
-                                <i class="fas fa-star"></i> 0 (0)
-                            </span>
-                        </div>
-                        <h3>YUKIDO HIGH PRESSURE WASHER JET80</h3>
-                        <p class="produk-desc">Mesin cuci bertekanan tinggi JET80 yang cocok untuk membersihkan kendaraan bermotor, peralatan, dan berbagai permukaan dari kotoran membandel. Dilengkapi motor 500W dengan tekanan hingga 80 bar serta aksesori selang dan spray gun untuk mendukung proses pencucian yang praktis dan efisien.</p>
-                        <div class="produk-footer">
-                            <div>
-                                <span class="label">HARGA RESMI</span>
-                                <span class="harga">Rp 1.200.000</span>
-                            </div>
-                            <div class="produk-actions">
-                                <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                                    <i class="fas fa-info-circle"></i> DETAIL
-                                </a>
-                                <button class="btn-beli" type="button">
-                                    <i class="fas fa-shopping-cart"></i> BELI
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produk 4 -->
-                <div class="produk-card">
-                    <div class="produk-image">
-                        <img src="images/dongkrak.png" alt="Dongkrak">
-                        <span class="badge-baru">BARU</span>
-                        <span class="sku">AB-038T</span>
-                    </div>
-                    <div class="produk-info">
-                        <div class="produk-header">
-                            <span class="produk-type">DONGKRAK BUAYA 3 TON</span>
-                            <span class="rating">
-                                <i class="fas fa-star"></i> 0 (0)
-                            </span>
-                        </div>
-                        <h3>YUKIDO HYDRAULIC FLOOR JACK HD</h3>
-                        <p class="produk-desc">Dongkrak buaya hidrolik berkapasitas 3 ton yang cocok untuk mengangkat kendaraan saat melakukan perawatan atau perbaikan. Dilengkapi katup pengaman, roda yang tahan lama, dan gagang putar 360° untuk memudahkan penggunaan di bengkel maupun kebutuhan otomotif.</p>
-                        <div class="produk-footer">
-                            <div>
-                                <span class="label">HARGA RESMI</span>
-                                <span class="harga">Rp 4.350.000</span>
-                            </div>
-                            <div class="produk-actions">
-                                <a href="detail-produk.html" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                <a href="detail-produk.php" class="btn-detail" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
                                     <i class="fas fa-info-circle"></i> DETAIL
                                 </a>
                                 <button class="btn-beli" type="button">
@@ -628,7 +433,6 @@
                     </div>
                 </div>
 
-                <!-- SISI KANAN: Teks Penjelasan -->
                 <div class="sirkuit-info">
                     <div class="section-badge">
                         <i class="fas fa-flag-checkered"></i>
@@ -636,7 +440,7 @@
                     </div>
                     <h2 class="section-title">DARI UJI COBA EKSTRIM SIRKUIT KE KINERJA PROFESIONAL</h2>
                     <p class="section-description">
-                        Perkakas dan komponen YUKIDO bukan sekadar alat biasa. Setiap produk lahir dari tempaan ketat di sirkuit balap nasional untuk menguji daya tahan material di bawah tekanan maksimal. Standar kualitas balap inilah yang kami bawa ke dalam setiap lini perkakas bengkel dan industri demi performa yang tak tertandingi.
+                        Perkakas dan komponen YUKIDO bukan sekadar alat biasa. Setiap produk lahir dari tempaan ketat di sirkuit balap nasional untuk menguji daya tahan material di bawah tekanan maksimal.
                     </p>
 
                     <div class="sirkuit-features">
@@ -749,7 +553,6 @@
         <!-- Footer YUKIDO dengan Layout Tekiro-Style -->
         <footer class="footer-yukido">
             <div class="footer-container">
-                <!-- KOLOM 1: BRAND & COPYRIGHT -->
                 <div class="footer-col footer-brand">
                     <div class="brand-logo">
                         <span class="logo-text"><span class="red-text">YUKIDO</span>®</span>
@@ -763,7 +566,6 @@
                     </div>
                 </div>
 
-                <!-- KOLOM 2: SITEMAP & SUPPORT -->
                 <div class="footer-col footer-sitemap">
                     <h3>SITEMAP &amp; SUPPORT</h3>
                     <ul>
@@ -774,9 +576,7 @@
                     </ul>
                 </div>
 
-                <!-- KOLOM 3: OFFICIAL STORE & FOLLOW US -->
                 <div class="footer-col footer-social-store">
-                    <!-- Official Store -->
                     <div class="store-section">
                         <h3>OFFICIAL STORE</h3>
                         <div class="store-badges">
@@ -795,7 +595,6 @@
                         </div>
                     </div>
 
-                    <!-- Follow Us -->
                     <div class="follow-section">
                         <h3>FOLLOW US</h3>
                         <div class="social-circles">
@@ -838,7 +637,7 @@
         </div>
 
         <div class="chatbot-input-area">
-            <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
+            <input type="text" id="chatbotInput" name="chatbot_message" placeholder="Ketik pertanyaan Anda...">
             <button id="chatbotSend" type="button" aria-label="Kirim Pesan">
                 <i class="fas fa-paper-plane"></i>
             </button>
@@ -847,41 +646,6 @@
 
     <script src="js/layout.js"></script>
     <script src="js/script.js"></script>
-    <script>
-        (function () {
-            const slider = document.getElementById("kategoriSlider");
-            const prevBtn = document.getElementById("kategoriScrollPrev");
-            const nextBtn = document.getElementById("kategoriScrollNext");
-
-            if (!slider) return;
-
-            function getScrollStep() {
-                const card = slider.querySelector(".kategori-card");
-                return card ? card.getBoundingClientRect().width + 20 : 340;
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener("click", () => {
-                    const step = getScrollStep();
-                    if (slider.scrollLeft <= 5) {
-                        slider.scrollTo({ left: slider.scrollWidth, behavior: "smooth" });
-                    } else {
-                        slider.scrollBy({ left: -step, behavior: "smooth" });
-                    }
-                });
-            }
-
-            if (nextBtn) {
-                nextBtn.addEventListener("click", () => {
-                    const step = getScrollStep();
-                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
-                        slider.scrollTo({ left: 0, behavior: "smooth" });
-                    } else {
-                        slider.scrollBy({ left: step, behavior: "smooth" });
-                    }
-                });
-            }
-        })();
-    </script>
+    <script src="js/home-api.js"></script>
 </body>
 </html>

@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - YUKIDO Motorsport</title>
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=10">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
     <!-- Top Navigation Bar -->
     <nav class="top-nav">
         <div class="nav-left">
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i> 
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu">
+                <i class="fas fa-bars"></i>
             </button>
             <a href="index.html" class="logo">
                 <img src="images/logo-yukido.png" alt="YUKIDO Motorsport Logo" class="logo-img">
@@ -22,127 +21,127 @@
                 <span class="logo-sub">ユキドジャパンテクノロジ</span>
             </a>
         </div>
-        
+
         <div class="nav-center">
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Pencarian">
+                <input type="text" id="topSearchInput" name="q" placeholder="Pencarian">
             </div>
         </div>
-        
-        <div class="nav-right">            
+
+        <div class="nav-right">
             <div class="nav-icons">
-                <a href="keranjang.html" class="icon-btn cart-btn">
+                <a href="keranjang.html" class="icon-btn cart-btn" aria-label="Keranjang Belanja">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
-                <button class="btn-cs">
+                <button class="btn-cs" type="button">
                     <i class="fas fa-headset"></i> BANTUAN CS
                 </button>
-                <a href="login.html" class="icon-btn" style="text-decoration: none; color: inherit;">
+                <a href="login.html" class="icon-btn" style="text-decoration: none; color: inherit;" aria-label="Masuk atau Akun">
                     <i class="fas fa-user"></i>
                 </a>
             </div>
         </div>
     </nav>
 
-     <!-- ================= SIDEBAR GLASSY ================= -->
-<aside class="sidebar" id="sidebar" aria-hidden="true">
+    <!-- ================= SIDEBAR GLASSY ================= -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
 
-    <div class="sidebar-header">
-        <a href="index.html" class="sidebar-brand">
-            <img src="images/logo-yukido.png" alt="YUKIDO">
-            <span>
-                <strong>YUKIDO</strong>
-                <small>POWER TEKNIK</small>
-            </span>
-        </a>
-
-        <button class="sidebar-close" id="sidebarClose"
-                type="button" aria-label="Tutup menu">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-
-    <!-- LOGIN / AKUN -->
-    <a href="login.html" class="sidebar-welcome">
-        <div class="sidebar-welcome-icon">
-            <i class="fas fa-user"></i>
-        </div>
-        <div>
-            <h4>Masuk / Daftar</h4>
-            <p>Kelola akun dan pesanan Anda</p>
-        </div>
-        <i class="fas fa-chevron-right"></i>
-    </a>
-
-    <!-- MENU NAVIGASI -->
-    <nav class="sidebar-menu">
-
-        <a href="index.html" class="menu-item">
-            <i class="fas fa-house"></i>
-            <span>Beranda</span>
-        </a>
-
-        <a href="produk.html" class="menu-item">
-            <i class="fas fa-cube"></i>
-            <span>Semua Produk</span>
-            <i class="fas fa-chevron-right menu-arrow"></i>
-        </a>
-
-        <a href="kategori-produk.html" class="menu-item">
-            <i class="fas fa-layer-group"></i>
-            <span>Kategori Produk</span>
-            <i class="fas fa-chevron-right menu-arrow"></i>
-        </a>
-
-        <a href="garansi.html" class="menu-item">
-            <i class="fas fa-shield-alt"></i>
-            <span>Klaim Garansi</span>
-        </a>
-
-        <a href="gallery.html" class="menu-item">
-            <i class="fas fa-images"></i>
-            <span>Gallery</span>
-        </a>
-
-        <a href="lokasi.html" class="menu-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Lokasi</span>
-        </a>
-
-        <a href="keranjang.html" class="menu-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Keranjang</span>
-            <span class="menu-badge" id="sidebarCartBadge">0 Item</span>
-        </a>
-
-        <a href="login.html" class="menu-item">
-            <i class="fas fa-user-circle"></i>
-            <span>Akun</span>
-        </a>
-
-    </nav>
-
-    <!-- TELEMETRY -->
-    <div class="sidebar-footer">
-        <div class="telemetry-card">
-            <div class="telemetry-icon">
-                <i class="fas fa-gauge-high"></i>
-            </div>
-            <div class="telemetry-info">
-                <strong>YUKIDO TELEMETRY</strong>
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-brand">
+                <img src="images/logo-yukido.png" alt="YUKIDO">
                 <span>
-                    <i class="telemetry-dot"></i>
-                    ONLINE
+                    <strong>YUKIDO</strong>
+                    <small>POWER TEKNIK</small>
                 </span>
+            </a>
+
+            <button class="sidebar-close" id="sidebarClose"
+                    type="button" aria-label="Tutup menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- LOGIN / AKUN -->
+        <a href="login.html" class="sidebar-welcome" id="sidebarWelcomeCard">
+            <div class="sidebar-welcome-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h4 id="sidebarWelcomeName">Masuk / Daftar</h4>
+                <p id="sidebarWelcomeSub">Kelola akun dan pesanan Anda</p>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+        </a>
+
+        <!-- MENU NAVIGASI -->
+        <nav class="sidebar-menu">
+
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-house"></i>
+                <span>Beranda</span>
+            </a>
+
+            <a href="produk.html" class="menu-item">
+                <i class="fas fa-cube"></i>
+                <span>Semua Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="kategori-produk.html" class="menu-item">
+                <i class="fas fa-layer-group"></i>
+                <span>Kategori Produk</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+
+            <a href="garansi.html" class="menu-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Klaim Garansi</span>
+            </a>
+
+            <a href="gallery.html" class="menu-item">
+                <i class="fas fa-images"></i>
+                <span>Gallery</span>
+            </a>
+
+            <a href="lokasi.html" class="menu-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Lokasi</span>
+            </a>
+
+            <a href="keranjang.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Keranjang</span>
+                <span class="menu-badge" id="sidebarCartBadge">0 Item</span>
+            </a>
+
+            <a href="login.html" class="menu-item">
+                <i class="fas fa-user-circle"></i>
+                <span>Akun</span>
+            </a>
+
+        </nav>
+
+        <!-- TELEMETRY -->
+        <div class="sidebar-footer">
+            <div class="telemetry-card">
+                <div class="telemetry-icon">
+                    <i class="fas fa-gauge-high"></i>
+                </div>
+                <div class="telemetry-info">
+                    <strong>YUKIDO TELEMETRY</strong>
+                    <span>
+                        <i class="telemetry-dot"></i>
+                        ONLINE
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
 
-</aside>
+    </aside>
 
-<!-- BACKDROP -->
-<div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+    <!-- BACKDROP -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -165,20 +164,20 @@
                         </h2>
 
                         <div class="sc-form-stack">
-                            <input type="text" id="recipientName" class="sc-input" placeholder="Nama Lengkap Penerima *" required>
+                            <input type="text" id="recipientName" name="recipient_name" class="sc-input" placeholder="Nama Lengkap Penerima *" required>
                             <div class="sc-form-row-2">
-                                <input type="text" id="recipientPhone" class="sc-input" placeholder="Nomor Telepon / WhatsApp *" required>
-                                <input type="email" id="recipientEmail" class="sc-input" placeholder="Alamat Email">
+                                <input type="text" id="recipientPhone" name="recipient_phone" class="sc-input" placeholder="Nomor Telepon / WhatsApp *" required>
+                                <input type="email" id="recipientEmail" name="recipient_email" class="sc-input" placeholder="Alamat Email">
                             </div>
                             <div class="sc-form-row-2">
-                                <input type="text" id="province" class="sc-input" placeholder="Provinsi">
-                                <input type="text" id="city" class="sc-input" placeholder="Kota / Kabupaten">
+                                <input type="text" id="province" name="province" class="sc-input" placeholder="Provinsi">
+                                <input type="text" id="city" name="city" class="sc-input" placeholder="Kota / Kabupaten">
                             </div>
                             <div class="sc-form-row-2">
-                                <input type="text" id="district" class="sc-input" placeholder="Kecamatan">
-                                <input type="text" id="postalCode" class="sc-input" placeholder="Kode Pos">
+                                <input type="text" id="district" name="district" class="sc-input" placeholder="Kecamatan">
+                                <input type="text" id="postalCode" name="postal_code" class="sc-input" placeholder="Kode Pos">
                             </div>
-                            <textarea rows="2" id="shippingAddress" class="sc-textarea" placeholder="Nama Jalan, Gedung, No. Rumah, Patokan *" required></textarea>
+                            <textarea rows="2" id="shippingAddress" name="shipping_address" class="sc-textarea" placeholder="Nama Jalan, Gedung, No. Rumah, Patokan *" required></textarea>
                         </div>
                     </section>
 
@@ -229,7 +228,7 @@
                             </div>
                         </div>
 
-                        <input type="text" id="orderNotes" class="sc-input" placeholder="Pesan untuk Penjual (Opsional, Contoh: Tolong packing kayu)">
+                        <input type="text" id="orderNotes" name="order_notes" class="sc-input" placeholder="Pesan untuk Penjual (Opsional, Contoh: Tolong packing kayu)">
                     </section>
 
                     <!-- 3. Metode Pembayaran -->
@@ -285,94 +284,92 @@
                         </div>
 
                         <!-- Detail Sub-Pilihan Pembayaran -->
-                       <!-- Detail Sub-Pilihan Pembayaran -->
-<div class="sc-pay-detail-panel">
-    <!-- Sub-Panel 1: VA -->
-    <div class="payment-content" id="pay-va">
-        <div class="sc-mini-chips" id="vaBankGrid">
-            <div class="bank-card active" data-channel="BCA" data-prefix="8271">
-                <img src="images/bca.png" alt="Logo BCA" class="pay-logo-img">
-                <strong>BCA VA</strong>
-            </div>
-            <div class="bank-card" data-channel="MANDIRI" data-prefix="8902">
-                <img src="images/mandiri.png" alt="Logo Mandiri" class="pay-logo-img">
-                <strong>Mandiri VA</strong>
-            </div>
-            <div class="bank-card" data-channel="BNI" data-prefix="8241">
-                <img src="images/bni.png" alt="Logo BNI" class="pay-logo-img">
-                <strong>BNI VA</strong>
-            </div>
-            <div class="bank-card" data-channel="BRI" data-prefix="2621">
-                <img src="images/bri.png" alt="Logo BRI" class="pay-logo-img">
-                <strong>BRI VA</strong>
-            </div>
-        </div>
-        <div class="sc-va-row">
-            <div>
-                <small id="vaBankLabel" class="sc-va-label">Nomor Akun Virtual BCA</small>
-                <strong id="vaNumber" class="sc-va-number">8271 9028 1148 2910</strong>
-            </div>
-            <button type="button" class="btn-copy" id="copyVaBtn" style="padding:6px 12px; font-size:12px;">
-                <i class="fas fa-copy"></i> Salin
-            </button>
-        </div>
-    </div>
+                        <div class="sc-pay-detail-panel">
+                            <!-- Sub-Panel 1: VA -->
+                            <div class="payment-content" id="pay-va">
+                                <div class="sc-mini-chips" id="vaBankGrid">
+                                    <div class="bank-card active" data-channel="BCA" data-prefix="8271">
+                                        <img src="images/bca.png" alt="Logo BCA" class="pay-logo-img" onerror="this.style.display='none'">
+                                        <strong>BCA VA</strong>
+                                    </div>
+                                    <div class="bank-card" data-channel="MANDIRI" data-prefix="8902">
+                                        <img src="images/mandiri.png" alt="Logo Mandiri" class="pay-logo-img" onerror="this.style.display='none'">
+                                        <strong>Mandiri VA</strong>
+                                    </div>
+                                    <div class="bank-card" data-channel="BNI" data-prefix="8241">
+                                        <img src="images/bni.png" alt="Logo BNI" class="pay-logo-img" onerror="this.style.display='none'">
+                                        <strong>BNI VA</strong>
+                                    </div>
+                                    <div class="bank-card" data-channel="BRI" data-prefix="2621">
+                                        <img src="images/bri.png" alt="Logo BRI" class="pay-logo-img" onerror="this.style.display='none'">
+                                        <strong>BRI VA</strong>
+                                    </div>
+                                </div>
+                                <div class="sc-va-row">
+                                    <div>
+                                        <small id="vaBankLabel" class="sc-va-label">Nomor Akun Virtual BCA</small>
+                                        <strong id="vaNumber" class="sc-va-number">8271 9028 1148 2910</strong>
+                                    </div>
+                                    <button type="button" class="btn-copy" id="copyVaBtn" style="padding:6px 12px; font-size:12px;">
+                                        <i class="fas fa-copy"></i> Salin
+                                    </button>
+                                </div>
+                            </div>
 
-    <!-- Sub-Panel 2: QRIS -->
-    <div class="payment-content sc-qris-box" id="pay-qris" style="display:none;">
-        <div style="margin-bottom: 10px;">
-            <img src="images/payment/qris.png" alt="Logo QRIS" class="pay-logo-img pay-logo-qris">
-        </div>
-        <img id="qrisPreviewImg" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=YUKIDO-MOTORSPORT-QRIS" alt="QRIS YUKIDO">
-        <p>Kode QRIS pembayaran otomatis muncul setelah menekan tombol Buat Pesanan.</p>
-    </div>
+                            <!-- Sub-Panel 2: QRIS -->
+                            <div class="payment-content sc-qris-box" id="pay-qris" style="display:none;">
+                                <div style="margin-bottom: 10px;">
+                                    <strong><i class="fas fa-qrcode"></i> QRIS YUKIDO MOTORSPORT</strong>
+                                </div>
+                                <img id="qrisPreviewImg" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=YUKIDO-MOTORSPORT-QRIS" alt="QRIS YUKIDO" onerror="this.style.display='none'">
+                                <p>Kode QRIS pembayaran otomatis muncul setelah menekan tombol Buat Pesanan.</p>
+                            </div>
 
-    <!-- Sub-Panel 3: E-Wallet -->
-    <div class="payment-content" id="pay-ewallet" style="display:none;">
-        <div class="sc-mini-chips" id="ewalletGrid">
-            <div class="bank-card active" data-channel="GoPay">
-                <img src="images/gopay.png" alt="Logo GoPay" class="pay-logo-img">
-                <strong>GoPay</strong>
-            </div>
-            <div class="bank-card" data-channel="OVO">
-                <img src="images/payment/ovo.png" alt="Logo OVO" class="pay-logo-img">
-                <strong>OVO</strong>
-            </div>
-            <div class="bank-card" data-channel="DANA">
-                <img src="images/payment/dana.png" alt="Logo DANA" class="pay-logo-img">
-                <strong>DANA</strong>
-            </div>
-            <div class="bank-card" data-channel="ShopeePay">
-                <img src="images/payment/shopeepay.png" alt="Logo ShopeePay" class="pay-logo-img">
-                <strong>ShopeePay</strong>
-            </div>
-        </div>
-        <input type="text" id="ewalletPhone" class="sc-input" placeholder="Nomor HP Terdaftar di E-Wallet *">
-    </div>
+                            <!-- Sub-Panel 3: E-Wallet -->
+                            <div class="payment-content" id="pay-ewallet" style="display:none;">
+                                <div class="sc-mini-chips" id="ewalletGrid">
+                                    <div class="bank-card active" data-channel="GoPay">
+                                        <img src="images/gopay.png" alt="Logo GoPay" class="pay-logo-img" onerror="this.style.display='none'">
+                                        <strong>GoPay</strong>
+                                    </div>
+                                    <div class="bank-card" data-channel="OVO">
+                                        <strong>OVO</strong>
+                                    </div>
+                                    <div class="bank-card" data-channel="DANA">
+                                        <strong>DANA</strong>
+                                    </div>
+                                    <div class="bank-card" data-channel="ShopeePay">
+                                        <strong>ShopeePay</strong>
+                                    </div>
+                                </div>
+                                <input type="text" id="ewalletPhone" name="ewallet_phone" class="sc-input" placeholder="Nomor HP Terdaftar di E-Wallet *">
+                            </div>
 
-    <!-- Sub-Panel 4: Kartu Debit/Kredit -->
-    <div class="payment-content" id="pay-card" style="display:none;">
-        <div class="sc-mini-chips" style="margin-bottom: 12px;">
-            <div class="bank-card">
-                <img src="images/payment/visa.png" alt="Logo Visa" class="pay-logo-img">
-            </div>
-            <div class="bank-card">
-                <img src="images/payment/mastercard.png" alt="Logo Mastercard" class="pay-logo-img">
-            </div>
-            <div class="bank-card">
-                <img src="images/payment/gpn.png" alt="Logo GPN" class="pay-logo-img">
-            </div>
-        </div>
-        <div class="sc-form-stack">
-            <input type="text" id="cardNumber" class="sc-input" maxlength="19" placeholder="Nomor Kartu Debit / Kredit (16 Digit) *">
-            <input type="text" id="cardHolder" class="sc-input" placeholder="Nama Pemegang Kartu *">
-            <div class="sc-form-row-2">
-                <input type="text" id="cardExpiry" class="sc-input" maxlength="5" placeholder="Masa Berlaku (MM/YY) *">
-                <input type="password" id="cardCvv" class="sc-input" maxlength="4" placeholder="CVV (3 Digit) *">
-            </div>
-        </div>
-    </div>
-</div>
+                            <!-- Sub-Panel 4: Kartu Debit/Kredit -->
+                            <div class="payment-content" id="pay-card" style="display:none;">
+                                <div class="sc-mini-chips" style="margin-bottom: 12px;">
+                                    <div class="bank-card">
+                                        <strong>VISA</strong>
+                                    </div>
+                                    <div class="bank-card">
+                                        <strong>MASTERCARD</strong>
+                                    </div>
+                                    <div class="bank-card">
+                                        <strong>GPN</strong>
+                                    </div>
+                                </div>
+                                <div class="sc-form-stack">
+                                    <input type="text" id="cardNumber" name="card_number" class="sc-input" maxlength="19" placeholder="Nomor Kartu Debit / Kredit (16 Digit) *">
+                                    <input type="text" id="cardHolder" name="card_holder" class="sc-input" placeholder="Nama Pemegang Kartu *">
+                                    <div class="sc-form-row-2">
+                                        <input type="text" id="cardExpiry" name="card_expiry" class="sc-input" maxlength="5" placeholder="Masa Berlaku (MM/YY) *">
+                                        <input type="password" id="cardCvv" name="card_cvv" class="sc-input" maxlength="4" placeholder="CVV (3 Digit) *">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 
                 <!-- KOLOM KANAN: Ringkasan Belanja -->
                 <div>
@@ -418,27 +415,27 @@
                     <span class="chatbot-status">Online</span>
                 </div>
             </div>
-            <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+            <button class="chatbot-close" id="chatbotClose" type="button" aria-label="Tutup Chatbot"><i class="fas fa-times"></i></button>
         </div>
-        
+
         <div class="chatbot-messages" id="chatbotMessages">
             <div class="message bot-message">
                 Halo! 👋 Saya asisten virtual YUKIDO. Ada yang bisa saya bantu? <br><br>
                 <i>Coba ketik: "garansi", "ongkir", "lokasi", atau "cara bayar"</i>
             </div>
         </div>
-        
+
         <div class="chatbot-input-area">
-            <input type="text" id="chatbotInput" placeholder="Ketik pertanyaan Anda...">
-            <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="chatbotInput" name="chatbot_message" placeholder="Ketik pertanyaan Anda...">
+            <button id="chatbotSend" type="button" aria-label="Kirim Pesan"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <button class="floating-btn" id="chatbotToggle">
+    <button class="floating-btn" id="chatbotToggle" type="button">
         <i class="fas fa-robot"></i> TANYA AI
     </button>
 
-      <script src="js/layout.js"></script>
+    <script src="js/layout.js"></script>
     <script src="js/script.js"></script>
     <script src="js/checkout-api.js"></script>
 </body>
